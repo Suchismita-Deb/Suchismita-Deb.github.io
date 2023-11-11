@@ -2,3 +2,17 @@ baseURL = 'https://suchismita-deb.github.io/'
 languageCode = 'en-us'
 title = 'Technical Blog'
 theme = "paper"
+
+[params]
+  # color style
+  color = 'linen'                           # linen, wheat, gray, light
+
+  # header social icons
+  github = 'https://github.com/Suchismita-Deb'                 # github.com/YOUR_GITHUB_ID
+  linkedin = 'https://www.linkedin.com/in/debsuchismita/'             # linkedin.com/in/YOUR_LINKEDIN_ID
+  rss = true                                # show rss icon
+
+  # home page profile
+  avatar = 'GRAVATAR_EMAIL'                 # gravatar email or image url
+  name = 'SUCHISMITA DEB'
+  bio = 'Software Developer'
