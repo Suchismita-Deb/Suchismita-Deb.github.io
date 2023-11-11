@@ -8,7 +8,7 @@ theme = "paper"
   color = 'linen'                           # linen, wheat, gray, light
 
   # header social icons
-  github = 'https://github.com/Suchismita-Deb'                 # github.com/YOUR_GITHUB_ID
+  github = 'github.com/Suchismita-Deb'                 # github.com/YOUR_GITHUB_ID
   linkedin = 'https://www.linkedin.com/in/debsuchismita/'             # linkedin.com/in/YOUR_LINKEDIN_ID
   rss = true                                # show rss icon
 
