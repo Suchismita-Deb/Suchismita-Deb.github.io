@@ -12,3 +12,4 @@ date = 2023-11-12T15:56:18+05:30
     - Its type of exception and message.
     - Stack trace.
 - Runtime system use this exception object and find the class which can handle it.
+
