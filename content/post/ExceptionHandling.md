@@ -87,5 +87,20 @@ Error is JVM issue and we cannot able to control that. Exception is on the basis
 
 **Checked Exception Compile Time Exception.** The program will not compile.
 
-Error is an Unchecked Exception. At run time this error comes.
+*Error is an **Unchecked Exception**. At run time this error comes.*
+### Runtime Exception
+```java
+public class check {
+    public static void main(String[] args) {
+        method1();
+    }
 
+    private static void method1() {
+        throw new ArithmeticException();
+    }
+}
+```
+ArithmeticException is a runtime exception. We need to put that in try and catch. While running we get the exception.
+```java
+
+```
