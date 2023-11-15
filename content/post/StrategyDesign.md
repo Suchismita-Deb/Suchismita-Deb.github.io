@@ -9,7 +9,7 @@ date = 2023-11-12T03:05:52+05:30
 
 ![img.png](/images/img3.png)
 
-Inheritance **IS-A relationship**.
+The example of the Strategy Design Pattern.
 
 ![img.png](/images/img4.png)
 
