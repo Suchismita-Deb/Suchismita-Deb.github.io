@@ -9,11 +9,11 @@ date = 2023-11-15T19:08:53+05:30
 - Stores data temporarily while your computer is running. 
 - It's fast and flexible, juggling all the  programs we're running at any given moment.
 - RAM is volatile, meaning it loses  its stored data when the power is turned off.
-
 ### ROM.
 - Retains data even when the power is off. 
 - It's non-volatile and used to  store essential information, like firmware and the BIOS, that  your computer needs to boot up.
 
+![img.png](/images/img7.png)
 
 ### Different types of RAM
 
@@ -24,7 +24,7 @@ date = 2023-11-15T19:08:53+05:30
 There are many types of DRAM, including **FPM DRAM**, **EDO DRAM**, **SDRAM**, and **DDR SDRAM**  with each generation bringing faster  speeds and increased efficiency.
 
 Many are obsolete, and the common types of **DRAM**  
-in the market today are DDR  variants, like **DDR4**, **GDDR**.
+in the market today are DDR  variants, like **DDR4**, **DDR5**.
 
 **GDDR** - It is a specialized type of DRAM optimized for faster data transfer rate, which the GPU needs for its  massive parallel processing.
 
