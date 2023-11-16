@@ -58,3 +58,13 @@ This will delete the details from the config file.
 ```shell
 git remote prune origin && git repack && git prune-packed && git reflog expire --expire=1.month.ago && git gc --aggressive
 ```
+
+`git prune` This command removes any local references to remote branches that no longer exist on the remote repository named "origin". It cleans up your local tracking branches that are no longer relevant.
+
+`git repack` This command packs loose objects in the repository into pack files, optimizing the storage and performance of the repository by compressing objects.
+
+`git prune-packed` This removes redundant pack files, cleaning up any pack files that are no longer necessary after repacking.
+
+`git reflog expire --expire=1.month.ago` This command expires old entries in the reflog that are older than one month. The reflog is a reference log that stores a history of where the tips of branches were in the past.
+
+`git gc --aggressive` This command triggers the garbage collection process in Git. It optimizes the repository by cleaning up unnecessary files and optimizing the repository's storage.
