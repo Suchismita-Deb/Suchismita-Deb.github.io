@@ -53,3 +53,8 @@ git branch -d branch_name
 git branch -D branch_name
 ```
 This will delete the details from the config file.
+
+### Cleaning config file.
+```shell
+git remote prune origin && git repack && git prune-packed && git reflog expire --expire=1.month.ago && git gc --aggressive
+```
