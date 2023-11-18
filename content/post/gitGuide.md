@@ -1,6 +1,6 @@
 +++
 title = 'Git Guide'
-date = 2023-11-13T08:01:08+05:30
+date = 2023-11-18T08:01:08+05:30
 +++
 
 Detailed Explanation will go here.<br/> Basic Command will be in https://github.com/Suchismita-Deb/Github-Guide
@@ -68,3 +68,14 @@ git remote prune origin && git repack && git prune-packed && git reflog expire -
 `git reflog expire --expire=1.month.ago` This command expires old entries in the reflog that are older than one month. The reflog is a reference log that stores a history of where the tips of branches were in the past.
 
 `git gc --aggressive` This command triggers the garbage collection process in Git. It optimizes the repository by cleaning up unnecessary files and optimizing the repository's storage.
+
+### Revert back the changes already commit and push in the server.
+
+For personal project where only I am contributing.
+`git reset HEAD~1` This will revert back the changes. The changes will be there in the stage area.
+
+`git reset --hard HEAD~1` This will remove the changes from the stage area.
+
+`git push -f origin main` This will push the changes andwe have to force push the changes. Now the repo will have the file which was like the previous commit.
+
+If we need to do revert 5 commit then we need to run the first command 5 time.
