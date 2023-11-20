@@ -82,7 +82,7 @@ For personal project where only I am contributing.
 If we need to do revert 5 commit then we need to run the first command 5 time.
 
 
-### Removing the file or folder from the staging area.
+### Removing the file or folder from the server.
 `git rm --cached <file/folder_path>` - Remove a file from the staging area (also known as the index), while keeping it in your working directory `git rm --cached build/*` 
 
 Then we can push to the main. `git push origin master`
