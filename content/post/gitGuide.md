@@ -72,6 +72,7 @@ git remote prune origin && git repack && git prune-packed && git reflog expire -
 ### Revert back the changes already commit and push in the server.
 
 For personal project where only I am contributing.
+
 `git reset HEAD~1` This will revert back the changes. The changes will be there in the stage area.
 
 `git reset --hard HEAD~1` This will remove the changes from the stage area.
@@ -79,3 +80,9 @@ For personal project where only I am contributing.
 `git push -f origin main` This will push the changes andwe have to force push the changes. Now the repo will have the file which was like the previous commit.
 
 If we need to do revert 5 commit then we need to run the first command 5 time.
+
+
+### Removing the file and folder that it already in the server.
+`git rm --cached <file/folder_path>` - remove a file from the staging area (also known as the index), while keeping it in your working directory `git rm --cached build/*` 
+
+Then we can push to the main. `git push origin master`
