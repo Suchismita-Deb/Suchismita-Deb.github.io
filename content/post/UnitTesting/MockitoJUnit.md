@@ -30,15 +30,26 @@ We mock the data by any value if the data return string we need to put some stri
 
 Then we use `@Autowired`. If `@Autowired` not working then we can use `@InjectMocks`. We can use either of the two.
 
+For the service class Test we have to use `@Autowired`
+```java
+@Autowired
+private IdtRoundingQueryService idtRoundingQueryService;
+```
+
 ***The service class that we are testing should have `@Autowired` or `@InjectMocks`. The DB that we mock the data should have `@Mock` for Unit testing or `@MockBean` for Integration Testing while using `@SpringBootTest`.***
 
-## Unit Testing with @ExtendWith(MockitoExtension.class):
+## Unit Testing with @ExtendWith(MockitoExtension.class): 
 
 ---
 * Unit testing using Mockito for mocking dependencies. 
 * Enables Mockito for mocking objects during tests. 
 * Focuses on isolating and testing specific components or classes.
 * We use `@Mock` annotation. It does not start Spring container it focuses in unit testing.
+
+```java
+@Mock
+private ReportsBigQueryService reportsBigQueryServiceMock;
+```
 
 ## Spring Testing Annotation
 
@@ -80,6 +91,138 @@ When using `@SpringBootTest` it is better to use `@ExtendWith(SpringExtension.cl
 
 *When Mockito cannot able to make the call locally it will use the Autowired.*
 
+When we use Autowired, Mock, ExtendWith(mock) then we need to use `initMocks`
+```java
+@BeforeEach
+void setUp() {
+    MockitoAnnotations.initMocks(this);
+    }
+```
+The `initMocks` will take case to initialize the class and all the mocks that we are doing.
+
+### Example 1.
+We want to cover the test for the method `getRecordFromView`.
+
+This method `getRecordFromView` has 3 parameter we are achieving that using the argument matchers.
+The `getRecordFromView` method looks like.
+```java
+ public List<Map<String, Object>> getRecordFromView(String reportName, String sectionName, Map<String, Object> requestEntity) {
+    TableResult tableResult = getTableResult(reportName, sectionName, requestEntity);
+    return convertor.convert(tableResult);
+  }
+```
+We can create any() or anyMap() for the Map parameter.
+
+In the test file we create the test method.
+```java
+ @Test
+    void getDataByMpi() {
+
+        Map<String, Object> data = getMockResponseFromFile("response/idtws/data_by_mpi.json").get(0);
+        when(reportsBigQueryServiceMock
+                .getRecordFromView(anyString(), anyString(), anyMap()))
+                .thenReturn(Arrays.asList(data)); 
+        // the data that we are passing can be created manually or we can use the data from the file created as a json.
+        assertNotNull(idtRoundingQueryService.getDataByMpi("active-protocol-order-base-query", patientId));
+    }
+```
+
+* If the map is correct then in the `when` block will get the data in the proper format. We are getting the actual data from the file in the `data` variable.
+* In the mock when block if we are sure then we can use value else argument matcher is best.
+
+### Testing for EmptyList.
+---
+If the method is checking for emptyList then we can use
+```java
+private static List<Map<String, Object>> getEmptyListOfMaps() {
+        List<Map<String, Object>> mockEmptyData = Collections.emptyList();
+        return mockEmptyData;
+    }
+```
+
+We can use the EmptyList in this way.
+```java
+@Test
+    void getMedicationByPatientId_EmptyListResponse() {
+        when(reportsBigQueryServiceMock
+                .getRecordFromView(anyString(), anyString(), anyMap()))
+                .thenReturn(getEmptyListOfMaps()); // This is the emptyListOfMaps
+
+        List<Map<String, Object>> response = idtRoundingQueryService.getMedicationByPatientId("anySection", "234567", "fac_123");
+
+        assertEquals(0,response.size());
+    }
+```
+
+We can put in a different variable
+```java
+List<Map<String, Object>> mockEmptyData = getEmptyListOfMaps();
+
+when(reportsBigQueryServiceMock
+    .getRecordFromView(anyString(), anyString(), anyMap()))
+    .thenReturn(mockEmptyData);
+```
+
+### Example 2.
+The method that we are going to test `getOptionsData`.
+```java
+public List<Map<String, Object>> getOptionsData(String facilityNumber) {
+        Map<String, Object> parameters = Map.of(FACILITY_NUMBER, facilityNumber);
+
+        try {
+            return reportsBigQueryService.getRecordFromView(IDT_ROUNDING_REPORT_NAME, "idt-options-base-query", parameters);
+        } catch (Exception e) {
+            log.error("Unable to get IDT options data", e);
+            throw new FutureException("Unable to get IDT options data", e);
+        }
+    }
+```
+
+
+For testing in line that has exception.
+```java
+@Test
+    void testGetOptionsDataWithException(){
+            // Mocked exception from ReportsBigQueryService
+            ReportDoesNotExistException mockException=new ReportDoesNotExistException("Report does not exist");
+
+            // Mocking the behavior of reportsBigQueryService to throw an exception
+            when(reportsBigQueryServiceMock
+            .getRecordFromView(anyString(),anyString(),any()))//User argument matchers every where
+            .thenThrow(mockException);
+    }
+```
+We use `thenThrow` and mock the exception. 
+
+The method throws `FutureException` so we have to use `Assertions.assertThrows`
+```java
+    @Test
+    void testGetOptionsDataWithException() {
+        // Mocked exception from ReportsBigQueryService
+        ReportDoesNotExistException mockException = new ReportDoesNotExistException("Report does not exist");
+
+        // Mocking the behavior of reportsBigQueryService to throw an exception
+        when(reportsBigQueryServiceMock
+                .getRecordFromView(anyString(), anyString(), any()))//User argument matchers every where
+                .thenThrow(mockException);
+
+        // Call the method under test
+        FutureException exception = Assertions.assertThrows(FutureException.class,
+                () -> idtRoundingQueryService.getOptionsData("a"));
+        // It takes the exception class under the test and the supplier.
+        // assertThrows takes an executable Supplier. 
+
+        // Verify : idtRoundingQueryService.getOptionsData throws : throw new FutureException("Unable to get IDT options data", e);
+        assertEquals("Unable to get IDT options data", exception.getMessage());
+        assertEquals(mockException, exception.getCause());
+    }
+```
+For getting the data we can store in the resource folder in the test. We can debug the code and get the data in the executor file.
+
+> @Mock -> For java testing.
+@MockBean -> For spring testing.
+
+
 ## Mocking the data from the file.
 
 ---
@@ -107,3 +250,36 @@ when(reportsBigQueryServiceMock.getRecordFromView(anyString(), anyString(), anyM
      .thenReturn(mockProviderResponse);
 //mocking the DB Call of private getOrderProvidersFormattedNamesByIds
 ```
+
+### Example 3.
+---
+For calling the DB. Here we are calling 2 Db one we are mocking and getting the value from the file and another we are mocking and making the value.
+```java
+    @Test
+    void getDataForTreatmentOrderTest_else(){
+        //Get the actual Query data as JSON from DB while debugging
+        List<Map<String, Object>> mockDataFromApi = getMockResponseFromFile("response/idt-patient-profile/dataForTreatmentOrders.json");
+
+        List<Map<String, Object>> mockProviderResponse = new ArrayList<Map<String, Object>>() {{
+            add(new HashMap<String, Object>() {{
+                put("PROVIDER_IDENTIFIER", "15034");
+                put("provider","John Doe");
+            }});
+        }};
+
+        // Mock the behavior of the two DB calls
+        when(reportsBigQueryServiceMock.getRecordFromView(anyString(), anyString(), anyMap()))
+                .thenReturn(mockDataFromApi)//mocking the DB Call of getDataForTreatmentOrder
+                .thenReturn(mockProviderResponse);//mocking the DB Call of private getOrderProvidersFormattedNamesByIds
+
+
+        List<Map<String, Object>> dataForTreatmentOrder = idtRoundingQueryService.getDataForTreatmentOrder("treatment-order-base-query", "234567", "11019");
+
+        assertEquals(1,dataForTreatmentOrder.size());
+    }
+```
+
+* Here we can see 2 `thenReturn`. We are testing for the method `getDataForTreatmentOrder`. It is calling the db. The method is public and it is calling another private method `getOrderProvidersFormattedNamesByIds` this is also calling the DB.
+    * Here there is 2 db call. The first `thenReturn` is the file data and the second `thenReturn` is the data that we are creating `mockProviderResponse`.
+
+
