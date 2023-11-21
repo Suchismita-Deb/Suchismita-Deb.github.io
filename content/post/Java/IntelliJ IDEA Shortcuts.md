@@ -18,3 +18,8 @@ date = 2023-11-19T02:06:48+05:30
 ### Getter Setter shortcut.
 ![img_1.png](/images/img11.png)
 Inside the class click **Alt + Insert**.
+
+### Intellij doesnot works properly.
+
+Click on File -> Invalidate Cache and restart.
+![img_1.png](/images/img13.png)
