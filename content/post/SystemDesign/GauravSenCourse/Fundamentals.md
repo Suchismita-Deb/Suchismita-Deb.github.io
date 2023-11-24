@@ -34,6 +34,8 @@ Cloud computing where the cloud service provider provides some computers for the
 
 When we get more request to handle the request we can **Buy bigger machines** means **Vertical Scaling** and **Buy more machines** means **Horizontal Scaling**.
 
+---
+
 |Horizontal Scaling|Vertical Scaling|
 |:---|:---|
 |LoadBalancing required. More machines which machine will handle which request should be determined by Load Balancing.|Not required.|
@@ -42,6 +44,7 @@ When we get more request to handle the request we can **Buy bigger machines** me
 |Data needs to travel to all the server and it is loose couple. To make the transaction atomic we need to stop all the other server works and it is not possible. Data inconsistent.|Consistent.
 |Scales well.|Hardware Limit.|
 
+---
 
 ### LoadBalancing and Consistent Hashing.
 Lot of request is coming say the request id is from 0 to M-1.
