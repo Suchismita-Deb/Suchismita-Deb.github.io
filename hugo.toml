@@ -4,6 +4,7 @@ title = 'Technical Blog'
 theme = "paper"
 paginate = 29
 
+
 [params]
   # color style
   color = 'linen'                           # linen, wheat, gray, light
