@@ -1,7 +1,6 @@
 +++
 title = 'Fundamentals of System Design.'
 date = 2023-11-23T17:57:52+05:30
-toc = "true"
 +++
 
 
