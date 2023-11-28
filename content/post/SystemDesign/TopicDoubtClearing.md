@@ -26,4 +26,5 @@ No. Loadbalancer is only used to handle request from the client.
 
 It has some drawbacks like for stock market data, it changes within minutes we cannot hold things and wait for the batch job.
 
+
 * Updating through **Messaging Queue** like *Kafka* any chnage in the master db it gives message to the kafka queue and the slave DB are subscribed to the kafka queue.
