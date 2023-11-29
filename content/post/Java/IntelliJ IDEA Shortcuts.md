@@ -30,7 +30,20 @@ Click on File -> Invalidate Cache and restart.
 
 ---
 
-### Show al the open tabs in the top in multiline.
+### Show all the open tabs in the top in multiline.
 
 In settings click on the multiline.
 ![img_1.png](/images/img24.png)
+
+The opened tab will be showing in one place and I do not have to scroll.
+![img_1.png](/images/img25.png)
+
+---
+
+### Command is too big to run.
+
+* When the file is run it will show the error in the bottom then click on the link from there.
+* Other way of doing it is in the top where the file name is showing. Click on the dropdown and click on the `Edit Configuraton` then choose file from the left side or click on the application.
+
+![img_1.png](/images/img26.png)
+* From the `More option` click on the `Shorten the command line` then from the bx for the `Shorten Command Line` choose the `@argfile`
