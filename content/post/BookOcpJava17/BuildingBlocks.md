@@ -357,5 +357,19 @@ public class Chicken {
 java.util.Date today;
 String greeting;
 ```
+---
+### Wrapper Class.
+```java
+int primitive = Integer.parseInt("123"); 
+Integer wrapper = Integer.valueOf("123");
+```
+All the wrapper class extends the `Number` class. 
 
-From Building blocks Java 17 part 6 will continue and first chapter of Java 11.
+* To write multiline string value.
+```java
+String str = """
+             Hello
+             World""";
+```
+
+From Building blocks Java 17 part 7 will continue and first chapter of Java 11.
