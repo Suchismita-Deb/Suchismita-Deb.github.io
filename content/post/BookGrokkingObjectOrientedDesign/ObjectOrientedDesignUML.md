@@ -1,11 +1,11 @@
 +++
-title = 'ObjectOrientedDesignUML'
+title = 'Object Oriented Design UML'
 date = 2023-11-18T15:17:19+05:30
 +++
 
 
 
-### Grokking the Object-Oriented Design.
+# Grokking the Object-Oriented Design.
 
 The process of OO analysis and design can be described as:
 1. Identifying the objects of a system.
@@ -17,7 +17,7 @@ We need a standard method/tool to document all this information - we use UML.
 
 UML diagrams are a representation of object-oriented concepts only.
 
-## UML DIAGRAM - Unified Modeling Language.
+# UML DIAGRAM - Unified Modeling Language.
 There are 14 kinds of UML Diagram. It is organized in 2 distinct groups -
 **Structural Diagram** -  structure of a system or process.
 **Behavioral or Interaction Diagrams** - behavior of the

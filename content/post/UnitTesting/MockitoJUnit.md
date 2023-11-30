@@ -1,6 +1,6 @@
 +++
 title = 'Spring Boot Testing using Mockito and JUnit.'
-date = 2023-11-20T20:49:24+05:30
+date = 2023-11-28T20:49:24+05:30
 tags=["testing"]
 +++
 
@@ -283,3 +283,4 @@ For calling the DB. Here we are calling 2 Db one we are mocking and getting the 
     * Here there is 2 db call. The first `thenReturn` is the file data and the second `thenReturn` is the data that we are creating `mockProviderResponse`.
 
 
+**If test fail and in the local it is showing some test covered in the test coverage will it increase in the overall test cases covereage?**
