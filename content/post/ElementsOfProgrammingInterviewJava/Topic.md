@@ -214,7 +214,7 @@ Compute a shortest path with fewest edges.
 ### Parallel Computing.
 Implement caching for a multithreaded dictionary.
 Analyze two unsynchronized interleaved threads.
-Implementsynchronization for two interleaving threads ......
+Implement synchronization for two interleaving threads ......
 Implement a thread pool.
 Deadlock.
 The readers-writers problem.
