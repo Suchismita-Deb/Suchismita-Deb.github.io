@@ -9,16 +9,27 @@ date = 2023-12-02T15:26:53+05:30
 
 ### Primitive Types.
 Computing the parity of a word.
+
 Swap bits.
+
 Reverse bits.
+
 Find a closest integer with the same weight.
+
 Compute x X y without arithmetical operators.
+
 Compute x/y.
+
 Compute xv.
+
 Reverse digits.
+
 Check if a decimal integer is a palindrome.
+
 Generate uniform random numbers.
+
 Rectangle intersection.
+
 
 ### Arrays.
 The Dutch national flag problem.
