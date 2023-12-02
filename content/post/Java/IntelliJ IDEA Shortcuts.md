@@ -47,3 +47,7 @@ The opened tab will be showing in one place and I do not have to scroll.
 
 ![img_1.png](/images/img26.png)
 * From the `More option` click on the `Shorten the command line` then from the bx for the `Shorten Command Line` choose the `@argfile`
+
+
+### Click on multiple places in the editor.
+**`Ctrl + Alt + Shift`** then click on multiple places the cursor will show.
