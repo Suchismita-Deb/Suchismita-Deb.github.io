@@ -10,7 +10,7 @@ date = 2023-12-02T15:26:53+05:30
 ### Primitive Types.
 Computing the parity of a word. ✅
 
-Swap bits.✔
+Swap bits.
 
 Reverse bits.
 
