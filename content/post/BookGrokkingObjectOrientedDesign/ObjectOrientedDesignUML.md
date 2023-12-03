@@ -67,7 +67,8 @@ Example - The actors on the left and right side and the use cases in circle shap
 - By default, the association is bidirectional. Both the class know about each other. Example the `Pilot` and `FlightInsurance` both class know each other exists.
 - The uni-directional association means when one class knows about the other 
 
-
+### *Multiplicity*
+- Indicates number of instance of the class is there in the relationship.
 
 
 
