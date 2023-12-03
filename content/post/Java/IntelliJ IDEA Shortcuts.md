@@ -51,3 +51,13 @@ The opened tab will be showing in one place and I do not have to scroll.
 
 ### Click on multiple places in the editor.
 **`Ctrl + Alt + Shift`** then click on multiple places the cursor will show.
+
+
+
+# Chrome Shortcuts.
+**`Ctrl + Shift + T`** opens the recent closed tabs.
+
+* **`Ctrl + Number Key`** opens the numbered tab you select.
+* **`Ctrl + Tab`** open the next tabs.
+* **`Ctrl + Shift + Tab`** open the previous tab.
+* **`Ctrl + T`** Open new tab.
