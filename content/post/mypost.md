@@ -17,4 +17,4 @@ draft = true
 My learnings.
 Have more focus and stick for hours to solve the problem. 
 Pragmatic Programming.
-Mind is not developed for developer dont wait fr others to clarify the work. It is like clerk type work.
+Mind is not developed for developer do not wait for others to clarify the work. It is like clerk type work.
