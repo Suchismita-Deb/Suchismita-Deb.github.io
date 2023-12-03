@@ -35,11 +35,20 @@ system, its actors, and its building components.
 
 ### Behavioral UML diagrams
 
-- **Use case diagram** - Describe a set of user scenarios. It
-  illustrates the functionality provided by the system.
+- **Use case diagram** - Describe a set of user scenarios. It illustrates the functionality provided by the system.
 - **Activity diagram** - Used to model the functional flow of control between two or more class objects.
 - **Sequence diagram** - Sequence diagrams describe interactions among classes in terms of an exchange of messages over time.
 - State diagram.
 - Communication diagram.
 - Interaction overview diagram.
 - Timing diagram.
+
+### Designing System Design.
+
+System Requirement.
+
+Use Cases Diagram.
+
+Class Diagram.
+
+Activity Diagram.
