@@ -69,6 +69,9 @@ Example - The actors on the left and right side and the use cases in circle shap
 
 ### *Multiplicity*
 - Indicates number of instance of the class is there in the relationship.
+- Example One FlightInstance will have two Pilots, while a Pilot can have many FlightInstances.
+
+![img.png](/images/img28.png)
 
 
 

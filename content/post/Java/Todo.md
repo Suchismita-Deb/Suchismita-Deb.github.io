@@ -23,3 +23,9 @@ https://tcsglobal.udemy.com/course/multithreading-and-parallel-computing-in-java
 
 - Acquire Key Java Skills: From Basics to Advanced Programming & Certification - Start Your Dev Career. Only few topics like the testing and the debugging part.
 https://tcsglobal.udemy.com/course/java-the-complete-java-developer-course/learn/lecture/6048150#overview
+
+- Few advanced topic from this course. Java SE 11 Developer 1Z0-819 OCP Course - Part 2
+  https://tcsglobal.udemy.com/course/java-se-11-developer-1z0-819-ocp-course-part-2/learn/lecture/22728077#overview
+- Unit Testing Courses.
+  https://tcsglobal.udemy.com/course/spring-boot-unit-testing/learn/lecture/30872028#overview
+- Unit testing course 2. https://tcsglobal.udemy.com/course/testing-spring-boot-application-with-junit-and-mockito/learn/lecture/30072374#overview
