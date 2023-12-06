@@ -74,6 +74,18 @@ Example - The actors on the left and right side and the use cases in circle shap
 ![img.png](/images/img28.png)
 
 
+### *Aggregation*
+* Special type of Association.
+* It is a `WHOLE to its PART` relationship.
+* The lifecycle of a `PART class` is independent of the `WHOLE class` lifecycle.
+* Aggregation implies a relationship where the child can exist independently of the parent.
+  Example - Aircraft can exist without Airline.
+
+
+### *Composition*
+* It is a type of aggregation where the child class's instance lifecycle is dependent on the parent class’s instance lifecycle.
+* Child cannot exist without parents.
+* WeeklySchedule is composed in Flight which means when Flight lifecycle ends, WeeklySchedule gets destroyed automatically.
 
 
 

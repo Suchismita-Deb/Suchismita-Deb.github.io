@@ -284,3 +284,55 @@ For calling the DB. Here we are calling 2 Db one we are mocking and getting the 
 
 
 **If test fail and in the local it is showing some test covered in the test coverage will it increase in the overall test cases covereage?**
+
+No. It will show test fails. Also the intellije test coverage is not correct. It is better to push and pass the build and check in the sonarcube. The build needs to be passed. 
+- Often the build fails even after the cases are running fine in local because the data might not be mocked properly. It happens as in local it connects with the database and runs but it needs to mock the data and then run the test cases.
+
+---
+
+The test cases is for the TreatmentDetailsReportService class.
+```java
+@Autowired
+    private TreatmentDetailsReportService treatmentDetailsReportService;
+```
+
+The method we want to test is `getReportPayload` which is only for Pdf and if html request comes it should throw exception. 
+The test cases for `getReportPayload` method.
+```java
+@Override
+  public Payloadable getReportPayload(Map<String, Object> requestEntity) {
+    throw new UnsupportedOperationException("TDR is PDF only report");
+  }
+```
+TDR is only PDF report. The test cases to handle exception in JUnit 5.
+```java
+@Test
+void getReportPayload() {
+    Map<String, Object> requestEntity = new HashMap<>();
+    // assertEquals(null, treatmentDetailsReportService.getReportPayload(requestEntity));
+    // assertEquals("TDR is PDF only report", treatmentDetailsReportService.getReportPayload(requestEntity));
+
+    // This part will work. Here we have to pass the lambda function and call the method.
+    Exception exception = assertThrows(UnsupportedOperationException.class,()->{
+        treatmentDetailsReportService.getReportPayload(requestEntity);
+    });
+    String expectedMessage = "TDR is PDF only report";
+    String actualMessage = exception.getMessage();
+    assertTrue(actualMessage.contains(expectedMessage));
+}
+```
+
+Example of any test cases for an exception. It is for the `RuntimeException`.
+```java
+@Test
+public void whenDerivedExceptionThrown_thenAssertionSucceeds() {
+    Exception exception = assertThrows(RuntimeException.class, () -> {
+        Integer.parseInt("1a");
+    });
+
+    String expectedMessage = "For input string";
+    String actualMessage = exception.getMessage();
+
+    assertTrue(actualMessage.contains(expectedMessage));
+}
+```

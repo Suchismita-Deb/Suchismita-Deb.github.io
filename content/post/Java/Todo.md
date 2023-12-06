@@ -31,6 +31,11 @@ https://tcsglobal.udemy.com/course/java-the-complete-java-developer-course/learn
 - Unit testing course 2. https://tcsglobal.udemy.com/course/testing-spring-boot-application-with-junit-and-mockito/learn/lecture/30072374#overview
 
 
+### Todo Java
+* Spring Project https://tcsglobal.udemy.com/course/spring-5-with-spring-boot-2/learn/lecture/38484206#overview
+* Spring Course only few parts. https://tcsglobal.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/17855112#overview
+* JPA Hibernate Mapping https://tcsglobal.udemy.com/course/spring-hibernate-tutorial/learn/lecture/38512074#overview
+
 OS 
 Imp topic
 Process, Threads, Memory Managemnent, Scheduling Algorithms and File System.
@@ -60,5 +65,7 @@ Resources
   - Alex Book.
 
 Prepare the STAR, method story before the interview.
+
+
 
 
