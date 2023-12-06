@@ -29,3 +29,36 @@ https://tcsglobal.udemy.com/course/java-the-complete-java-developer-course/learn
 - Unit Testing Courses.
   https://tcsglobal.udemy.com/course/spring-boot-unit-testing/learn/lecture/30872028#overview
 - Unit testing course 2. https://tcsglobal.udemy.com/course/testing-spring-boot-application-with-junit-and-mockito/learn/lecture/30072374#overview
+
+
+OS 
+Imp topic
+Process, Threads, Memory Managemnent, Scheduling Algorithms and File System.
+Previously the Samsung coding round was like leetcode medium. Now we will get the coding round called Advanced coding round where we cannot use the STl like if we have to use sorting then we have to implement the sorting algo. If we are using the binary tree then we have to implement the binary tree.
+
+LLD round.
+OOPS 
+Solid Principles.
+Design Pattern. 
+  - Singleton, Abstract, Factory, Observer, Decorator.
+Design Classes for an application.
+
+Classic LLD - UML, Methods and Classes and the relation between them.
+Machine LLD - Entire design and test cases should pass.
+
+Resources
+- OOPS - HaedFirst Object-Orienred Analysis and Design.
+- OS, CN and DBMS.
+- Solid Principle. 
+  - Design Patterns - Elements of reusable Object Oriented Source. Gang of Four. 23 different design patterns.
+  - Head First Design Patterns.
+- LLD Practice Problem.
+  - LowLevelDesign Primer Github repo.
+- HLD.
+  - System Design Primer Github repo.
+  - Grokking the System Design Interview.
+  - Alex Book.
+
+Prepare the STAR, method story before the interview.
+
+
