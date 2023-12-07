@@ -36,6 +36,16 @@ https://tcsglobal.udemy.com/course/java-the-complete-java-developer-course/learn
 * Spring Course only few parts. https://tcsglobal.udemy.com/course/spring-framework-5-beginner-to-guru/learn/lecture/17855112#overview
 * JPA Hibernate Mapping https://tcsglobal.udemy.com/course/spring-hibernate-tutorial/learn/lecture/38512074#overview
 
+### Unit Testing.
+
+- https://tcsglobal.udemy.com/course/mockito-tutorial-with-junit-examples/learn/lecture/5678760#overview
+- https://tcsglobal.udemy.com/course/junit5-for-beginners/learn/lecture/12417498#overview
+- https://tcsglobal.udemy.com/course/testing-spring-boot-application-with-junit-and-mockito/learn/lecture/30072374#overview
+- https://tcsglobal.udemy.com/course/spring-boot-unit-testing/learn/lecture/30872028#overview
+- https://tcsglobal.udemy.com/course/learn-unit-testing-with-spring-boot/learn/lecture/9968272#overview
+- https://tcsglobal.udemy.com/course/testing-java-code-with-junit-5-and-mockito/learn/lecture/31441718#overview
+
+---
 OS 
 Imp topic
 Process, Threads, Memory Managemnent, Scheduling Algorithms and File System.
@@ -67,5 +77,12 @@ Resources
 Prepare the STAR, method story before the interview.
 
 
+
+Topic to do.
+Jaxon mapper.
+
+git stash - Saved in the working directory and index state WIP in the branch. To save local changes. Understanding this command. Can be used in place of rollback.
+
+git stash pop.
 
 

@@ -336,3 +336,39 @@ public void whenDerivedExceptionThrown_thenAssertionSucceeds() {
     assertTrue(actualMessage.contains(expectedMessage));
 }
 ```
+
+For any report that is only related to PDF there should be one case for multiple MPI. Like for multiple mpi thereport should generate. When we say that the report should generate means it should not return null we can write `assertNotNull`.
+
+
+> Object Mapper is used to map the Json data to the Java Object.
+More need to continue. Like how to get the pdf read in the test file.
+
+
+Testing for one method in TDR.
+```java
+@Override
+  public ByteArrayOutputStream generatePdfReport(Map<String, Object> requestEntity) {
+    TdrRequestEntity tdrRequestEntity = getSpecificRequestEntity(requestEntity,
+        TdrRequestEntity.class);
+
+    switch (TdrReportType.valueOfString(tdrRequestEntity.getType())) {
+    **case LONG_FORM_TODAY_TREATMENT:
+	  return handleTodayRequestMultipleMpi(requestEntity);**
+    case LONG_FORM_PREVIOUS_TREATMENT:
+      return handlePreviousRequest(requestEntity);
+    case SHORT_FORM_TODAY_TREATMENT:
+      return handleTodayShortFormRequest(tdrRequestEntity);
+    default:
+      throw new ReportServiceException("Unknown TDR report type: " + tdrRequestEntity.getType());
+    }
+  }
+```
+For the switch case we do not mock anything that is not returning anything. We mock only those which return something.
+We donot mock the `handleTodayRequestMultipleMpi(requestEntity)` method this part we need to test.
+
+- In this case we need to write three test cases one for each.
+- `case LONG_FORM_TODAY_TREATMENT:
+  return handleTodayRequestMultipleMpi(requestEntity);` This part is **System Under Test SUT**.
+- The main is `Given When Then`. When we mock then we get the expected value.
+- For testing any method if it is going to a different class then we mock that part. Only those methods that is inside the SUT is taken care.
+- 
