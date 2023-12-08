@@ -352,8 +352,8 @@ Testing for one method in TDR.
         TdrRequestEntity.class);
 
     switch (TdrReportType.valueOfString(tdrRequestEntity.getType())) {
-    **case LONG_FORM_TODAY_TREATMENT:
-	  return handleTodayRequestMultipleMpi(requestEntity);**
+    case LONG_FORM_TODAY_TREATMENT:
+	  return handleTodayRequestMultipleMpi(requestEntity);
     case LONG_FORM_PREVIOUS_TREATMENT:
       return handlePreviousRequest(requestEntity);
     case SHORT_FORM_TODAY_TREATMENT:
@@ -371,4 +371,22 @@ We donot mock the `handleTodayRequestMultipleMpi(requestEntity)` method this par
   return handleTodayRequestMultipleMpi(requestEntity);` This part is **System Under Test SUT**.
 - The main is `Given When Then`. When we mock then we get the expected value.
 - For testing any method if it is going to a different class then we mock that part. Only those methods that is inside the SUT is taken care.
-- 
+
+In one such private method inside the SUT. It is calling a new service file 
+```java
+Map<String, PdfDocument> tdrAuditPartPdfMap = tdrAuditPartService.getTdrLongFormPdfs(treatmentIdList, mpis);
+```
+We have to mock this part as it is outside the SUT class. This method return `Map<String,PdfDocument>` we need to put this in the `then` block.
+```java
+PdfDocument pdfdocument = mock(PdfDocument.class);
+Map<String,PdfDocument> tdrPdfs = tdrAuditPartService.getTdrLongFormPdfs(List.of(TREATMENT_ID,TREATMENT_ID_NODATA),List.of(MPI_!,MPI_2));
+Mockito.when(tdrAuditPartService.getTdrLongFormPdfs(anyList(),anylist())).thenReturn(tdrPdfs);
+```
+
+- If the private method in the main service is calling another service class then just mock the other service class with proper parameter and return or thenReturn value.
+
+> Thumb Rule - For testing the public method 
+> - If there is parameter in the public method then make the parameter. 
+> - If it is calling any other private method then we need to assert equal or check with the return of the private method. This is the final test of the method.
+> - If the private method is calling any other service class then mock the service class with passing parameter(like any(), anyMap()) and thenReturn.
+
