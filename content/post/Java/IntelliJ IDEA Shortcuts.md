@@ -61,3 +61,7 @@ The opened tab will be showing in one place and I do not have to scroll.
 * **`Ctrl + Tab`** open the next tabs.
 * **`Ctrl + Shift + Tab`** open the previous tab.
 * **`Ctrl + T`** Open new tab.
+
+# Method Separator.
+A line after the method to demarcated it with other method.
+![img_1.png](/images/img29.png)

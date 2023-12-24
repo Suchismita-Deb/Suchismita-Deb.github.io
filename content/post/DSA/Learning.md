@@ -114,3 +114,29 @@ Other way
 ```java
 listOfLists.add(Arrays.asList("Hello","World"));
 ```
+
+### Checking for 3 consecutive odd.
+```java
+for(int i=0;i<nums.length-2;i++){
+    if(nums[i]%2!=0 && nums[i+1]%2!=0 && nums[i+2]%2!=0){
+        System.out.println("true");
+    }
+}
+
+//Other way.
+int count=0;
+for(int i=0;i<nums.length;i++){
+    if(nums[i]%2==0){count=0;
+}
+else{
+    count++;
+    if(count==3){
+        System.out.println("true");
+    }
+}
+```
+
+we can also write in one line.
+```java
+else if(++count==3)return true;
+```
