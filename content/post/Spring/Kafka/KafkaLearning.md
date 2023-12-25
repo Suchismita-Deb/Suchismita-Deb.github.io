@@ -49,3 +49,19 @@ One project by name endUser and other by the name location.
 - Message updated when we hit the url with post request.
 - ![img_1.png](/images/img31.png)
 - From the cmd we can get the message.
+- In the producer yml file, in location project we need to write.
+```java
+#Producer configuration
+spring.kafka.producer.bootstrap-servers=localhost:9092
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer
+```
+- In the consumer yml file, in the endUser project we need to write.
+```java
+server.port=8081
+spring.kafka.consumer.bootstrap-servers=localhost:9092
+spring.kafka.consumer.group-id=group-id
+spring.kafka.consumer.auto-offset-reset=earliest
+spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+```
