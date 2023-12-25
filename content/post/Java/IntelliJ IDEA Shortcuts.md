@@ -65,3 +65,8 @@ The opened tab will be showing in one place and I do not have to scroll.
 # Method Separator.
 A line after the method to demarcated it with other method.
 ![img_1.png](/images/img29.png)
+
+# Adding more projects in the same project.
+![img_1.png](/images/img30.png)
+With the `+` icon we can add more projects and here the endUser and the location are the two projects added.
+- This will open two project in same window and we can run both and will get the teminal output for both.

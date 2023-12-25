@@ -33,4 +33,19 @@ Consumer subscribed to the topic will get the message. We create the message in 
 bin\windows\kafka-console-producer.bat --topic user-topic --bootstrap-server localhost:9092
 ```
 Here we can write the message.
-### 
+### Consuming the message.
+```java
+bin\windows\kafka-console-consumer.bat --topic user-topic --from-beginning --bootstrap-server localhost:9092
+```
+
+Take the topic name properly. One can pen multiple instance of CMD and can subscribe the same topic and will get the message.
+
+### Making a Spring Project to use the Kafka Messaging Queue.
+Making one Spring project to update the location and other to receive the update location message.
+One project by name endUser and other by the name location.
+
+- For producing the message we need a topic. Create a config package for the Configuration class.
+
+- Message updated when we hit the url with post request.
+- ![img_1.png](/images/img31.png)
+- From the cmd we can get the message.
