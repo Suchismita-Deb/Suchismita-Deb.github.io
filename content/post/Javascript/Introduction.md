@@ -5,7 +5,7 @@ date = 2023-12-30T15:01:40+05:30
 
 
 
-### How much Js should one know before React.
+### How much Js should one know.
 - Variable (let, const, var)
 - Hoisting of Variable.
 - Functions(Arrow Function, Higher Order Functions)
