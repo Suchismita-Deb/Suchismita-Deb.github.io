@@ -389,7 +389,7 @@ Mockito.when(tdrAuditPartService.getTdrLongFormPdfs(anyList(),anylist())).thenRe
 > - If there is parameter in the public method then make the parameter. 
 >   - If the parameter will be used again then in the top we can make the @MockBean TdrShortForm tdrshortform.
 >   - If it is used only in that method then we can write TdrShortFrom tdrShortForm = mock(TdrShortForm.class) inside the method.
-> - If it is calling any other private method then we need to assert equal or check with the return of the private method. This is the final test of the method.
+> - If it is calling any other private method then we need to assert equal or check with the return of the private method. This is the final test of the method. We need to make the parameter proper and make things so that the private method can be called while running the code. The check will be done without anything.
 > - If the private method is calling any other service class then mock the service class with passing parameter(like any(), anyMap()) and thenReturn.
 
 ---
