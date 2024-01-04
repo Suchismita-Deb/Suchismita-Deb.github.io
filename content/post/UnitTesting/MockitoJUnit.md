@@ -448,4 +448,27 @@ So we did `tdrShortFormFileList.add(tdrShortFormFiledata)` then created a local 
 - When we call the method `generatePdf(data)` this gives the data in the pdf. Then it is not showing any error in the merge method. As merge method always call the pdf. So we have to pass some data in the list.
 ---
 For any report which has Json and in the service file we have one if(!report.isEmpty()) then in the Json file in the report list we need to add some data. 
-- We can check the dto of report to see the field stored
+- We can check the dto of report to see the field stored then we cann add those in the Json file and check in the JsonViewer.
+- If it is a list then one object has value and other is null. This way we can check for the if and else. It will get the value the line will be tested. 
+```json
+"List":[
+{
+        "someValue":"string"
+},
+{
+        "someValue":null
+}      
+]
+```
+- If it is only object.
+```json
+"List":{
+"someValue":"123"
+}
+``` 
+Then we have to make another list of the same thing and to put null.
+```json
+{
+"someValue":null
+}
+```
