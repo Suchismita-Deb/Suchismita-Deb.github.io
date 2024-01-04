@@ -431,6 +431,7 @@ TdrShortFormFile tdrShortFormFiledata = TdrShortFormFile.builder()
         .build();
 tdrShortFormFileList.add(tdrShortFormFiledata);
 ```
+When we need to add a value we can add it like this way in list.
 The `TdrShortFormFile` is a class with values.
 ```java
 public class TdrShortFormFile {
