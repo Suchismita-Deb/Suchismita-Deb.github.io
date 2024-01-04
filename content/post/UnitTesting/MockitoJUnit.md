@@ -387,6 +387,8 @@ Mockito.when(tdrAuditPartService.getTdrLongFormPdfs(anyList(),anylist())).thenRe
 
 > Thumb Rule - For testing the public method 
 > - If there is parameter in the public method then make the parameter. 
+>   - If the parameter will be used again then in the top we can make the @MockBean TdrShortForm tdrshortform.
+>   - If it is used only in that method then we can write TdrShortFrom tdrShortForm = mock(TdrShortForm.class) inside the method.
 > - If it is calling any other private method then we need to assert equal or check with the return of the private method. This is the final test of the method.
 > - If the private method is calling any other service class then mock the service class with passing parameter(like any(), anyMap()) and thenReturn.
 
@@ -444,3 +446,6 @@ So we did `tdrShortFormFileList.add(tdrShortFormFiledata)` then created a local 
 - `new byte[]` was giving error. We need byte array.
 - `new ByteArrayOutputStream().toByteArray()` this was working in passing the value but giving error in the merger method. As the merger involves some pdf, so we pass some pdf data in `Bytearrayoutputstream`. 
 - When we call the method `generatePdf(data)` this gives the data in the pdf. Then it is not showing any error in the merge method. As merge method always call the pdf. So we have to pass some data in the list.
+---
+For any report which has Json and in the service file we have one if(!report.isEmpty()) then in the Json file in the report list we need to add some data. 
+- We can check the dto of report to see the field stored
