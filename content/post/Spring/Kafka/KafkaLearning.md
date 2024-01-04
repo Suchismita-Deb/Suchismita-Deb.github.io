@@ -1,5 +1,5 @@
 +++
-title = 'KafkaLearning'
+title = 'Kafka Learning'
 date = 2023-12-24T22:31:38+05:30
 +++
 

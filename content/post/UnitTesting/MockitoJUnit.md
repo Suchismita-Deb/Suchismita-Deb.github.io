@@ -390,3 +390,57 @@ Mockito.when(tdrAuditPartService.getTdrLongFormPdfs(anyList(),anylist())).thenRe
 > - If it is calling any other private method then we need to assert equal or check with the return of the private method. This is the final test of the method.
 > - If the private method is calling any other service class then mock the service class with passing parameter(like any(), anyMap()) and thenReturn.
 
+---
+In TreatmentDetailsReportService file
+```java
+private ByteArrayOutputStream handlePreviousRequest(Map<String, Object> requestEntity) {
+    return buildPreviousLongForm(tdrShortFormReportService.getTdrShortFormFiles(requestEntity));
+  }
+```
+This `tdrShortFormReportService.getTdrShortFormFiles(requestEntity)` return a `List<TdrShortFormFile>`.
+In the service file say we need the list of the TdrShortFormFile which has one or more value. When I created with new keyword it is showing empty list.
+```java
+List<TdrShortFormFile> tdrShortFormFileList = new ArrayList();
+Mockito.when(tdrShortFormReportService.getTdrShortFormFiles(anyMap())).thenReturn(tdrShortFormFileList);
+```
+We need some value as in one block it is using loop for the value of the list.
+```java
+tdrFiles.forEach(shortFormFile -> {
+        PdfDocument pdfDocument = tdrAuditPartPdfMap.get(shortFormFile.getTreatmentId());
+        try (PdfDocument srcPdf = buildPreviousLongForm(shortFormFile, pdfDocument)) {
+          merger.merge(srcPdf, 1, srcPdf.getNumberOfPages());
+        } catch (Exception e){
+          throw new ReportServiceException("Exception in buildPreviousLongForm merger", e);
+        }
+      }
+```
+
+
+I need to create the List with some value.
+```java
+List<Map<String, Object>> data = getMapList();
+List<TdrShortFormFile> tdrShortFormFileList = new ArrayList();
+TdrShortFormFile tdrShortFormFiledata = TdrShortFormFile.builder()
+        .facilityNumber("123")
+        .treatmentId("123")
+        .mpi("123")
+        .body(generatePdf(data).toByteArray())
+        // new ByteArrayOutputStream().toByteArray()
+        .build();
+tdrShortFormFileList.add(tdrShortFormFiledata);
+```
+The `TdrShortFormFile` is a class with values.
+```java
+public class TdrShortFormFile {
+
+    private String facilityNumber;
+    private String mpi;
+    private String treatmentId;
+    private byte[] body;
+}
+```
+
+So we did `tdrShortFormFileList.add(tdrShortFormFiledata)` then created a local variable and add all the field.
+- `new byte[]` was giving error. We need byte array.
+- `new ByteArrayOutputStream().toByteArray()` this was working in passing the value but giving error in the merger method. As the merger involves some pdf, so we pass some pdf data in `Bytearrayoutputstream`. 
+- When we call the method `generatePdf(data)` this gives the data in the pdf. Then it is not showing any error in the merge method. As merge method always call the pdf. So we have to pass some data in the list.
