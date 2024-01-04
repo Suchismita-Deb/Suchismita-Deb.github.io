@@ -468,7 +468,10 @@ For any report which has Json and in the service file we have one if(!report.isE
 ``` 
 Then we have to make another list of the same thing and to put null.
 ```json
-{
+"List":{
+"someValue":"123"
+},
+"List2":{
 "someValue":null
 }
 ```
