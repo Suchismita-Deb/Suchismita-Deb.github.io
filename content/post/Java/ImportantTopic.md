@@ -27,4 +27,32 @@ int value;
 ```
 - The list contains `{(1,1),(2,5),(5,3)}`
 - Using array to store the frequency of the element. The index of the array is the element and the value will be the count of the element. The main problem in this that if array is `2,3,2,3,10000,8` then for one element 10000 we need to make array that long. We call this array Bucket array.
-- We use hash function. Say we need to store the count of character then in array we need the key `h(ships)` the hash function gives value like `23` and `h(hello)` gives value like `89` called hashcode. This value can be big so we can use `h()%sizeArray` to get the value within the size of the array.
+- We use hash function. Say we need to store the count of character then in array we need the key `h(ships)` the hash function gives value like `23` and `h(hello)` gives value like `89` called hashcode. This value can be big so we can use `h()%sizeArray` to get the value within the size of the array. This is the `Compression Funtion`.
+- Now the hashcode can be same for more than 1 element then there will be `Collision`. We can use the hashcode function in the object class.
+
+*2 ways to deal with Collision - Closed Hashing/Separate Chaining, Open Addressing.*
+
+### Closed Hashing
+Every index of the bucket array contains a list where more than one element is stored in list form.
+Every index will point to the head of the linkedlist.
+- Since Java 1.5 Balanced BST are used in place of LinkedList.
+
+### Open Addressing.
+If there is any collision in any index find some alternative index. There are many methods like *Linear Probing*, *Quadratic Probing*, *Double Hashing*.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
