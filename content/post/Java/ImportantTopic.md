@@ -17,11 +17,14 @@ Implementations of Maps.
 - LinkedHashMap maintains its element in the order the elements are accessed from least recently accessed to most recently accessed. It finds its usage in the LRU cache. It comes with performation penalty.
 - Operations like adding, removing, finding an entry based on key is in constant time as it has hash method. Finding an entry on the value is of liner time as it needs to search for all the elements.
 
-In HashMap we tore in key and value. Like the character count of a word `ships` is the key and `5` is the value. We can also store the count of number in an array like `1,2,2,2,3,4,5,5` then we can store in hashmap like `1->1, 2->3, 3->1, 4->1, 5->2`.
-- We can put the elemenst ion the form of `List<Pair>` we can make a Pair class. 
-- ```java
+In HashMap we tore in key and value. Like the character count of a word `ships` is the key and `5` is the value. We can also store the count of number in an array like `1,2,2,2,5,5,5,2,2` then we can store in hashmap like `1->1, 2->5, 5->3`.
+- We can put the elements ion the form of `List<Pair>` we can make a Pair class. 
+```java
 class Pair{
 int key;
 int value;
-}
+};
 ```
+- The list contains `{(1,1),(2,5),(5,3)}`
+- Using array to store the frequency of the element. The index of the array is the element and the value will be the count of the element. The main problem in this that if array is `2,3,2,3,10000,8` then for one element 10000 we need to make array that long. We call this array Bucket array.
+- We use hash function. Say we need to store the count of character then in array we need the key `h(ships)` the hash function gives value like `23` and `h(hello)` gives value like `89` called hashcode. This value can be big so we can use `h()%sizeArray` to get the value within the size of the array.
