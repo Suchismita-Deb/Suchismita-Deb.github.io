@@ -5,7 +5,10 @@ tags=['java']
 +++
 
 
-**How hashmap works internally**
+1. In Inheritance the superclass properties is inherited by the subclass.
+
+
+# How hashmap works internally
 
 Implementations of Maps.
 - The classes *HashMap* and *Hashtable* implements *unordered map* and *LinkedHashMap* implements *ordered map*.
@@ -39,20 +42,3 @@ Every index will point to the head of the linkedlist.
 
 ### Open Addressing.
 If there is any collision in any index find some alternative index. There are many methods like *Linear Probing*, *Quadratic Probing*, *Double Hashing*.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
