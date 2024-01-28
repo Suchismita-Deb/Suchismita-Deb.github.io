@@ -13,8 +13,19 @@ tags=['java']
 - Interfaces can have constant fields (implicitly public, static, and final). We cannot reassign value to the field of teh interface as it is final.
 - We can declare interface by abstract keyword but no need as interface are by default abstract.
 - Each interface after compilation a `.class` file will be generated.
-- We acannot override an interface method other than public. We should not reduce the visibility. All interface methods are public by default.
+- We cannot override an interface method other than public. We should not reduce the visibility. All interface methods are public by default.
 - Interface cannot extend class, it can extend another interface.
+- Classes extends `java.lang.Object` by default. Interface do not extend it.
+- From Java 8 interface can have static methods.
+- Interface can have class and another interface as its member.
+
+93-107 done.
+
+# Nested Classes.
+- There are 2 types of Nested classes, _**Static Nested Classes**_ and _**Non Static Nested Classes or Inner Classes**_.
+- Non static Nested classes are of 3 types - _**Member Inner Class**_, _**Local Inner Class**_ and _**Anonymous Inner Class**_.
+- We cannot access a nin static member of outer class inside a static nested class.
+- 
 
 # How hashmap works internally
 
