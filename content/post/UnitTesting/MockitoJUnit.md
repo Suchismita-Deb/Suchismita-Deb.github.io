@@ -476,3 +476,5 @@ Then we have to make another list of the same thing and to put null.
 "someValue":null
 }
 ```
+
+- When we need to deprecate any method then we wite the annotation on top of the method `@Deprecated` and `@lombok.Generated`.

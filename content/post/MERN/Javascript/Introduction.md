@@ -9,3 +9,5 @@ Everything in Javascript happens in **Execution Context**.
 - It has 2 component - Memory Component (Variable Environment) and Code Component (Thread of Execution).
 - Memory Component where we store the _variable_ and the _function_ in a _key value pair_.
 - In Code Component the code are executed one at a time.
+### Javascript is a synchronous single threaded language.
+Javascript can execute one command at a time in a sequence manner.

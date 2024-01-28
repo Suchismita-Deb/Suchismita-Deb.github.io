@@ -9,7 +9,7 @@ tags=['java']
 
 
 # Interface
-- Interface cannot have constructor, static initializer and instance initializer. The class that is implementing the interface can have constructor. _Static initializers_ are blocks of code that are executed when a class is loaded into the Java Virtual Machine (JVM). _Instance initializers_ are blocks of code that are executed when an instance of a class is created.
+- Interface cannot have _constructor, static initializer and instance initializer_. The class that is implementing the interface can have constructor. _Static initializers_ are blocks of code that are executed when a class is loaded into the Java Virtual Machine (JVM). _Instance initializers_ are blocks of code that are executed when an instance of a class is created.
 - Interfaces can have constant fields (implicitly public, static, and final). We cannot reassign value to the field of teh interface as it is final.
 - We can declare interface by abstract keyword but no need as interface are by default abstract.
 - Each interface after compilation a `.class` file will be generated.
