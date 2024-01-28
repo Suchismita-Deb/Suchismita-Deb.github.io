@@ -11,3 +11,21 @@ Everything in Javascript happens in **Execution Context**.
 - In Code Component the code are executed one at a time.
 ### Javascript is a synchronous single threaded language.
 Javascript can execute one command at a time in a sequence manner.
+
+```javascript
+var n=2;
+function square(n){
+    // n is the parameter.
+    return n*n;
+}
+var square2 = square(n);// n is the argument.
+var square4 = square(4);
+```
+- First a global execution context. Inside the memory component first it will store the memory for the variable and function.
+- For the variable the memory first stored as `undefined` and for the function it stored the entire function.
+- For the square2 and square4 the value undefined will be stored.
+- Second part is the `Code Execution`. Now the value of the n will be stored.
+- For the `var square2 = square(n);` the function is invoke. For the function a entire new execution context is started. For this execution context again there will be memory and code execution. Here the memory will be allocated to the variables and functions inside this function.
+- Now the return value will be stored in the var square2. After the return statement the execution context for the function will be deleted.
+
+*Every function will create a execution context. So it creates a `callstack` where the global execution context is at the bottom and all the other execution context will be on the top.* 
