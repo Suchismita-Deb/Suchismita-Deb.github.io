@@ -254,3 +254,6 @@ In the browser we got the output
 
 
 - We need to use the model mapper as a bean.
+
+
+>>> Issue faced the ID annotation class is `import jakarta.persistence.*`
