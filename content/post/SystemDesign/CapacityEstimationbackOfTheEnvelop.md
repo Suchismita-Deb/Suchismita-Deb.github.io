@@ -67,7 +67,7 @@ Average message size ≈ 100 Bytes.
 
 1 day of message = $100 * 10^{9} * 100$ Bytes ≈ $10^{13}$ ≈ 10TB
 
-- 100B = 100 * $10^{9}$ B  
+- 100B = 100 * $10^{9}$ Bytes
 
 5 years of message = 10TB * 365 * 5 ≈ 20PB.
 
@@ -111,24 +111,57 @@ Total space = $\frac{100M tweets}{5}$ * 200kb +  $\frac{100 M tweets}{10}$ * 2MB
 = ((20M * 200KB) + (10M * 2MB)) /day 
 
 = (20 * $10^6$ * 200 * $10^{3}$) + (10 * $10^{6}$ *2 * $10^{6}$) B/day
+
 = (4 * $10^{12}$) + (20 * $10^{12}$) B/day
+
 = (4TB + 20TB) /day
+
 = 24 TB/day. (Ingress Incoming Bandwidth)
+
 = 24 * $10^{6}$ MB/day (1TB = $10^{6}$)
+
 = $\frac{24 * $10^{6}$}{$10^{5}$}$ MB/sec
+
 ≈ 300 Mb/sec.
 
-Read Estimates.
+### Read Estimates.
 DAU = 200M.
+
 Each people see 150 tweets.
 
-Total size of a simple tweet = 200M * 150 tweets * 300 Bytes = 30 * `$10^{3}$` * `$10^{6}$` * 300 = 9TB/day = 9 * `$10^{6}$` MB/day = 9 * `$10^{6}$` * 12 Bytes/sec = 100 MB/sec.
+Total size of a simple **tweet** = 200M * 150 tweets * 300 Bytes 
 
-Every 5th tweet contains image. `$200M*150$` tweets are read daily.
-Total size of the tweets contains image = `$\frac{200*150}{5}$` *200KB/day = (6000M * 200KB)/day = 12 * `$10^{5}$` * `$10^{6}$` KB/day = 1.2 TB/day.
+= 30 * `$10^{3}$` * `$10^{6}$` * 300 
 
-Every 10th tweet contains image. `$200M*150$` tweets are read daily.
-Total size of the tweets contains image = `$\frac{200*150}{10}$` *2MB/day = (3000M * 2MB)/day = 6 * `$10^{3}$` * `$10^{6}$` * `$10^{3}$` KB/day = 6 * `$10^{12}$` KB/day  6TB/day.
+= 9TB/day 
+
+= 9 * `$10^{6}$` MB/day 
+
+= 9 * `$10^{6}$` * 12 Bytes/sec 
+
+= 100 MB/sec.
+
+Every 5th tweet contains image. $200M *150$` tweets are read daily.
+
+Total size of the tweets contains **image** = $\frac{200*150}{5}$` *200KB/day 
+
+= (6000M * 200KB)/day 
+
+= 12 * $10^{5}$ * $10^{6}$ KB/day 
+
+= 1.2 TB/day.
+
+Every 10th tweet contains image. $200M * 150$ tweets are read daily.
+
+Total size of the tweets contains image = $\frac{200 * 150}{10}$ * 2MB/day 
+
+= (3000M * 2MB)/day 
+
+= 6 * $10^{3}$ * $10^{6}$ * $10^{3}$ KB/day 
+
+= 6 * $10^{12}$ KB/day 
+
+= 6TB/day.
 
 
 All the pics and video and text are egress requests.
