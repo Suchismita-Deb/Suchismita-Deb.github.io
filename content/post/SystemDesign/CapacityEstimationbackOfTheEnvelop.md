@@ -42,7 +42,9 @@ categories = ['low level design','system design']
 
 **Generally for a large scale system we count as 1 Million request per day.**
 
-1 Million/day = `$\frac{10^{6}}{24hrs*60min*60sec}$` ≈ 11.57 ≈ 12Bytes/sec.
+1 Million/day = 
+$\frac{10^{6}}{24hrs*60min*60sec}$
+≈ 11.57 ≈ 12Bytes/sec.
 
 ##### Storage Estimation/Bandwidth Estimation - Incoming(Ingress) Outgoing(Egress)
 
