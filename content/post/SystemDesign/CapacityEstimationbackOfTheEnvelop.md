@@ -40,13 +40,14 @@ categories = ['low level design','system design']
 | $2^{9}$   | 1024  |
 | $2^{10}$  | 2048  |
 
+---
+
+
 **Generally for a large scale system we count as 1 Million request per day.**
 
-$10^{12}$
 
-1 Million/day = 
-
-[//]: # ($\frac{10^{6}}{24hrs*60min*60sec}$)
+1 Million/day =
+$\frac{10^{6}}{24*60*60}$
 ≈ 11.57 ≈ 12Bytes/sec.
 
 ##### Storage Estimation/Bandwidth Estimation - Incoming(Ingress) Outgoing(Egress)
