@@ -43,7 +43,8 @@ categories = ['low level design','system design']
 **Generally for a large scale system we count as 1 Million request per day.**
 
 1 Million/day = 
-$\frac{10^{6}}{24hrs*60min*60sec}$
+
+[//]: # ($\frac{10^{6}}{24hrs*60min*60sec}$)
 ≈ 11.57 ≈ 12Bytes/sec.
 
 ##### Storage Estimation/Bandwidth Estimation - Incoming(Ingress) Outgoing(Egress)
@@ -61,7 +62,7 @@ DAU ≈ 2B ≈ 100B message every day.
 
 Average message size ≈ 100 Bytes.
 
-1 day of message = 100 * `$10^{9)$` * 100 Bytes ≈ `$10^{13}$` ≈ 10TB
+1 day of message = 100 * $10^{9)$ * 100 Bytes ≈ $10^{13}$ ≈ 10TB
 
 - 100B = 100 * `$10^{9)$` B  
 
