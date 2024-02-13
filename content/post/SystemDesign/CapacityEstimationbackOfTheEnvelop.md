@@ -47,7 +47,7 @@ categories = ['low level design','system design']
 
 
 1 Million/day =
-$\frac{10^{6}}/{24 * 60 * 60}$
+$\frac{10^{6}}{24 * 60 * 60}$
 ≈ 11.57 ≈ 12Bytes/sec.
 
 ##### Storage Estimation/Bandwidth Estimation - Incoming(Ingress) Outgoing(Egress)
@@ -131,19 +131,19 @@ Each people see 150 tweets.
 
 Total size of a simple **tweet** = 200M * 150 tweets * 300 Bytes 
 
-= 30 * `$10^{3}$` * `$10^{6}$` * 300 
+= 30 * $10^{3}$ * $10^{6}$ * 300 
 
 = 9TB/day 
 
-= 9 * `$10^{6}$` MB/day 
+= 9 * $10^{6}$ MB/day 
 
-= 9 * `$10^{6}$` * 12 Bytes/sec 
+= 9 * $10^{6}$ * 12 Bytes/sec 
 
 = 100 MB/sec.
 
-Every 5th tweet contains image. $200M *150$` tweets are read daily.
+Every 5th tweet contains image. $200M *150$ tweets are read daily.
 
-Total size of the tweets contains **image** = $\frac{200*150}{5}$` *200KB/day 
+Total size of the tweets contains **image** = $\frac{200*150}{5}$ * 200KB/day 
 
 = (6000M * 200KB)/day 
 
