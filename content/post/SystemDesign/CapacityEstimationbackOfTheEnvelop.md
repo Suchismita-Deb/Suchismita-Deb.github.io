@@ -47,7 +47,7 @@ categories = ['low level design','system design']
 
 
 1 Million/day =
-${10^{6}/24*60*60}$
+${10^{6}/24 * 60 * 60}$
 ≈ 11.57 ≈ 12Bytes/sec.
 
 ##### Storage Estimation/Bandwidth Estimation - Incoming(Ingress) Outgoing(Egress)
@@ -81,29 +81,34 @@ Bandwidth Estimation = 10TB/day
 ```
 
 10TB ≈ $10^{12}$ B.
+
 $10^{6}$ B/day = 1Million/day ≈ 12/sec.
 
-#### Twitter.
+### Twitter.
+
 DAU ≈ 200M.
+
 Read:Write ≈ 150M:100M
 
-Storage Estimation.
+#### Storage Estimation.
 - 140 char per tweet.
 - 2 bytes to store char.
 - 20 Bytes to store the metadata(ID, UserId, timestamp).
+
 Total Storage for a single tweet = (140 char * 2 Bytes) + 20 Bytes metadata = 280 Bytes ≈ 300Bytes.
 
-Write Estimates.
+#### Write Estimates.
 Daily 100M tweet.
 100M * 300Bytes = 3 * $10^{10}$ B/day ≈ 30GB/day.
 
 
 > Every 5th tweet has a image ≈ 200 kb.
+> 
 > Every 10th tweet has a video ≈ 2MB/video.
 
-Total space = $\frac{100M tweets}{5}& * 200kb +  $\frac{100 M tweets}{10}$ * 2MB
+Total space = $\frac{100M tweets}{5}$ * 200kb +  $\frac{100 M tweets}{10}$ * 2MB
 
-= ((20M*200KB) + (10M*2MB)) /day 
+= ((20M * 200KB) + (10M * 2MB)) /day 
 
 = (20 * $10^6$ * 200 * $10^{3}$) + (10 * $10^{6}$ *2 * $10^{6}$) B/day
 = (4 * $10^{12}$) + (20 * $10^{12}$) B/day
