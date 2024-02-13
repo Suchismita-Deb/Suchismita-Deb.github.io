@@ -61,3 +61,26 @@ Every index will point to the head of the linkedlist.
 
 ### Open Addressing.
 If there is any collision in any index find some alternative index. There are many methods like *Linear Probing*, *Quadratic Probing*, *Double Hashing*.
+
+### Method overloading and method overriding.
+Multiple methods with different parameters - Method Overloading.
+
+There is parent class and child class extends the parent class. Then the child class modifies the method and override the behaviour of teh same method - Method Overriding/Dynamic Binding.
+
+### Interface.
+Declare the method signature in interface. After Java8 we can also have default methods in the interfaces.
+The class implements the interface need to provide the implementation of all the method declared in the interface.
+
+### Abstract Class.
+We canot instantiate an object of this class. It has one or more abstract methods in it.
+
+### When to use interface and abstract class?
+Generally go with interface as we can implement more interfaces bt we cannot extends more classes.
+
+### How to handle exception in java.
+Compile time exception ( try and catch we need to handle it in code ) and runtime exeption(problem with logic like arithmetic exception).
+
+### finally block in excetion.
+Generally finally gets executed. In case of connection type work we use finally.
+
+### Difference between hashmap and hashtable.
