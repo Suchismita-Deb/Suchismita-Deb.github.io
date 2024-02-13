@@ -42,6 +42,8 @@ categories = ['low level design','system design']
 
 **Generally for a large scale system we count as 1 Million request per day.**
 
+$10^{12}$
+
 1 Million/day = 
 
 [//]: # ($\frac{10^{6}}{24hrs*60min*60sec}$)
