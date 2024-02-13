@@ -67,7 +67,7 @@ Average message size ≈ 100 Bytes.
 $10^{9}$
 1 day of message = $100 * 10^{9} * 100$ Bytes ≈ $10^{13}$ ≈ 10TB
 
-- 100B = 100 * `$10^{9)$` B  
+- 100B = 100 * $10^{9}$ B  
 
 5 years of message = 10TB * 365 * 5 ≈ 20PB.
 
@@ -75,13 +75,13 @@ $10^{9}$
 
 Bandwidth Estimation = 10TB/day 
 ```
-10Tb/day ≈ 10 * `$10^{6}$` * `$10^{6}$` B/day 
-         ≈ 10 * `$10^{6}$` * 12 B/sec
+10Tb/day ≈ 10 * $10^{6}$ * $10^{6}$ B/day 
+         ≈ 10 * $10^{6}$ * 12 B/sec
          ≈ 120 MB/sec.
 ```
 
-10TB ≈ `$10^{12}$`B.
-`$10^{6}$` B/day = 1Million/day ≈ 12/sec.
+10TB ≈ $10^{12}$ B.
+$10^{6}$ B/day = 1Million/day ≈ 12/sec.
 
 #### Twitter.
 DAU ≈ 200M.
