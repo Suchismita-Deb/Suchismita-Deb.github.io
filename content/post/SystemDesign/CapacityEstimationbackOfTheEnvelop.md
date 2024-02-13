@@ -40,8 +40,6 @@ categories = ['low level design','system design']
 | $2^{9}$   | 1024  |
 | $2^{10}$  | 2048  |
 
----
-
 
 **Generally for a large scale system we count as 1 Million request per day.**
 
@@ -151,9 +149,9 @@ Total size of the tweets contains **image** = $\frac{200*150}{5}$ * 200KB/day
 
 = 1.2 TB/day.
 
-Every 10th tweet contains image. $200M * 150$ tweets are read daily.
+Every 10th tweet contains **video**. $200M * 150$ tweets are read daily.
 
-Total size of the tweets contains image = $\frac{200 * 150}{10}$ * 2MB/day 
+Total size of the tweets contains **video** = $\frac{200 * 150}{10}$ * 2MB/day 
 
 = (3000M * 2MB)/day 
 
