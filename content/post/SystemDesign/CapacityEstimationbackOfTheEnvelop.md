@@ -47,7 +47,7 @@ categories = ['low level design','system design']
 
 
 1 Million/day =
-${10^{6}}/{24 * 60 * 60}$
+${10^{6}/24 * 60 * 60}$
 ≈ 11.57 ≈ 12Bytes/sec.
 
 ##### Storage Estimation/Bandwidth Estimation - Incoming(Ingress) Outgoing(Egress)
@@ -120,7 +120,7 @@ Total space = $\frac{100M tweets}{5}$ * 200kb +  $\frac{100 M tweets}{10}$ * 2MB
 
 = 24 * $10^{6}$ MB/day (1TB = $10^{6}$)
 
-= $\frac{24 * $10^{6}$}{$10^{5}$}$ MB/sec
+= $\frac{24 * 10^{6}}{10^{5}}$ MB/sec
 
 ≈ 300 Mb/sec.
 
