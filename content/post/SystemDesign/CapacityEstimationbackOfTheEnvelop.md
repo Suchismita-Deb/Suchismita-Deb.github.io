@@ -52,14 +52,18 @@ $\frac{10^{6}}{24hrs*60min*60sec}$
 ### People in India = 1.4 billion.
 
 > DAU Daily Active User.
+> 
 > MAU Monthly Active User.
 
 ## Capacity Estimation Example.
-#### Whatsapp.
+### Whatsapp.
 DAU ≈ 2B ≈ 100B message every day.
+
 Average message size ≈ 100 Bytes.
+
 1 day of message = 100 * `$10^{9)$` * 100 Bytes ≈ `$10^{13}$` ≈ 10TB
-100B = 100 * `$10^{9)$` B  
+
+- 100B = 100 * `$10^{9)$` B  
 
 5 years of message = 10TB * 365 * 5 ≈ 20PB.
 
