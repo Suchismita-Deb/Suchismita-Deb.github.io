@@ -64,8 +64,8 @@ ${10^{6}/24*60*60}$
 DAU ≈ 2B ≈ 100B message every day.
 
 Average message size ≈ 100 Bytes.
-
-1 day of message = $100 * 10^{9) * 100$ Bytes ≈ $10^{13}$ ≈ 10TB
+$10^{9}$
+1 day of message = $100 * 10^{9} * 100$ Bytes ≈ $10^{13}$ ≈ 10TB
 
 - 100B = 100 * `$10^{9)$` B  
 
