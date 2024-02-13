@@ -64,7 +64,7 @@ ${10^{6}/24*60*60}$
 DAU ≈ 2B ≈ 100B message every day.
 
 Average message size ≈ 100 Bytes.
-$10^{9}$
+
 1 day of message = $100 * 10^{9} * 100$ Bytes ≈ $10^{13}$ ≈ 10TB
 
 - 100B = 100 * $10^{9}$ B  
@@ -95,22 +95,22 @@ Total Storage for a single tweet = (140 char * 2 Bytes) + 20 Bytes metadata = 28
 
 Write Estimates.
 Daily 100M tweet.
-100M * 300Bytes = 3 * `$10^{10}$` B/day ≈ 30GB/day.
+100M * 300Bytes = 3 * $10^{10}$ B/day ≈ 30GB/day.
 
 
 > Every 5th tweet has a image ≈ 200 kb.
 > Every 10th tweet has a video ≈ 2MB/video.
 
-Total space = `$\frac{100M tweets}{5}&`*200kb +  `$\frac{100 M tweets}{10}$` * 2MB
+Total space = $\frac{100M tweets}{5}& * 200kb +  $\frac{100 M tweets}{10}$ * 2MB
 
 = ((20M*200KB) + (10M*2MB)) /day 
 
-= (20 * `$10^6$` * 200 * `$10^{3}$`) + (10 * `$10^{6}$` *2 * `$10^{6}$`) B/day
-= (4 * `$10^{12}$`) + (20 * `$10^{12}$`) B/day
+= (20 * $10^6$ * 200 * $10^{3}$) + (10 * $10^{6}$ *2 * $10^{6}$) B/day
+= (4 * $10^{12}$) + (20 * $10^{12}$) B/day
 = (4TB + 20TB) /day
 = 24 TB/day. (Ingress Incoming Bandwidth)
-= 24 * `$10^{6}$` MB/day (1TB = $10^{6}$)
-= `$\frac{24 * `$10^{6}$`}{`$10^{5}$`}$` MB/sec
+= 24 * $10^{6}$ MB/day (1TB = $10^{6}$)
+= $\frac{24 * $10^{6}$}{$10^{5}$}$ MB/sec
 ≈ 300 Mb/sec.
 
 Read Estimates.
