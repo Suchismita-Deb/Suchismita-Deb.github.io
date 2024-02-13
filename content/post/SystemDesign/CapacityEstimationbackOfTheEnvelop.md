@@ -47,7 +47,7 @@ categories = ['low level design','system design']
 
 
 1 Million/day =
-${10^{6}/24 * 60 * 60}$
+$\frac{10^{6}}/{24 * 60 * 60}$
 ≈ 11.57 ≈ 12Bytes/sec.
 
 ##### Storage Estimation/Bandwidth Estimation - Incoming(Ingress) Outgoing(Egress)
