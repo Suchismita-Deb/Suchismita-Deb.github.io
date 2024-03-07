@@ -13,16 +13,16 @@ categories = ['low level design','system design']
 
 ---
 
-| Data Storage Unit | Value       | Byte       |
-|-------------------|-------------|------------|
-| 1 KB              | $10^{3}$ B  | $10^{3}B$  |
-| 1 MB              | $10^{3}$ KB | $10^{6}B$  |
-| 1 GB              | $10^{3}$ MB | $10^{9}B$  |
-| 1 TB              | $10^{3}$ GB | $10^{12}B$ |
-| 1 PB(PetaByte)    | $10^{3}$ TB | $10^{15}B$ |
-| 1 EB              | $10^{3}$ PB | $10^{18}B$ |
-| 1 ZB              | $10^{3}$ EB | $10^{21}B$ |
-| 1 YB              | $10^{3}$ ZB | $10^{24}B$ |
+| Data Storage Unit | Value       | Byte       | Byte       |
+|-------------------|-------------|------------|------------|
+| 1 KB              | $10^{3}$ B  | $10^{3}B$  | $2^{10}B$  |
+| 1 MB              | $10^{3}$ KB | $10^{6}B$  | $2^{10}B$  |
+| 1 GB              | $10^{3}$ MB | $10^{9}B$  | $2^{10}B$  |
+| 1 TB              | $10^{3}$ GB | $10^{12}B$ | $2^{10}B$  |
+| 1 PB(PetaByte)    | $10^{3}$ TB | $10^{15}B$ | $2^{10}B$  |
+| 1 EB              | $10^{3}$ PB | $10^{18}B$ | $2^{10}B$  |
+| 1 ZB              | $10^{3}$ EB | $10^{21}B$ | $2^{10}B$  |
+| 1 YB              | $10^{3}$ ZB | $10^{24}B$ | $2^{10}B$  |
 
 ---
 
@@ -62,6 +62,7 @@ $\frac{10^{6}}{24 hrs * 60 min * 60 sec}$
 DAU ≈ 2B ≈ 100B message every day.
 
 Average message size ≈ 100 Bytes.
+Ask for the size and storage. Example you can assume one good image is 100Mb. 
 
 1 day of message = $100 * 10^{9} * 100$ Bytes ≈ $10^{13}$ ≈ 10TB
 

@@ -83,7 +83,7 @@ Websocket uses bidirectional messaging. When get the message it immediately push
 ### SQL.
 ### NoSQL.
 Types of NoSQL.
-> Key-VAlue Store - DynamoDB.
+> Key-Value Store - DynamoDB.
 >
 > Document Stores - MongoDB.
 >

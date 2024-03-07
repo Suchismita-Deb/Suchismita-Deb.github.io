@@ -26,3 +26,7 @@ This will show the output in ascending order. The minimum element will be in the
 ```java
 PriorityQueue<Integer> pqRev = new PriorityQueue<>(Collections.reverseOrder());
 ```
+
+
+---
+## Binary Heap.
