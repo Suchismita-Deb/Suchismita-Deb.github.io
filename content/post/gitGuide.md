@@ -86,3 +86,10 @@ If we need to do revert 5 commit then we need to run the first command 5 time.
 `git rm --cached <file/folder_path>` - Remove a file from the staging area (also known as the index), while keeping it in your working directory `git rm --cached build/*` 
 
 Then we can push to the main. `git push origin master`
+
+
+---
+In the blog when make one folder change and all I have to create a folder and make the page. With the move directory it is giving 404 error.
+
+- In order to make the page hide `draft = true` and make the folder and add the pages. Like the one for design pattern I had a separate folder then I had to move to the system design folder.
+- Direct moving the folder is giving the error so created noe pages and then make the old folder pages hide.
