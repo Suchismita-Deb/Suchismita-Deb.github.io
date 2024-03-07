@@ -1,9 +1,8 @@
 +++
-title = 'Singleton Design Pattern'
-date = 2024-01-24T11:05:03+05:30
-tags=['system design']
+title = 'SingletonDesignPattern'
+date = 2024-03-07T13:13:10+05:30
+tags = ['system design']
 categories = ['low level design','system design']
-draft = true
 +++
 
 It is used when we have to create only one instance of the class.

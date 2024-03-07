@@ -1,12 +1,9 @@
 +++
-title = 'Strategy Design'
-date = 2023-11-12T03:05:52+05:30
-tags=['system design']
+title = 'StrategyDesignPattern'
+date = 2024-03-07T13:13:16+05:30
+tags = ['system design']
 categories = ['low level design','system design']
-draft = true
 +++
-
-
 
 ### UML Class Diagram
 
@@ -24,7 +21,7 @@ When child override the method and other child also have the same method then th
 
 ![img.png](/images/img5.png)
 
-Previously all the functionality we were putting in the base class. Now we will not define in the base class. We will say that the **Vehicle HAS - A drive interface** 
+Previously all the functionality we were putting in the base class. Now we will not define in the base class. We will say that the **Vehicle HAS - A drive interface**
 
 In the base class we just defined the Drive Strategy Object. The type of the drive strategy like normal or special that will be defined by the child class.
 

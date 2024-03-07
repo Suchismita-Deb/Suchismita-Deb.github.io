@@ -1,9 +1,8 @@
 +++
-title = 'Decorator Design Pattern'
-date = 2023-11-12T03:05:21+05:30
+title = 'DecoratorDesignPattern'
+date = 2024-03-07T13:12:58+05:30
 tags = ['system design']
 categories = ['low level design','system design']
-draft = true
 +++
 
 
@@ -197,7 +196,7 @@ This is the message on Facebook to SDEB@Facebook.
 
 **BaseDecorator/BaseNotifierDecorator** - reference the wrapped object via the interface so it can reference both the concrete component and its decorator.
 
-**ConcreteDecorator** - The BaseDecorator is extended by the concreteDecorator. It is the FacebookDecorator and WhatsappDecorator class. 
+**ConcreteDecorator** - The BaseDecorator is extended by the concreteDecorator. It is the FacebookDecorator and WhatsappDecorator class.
 
 **Client** - Wraps component in layers of decorators it should work with component.
 
