@@ -113,9 +113,7 @@ Decorator Design Pattern helps in this cases.
 > It lets us **attach new behaviour** to an object by placing this object inside a **special wrapper** that contains these behaviour.
 
 
-In our example the main component app is intact and we will change the FacebookNotifier and WhatsappNotifier class.
-
-Will rename the FacebookNotifier as **FacebookDecorator** and **WhatsappDecorator** and it will extend the **BaseNotifierDecorator** class.
+In our example the main component app **Notifier** is intact and we will change the FacebookNotifier and WhatsappNotifier class to **FacebookDecorator** and **WhatsappDecorator** and it will extend the **BaseNotifierDecorator** class.
 
 > The BaseNotifierDecorator is the wrapper or container of the initial Notifier.
 
@@ -153,7 +151,12 @@ public class FacebookDecorator extends BaseNotifierDecorator{
 }
 ```
 
-The class should implement the interface iNotifier.
+The classes should implement the interface iNotifier. This interface will be used by all the classes and ny the wrapper class as well.
+
+Decorators are wrapper for the core object. Wrapping replaces inheritance with composition.
+*An advantage of teh composition is that we can easily substitute object with another as all of them belong to the same interface. This allows to change the beahaviour at the run time.*
+
+*Object can use the behaviour of various classes and not only one as it can refernce multiple object and can do all kinds of work.*
 ```java
 public interface iNotifier{
     void send(String message);
