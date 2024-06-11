@@ -100,7 +100,7 @@ public class DBConnection{
             synchronized (DBCOnnection.class) {
                 if (conObject == null) {
                     conObject = new DBConnection();
-                }
+                }   
             }
         }
         return conObject;
