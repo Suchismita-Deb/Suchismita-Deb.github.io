@@ -44,5 +44,16 @@ ${10^8}$
 ${10^12}$
 
 ```$10^{12}$```
-
 $10^{12}$
+
+Making new posts in blog `hugo new post/SystemDesign/HLD/Kafka/MessagingQueue.md`
+Adding image in the file `![img_1.png](/images/intellije/image1.png)`
+
+Making the `<>` `<xyz>` bracket visible. When we arite anything in the <> then it is not visible.
+
+One way to do it correctly `List &lt;Flight&gt; flight;` for `List <Flight> flight;`
+
+```
+Use &lt; for <
+Use &gt; for >
+```
