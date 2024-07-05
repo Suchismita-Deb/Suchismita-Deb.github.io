@@ -6,8 +6,11 @@ tags=['java']
 
 
 ### Format the code.
-Ctrl + Alt + Shift + L  - A box will appear then select the option and then apply.
+**`Ctrl + Alt + Shift + L`**  - A Reformater box will appear then select the option like remove line break, smart import format the code and then apply.
 ![img.png](/images/intellije/refactorImage.png)
+
+Format only lines of code.
+**`Ctrl+Alt+L`** - Only line format.
 
 ### Creating new package or class.
 ![img.png](/images/img9.png)
