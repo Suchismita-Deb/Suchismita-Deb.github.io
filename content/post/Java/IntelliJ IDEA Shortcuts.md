@@ -5,6 +5,9 @@ tags=['java']
 +++
 
 
+### Format the code.
+Ctrl + Alt + Shift + L  - A box will appear then select the option and then apply.
+![img.png](/images/intellije/refactorImage.png)
 
 ### Creating new package or class.
 ![img.png](/images/img9.png)
@@ -19,7 +22,7 @@ tags=['java']
 ![img_1.png](/images/img11.png)
 Inside the class click **`Alt + Insert`**.
 
-If the box is not coming then right click on the file and click on `Generate`.
+If the box is not coming then right-click on the file and click on `Generate`.
 ![img_1.png](/images/img23.png)
 
 ---
