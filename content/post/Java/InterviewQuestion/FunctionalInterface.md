@@ -7,7 +7,7 @@ categories = ['java']
 
 # Functional Programming using Lambda Stream.
 
-### New Java 8 FEatures.
+### New Java 8 Features.
 
 Lambda and Functional Interface.
 JavaStream API.

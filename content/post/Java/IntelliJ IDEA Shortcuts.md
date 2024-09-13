@@ -81,3 +81,36 @@ With the `+` icon we can add more projects and here the endUser and the location
 ### Run button not showing in the code.s
 
 Right-click on the src folder and then Mark directory as - Source root.
+
+### Running the Java program in Sublime.
+
+![img.png](/images/sublimeBuild.png) 
+
+Select the Java C and the Build from the Tool. This will build the project in java. To run we need to change the build system.
+
+Tool - Build System - New Build System.
+```shell
+{
+"path":"C:\\Program Files\\Java\\jdk-20\\bin",	
+"shell_cmd": "javac $file_name && java $file_base_name"
+}
+```
+
+Save as JavaBuildRun.sublime-build In the tool will get the javaBuildRun option. It will run the program in the Sublime.
+
+New Build to get the user input in cmd.
+```shell
+{
+// "cmd": ["javac", "$file_name","&&","start","cmd","/k","java", "$file_base_name"],
+"path":"C:\\Program Files\\Java\\jdk-20\\bin",
+// "shell": true,
+"shell_cmd": "javac $file_name && start cmd /k java $file_base_name"
+}
+```
+### Format the code in Sublime.
+
+Step 1. Go to preferences at top menu of sublime
+Step 2. Click on Key Bindings
+Step 3. in Key Binding right side window Past following Code.
+[ {"keys": ["ctrl+alt+shift+l"], "command": "reindent", "args": {"single_line": false}} ]
+Step 4. Now press ctrl+alt+shift+l in your keyboard.
