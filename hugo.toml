@@ -12,17 +12,12 @@ toc = true
   # header social icons
   github = 'Suchismita-Deb'                 # github.com/Suchismita-Deb
   linkedin = 'debsuchismita'             # linkedin.com/in/YOUR_LINKEDIN_ID
-  email = 'suchismitadebofficial@gmail.com'
   
 
   # home page profile
   avatar = 'GRAVATAR_EMAIL'                 # gravatar email or image url
   name = 'SUCHISMITA DEB'
   bio = 'Software Developer'
-
-  headingFontSize = "32px"               # Set font size for headings
-  bodyFontSize = "16px"                  # Set font size for body text
-  lineHeight = "1.6"                     # Control line spacing for better readability
 
 
 # misc
