@@ -38,7 +38,7 @@ math = true                               # enable KaTeX math typesetting global
 #theme = 'light'
 #lang = 'zh-CN'
 
-[[menu.main]]
-identifier = "about"
-name = "About"
-url = "/post/about/"
+#[[menu.main]]
+#identifier = "about"
+#name = "About"
+#url = "/post/about/"
