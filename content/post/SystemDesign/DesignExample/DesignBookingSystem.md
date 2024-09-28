@@ -1,6 +1,6 @@
 +++
 title = 'Design Booking System'
-date = 2024-06-20T10:05:46+05:30
+date = 2024-09-27T10:05:46+05:30
 tags = ['interview question','system design']
 categories = ['low level design','system design']
 +++
