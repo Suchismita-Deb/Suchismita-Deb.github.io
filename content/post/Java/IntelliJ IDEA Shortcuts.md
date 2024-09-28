@@ -19,6 +19,8 @@ Format only lines of code.
 ![img.png](/images/img10.png)
 **`Ctrl + Alt + V`** will make the value extract in a variable.
 
+**`Ctrl+F12` will show all the method in that file.
+![img.png](/images/intellije/allMethod.png)
 ---
 
 ### Create the Getter Setter, Constructor, Test shortcut.
