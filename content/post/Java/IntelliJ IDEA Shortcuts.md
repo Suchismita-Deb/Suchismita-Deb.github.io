@@ -114,3 +114,5 @@ Step 2. Click on Key Bindings
 Step 3. in Key Binding right side window Past following Code.
 [ {"keys": ["ctrl+alt+shift+l"], "command": "reindent", "args": {"single_line": false}} ]
 Step 4. Now press ctrl+alt+shift+l in your keyboard.
+
+

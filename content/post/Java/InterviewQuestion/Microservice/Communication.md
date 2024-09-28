@@ -2,7 +2,7 @@
 title = 'Microservice Communication'
 date = 2024-09-13T22:02:37+05:30
 tags = ['interviewQuestion']
-categories = ['java']
+categories = ['java','microservice']
 +++
 
 ### Ways to communicate between Microservices.
