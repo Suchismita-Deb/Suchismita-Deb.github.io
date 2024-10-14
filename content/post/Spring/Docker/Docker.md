@@ -1,6 +1,6 @@
 +++
 title = 'Docker'
-date = 2024-03-17T00:18:06+05:30
+date = 2024-09-28T00:18:06+05:30
 tags=["spring","docker"]
 +++
 
@@ -37,3 +37,6 @@ This will list the container with id and name.
 `docker run -it <image_name>` to run the image.
 `docker exec <container_name> <command>` to execute the command.
 Like in calcom there will be some docker image we need to run the image. 
+
+Intsall postgress from the docker with username and password.
+`docker run --name postgres_dbtest -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:latest`

@@ -1,5 +1,5 @@
 +++
-title = 'AskingGoodInterviewQuestion'
+title = 'Asking Good Interview Question'
 date = 2024-08-02T20:05:09+05:30
 tags=['Behavoiral Interview','Leadership Interview', 'Grokking the Behavioral Interview']
 +++
