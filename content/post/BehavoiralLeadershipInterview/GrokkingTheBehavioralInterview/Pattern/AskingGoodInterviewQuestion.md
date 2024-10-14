@@ -58,11 +58,11 @@ What’s your timeline for the next steps?
 
 If you were interviewing with your organization again, what questions would you be asking?
 
-(If this is your future boss) How would you describe your management style?
+How would you describe your management style? (If this is your future boss)
 
 Are there resources I could review in advance to get a head start on the learning curve?
 
-**One good question**.
+### One good question.
 
 Is there anything about my background or resume that makes you question whether or not I am a good fit for this role?
 

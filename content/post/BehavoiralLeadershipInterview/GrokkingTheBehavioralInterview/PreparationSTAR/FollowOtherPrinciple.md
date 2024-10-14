@@ -1,17 +1,18 @@
 +++
-title = 'FollowOtherPrinciple'
+title = 'Follow Other Principle'
 date = 2024-08-02T11:52:36+05:30
 tags = ['Behavoiral Interview', 'Leadership Interview', 'Grokking the Behavioral Interview',"STAR"]
 +++
 
 
-Topics
-
-Answer the question that was asked
-Get confirmation
-Avoid talking in absolutes
-Control the pace
-Why we use video
+Important Topics. 
+> Answer the question that was asked.
+> 
+> Get confirmation.
+> 
+> Avoid talking in absolutes.
+> 
+> Control the pace.
 
 Interviewer wants to assess if you are good fit for the organization. So it is better to let them lead the interview.
 
