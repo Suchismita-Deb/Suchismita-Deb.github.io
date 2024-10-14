@@ -66,21 +66,19 @@ Witnesses are encouraged to take their time if they feel like the questions are 
 
 Dont fidget, bite your nails, play with a ring on your finger, or repeatedly touch your face.
 
-### New page.
-
-### Be a cultural anthropologists.
+# Be a cultural anthropologists.
 
 What is cultural anthropology?
 
-**Artifacts**
-
-**Rituals**
-
-**Traditions**
-
-**Language and lingo**
-
-**Behaviors.**
+> Artifacts
+>
+> Rituals
+>
+> Traditions
+>
+> Language and lingo
+>
+> Behaviors.
 
 Cultural anthropology is the study of human cultures. A cultural anthropologist may visit or live with people in a different culture to learn all about that culture from the inside.
 
@@ -100,16 +98,32 @@ Is the kitchen a hangout place?
 
 ### Rituals.
 
-Rituals can include daily standup meetings, all-hands meetings, product launches, sales or training sessions, celebrations of successes, support processes, etc. You can gain a lot of information about rituals from questions that are asked, responses that you hear, and other simple observations.
+Rituals can include daily standup meetings, all-hands meetings, product launches, sales or training sessions, celebrations of successes, support processes, etc. 
+
+You can gain a lot of information about rituals from questions that are asked, responses that you hear, and other simple observations.
 
 ### Traditions.
 
-Traditions may involve bigger celebrations like key milestones or annual shareholder meetings. They may include volunteer activities or community engagement that shows the organization giving back.
+Traditions may involve bigger celebrations like key milestones or annual shareholder meetings. 
+
+They may include volunteer activities or community engagement that shows the organization giving back.
 
 ### Languages and Lingos.
 
-For your study of the culture, notice the formality of conversations and think about whether it fits with your professional approach at work. All organizations use acronyms, but do they explain them to a newcomer? How might this impact onboarding? If you accept an offer, do you want to be someone who talks like they do?
+For your study of the culture, notice the formality of conversations and think about whether it fits with your professional approach at work. 
+
+All organizations use acronyms, but do they explain them to a newcomer? 
+
+How might this impact onboarding? 
+
+If you accept an offer, do you want to be someone who talks like they do?
 
 ### Behaviours.
 
-What other behaviors do you notice? Do people greet each other by name as you’re being escorted around the office? Are you introduced to others? Is there joking and laughter, or a quiet tone for deep concentration? What is the energy like?
+What other behaviors do you notice? 
+
+Do people greet each other by name as you’re being escorted around the office? Are you introduced to others? 
+
+Is there joking and laughter, or a quiet tone for deep concentration? 
+
+What is the energy like?
