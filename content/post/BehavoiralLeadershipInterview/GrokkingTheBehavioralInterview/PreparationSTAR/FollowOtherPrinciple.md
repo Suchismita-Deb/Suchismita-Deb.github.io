@@ -6,6 +6,7 @@ tags = ['Behavoiral Interview', 'Leadership Interview', 'Grokking the Behavioral
 
 
 Important Topics. 
+
 > Answer the question that was asked.
 > 
 > Get confirmation.
@@ -17,29 +18,35 @@ Important Topics.
 Interviewer wants to assess if you are good fit for the organization. So it is better to let them lead the interview.
 
 Taking too much time in answering, elaborating in a way that is not helpful, giving responses that is not relevant this will interfere the interview and not give proper outcome.
-**
-**Be concise first and elaborate later if asked to say more. Witnesses are told to be sure they understand the question being asked, and then give the shortest truthful answer they can give. They are trained to listen all the way to the end of the question before beginning a response. Doing this will help you avoid jumping in with an answer to the question you thought they were asking, and being wrong.**
 
-**Answer the question that was asked and only the question that was asked.** The interviewer may have a logical series of questions planned. A response that moves in a tangent can interfere with assessing what really matters. Don’t keep talking because you have other things that you think will make you sound good. Answer the question that was asked.
+**Be concise first and elaborate later if asked to say more.**
+
+Witnesses are told to be sure they understand the question being asked and then give the shortest truthful answer they can give. They are trained to listen all the way to the end of the question before beginning a response. Doing this will help you avoid jumping in with an answer to the question you thought they were asking, and being wrong.
+
+**Answer the question that was asked and only the question that was asked.**
+
+The interviewer may have a logical series of questions planned. A response that moves in a tangent can interfere with assessing what really matters. Don’t keep talking because you have other things that you think will make you sound good. Answer the question that was asked.
+
 **The testimony of a witness should be factual, without exaggeration or hyperbole.**
 
 **Using simple language and avoiding jargon** will serve you and your listener best. “Blowing them away” with acronyms and technical lingo can backfire.
+
 **The interviewer wants you to demonstrate that you can talk to any team member in the organization, not just those with specialized expertise.**
 
 ### Get confirmation of the question.
-
-If you want to be sure about the question and want to repeat then you can ask.
-
-I’m not following the question, can you ask it in another way?
-
-Can you tell me a bit more about what you want?
-
-Do you mean……?
-
-Ask for confirmation that your response is what they had in mind.
-
-I can give you an example of a time I missed a deadline, is that what you’re asking?
-I can tell you about my experience leading a remote team, is that a good example?
+> If you want to be sure about the question and want to repeat then you can ask.
+>
+> I’m not following the question, can you ask it in another way?
+>
+> Can you tell me a bit more about what you want?
+>
+> Do you mean……?
+>
+> Ask for confirmation that your response is what they had in mind.
+>
+> I can give you an example of a time I missed a deadline, is that what you’re asking?
+>
+> I can tell you about my experience leading a remote team, is that a good example?
 
 Don’t talk over someone in the interview. If an interviewer or panelist starts talking during your response, stop talking for a moment. They are likely trying to give guidance or manage expectations. Before you resume, ask, “shall I continue?”
 
@@ -47,9 +54,11 @@ Don’t talk over someone in the interview. If an interviewer or panelist starts
 
 Witnesses are advised to avoid saying things like “never” or “always”. Such phrases are too precise and can trigger skepticism. Instead, express your preferences, intentions, and actions in a natural way that gives you some room for things out of your control. Here are some ideas:
 
-I’m always on time → I prefer being on time whenever possible.
-I’m never insensitive → I work hard to give feedback in a constructive way that considers personal feelings.
-That’s everything that happened → Those are the examples I can recall right now.
+> I’m always on time → I prefer being on time whenever possible.
+>
+> I’m never insensitive → I work hard to give feedback in a constructive way that considers personal feelings.
+>
+> That’s everything that happened → Those are the examples I can recall right now.
 
 ### Control the Pace.
 
