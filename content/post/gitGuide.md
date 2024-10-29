@@ -93,3 +93,57 @@ In the blog when make one folder change and all I have to create a folder and ma
 
 - In order to make the page hide `draft = true` and make the folder and add the pages. Like the one for design pattern I had a separate folder then I had to move to the system design folder.
 - Direct moving the folder is giving the error so created noe pages and then make the old folder pages hide.
+
+### Git tags.
+Tagging in git refers to creating specific points in history for your repository/data. 
+
+It is done to mark the release points for a stable version of the code.
+
+When you want to create a historic point for your code/data that you can refer at any future time.
+
+Checkout to the branch and then create a tag.
+`git tag <tagName>` like `git tag v1.0`
+
+Create a annotated tag.
+`get tag -a <tagName> -m <Version1 of ...">` like `git tag -a v1.1 -m "tag for release 1"`
+
+In annotated tag the message can be stored and it is stored as an object in git.
+
+Display the goit tag.
+`git tag` - It will show the tag name.
+
+`git show <tagName>` - It will show the details of the tag.
+`git tag -l "v1.*"` - It will show all the tag starting with v1.
+
+When we push tag to the remote then in the github we can see the releases. 
+
+`git push origin v1.0` - Push the git tag to remote.
+`git push --tags` - Push all teh tags to remote.
+`git tag -d v1.0` - Delete teh tag from local.
+`git push origin -d v1.0` - Delete the tag from origin.  
+
+### Rebase in Git.
+When we make a feature branch and then make a commit and when merge it will create a separate flow and then merge the branch to the main.
+
+When we use rebase then it will directly come on top of the main.
+You are in feature branch and the main and the feature branch are latest change then rebase the feature branch with the main branch `git checkout feature` then rebase `git rebase main`.
+
+Checkout the main and rebase the main teh feature `git checkout main` then `git rebase master` then we have to do `git push`.
+
+
+
+### CherryPick.
+
+Get the commit from there the branch and use it.
+![img.png](/images/git/img.png)
+`git log` - Show all the commit and the code. 
+
+`git log branchName --oneline` - Show all the commit in the branch.
+
+Checkout to the branch where we will add the commit.
+`git checkout main`. Pick the commit `git cherry-pick <hashcode>`
+
+
+
+
+
