@@ -1,6 +1,7 @@
 +++
 title = 'Check'
 date = 2023-11-25T17:52:49+05:30
+tags=["blog"]
 +++
 
 ### Table fo Content Addition.

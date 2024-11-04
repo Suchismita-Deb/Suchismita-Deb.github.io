@@ -1,7 +1,7 @@
 +++
 title = 'Practice Customer'
 date = 2024-08-01T23:34:11+05:30
-tags=['Behavoiral Interview','Leadership Interview','Client','Customer']
+tags=['Behavoiral Interview','Leadership Interview','Client Behavoiral Interview','Customer Behavoiral Interview']
 +++
 
 

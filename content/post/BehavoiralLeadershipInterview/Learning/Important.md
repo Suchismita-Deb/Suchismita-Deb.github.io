@@ -2,7 +2,7 @@
 title = 'Important'
 date = 2024-08-01T22:50:50+05:30
 
-tags = ['Behavoiral Interview', 'Leadership Interview', 'Leadership']
+tags = ['Behavoiral Interview', 'Leadership Interview']
 +++
 
 ### Why Company?

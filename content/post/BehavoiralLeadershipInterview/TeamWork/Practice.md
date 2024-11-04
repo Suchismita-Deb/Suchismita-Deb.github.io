@@ -1,7 +1,7 @@
 +++
 title = 'Practice'
 date = 2024-08-01T22:33:00+05:30
-tags=['Behavoiral Interview','Leadership Interview','Team Work','Practice Team Work']
+tags=['Behavoiral Interview','Leadership Interview','Team Work Behavoiral Interview']
 +++
 ### Practice Team Work Related Behavioral Question.
 

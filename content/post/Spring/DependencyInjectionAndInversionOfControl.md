@@ -70,3 +70,91 @@ public class Chef{
     }
 }
 ```
+
+Spring IOC inversion of control.
+
+In controliocer we need the object of the srevice. So we can create he object usingthe new keywrod then we have to manage the object reation, object delete.
+
+When creating an object we now have the DI dependency injection so that we just work on the business logic and not the object creation part.
+
+IOC is the principle and the dependency injection is the design pattern.
+
+In spring we just inject the object.
+
+There are 3 ways to do the dependency injection.
+
+Without the Dependency injection.
+
+```java
+public class Controller{
+    private Service service;
+    public void handleRequest(){
+        servcie.doSomething();
+    }
+}
+
+public class Service{
+    public void doSomething(){
+        System.out.println("doing something");
+    }
+}
+```
+
+Constructor Injection.
+
+```java
+public class Controller{
+    private Service service;
+    public Controller(Service service){
+        this.service = service;
+    }
+    public void handleRequest(){
+        servcie.doSomething();
+    }
+}
+
+public class Service{
+    public void doSomething(){
+        System.out.println("doing something");
+    }
+}
+```
+
+Setter Injection.
+
+```java
+public class Controller{
+    private Service service;
+    public void setService(Service service){
+        this.service = service;
+    }
+    public void handleRequest(){
+        servcie.doSomething();
+    }
+}
+
+public class Service{
+    public void doSomething(){
+        System.out.println("doing something");
+    }
+}
+```
+
+Field Injection.
+Loose Coupling.
+
+```java
+public class Controller{
+    @Autowired
+    private Service service;
+    public void handleRequest(){
+        servcie.doSomething();
+    }
+}
+
+public class Service{
+    public void doSomething(){
+        System.out.println("doing something");
+    }
+}
+```

@@ -1,7 +1,7 @@
 +++
 title = 'Imaginary'
 date = 2024-08-01T23:31:18+05:30
-tags=['Behavoiral Interview','Leadership Interview','Decision Making','Imaginary']
+tags=['Behavoiral Interview','Leadership Interview','Decision Making Behavoiral Interview','Imaginary Behavoiral Interview']
 +++
 
 

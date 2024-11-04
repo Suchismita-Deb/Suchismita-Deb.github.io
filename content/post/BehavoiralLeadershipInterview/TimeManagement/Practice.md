@@ -1,7 +1,7 @@
 +++
 title = 'Practice Time Management.'
 date = 2024-08-01T23:38:47+05:30
-tags=['Behavoiral Interview','Leadership Interview','Time Management','Practice Time Management']
+tags=['Behavoiral Interview','Leadership Interview','Time Management Behavoiral Interview']
 +++
 
 

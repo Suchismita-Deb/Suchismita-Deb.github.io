@@ -187,6 +187,54 @@ If the organization values "Continuous Improvement" then in the answer we can sa
 
 When I was at ABC Foundation, there was a real focus on sharing information. We worked in teams of 8-10 people, each with a Lead. Leads reported up to managers that had two or three teams. The culture was very collaborative. Everybody worked on everything, so you got to know each other’s code and areas of expertise. If you discovered a new problem or way to do something, you were expected to add it to the KB. There was less reliance on tribal knowledge than there is at other places I’ve worked. There was no pressure to act like you know everything. If you had a question, you owned the question until it was answered, and then you were responsible for documenting the answer so others would have it. It wasn’t ok to just pose a question and be stuck if nobody responded. I got better at writing code other people could follow. My documentation really improved. We debated things and tested new ideas, but it wasn’t about something being right or winning an argument. It was about finding the best way to do something, which is really satisfying to me. If I were to join your company, I would hope to foster the same behaviors.
 
+
+Subtopic Culture. Sample Question.
+
+### Imagine you work in a place with a negative culture what would you do about it and how would you improve it.
+
+General Pattern - First Part - In interview some question will be behavioral and some are open-ended hypothetical questions.
+
+Answer - First point to focus - CFAS - Method to use when you get any open-ended or hypothetical question.
+Ask clarifying questions yes or no that's true clarification then we want to present just a few high-level concepts that are going to help uh narrow our focus for the solution so think with the framework really high level then we're going to make just a few assumptions to really narrow our focus and create great visuals for our audience and then lastly we are going to solve focusing in on one framework concept at a time that really helps keep us organized.
+
+Remember when it comes to open-ended questions the space you build is actually more important than the words you use so really make sure you're building in that great space and then secondarily **transitions** make sure that you create really strong transitions that will also be critical for success.
+
+### Clarifycation.
+
+Well a few items i would want to clarify before we dive in.
+Is this negative culture only on my team or is this across the entire organization.
+Has it always been this way or was this negative culture triggered by some form an event even something like covid.
+I would definitely want to understand where this is coming from is it based on kind of leadership is it more about the overall strategy process and vision or is this something related to benefits.
+Definitely want to understand the size of the company are we talking about a small medium or large company.
+Is this my personal opinion or do other few people feel this way.
+Lastly i would want to know if there had been any past or recent attempts to try and fix this situation.
+
+Can you clarify any of these items for me okay.
+
+### Assumption.
+
+A few concepts we would want to focus on to solve this challenge are we absolutely have to establish some really **strong goals**.
+
+We want to look at that **historical data** because that historical data will lead and guide us we're going to want to bring in the critical **stakeholders** focusing strongly on **communication** always having that inclusivity lens we're absolutely going to have to do some **training and education** and then we're going to want to look at those specific success measurements now of all those items i think we should start with a really basic one in terms of communication but is there an area that you want to focus.
+
+Why don't we get started by making a couple of assumptions let's assume that this negative culture is across the board and it's somewhat facilitated almost supported by not only leadership but just people within the organization and it's common knowledge and everybody kind of knows it and understands it let's say that basically i've experienced this my entire time there let's say i've been there for a year and let's call it a medium-sized org of like 500 people and then lastly let's make the assumption that when i first joined there was some form of an attempt to really make this better but it just didn't really take it didn't really work.
+
+so if we're going to start by focusing in on communication let's set the right tone and mindset right away all communications should start by thinking with positive intent we didn't try to intentionally get to a negative culture and then i want to really take that empathetic lens with anybody i communicate and speak with and along and coupled with that empathy is we have to create an environment of psychological safety this is a critical facet of communication that people feel like they have a safe space to speak.
+
+I am going to reach out to my direct **teammates and lead** and we're going to start the communication process so this is probably just scheduling one-to-ones we could make this pretty simplistic do it all via video.
+Im only going to really focus it on two items.
+
+- I want to come in with a listening mindset so come in and just kind of think about and see their observations just listen to hear if they've built in any bias themselves
+- Then the questions will all be focused around opportunities how can we create better ownership how can we create better alignment and then end each meeting with a mini action plan and a commitment for me to keep them included in any next steps.
+
+We could definitely go more in depth into the types of questions i would ask in these meetings we could go and talk a little bit more about that critical item of an action plan where we can move on to training and education is there any part that you prefer i focus on okay let's kind of flip over we talked a little bit about the what right which was part of your initial question now let's focus a little bit on the how and let's really pivot and focus in on that training and education so we want to really capture and identify any themes from the conversations with both my teammates and anybody in leadership ideally just my direct lead secondarily.
+
+I would want to conduct research on what have been some successful trainings that have happened within not only this organization but other organizations and then make sure that we do some form of live workshop now it may have to be virtual i definitely want to make sure it's live if we can do it in person that's going to be great and then bring in the exercises.
+A good exercise we might want to build off of is like the colors exercise which is uh behavioral assessment personality type of test the sticky note that one could be good too because the sticky notes are really about taking different concepts and themes that i mentioned before and this could allow us to focus in on maybe some like root causes constraints and then also kind of just looking at the current policies and standards that we have in place now again the sticky note exercise gets a little trickier virtual but the major goal of the workshop is that we uncover how to work better together and more importantly we not only learn it for ourselves but we figure out maybe some opportunities for some repeatability and this will require another strong action plan with great documentation tracking we want to be really transparent and then just creating that system for ongoing support whether that's coaching mentorship whatever is needed to ensure the success of the training sue i'm happy to dive much deeper into this training and education piece or we can kind of come full circle on the how and discuss success measurements do you have any preference or anything else you'd like me to focus on okay in order to really get into the success of changing around a negative culture we need this communication and training and education piece and while this is an urgent item we'll probably need to spend i would say about two to four weeks let's kind of focus in on four weeks after that initial workshop to establish and gather any data about learnings any opportunities for improvement and i want to take all this information and then i want to create some form of like short slide deck let's think maybe three slides something like that and then we could in those slides it would just be about defining the overall strategy approach and the learnings that we had for success i'd first roll this up to my lead and then i'd look for support just with within my own leadership chain and the purpose of this presentation is to demonstrate how we were able to make a small cultural shift and have enough of a timeline and data to show what we did and by piloting this small test group with the purpose of presenting it within my own leadership i just want to continue to try and pivot and change the culture like one small group at a time the presentation is going to be super simplistic it's going to be that three slides five minutes to just present and then five minutes of q a and then the last piece i just would want to focus in on for measuring success would be focusing in on any kind of celebration recognition of both teams and individuals and build that strong survey cadence the surveys are going to be critical to make sure that we're keeping everything on track sue i am happy to dive deeper into these success metrics any of the initial concepts i mentioned or any other area that you'd like to focus on for success and that's it i wish you the best of luck with these types of questions they are tricky but focus on these items and you'll do great thanks
+
+Additional point from my side I would take some tests like behavoiral tests.
+
+
 ### Test 
 Choose the most thorough answer for the question.
 
