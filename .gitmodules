@@ -1,3 +1,10 @@
+; [submodule "themes/paper"]
+; 	path = themes/paper
+; 	url = https://github.com/nanxiaobei/hugo-paper
+; [submodule "themes/hugo-paper"]
+; 	url = https://github.com/Suchismita-Deb/hugo-paper.git
+
 [submodule "themes/paper"]
-	path = themes/paper
-	url = https://github.com/nanxiaobei/hugo-paper
+    path = themes/paper
+    url = https://github.com/Suchismita-Deb/hugo-paper.git
+
