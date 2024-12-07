@@ -38,7 +38,7 @@ public class F1 {
     }
 }
 ```
-We can shorten the code. We can write in other way. Using lambda expression. We can use lambda expression only with functional interface.
+We can shorten the code lambda expression. We can use lambda expression only with functional interface.
 
 The new method name is always same for any reference type so we can avoid writing that.
 ```java
