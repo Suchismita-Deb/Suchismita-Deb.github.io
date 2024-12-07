@@ -24,7 +24,7 @@ Topic Time Management.
 Topic Adaptability.
 
 All these comes under prior experience, hypothetical questions and value based questions.
-
+https://www.turing.com/kb/behavioral-and-technical-interview-questions
 
 ### Adaptability.
 

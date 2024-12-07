@@ -137,8 +137,7 @@ Spring depends on third party Maven and Gradle for the dependency management. Th
 Microservice is a software architectural style in which a large application is build as a collection of small ,
 independent and scalable services.
 
-Spring Boot simplifies the configuration process and scans the class path and autoconfigure the beans and dependencies
-following convention over configuration principles. It simplifies the development of Spring application. Its primary
+Spring Boot simplifies the configuration process and scans the class path and autoconfigure the beans and dependencies following convention over configuration principles. It simplifies the development of Spring application. Its primary
 goal is to create a stand-alone production grade application with minimal configuration. Spring Boot simplifies the
 configuration and deployment of microservices by providing a set of preconfigured templated and reducing the amount of
 boilerplate code.
