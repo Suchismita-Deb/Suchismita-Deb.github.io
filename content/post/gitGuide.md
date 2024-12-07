@@ -146,5 +146,43 @@ Checkout to the branch where we will add the commit.
 
 
 
+### Blog page.
+
+The paper theme is the submodule. When I clone the project the url was set to the original person url. When making any update in the paper module no access permission.
+```xml
+ [submodule "themes/paper"]
+ 	path = themes/paper
+ 	url = https://github.com/nanxiaobei/hugo-paper
+ [submodule "themes/hugo-paper"]
+ 	url = https://github.com/Suchismita-Deb/hugo-paper.git
+
+```
+
+I had to first remove the submodule and then fork the repo and point the repo to the new repo.
+```bash
+# Deinitialize the submodule.
+git submodule deinit -f themes/paper
+# Remove the submodule entry from the Git index.
+git rm -rf themes/paper
+# Clean up the .git/modules directory
+rm -rf .git/modules/themes/paper
+# Adding the new sub module 
+git submodule add https://github.com/Suchismita-Deb/hugo-paper.git themes/paper
+# Initialize and update the submodule.
+git submodule update --init --recursive
+# Commit and push the change and add the .gitmodule change.
+git add .gitmodules themes/paper
+git commit -m "Re-added paper theme submodule under my fork"
+git push origin main
+```
 
 
+The .gitmodule should look like this.
+```xml
+[submodule "themes/paper"]
+	path = themes/paper
+	url = https://github.com/Suchismita-Deb/hugo-paper
+
+```
+
+### Git SubModule.
