@@ -7,9 +7,8 @@ tags = ['interview question', 'system design']
 
 Sample interview Question in LLD.
 
-
-
 Part 1.
+
 Implement and verify the implementation of the following 3 classes.
 
 The Customer class should have - id and name.

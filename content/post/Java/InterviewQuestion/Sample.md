@@ -22,7 +22,6 @@ public static void modify(Integer num) {
 ```
 
 The output is 10.
-
 Java is pass by value. Primitive are pass by value. Wrapper class will work but not Integer as Integer is immutable.
 Wrapper class with immutable like `AtomicInteger` or custom Wrapper class will work.
 
