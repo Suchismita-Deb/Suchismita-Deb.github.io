@@ -8,10 +8,14 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
 # Content.
 
 
-
+Part 1.
 {{<youtube PmKk8YlPAkY>}}
 
+Part 2.
+
 {{<youtube ocxBy5K5Ww8>}}
+
+Part 3.
 
 {{<youtube oXJ9waiQsO4>}}
 
