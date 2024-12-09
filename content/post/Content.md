@@ -13,23 +13,13 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
 
 {{<youtube ocxBy5K5Ww8>}}
 
-{{<youtube BY0g8aDxidA&t=2464s>}}
-
 {{<youtube oXJ9waiQsO4>}}
 
-{{<youtube wsFnrows3fg&t=1178s>}}
-
 {{<youtube WFT1dzOsIUg>}}
-
-{{<youtube BY0g8aDxidA&t=2473s>}}
-
-{{<youtube oXJ9waiQsO4&t=20s>}}
 
 {{<youtube MvZBdzumuHE>}}
 
 {{<youtube mHwmCFqQm-E>}}
-
-{{<youtube eidwLkvaE3E&t=1386s>}}
 
 {{<youtube RvEFy6Acrlg>}}
 
@@ -40,9 +30,8 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
 {{<youtube GG37s1tbuRk>}}
 
 {{<youtube WwY0I6nT8YA>}}
-{{<youtube BdP_2GPoM9I>}}
 
-{{<youtube pn3KdTWaCK0&t=12s>}}
+{{<youtube BdP_2GPoM9I>}}
 
 {{<youtube DICqtlgDTyI>}}
 
@@ -61,9 +50,5 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
 {{<youtube RjUq3ytzz4g>}}
 
 {{<youtube S8tFMrQEiTc>}}
-
-{{<youtube R2OvqOX2BAo&t=744s>}}
-
-{{<youtube YwW2uYNiiJM&pp=ygUkaWJtIGV4cGVyaWVjbmUgamF2YSBzcHJpbmcgaW50ZXJ2aWV3>}}
 
 
