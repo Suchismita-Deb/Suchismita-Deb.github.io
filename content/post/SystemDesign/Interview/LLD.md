@@ -18,7 +18,6 @@ Mandatory Field - details, amount, timestamps.
 Optional Field - channel.
 
 Te optional field can be increased later part. The mandatory field is not present then it should generate the error.
-
 The TransactionRegistry class is a singleton. Its purpose is to store the relationship between Customer and Transaction.
 ```java
 void registerTransactionForCustomer(Customer c, Transaction trx){}
