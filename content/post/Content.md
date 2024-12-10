@@ -9,15 +9,15 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
 
 
 Part 1.
-{{<youtube PmKk8YlPAkY>}}
+
 
 Part 2.
 
-{{<youtube ocxBy5K5Ww8>}}
+
 
 Part 3.
 
-{{<youtube oXJ9waiQsO4>}}
+
 
 Part 4.
 
@@ -77,18 +77,18 @@ Part 17.
 
 Part 18.
 
-{{<youtube sOBKtUEEFp8>}}
+
 
 Part 19.
 
-{{<youtube rFmQ_bOrFfs>}}
+
 
 Part 20.
 
-{{<youtube RjUq3ytzz4g>}}
+
 
 Part 21.
 
-{{<youtube S8tFMrQEiTc>}}
+
 
 
