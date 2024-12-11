@@ -122,3 +122,9 @@ Group the employee based on the age.
     });
 ```
 
+### Question 4.
+
+Array contains duplicate element. Print the distinct element.
+```java
+list.stream().distinct().collect(Collectors.toList());
+```

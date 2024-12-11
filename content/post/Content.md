@@ -21,19 +21,19 @@ Part 3.
 
 Part 4.
 
-{{<youtube WFT1dzOsIUg>}}
+
 
 Part 5.
 
-{{<youtube MvZBdzumuHE>}}
+
 
 Part 6.
 
-{{<youtube mHwmCFqQm-E>}}
+
 
 Part 7.
 
-{{<youtube RvEFy6Acrlg>}}
+
 
 Part 8.
 
@@ -61,15 +61,15 @@ Part 13.
 
 Part 14.
 
-{{<youtube CXfQVzX4STo>}}
+
 
 Part 15.
 
-{{<youtube GSAw54Uqal8>}}
+
 
 Part 16.
 
-{{<youtube 60Easr5xytE>}}
+
 
 Part 17.
 
