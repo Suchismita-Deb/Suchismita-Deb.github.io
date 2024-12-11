@@ -39,7 +39,7 @@ public static void main(String[] args) {
 }
 ```
 
-### Question 2.
+## Question 2.
 
 What are the steps to create a Singleton class?
 
