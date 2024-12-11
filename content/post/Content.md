@@ -37,7 +37,7 @@ Part 7.
 
 Part 8.
 
-{{<youtube RvEFy6Acrlg>}}
+
 
 Part 9.
 
