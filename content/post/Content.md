@@ -61,7 +61,7 @@ Part 13.
 
 Part 14.
 
-
+{{<youtube BtB7saDkm_s>}}
 
 Part 15.
 
@@ -73,7 +73,7 @@ Part 16.
 
 Part 17.
 
-{{<youtube BtB7saDkm_s>}}
+
 
 Part 18.
 
