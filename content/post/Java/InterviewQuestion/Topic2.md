@@ -95,9 +95,30 @@ Employee{name='Eve', age=25, address=Address{streetName='4th Street', place='Cit
 
 ### Question 3.
 
-What are the steps to create a Singleton class?
+```java
+class Employee{
+    String address;
+    String name;
+    int age;
+}
+class Address{
+    String streetNAme;
+    String place;
+    int pinCode;
+}
+```
 
-Create the private constructor og the class. static instance variable. Public static method to return the single
-instance of the class. Multithreaded environment hen double check lock.
+Group the employee based on the age.
+```java
 
-Link - https://github.com/Suchismita-Deb/LowLevel_HighLevel_SystemDesign/blob/main/src/main/java/org/example/DesignPattern/CreationalDesignPattern/SingletonDesignPattern/notes.md
+    Map<Integer, List<Employee>> groupedByAge = employees.stream()
+            .collect(Collectors.groupingBy(e -> e.age));
+
+    // Print grouped employees
+    groupedByAge.forEach((age, employeeList) -> {
+        System.out.println("Age: " + age);
+        employeeList.forEach(System.out::println);
+        System.out.println();
+    });
+```
+
