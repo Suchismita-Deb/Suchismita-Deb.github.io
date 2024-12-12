@@ -17,3 +17,7 @@ Link - https://github.com/Suchismita-Deb/LowLevel_HighLevel_SystemDesign/blob/ma
 
 **What are the new features introduced in Java 8.**
 
+The new features revolutionizes how java applications are written and optimized. Key features involved - 
+
+
+
