@@ -746,4 +746,4 @@ public interface ExampleClient {
 
 The application has 2 entity - Student and Address. One student can have multiple addresses and one address can accomodate multiple students in a bidirectional relationship - Here @OneToMany or @ManyToOne can be used. MappedBy can be used with @OneToMany
 
-### Cron
+### Cron Job

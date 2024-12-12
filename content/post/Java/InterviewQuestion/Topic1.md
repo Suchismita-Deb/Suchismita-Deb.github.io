@@ -12,3 +12,8 @@ Create the private constructor og the class. static instance variable. Public st
 instance of the class. Multithreaded environment hen double check lock.
 
 Link - https://github.com/Suchismita-Deb/LowLevel_HighLevel_SystemDesign/blob/main/src/main/java/org/example/DesignPattern/CreationalDesignPattern/SingletonDesignPattern/notes.md
+
+### Question 2.
+
+What are the new features introduced in Java 8.
+
