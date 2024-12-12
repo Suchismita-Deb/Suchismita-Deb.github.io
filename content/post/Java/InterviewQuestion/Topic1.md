@@ -15,5 +15,5 @@ Link - https://github.com/Suchismita-Deb/LowLevel_HighLevel_SystemDesign/blob/ma
 
 ### Question 2.
 
-What are the new features introduced in Java 8.
+**What are the new features introduced in Java 8.**
 
