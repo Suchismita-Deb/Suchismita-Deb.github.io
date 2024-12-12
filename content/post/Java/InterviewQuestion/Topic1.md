@@ -5,18 +5,14 @@ date = 2024-12-10T21:27:14+05:30
 tags = ['interviewQuestion', 'java']
 +++
 
-### Question 1.
-
-What are the steps to create a Singleton class?
+### Question 1. What are the steps to create a Singleton class?
 
 Create the private constructor og the class. static instance variable. Public static method to return the single
 instance of the class. Multithreaded environment hen double check lock.
 
 Link - https://github.com/Suchismita-Deb/LowLevel_HighLevel_SystemDesign/blob/main/src/main/java/org/example/DesignPattern/CreationalDesignPattern/SingletonDesignPattern/notes.md
 
-### Question 2.
-
-**What are the new features introduced in Java 8.**
+### Question 2. What are the new features introduced in Java 8.
 
 The new features revolutionizes how java applications are written and optimized. Key features involved -
 
@@ -74,7 +70,7 @@ list.
 
 stream().filter(x->x%2==0).forEach(System.out::println);
 ```
-### Default and static method in interfaces.
+**Default and static method in interfaces.**
 ```java
 interface MyInterface {
     default void show() {
