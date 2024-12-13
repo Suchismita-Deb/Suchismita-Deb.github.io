@@ -317,4 +317,14 @@ System.out.println("Product: " + product); // Output: Product: 120
 ```
 
 ### Question 4. Internal work of hashmap.
-HashMap implements the Map interface
+HashMap implements the **Map** interface and allows the storage and retrieval of data using hashing.
+**Arrays of Bucket** - The data structure used is array and the index is called a **Bucket**.
+Each bucket can store multiple entries via linked list.
+
+**Node** - Each key value pair is stored in a node object which contain **hash** - the hashcode of the key, **key** - teh actual key, **value** - the value associated with the key, **next** - Referenced to the next node in the same bucket.
+
+**Operation**.
+
+Insertion.
+**Hash Calculation** - 
+`put(key,value)` The hashcode() method of the key is called to generate the hash code. The hashcode is compressed `(hash^(hash>>>16))` to reduce the collision.
