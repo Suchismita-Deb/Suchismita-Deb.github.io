@@ -325,6 +325,17 @@ Each bucket can store multiple entries via linked list.
 
 **Operation**.
 
-Insertion.
+**Insertion**.
+
 **Hash Calculation** - 
 `put(key,value)` The hashcode() method of the key is called to generate the hash code. The hashcode is compressed `(hash^(hash>>>16))` to reduce the collision.
+
+**Bucket Index** - The index of the array is determined by `index=hash&(n-1)` n is the size of the array(power of 2).
+
+**Collision Handling** - When the bucket is empty then it is directly added, and it contains a value then it is stored in linked list and if the number of entries in bucket exceeds limit(8 by default) then linked list is converted to a balanced red-black tree.
+
+**Key Comparison** - When two key has same hash code the equal() is used to see the equality and if the key matched the existing key then the value is added or replaced based on logic.
+
+Retrieval.
+
+The hash code of the key is computed and compressed to find the bucket index. The bucket is searched for the node using the hash and then equal() to compare key. When the key is found then return the value else null.
