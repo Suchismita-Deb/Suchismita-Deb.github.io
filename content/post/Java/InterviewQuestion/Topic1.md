@@ -321,9 +321,7 @@ HashMap implements the **Map** interface and allows the storage and retrieval of
 **Arrays of Bucket** - The data structure used is array and the index is called a **Bucket**.
 Each bucket can store multiple entries via linked list.
 
-**Node** - Each key value pair is stored in a node object which contain **hash** - the hashcode of the key, **key** - teh actual key, **value** - the value associated with the key, **next** - Referenced to the next node in the same bucket.
-
-**Operation**.
+**Node** - Each key value pair is stored in a node object which contain **hash** - the hashcode of the key, **Key** - the actual key, **Value** - the value associated with the key, **Next** - Referenced to the next node in the same bucket.
 
 **Insertion**.
 
@@ -336,6 +334,10 @@ Each bucket can store multiple entries via linked list.
 
 **Key Comparison** - When two key has same hash code the equal() is used to see the equality and if the key matched the existing key then the value is added or replaced based on logic.
 
-Retrieval.
+**Retrieval**.
 
 The hash code of the key is computed and compressed to find the bucket index. The bucket is searched for the node using the hash and then equal() to compare key. When the key is found then return the value else null.
+
+### Question 5. Method Overloading.
+
+More than one method with same name as long as the method has the same parameter
