@@ -58,3 +58,16 @@ One way to do it correctly `List &lt;Flight&gt; flight;` for `List <Flight> flig
 Use &lt; for <
 Use &gt; for >
 ```
+
+When I want to change the line height between two lines in a same paragraph then we should use the line-height.
+```css
+p {
+    line-height: 1.5 !important; /* Adjust line spacing */
+}
+```
+When we want to change about the height between two paragraph then we should use the margin.
+```css
+p {
+    margin: 7px 0 !important; /* Adjust vertical spacing */
+}
+```
