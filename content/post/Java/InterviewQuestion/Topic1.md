@@ -348,4 +348,38 @@ Return type can be same or different, method signature (name and parameter) shou
 
 Both used for comparison and it is mainly memory references (object references) in == vs. object content (values) in .equals().
 
-== in primitive compare the value. In Object it compare the memory.
+== in primitive compare the value, in Object it compare the memory.
+```java
+String str1 = new String("Hello");
+String str2 = new String("Hello");
+System.out.println(str1 == str2);  // Output: false
+// str1 and str2 are two different objects with the same content, but they are stored at different memory locations. 
+
+int a = 10;
+int b = 10;
+System.out.println(a == b);  // Output: true
+// Primitive compares the value.
+```
+.equals() compare the value. It is only used in object comparison.
+```java
+String str1 = new String("Hello");
+String str2 = new String("Hello");
+System.out.println(str1.equals(str2));  // Output: true
+```
+
+When == and .equal behave differently.
+```java
+String str1 = "Hello";
+String str2 = "Hello";
+String str3 = new String("Hello");
+
+System.out.println(str1 == str2);         // Output: true (Same reference, string literals)
+System.out.println(str1 == str3);         // Output: false (Different objects, even if values are same)
+System.out.println(str1.equals(str2));   // Output: true (Same content)
+System.out.println(str1.equals(str3));   // Output: true (Same content)
+```
+str1 and str2 are pointing to the same memory location because they are string literals (interned).
+
+str3 is a new object with the same content, so == returns false because it’s a different object in memory.
+
+.equals return true as it only compare the content.
