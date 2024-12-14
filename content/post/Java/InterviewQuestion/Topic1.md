@@ -343,3 +343,9 @@ The hash code of the key is computed and compressed to find the bucket index. Th
 More than one method with same name as long as the method has different parameter lists (different number of parameter or different types of parameters). It is a compile time polymorphism.
 
 Return type can be same or different, method signature (name and parameter) should be unique. Java determines which method to call based on the method signature at compile time.
+
+### Question 6. Difference between .equals() and ==
+
+Both used for comparison and it is mainly memory references (object references) in == vs. object content (values) in .equals().
+
+== in primitive compare the value. In Object it compare the memory.
