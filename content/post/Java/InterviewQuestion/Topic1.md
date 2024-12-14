@@ -340,4 +340,6 @@ The hash code of the key is computed and compressed to find the bucket index. Th
 
 ### Question 5. Method Overloading.
 
-More than one method with same name as long as the method has the same parameter
+More than one method with same name as long as the method has different parameter lists (different number of parameter or different types of parameters). It is compile time polymorphism.
+
+Return type can be same or different, method signature should be unique. Java determines which method to call based on the method signature at compile time.
