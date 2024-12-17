@@ -29,9 +29,7 @@ String str1 = "hello"; // Refering to the same object as str.
 String str3 = new String("hello");
 // String object is created inside the heap memory outside the pool.
 // We can move it to the pool.
-str3 =str3.
-
-intern(); // Add str3 to the pool or returns reference to the pooled string.
+str3 = str3.intern(); // Add str3 to the pool or returns reference to the pooled string.
 
 ```
 
@@ -40,16 +38,10 @@ Comparison.
 ```java
 String s = "hello";
 String str = new String("hello");
-System.out.
+System.out.println(s==str1); // false different reference pool and heap.
 
-println(s==str1); // false different reference pool and heap.
-
-str =str.
-
-intern(); // Now str is pointing to the pool string.
-System.out.
-
-println(str1==str3);
+str =str.intern(); // Now str is pointing to the pool string.
+System.out.println(str1==str3);
 ```
 
 When the string is interned then == is faster and string not interned then we have to use .equals
