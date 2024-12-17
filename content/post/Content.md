@@ -13,7 +13,7 @@ Part 1.
 
 Part 2.
 
-<<{youtube PxL8W3WoK5k}>>
+{{<youtube PxL8W3WoK5k>}}
 
 Part 3.
 
