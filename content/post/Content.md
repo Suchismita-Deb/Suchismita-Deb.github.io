@@ -17,19 +17,19 @@ Part 2.
 
 Part 3.
 
-
+{{<youtube tw4wWCsGNe4>}}
 
 Part 4.
 
-
+{{<youtube nEno48RpDR4>}}
 
 Part 5.
 
-
+{{<youtube SqDbZOjW1uM>}}
 
 Part 6.
 
-
+{{<youtube YXRBBOjgrFU>}}
 
 Part 7.
 
