@@ -1,5 +1,5 @@
 +++
-title = '2Class'
+title = 'Class'
 date = 2024-12-19T09:43:44+05:30
 url= "/post/java/fundamental/Class"
 tags = ['interviewQuestion', 'java']

@@ -1,5 +1,5 @@
 +++
-title = '4CollectionFramework'
+title = 'CollectionFramework'
 date = 2024-12-19T09:47:46+05:30
 url= "/post/java/fundamental/CollectionFramework"
 tags = ['interviewQuestion', 'java']

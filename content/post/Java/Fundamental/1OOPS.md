@@ -1,5 +1,5 @@
 +++
-title = '1OOPS'
+title = 'OOPS'
 date = 2024-12-19T09:34:31+05:30
 
 url= "/post/java/fundamental/OOPS"
