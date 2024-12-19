@@ -1,6 +1,7 @@
 +++
 title = '5Multithreading'
 date = 2024-12-19T09:47:59+05:30
+
 url= "/post/java/fundamental/Multithreading"
 tags = ['interviewQuestion', 'java']
 +++
