@@ -1,9 +1,9 @@
 +++
-title = 'SetBit'
-date = 2023-12-02T15:32:24+05:30
+title = 'BitManipulation'
+date = 2024-12-20T18:08:41+05:30
+
+
 +++
-
-
 
 ### Number of set bits.
 

@@ -1,7 +1,10 @@
 +++
 title = 'Interface Important Points'
 date = 2023-11-14T09:27:14+05:30
+url= "/post/java/fundamental/OOPS"
+tags = ['interviewQuestion', 'java']
 +++
+
 Interface is used to hide the internal implementation of the feature and only shows the main functionality.
 
 Both interface and abstract class are used for abstraction.

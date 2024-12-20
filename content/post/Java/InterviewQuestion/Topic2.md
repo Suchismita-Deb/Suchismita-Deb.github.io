@@ -128,3 +128,24 @@ Array contains duplicate element. Print the distinct element.
 ```java
 list.stream().distinct().collect(Collectors.toList());
 ```
+
+### Question 5.
+What is the output?
+```java
+public class A1 {
+    public static void addToInt(int x, int amountToAdd) {
+        x = x + amountToAdd;
+    }
+
+    public static void main(String[] args) {
+        var a = 15;
+        var b = 10;
+        A1.addToInt(a,b);
+        System.out.println(a);
+    }
+}
+```
+
+The output of the code - 15.
+
+The method is getting the value and not the reference so the value of the varaiable will not change.
