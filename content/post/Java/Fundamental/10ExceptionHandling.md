@@ -1,6 +1,8 @@
 +++
 title = 'Exception Handling in Java.'
 date = 2023-11-12T15:56:18+05:30
+
+url= "/post/java/fundamental/ExceptionHandlingInJava"
 tags=['java']
 +++
 

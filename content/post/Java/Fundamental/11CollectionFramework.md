@@ -1,14 +1,13 @@
 +++
-title = 'CollectionFramework'
+title = 'Java Collection Framework'
 date = 2024-12-19T09:47:46+05:30
 url= "/post/java/fundamental/CollectionFramework"
 tags = ['interviewQuestion', 'java']
 +++
-Java Collection Framework.
 
-Introduced in Java 1.2
+Introduced in Java 1.2 version.
 
-Collections are group of object. It is present in java.util pacakge.
+Collections are group of object. It is present in `java.util` package.
 Framework provides the architecture to manage the "group of objects" that is add, update, delete, search.
 
 ### Multithreading and Concurrency.

@@ -1,28 +1,28 @@
 +++
-title = 'Multithreading'
+title = 'Multithreading and Concurrency. Thread Process and Memory Model. Thread Creation, Thread Lifecycle and Inter Thread Communication. '
 date = 2024-12-19T09:47:59+05:30
 
 url= "/post/java/fundamental/Multithreading"
 tags = ['interviewQuestion', 'java']
 +++
-
-Java Collection Framework.
-
-Introduced in Java 1.2
-
-Collections are group of object. It is present in java.util pacakge.
-Framework provides the architecture to manage the "group of objects" that is add, update, delete, search.
-
 ### Multithreading and Concurrency.
 
-Introduction to Multithreading.
-Java Memory Model of Process and Thread.
+Multithreading is a technique that allows for concurrent (simultaneous) execution of two or more parts of a program for maximum utilization of a CPU. As a really basic example, multithreading allows you to write code in one program and listen to music in another.
+
+Programs are made up of process and thread.
+
+Concurrency is the ability of your program to deal (not doing) with many things at once and is achieved through multithreading. Concurrency is different from parallelism which is about doing many things at once.
+
+https://www.educative.io/blog/multithreading-and-concurrency-fundamentals
+
+
+https://medium.com/@lakshyachampion/a-comprehensive-guide-to-multithreading-and-concurrency-in-java-9bf8a0a0bb82
+
+https://www.educative.io/blog/top-five-concurrency-interview-questions-for-software-engineers
 
 ### What is Thread and Process.
 
-In process we have thread.
-
-Process is an instance of a program that is getting executed.
+Process is an instance of a program that is getting executed. In process we have thread.
 
 There is one program.
 
@@ -34,20 +34,18 @@ public class Test{
 }
 ```
 
-Compile the class. `javac Test.java` - It will generate the bytecode that can be executed by JVM.
+Compile the class `javac Test.java` - It will generate the bytecode that can be executed by JVM.
 
-The byte code need to execute.
-Execution. `java Test` - JVM starts the new Process., here the Test is the class that has the main method.
+Execution `java Test` - The bytecode needs to be executed. JVM starts the new Process, here the Test is the class that has the main method.
 Process says it is an instance of a program that is getting executed.
 
-It has its own resource like memory, thread. OS allocates these resources to process when its created.
+It has its own resource like memory, thread. OS allocates these resources to process when its created. When one process is created it creates its own heap memory.
 
-When one process is created it creates its own heap memory.
 
 When we execute a program a process is created and own heap memory is created and two process donot connect with each other.
 
 
-Thread is known as lightweight process. It is called as the smallest sequence of instruction that are executed vy CPU independently.
+Thread is known as lightweight process. It is called as the smallest sequence of instruction that are executed by CPU independently.
 
 One process can have multiple thread. When a process is created it starts with one thread and that initial thread known as "main thread" and from that we can create multiple threads to perform task concurrently.
 
@@ -92,7 +90,7 @@ All threads within the same process shares the same code segment.
 `java Main` - It creates the process is created, JVM instance is created and it is used to interpret or JIT compiler to machine code.
 It create the thread assign the stack, register and counter are assigned. It will save the machine code in the code segment.
 
-The counter points to the address in th code segment where the thread start the execution.
+The counter points to the address in the code segment where the thread start the execution.
 CPU will execute the machine code.
 
 Thread 1 will use the register store the data and send to the CPU to execute. OS schedule the JVM scheduler and it sechdule and manage the assignment of the thread to the CPU. The CPU will get the code part from the code segment and then run the thread. There are limit say 1 sec for a thread when it is done the result say done half is stored into the register of the thread the intermediate data is stored in the register and it is called **Context Switching** and CPU solve the next thread.
@@ -175,11 +173,9 @@ public class MyClass implements Runnable{
 }
 ```
 
-It is not a thread. It is a class implementing Runnable.
+It is not a thread. It is a class implementing Runnable. Now we have to invoke a thread to call the run method.
 
-Now we have to invoke a thread to call the run method.
-
-Create an instance of the class that implements Runnable. Pass the runnable object to the thread contructor. Start the thread.
+Create an instance of the class that implements Runnable -> Pass the runnable object to the thread constructor -> Start the thread.
 
 ```java
 public class Main{
@@ -234,8 +230,8 @@ Image.
 Runnable and running comes under same state and running state meaning waiting for the CPU and when got the CPU it is in running and when there is context switch then again it is in runnable state.
 
 | Lifecycle State   | Description                                                                                                                                                                                                                                                    |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **NEW**           | Thread has been created but not started. Its just an object in memory.                                                                                                                                                                                         |
+|-------------------| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **New**            | Thread has been created but not started. Its just an object in memory.                                                                                                                                                                                         |
 | **Runnable**      | Thread is ready to run. Waiting for CPU time.                                                                                                                                                                                                                  |
 | **Running**       | What thread start executing its code.                                                                                                                                                                                                                          |
 | **Blocked**       | Different scenarios where runnale thread goes into the Blocking state - I/O blocking like readinf from a file or databse. -Lok acquired - If thread want to lock on a resource which is locked by other thread,it has to wait. Releases all the MONITOR LOCKS. |
