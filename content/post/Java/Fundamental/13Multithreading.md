@@ -1,5 +1,5 @@
 +++
-title = 'Multithreading and Concurrency. Thread Process and Memory Model. Thread Creation, Thread Lifecycle and Inter Thread Communication. '
+title = 'Multithreading and Concurrency - Thread Process and Memory Model - Thread Creation, Thread Lifecycle and Inter Thread Communication. '
 date = 2024-12-19T09:47:59+05:30
 
 url= "/post/java/fundamental/Multithreading"
@@ -486,3 +486,11 @@ public class Main{
     }
 }
 ```
+
+
+Why Stop, Resume, Suspended method is depcrecated.
+
+wait - it releases the lock and make the thread free so that other can acquired the lock.
+
+Stop.
+Terminates the thread abruptly, no lock release no resource clean up happens.

@@ -57,7 +57,9 @@ Exception in thread "main" java.lang.ArithmeticException: / by zero
 The Exception shows the type of Exception and exception message.
 The type of Exception is `Arithmetic Exception` the message is `/ by zero` Then the details and it contains the stack trace.
 
-The first line in the output shows the exception and the next lines shows the stack trace.
+The first line in the output shows the exception and the next lines shows the stack trace. Stack Trace - Starting the place where exception to the main.
+
+When exception happened in one method say 3 then it see the method declaring the method 3 say method 2 if it can handle then good else it will go to the method that decalared method 2 say method 1.
 
 
 
