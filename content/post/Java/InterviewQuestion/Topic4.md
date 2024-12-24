@@ -12,9 +12,12 @@ In Maven, the POM file (Project Object Model) is the central configuration file 
 **Project Information**
 
 Defines basic metadata about the project. It includes:
-groupId: A unique identifier for your organization or project (e.g., com.example).
-artifactId: The project's name, which is usually the name of the generated JAR/WAR file (e.g., my-project).
-version: Indicates the current version of your project. A typical format is major.minor.patch (e.g., 1.0.0).
+
+**groupId**: A unique identifier for your organization or project (e.g., com.example).
+
+**artifactId**: The project's name, which is usually the name of the generated JAR/WAR file (e.g., my-project).
+
+**version**: Indicates the current version of your project. A typical format is major.minor.patch (e.g., 1.0.0).
 
 These attributes help Maven identify your project uniquely within a repository.
 ```xml
@@ -25,11 +28,15 @@ These attributes help Maven identify your project uniquely within a repository.
 <description>A sample Maven project</description>
 <url>https://example.com/my-project</url>
 ```
-Build Settings
+**Build Settings**
+
 Customizes the build process.
-Source Directory: Specifies where the source code is located (default: src/main/java).
-Resources: Defines non-code files (e.g., configuration files) needed during the build.
-Plugins: Enables customization of the build process by using Maven plugins, such as maven-compiler-plugin for setting Java version compatibility.
+
+**Source Directory**: Specifies where the source code is located (default: src/main/java).
+
+**Resources**: Defines non-code files (e.g., configuration files) needed during the build.
+
+**Plugins**: Enables customization of the build process by using Maven plugins, such as maven-compiler-plugin for setting Java version compatibility.
 
 This ensures compatibility with Java 1.8 during compilation.
 ```xml
@@ -53,9 +60,11 @@ This ensures compatibility with Java 1.8 during compilation.
     </plugins>
 </build>
 ```
-Repositories.
+**Repositories**.
+
 Specifies custom or additional repositories for dependencies.
-If your dependencies are not available in Maven Central, you can specify additional repositories to search for them. For instance, if  company has a private repository
+
+If your dependencies are not available in Maven Central, you can specify additional repositories to search for them. For instance, if  company has a private repository we can set it.
 ```xml
 <repositories>
     <repository>
@@ -64,9 +73,11 @@ If your dependencies are not available in Maven Central, you can specify additio
     </repository>
 </repositories>
 ```
-Plugin Management.
-Configures and manages Maven plugins.
-This section centralizes plugin configurations. It defines plugin versions and settings so that they can be reused in the <build> section without redefining configurations each time.
+**Plugin Management**.
+
+Configures and manages Maven plugins. This section centralizes plugin configurations. 
+
+It defines plugin versions and settings so that they can be reused in the <build> section without redefining configurations each time.
 ```xml
 <pluginManagement>
     <plugins>
@@ -78,9 +89,11 @@ This section centralizes plugin configurations. It defines plugin versions and s
     </plugins>
 </pluginManagement>
 ```
-Profiles.
+**Profiles**.
+
 Defines profiles for environment-specific configurations.
-You can activate a profile using the -P flag in Maven commands. Running mvn clean install -Pproduction activates the production profile.
+
+You can activate a profile using the -P flag in Maven commands. Running `mvn clean install -Pproduction` activates the production profile.
 ```xml
 <profiles>
     <profile>
@@ -97,17 +110,20 @@ You can activate a profile using the -P flag in Maven commands. Running mvn clea
     </profile>
 </profiles>
 ```
-Properties.
-Declares reusable properties for the project. Properties are reusable variables that make your POM file cleaner and easier to manage. They can be used in various parts of the file with ${property-name}.
+**Properties**.
+
+Declares reusable properties for the project. Properties are reusable variables that make your POM file cleaner and easier to manage. They can be used in various parts of the file with `${property-name}`.
 ```xml
 <properties>
     <java.version>1.8</java.version>
     <encoding>UTF-8</encoding>
 </properties>
 ```
-Parent POM.
+**Parent POM**.
+
 Inherits configuration from a parent project.
 The parent tag allows a project to inherit configurations from a parent POM file. This is particularly useful in multi-module projects to centralize dependency and plugin configurations.
+
 All child modules automatically inherit dependencies and plugins defined in the parent POM.
 ```xml
 <parent>
@@ -116,7 +132,8 @@ All child modules automatically inherit dependencies and plugins defined in the 
     <version>1.0.0</version>
 </parent>
 ```
-Modules.
+**Modules**.
+
 Configures a multi-module project structure.
 Modules define a multi-module project, where a parent POM can manage multiple sub-projects (modules). These modules are listed in the <modules> tag.
 ```xml
@@ -125,8 +142,9 @@ Modules define a multi-module project, where a parent POM can manage multiple su
     <module>module-two</module>
 </modules>
 ```
-Dependency Management.
-Manages and centralizes dependency versions. Dependencies defined here are not added to the build unless explicitly included in the <dependencies> section of the child POM. This ensures that all modules use the same version of spring-core.
+**Dependency Management**.
+
+Manages and centralizes dependency versions. Dependencies defined here are not added to the build unless explicitly included in the `<dependencies>` section of the child POM. This ensures that all modules use the same version of spring-core.
 ```xml
 <dependencyManagement>
     <dependencies>
@@ -138,7 +156,8 @@ Manages and centralizes dependency versions. Dependencies defined here are not a
     </dependencies>
 </dependencyManagement>
 ```
-Licenses and Developers.
+**Licenses and Developers**.
+
 Includes project contributors and license details.
 ```xml
 <developers>
@@ -155,9 +174,9 @@ Includes project contributors and license details.
     </license>
 </licenses>
 ```
-Reporting.
-Configures project reporting tools. 
-Maven can generate project documentation using the <reporting> section, which specifies plugins that provide information about the project (e.g., code coverage, Javadocs).
+**Reporting**.
+
+Configures project reporting tools. Maven can generate project documentation using the <reporting> section, which specifies plugins that provide information about the project (e.g., code coverage, Javadocs).
 ```xml
 <reporting>
     <plugins>

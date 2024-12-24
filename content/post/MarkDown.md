@@ -74,3 +74,8 @@ p {
 
 In the paper theme the change in the name of the file is not showing the page. By default the url is set from the file name we can set that manually.
 In the front matter we have to set the url `url= "/post/java/interviewquestion/topic3/"` The file name can be anything the url will be picked from here.
+
+
+Making a text centered.
+
+`<h2 style="text-align: center;">Your Heading Here</h2>`
