@@ -12,11 +12,10 @@ The HashSet and TreeSet classes in java are the implementation of Set interface.
 |---|---|
 |Faster (O(1))|Faster (O(1))|
 |Unordered|Sorted Natural or custom order. The order depends on: The natural ordering of elements (via the Comparable interface). <br/> A custom comparator provided at the time of TreeSet creation.|
-|Iterates in no specific order.| Iterates in ascending sorted order of elements (or the order defined by a custom
-comparator).|
-|Allows one null value|Does not allow null|
+|Iterates in no specific order.| Iterates in ascending sorted order of elements (or the order defined by a custom comparator).|
+|Allows one null value.|Does not allow null.|
 |It uses hashmap internally for storage.|It uses a Red-Black Tree (a self-balancing binary search tree) internally.|
-|Custom sorting Not Supported| Custom sorting supported via comparator.|
+|Custom sorting not supported| Custom sorting supported via comparator.|
 
 ```java
 TreeSet<Integer> treeSet = new TreeSet<>((a, b) -> b - a); // Descending order
@@ -37,6 +36,21 @@ HashSet<String> hashSet = new HashSet<>();
         hashSet.add("Orange");
 System.out.println("HashSet: "+hashSet); // Order not guaranteed
 ```
+
+<table>
+<tr>
+<td>Unordered</td>
+<td>Sorted Natural or custom order. The order depends<br>on:</td>
+</tr>
+<tr>
+<td>The natural ordering of elements (via the<br>Comparable interface).</td>
+<td></td>
+</tr>
+<tr>
+<td>A custom comparator provided at the time<br>of TreeSet creation.</td>
+<td></td>
+</tr>
+</table>
 
 ### Question. Difference between HashMap and TreeMap.
 
