@@ -37,20 +37,6 @@ HashSet<String> hashSet = new HashSet<>();
 System.out.println("HashSet: "+hashSet); // Order not guaranteed
 ```
 
-<table>
-<tr>
-<td>Unordered</td>
-<td>Sorted Natural or custom order. The order depends<br>on:</td>
-</tr>
-<tr>
-<td>The natural ordering of elements (via the<br>Comparable interface).</td>
-<td></td>
-</tr>
-<tr>
-<td>A custom comparator provided at the time<br>of TreeSet creation.</td>
-<td></td>
-</tr>
-</table>
 
 ### Question. Difference between HashMap and TreeMap.
 
