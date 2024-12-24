@@ -5,7 +5,7 @@ url = "/post/java/interviewquestion/topic5/"
 tags = ['interviewQuestion', 'java']
 +++
 
-<h3 style="text-align: center;">Question. Difference between HashSet and TreeSet.</h3>
+### Question. Difference between HashSet and TreeSet.
 
 The HashSet and TreeSet classes in java are the implementation of Set interface.
 
@@ -39,7 +39,7 @@ System.out.println("HashSet: "+hashSet); // Order not guaranteed
 ```
 
 
-<h3 style="text-align: center;">Question. Difference between HashMap and TreeMap.</h3>
+### Question. Difference between HashMap and TreeMap.
 
 | Feature                     |HashMap| TreeMap                                               |
 |-----------------------------|-------------------------|-------------------------------------------------------|
@@ -49,7 +49,7 @@ System.out.println("HashSet: "+hashSet); // Order not guaranteed
 | **Internal Data structure** | Hash Table                                    | Red Black Tree self balancing binary tree.            |
 
 
-<h3 style="text-align: center;">Question. Difference between HashMap and HashTable.</h3>
+### Question. Difference between HashMap and HashTable.
 
 | Feature           | HashMap                                                                                                                                                              | HashTable |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
@@ -59,7 +59,7 @@ System.out.println("HashSet: "+hashSet); // Order not guaranteed
 | **Package**       | Introduced in Java 1.2 part of Java Collection Framework and part of java.util package. Use in modern code.                                                          |Legacy class exists since Java 1.0 and part of java.util package. Not recommended in new code.|
 | **Usage**         |Preferred in single threaded or externally synchronized multithreaded environment.|Rarely used in modern application replaced by `ConcurrentHashMap` for thread safety.|
 
-<h3 style="text-align: center;">Question. Difference between Map and FlatMap in streamAPI.</h3>
+### Question. Difference between Map and FlatMap in streamAPI.
 
 MAP.
 
@@ -104,20 +104,19 @@ list.stream()
     .forEach(System.out::println);  // a p p l e b a n a n a
 ```
 
-<h3 style="text-align: center;">Question. Difference between normal stream and parallel stream.</h3>
+### Question. Difference between normal stream and parallel stream.
 
-<h3 style="text-align: center;">Question. Difference between stream and collection.</h3>
+### Question. Difference between stream and collection.
+### Question. Difference between ConcurrentHashMap and SynchronizedHashMap.
 
-<h3 style="text-align: center;">Question. Difference between ConcurrentHashMap and SynchronizedHashMap.</h3>
+### Question. Difference between StringBuilder and StringBuffer and String.
 
-<h3 style="text-align: center;">Question. Difference between StringBuilder and StringBuffer and String.</h3>
+### Question. Difference between default and static method.
 
-<h3 style="text-align: center;">Question. Difference between default and static method.</h3>
+### Question. Difference between Interface and Abstract class.
 
-<h3 style="text-align: center;">Question. Difference between Interface and Abstract class.</h3>
+### Question. Difference between REST and SOAP and which scenario to use it.
 
-<h3 style="text-align: center;">Question. Difference between REST and SOAP and which scenario to use it.</h3>
+### Question. Difference between synchronized and volatile.
 
-<h3 style="text-align: center;">Question. Difference between synchronized and volatile.</h3>
-
-<h3 style="text-align: center;">Question. Difference between process and thread.</h3>
+### Question. Difference between process and thread.
