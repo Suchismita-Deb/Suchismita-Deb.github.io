@@ -11,9 +11,7 @@ The HashSet and TreeSet classes in java are the implementation of Set interface.
 |HashSet|TreeSet|
 |---|---|
 |Faster (O(1))|Faster (O(1))|
-|Unordered|Sorted Natural or custom order. The order depends on:
-The natural ordering of elements (via the Comparable interface).
-A custom comparator provided at the time of TreeSet creation.|
+|Unordered|Sorted Natural or custom order. The order depends on: The natural ordering of elements (via the Comparable interface). <br/> A custom comparator provided at the time of TreeSet creation.|
 |Iterates in no specific order.| Iterates in ascending sorted order of elements (or the order defined by a custom
 comparator).|
 |Allows one null value|Does not allow null|

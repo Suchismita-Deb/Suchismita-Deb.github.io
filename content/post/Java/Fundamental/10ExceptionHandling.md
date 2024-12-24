@@ -71,6 +71,8 @@ When exception happened in one method say 3 then it see the method declaring the
 Object is parent of all and its child class is Throwable and it has Error and Exception.
 Error - You cannot control. Like **OutofMemoryError**, **StackOverflowError**.
 These are related to JVM issue. Like JVM can not able to create any new object in heap and heap is full then OutofMemoryError.
+Error is unchecked exception as it will compile when running I will get the outof memory error.
+
 
 ```java
 public class ExceptionHandling {
@@ -93,7 +95,8 @@ Error is JVM issue and we cannot able to control that. Exception is on the basis
 **Checked Exception Compile Time Exception.** The program will not compile.
 
 *Error is an **Unchecked Exception**. At run time this error comes.*
-### Runtime Exception
+### Runtime Exception.
+These occurs in runtime and compiler does not force us to handle it.
 ```java
 public class check {
     public static void main(String[] args) {
@@ -105,7 +108,32 @@ public class check {
     }
 }
 ```
-ArithmeticException is a runtime exception. We need to put that in try and catch. While running we get the exception.
-```java
+ArithmeticException is a runtime exception. We need to put that in try and catch. The program will compiler proper lyand there will be class file while running we get the exception.
 
+### ClassCast Exception.
+```java
+public class Main{
+    public static void main(String args[]){
+        Object val = 0;
+        System.out.println((String) val);
+    }
+}
 ```
+The exception Integer cannot be thrown as string.
+### Arithmetic Exception.
+```java
+public class Main {
+    public static void main(String args[]) {
+        int val = 5/0;
+    }
+}
+```
+Arithmetic exception / by 0 at Main.
+### IndexOutOfBound Exception.
+```java
+int arr[] = ne wint[2];
+System.out.println(arr[3]);
+```
+The exception ArrayIndexOurOfBound.
+
+### Null Pointer Exception.
