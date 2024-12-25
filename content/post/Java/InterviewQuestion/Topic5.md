@@ -112,9 +112,32 @@ list.stream()
 | **Thread Management** | Runs in a single thread, typically the main thread.                                                                                                                                                                                           | Uses a common ForkJoinPool to manage threads for parallel execution, where the default pool uses as many threads as there are available CPU cores.                                                                              |
 | **Order**             | Maintains the order of elements as they appear in the source.                                                                                                                                                                                 | May not guarantee the order of elements, unless explicitly handled (e.g., using forEachOrdered).                                                                                                                                |
 | **Usage**             | Best for simple, small operations where parallelism isn't needed.                                                                                                                                                                             | Best for large collections or time-consuming operations that can benefit from parallel execution.                                                                                                                               |
-| **Code**              | `List<String> items = Arrays.asList("A", "B", "C", "D", "E");`<br/>`System.out.println("Normal Stream:");` <br/> `items.stream().forEach(item -> {System.out.println(Thread.currentThread().getName() + " processes " + item);});` | `System.out.println("\nParallel Stream:");`<br/>`// Parallel Stream (Multi-Threaded)`<br/>`items.parallelStream().forEach(item -> {System.out.println(Thread.currentThread().getName() + " processes " + item);});`                 |
-|**Output**|Normal Stream:main processes A main processes B main processes C main processes D main processes E|Parallel Stream: ForkJoinPool.commonPool-worker-1 processes A main processes B ForkJoinPool.commonPool-worker-3 processes C ForkJoinPool.commonPool-worker-2 processes D main processes E|
 |**Processing**|Processes all elements in the order they appear.<br/>Always uses the main thread (Thread.currentThread().getName() is main).|Processes elements concurrently using multiple threads from the ForkJoinPool.<br/>The thread names (ForkJoinPool.commonPool-worker-*) indicate parallel execution.|
+
+The example of a normal stream.
+
+```java
+List<String> items = Arrays.asList("A", "B", "C", "D", "E");
+System.out.println("Normal Stream:");
+items.stream()
+     .forEach(item -> {System.out.println(Thread.currentThread().getName() + " processes " + item);
+});
+```
+The output is given.
+```xml
+Normal Stream:main processes A main processes B main processes C main processes D main processes E
+```
+```java
+System.out.println("\nParallel Stream:");
+// Parallel Stream (Multi-Threaded)
+items.parallelStream()
+     .forEach(item -> {System.out.println(Thread.currentThread().getName() + " processes " + item);
+});
+```
+The output.
+```java
+Parallel Stream: ForkJoinPool.commonPool-worker-1 processes A main processes B ForkJoinPool.commonPool-worker-3 processes C ForkJoinPool.commonPool-worker-2 processes D main processes E.
+```
 
 ### Question. Difference between stream and collection.
 
