@@ -1,14 +1,17 @@
 +++
 title = 'Microservice Communication'
 date = 2024-09-13T22:02:37+05:30
-tags = ['interviewQuestion']
+url= "/post/java/interviewquestion/Microservice/InterCommunication"
+tags = ['interviewQuestion', 'java']
 categories = ['java','microservice']
 +++
 
-### Ways to communicate between Microservices.
+Ways to communicate between Microservices.
+---
 
 
-**Synchronous communications** through -
+**Synchronous communications** - It is achieved through - 
+
 > **Rest APIs**
 > 
 > **GraphQl**
@@ -17,7 +20,31 @@ categories = ['java','microservice']
 >
 > **GRPC** (10 times faster than REST APIs) - developed by Google as substitute of REST with many more features.
 
-A synchronous call means that a _service waits for the response_ after performing a request.
+A synchronous call means that a _service waits for the response_ after performing a request. It is a request response pattern.
+
+**Important Features of Synchronous Communication**.
+
+**Tight Coupling** - It  requires services to be available and responsive in real time.  
+**Deterministic** - The caller knows the outcome immediately, making it suitable for workflows needing immediate results.  
+**Blocking Nature** - The sender cannot proceed until a response is received.
+
+**When to use the Synchronous Communication**.
+  
+**Query Operations** - Fetching data or performing lightweight computations.   Example - A user-facing service querying a catalog service for product details.   
+**Transactional Workflows** - When atomicity across services is essential.
+Example - A payment service calling an inventory service to lock stock before completing a transaction.   
+**Low Latency Requirements** - Scenarios demanding immediate feedback where the outcome of the feedback determine the next step. Scenarios demanding immediate feedback. Example - User authentication and authorization workflows.
+Example - User authentication and authorization workflows.
+
+
+**TradeOff using Synchronous Communication**.
+  
+**Tight Coupling** - Services depend on each other’s availability, increasing the risk of cascading failures.
+A failure or high latency in one service directly affects the caller.   
+**Scalability Bottleneck** - Synchronous communication can lead to thread exhaustion, especially under high load.
+Example: Blocking calls in Spring Boot (e.g., RestTemplate) tie up server resources until a response is received.   
+**Latency Impact** - Each hop in a synchronous chain adds latency, degrading the overall user experience.   
+**Fault Tolerance Challenges** - Timeouts, retries, and circuit breakers must be explicitly managed (e.g., using Resilience4j or Hystrix).
 
 **Asynchronous communication** in java. 
 
@@ -28,7 +55,7 @@ This communication usually involves some kind of messaging system like
 >
 > Kafka
 
-### What is Asyncronous Communication.
+### What is Asynchronous Communication.
 
 To initiate async communication, a Microservice who wants to send some data to another Microservice `@publishes` a message to a separate component known as a `message broker`. It is responsible for handling the message sent by the producer service and it will guarantee message delivery.
 

@@ -1,5 +1,5 @@
 +++
-title = '1BuildLifeCycle'
+title = 'Build Life Cycle'
 date = 2024-12-23T23:55:51+05:30
 
 url= "/post/spring/fundamental/buildLifeCycle"

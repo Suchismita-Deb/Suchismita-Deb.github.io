@@ -1,6 +1,8 @@
 +++
 title = 'Practice Java'
 date = 2024-10-29T13:51:06+05:30
+
+url = "/post/java/interviewquestion/practice/"
 tags = ['interviewQuestion']
 categories = ['java']
 +++

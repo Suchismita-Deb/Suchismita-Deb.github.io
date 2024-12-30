@@ -2,6 +2,7 @@
 title = 'Topic 2'
 date = 2024-12-08T21:34:45+05:30
 
+url= "/post/java/interviewquestion/topic4/"
 tags = ['interviewQuestion', 'java']
 +++
 

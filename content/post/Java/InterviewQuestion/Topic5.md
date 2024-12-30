@@ -63,10 +63,10 @@ System.out.println("HashSet: "+hashSet); // Order not guaranteed
 
 MAP.
 
-**Purpose**: Transforms each element in the stream into another element.
-<br/> **Output**: Produces a new stream of the same size but with transformed elements.
-<br/> **Behavior**: Applies the given function to each element, and the result is a stream of transformed values.
-<br/> **Use Case**: When you need to transform each element into a single element.
+**Purpose**: Transforms each element in the stream into another element.  
+**Output**: Produces a new stream of the same size but with transformed elements.  
+**Behavior**: Applies the given function to each element, and the result is a stream of transformed values.  
+**Use Case**: When you need to transform each element into a single element.
 
 ```java
 List<String> list = Arrays.asList("apple", "banana", "cherry");
@@ -78,10 +78,10 @@ list.stream()
 
 FLATMAP.
 
-**Purpose**: Transforms each element into a stream of elements and then flattens these multiple streams into a single stream.
-<br/> **Output**: Produces a new stream where each element may expand into multiple elements (or none).
-<br/> **Behavior**: Each element is mapped to a stream, and the resulting streams are merged into a single stream.
-<br/> **Use Case**: When you need to handle nested structures or when each element can be expanded into multiple elements (like splitting strings or unwrapping lists).
+**Purpose**: Transforms each element into a stream of elements and then flattens these multiple streams into a single stream.  
+**Output**: Produces a new stream where each element may expand into multiple elements (or none).  
+**Behavior**: Each element is mapped to a stream, and the resulting streams are merged into a single stream.  
+**Use Case**: When you need to handle nested structures or when each element can be expanded into multiple elements (like splitting strings or unwrapping lists).
 ```java
 List<String> list = Arrays.asList("apple", "banana", "cherry");
 
@@ -103,6 +103,44 @@ list.stream()
     .flatMap(word -> Arrays.stream(word.split("")))
     .forEach(System.out::println);  // a p p l e b a n a n a
 ```
+
+
+Map transform each item in a collection into something else and produces a collection of the same size.
+Transforms each element of the stream into another form (1-to-1 mapping). The result is a Stream of Streams if the transformation returns a Stream.
+```java
+List<String> words = Arrays.asList("hello", "world");
+List<Stream<Character>> result = words.stream()
+                                       .map(word -> word.chars().mapToObj(c -> (char) c))
+                                       .collect(Collectors.toList());
+// Result: [Stream[h, e, l, l, o], Stream[w, o, r, l, d]]
+```
+Use when you want to transform each element independently, and the transformation results in a single output per input. Example: Converting a list of strings to their lengths.
+```java
+List<String> words = Arrays.asList("hello", "world");
+List<Integer> lengths = words.stream()
+                             .map(String::length)
+                             .collect(Collectors.toList());
+// Result: [5, 5]
+```
+
+Flatmap transforms each item but can combine items from nested collections into a single flat collections.
+Transforms each element into a Stream and flattens all these Streams into a single Stream (1-to-many mapping).
+```java
+List<String> words = Arrays.asList("hello", "world");
+List<Character> result = words.stream()
+                              .flatMap(word -> word.chars().mapToObj(c -> (char) c))
+                              .collect(Collectors.toList());
+// Result: [h, e, l, l, o, w, o, r, l, d]
+```
+Use when each element needs to be transformed into multiple elements (or a stream of elements) and you want a flat result. Example: Splitting a list of sentences into words.
+```java
+List<String> sentences = Arrays.asList("hello world", "java streams");
+List<String> words = sentences.stream()
+                              .flatMap(sentence -> Arrays.stream(sentence.split(" ")))
+                              .collect(Collectors.toList());
+// Result: [hello, world, java, streams]
+```
+
 
 ### Question. Difference between normal stream and parallel stream.
 | Feature               | Normal Stream                                                                                                                                                                                                                                 | Parallel Stream                                                                                                                                                                                                                 |
@@ -159,13 +197,66 @@ Parallel Stream: ForkJoinPool.commonPool-worker-1 processes A main processes B F
 |**Synchronization Mechanism**| 	Uses a segment-based locking (in Java 7) or bucket-level locking (in Java 8 and later).                                                                                    | 	Entire map is locked for each operation using synchronized blocks.                        |
 |**Concurrency**	| Allows concurrent read and write operations by multiple threads. Only writes to the same bucket are blocked.                                                                | 	Allows only one thread to access the map at a time.                                       |
 |**Performance**| 	Higher performance in multi-threaded environments due to finer-grained locking.                                                                                            | 	Lower performance due to coarse-grained locking (locks the entire map).                   |
-|Null Values	| Does not allow null keys or values.                                                                                                                                         | 	Allows a single null key and multiple null values.                                        |
+|**Null Values**	| Does not allow null keys or values.                                                                                                                                         | 	Allows a single null key and multiple null values.                                        |
 |**Thread-Safety**	| Thread-safe for concurrent access with better scalability.	                                                                                                                 | Thread-safe, but less efficient in high-concurrency scenarios.                             |
 |**Locking Granularity**| 	Fine-grained locks improve throughput by reducing contention.	                                                                                                             | Coarse-grained lock blocks all threads attempting access, even for independent operations. |
 |**Iteration Behavior**| 	Does not throw ConcurrentModificationException during iteration but reflects changes made by other threads.	                                                               | Throws ConcurrentModificationException if the map is modified during iteration.            |
 |**Use Case**| 	Best suited for high-concurrency applications where reads and updates are frequent.| 	Suitable for low-concurrency scenarios where simplicity is preferred over performance.    |
 
-ConcurrentHashMap.
+**ConcurrentHashMap**.
+
+The ConcurrentHashMap class is part of the Java Collections Framework and extends the AbstractMap class. It implements the ConcurrentMap and Serializable interfaces. Below is the hierarchy:
+```xml
+java.lang.Object
+   └── java.util.AbstractMap<K, V>
+     └── java.util.concurrent.ConcurrentHashMap<K, V>
+        ├── ConcurrentMap<K, V> (Interface)
+        └── Serializable (Interface)
+```
+**How ConcurrentHashMap Works Internally?**
+
+It works on mainly 3 parts.
+
+**Segmented Locking** - The map is divided into segments (buckets) internally.
+<br/>Locking occurs at the segment level rather than the whole map, ensuring high concurrency.
+
+**CAS (Compare-And-Swap)** - Used for atomic updates without locks. Improves performance in high-concurrency scenarios.
+
+**Read-Write Operations** - Reads are generally lock-free, allowing for high throughput. Writes use fine-grained locking or CAS to minimize blocking.
+
+**Explain CAS**
+
+Compare-And-Swap (CAS) is an atomic operation used in concurrent programming to achieve synchronization without locks. It enables threads to update shared variables safely without the overhead and contention caused by traditional locking mechanisms.
+
+**Memory Location** - CAS reads the value at the memory location. 
+
+**Expected Value** - It compares the read value with the expected value.
+If the current value matches the expected value, CAS updates the variable with the new value.
+If the current value does not match the expected value, CAS fails, and no update occurs.
+
+**New Value** - The operation returns a status indicating whether the swap was successful.
+
+Example - Thread A. Memory location 5. Value = 5. Expected value = 5. New Value = 10. The value is updated to 10.
+
+<br/>Example - Thread B. Memory location 6. Value = 5. Expected value = 10. New Value = 15. The value is not updated as current value is 10.
+
+**Advantages of CAS**.
+
+Non-blocking - CAS ensures only the thread that successfully updates the variable proceeds. Other threads retry until they succeed, avoiding the need for locks.
+
+High Performance - Eliminates contention and overhead associated with locking. Particularly useful in high-concurrency scenarios.
+
+Atomicity - The comparison and update occur as a single, indivisible operation. Ensures thread safety.
+
+**Disadvantages of CAS**.
+
+ABA Problem - If a variable changes from value A to B and back to A, CAS may incorrectly assume nothing changed.
+Solution: Use a version number or timestamp alongside the variable.
+
+Busy-Waiting - If many threads are competing, repeated retries can cause performance degradation.
+
+Limited Use - Works well for single variable updates but becomes complex for larger data structures or multiple variables.
+
 
 Iteration in ConcurrentHashMap does not throw a `ConcurrentModificationException` even if the map is modified during the iteration.
 
@@ -222,9 +313,66 @@ public static void main(String[] args) {
 ```
 ### Question. Difference between StringBuilder and StringBuffer and String.
 
+**String**.
+
+Immutable. Any change will create a new String.
+<br/>Not Thread safe and not synchronized.
+<br/>Slower as it will create new string.
+
+**StringBuilder**.
+
+Mutable. Allows in place modification in string.
+<br/>Not thread safe and not synchronized.
+<br/>Faster than StringBuffer as no synchronization.
+<br/>Used in single threaded environment with frequent string modification.
+
+**StringBuffer**.
+<br/>Mutable and Thread safe. Synchronization ensures thread safety.
+<br/>
+
+
 ### Question. Difference between default and static method.
 
-### Question. Difference between Interface and Abstract class.
+|Feature| Default Method                                                                                   | Static Method                                                                 |
+|---|--------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+|**Definition**| A method with a body in an interface, invoked on an instance.                                    | A method declared with the static keyword, invoked on the class.              
+|**Purpose**| To provide a default implementation for methods in interfaces, ensuring backward compatibility. Default methods work with instance variables and methods. | To define utility or helper methods unrelated to instance-specific behavior. Static methods work only with static data and do not access instance variables or methods. |
+|**Inheritance**| Can be inherited and overridden by implementing classes.                                         | Cannot be overridden but can be hidden (if declared in a class).              |
+
+Default Method.
+
+```java
+interface Vehicle {
+    default void start() {
+        System.out.println("Vehicle is starting...");
+    }
+}
+
+class Car implements Vehicle {}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.start(); // Output: Vehicle is starting...
+    }
+}
+```
+
+Static Method.
+```java
+interface Utility {
+    static void log(String message) {
+        System.out.println("Log: " + message);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Utility.log("This is a static method."); // Output: Log: This is a static method.
+    }
+}
+```
+
 
 ### Question. Difference between REST and SOAP and which scenario to use it.
 

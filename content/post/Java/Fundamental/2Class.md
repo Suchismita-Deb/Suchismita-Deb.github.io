@@ -6,43 +6,29 @@ url= "/post/java/fundamental/Class"
 tags = ['interviewQuestion', 'java']
 +++
 ### Types of class in Java.
-Concrete Class.
-
-Abstract Class.
-
-Super Class and Sub Class.
-
-Object Class.
-
-Nested Class.
-
--- Inner Class (Non static nested class)
-
--- Anonymous Inner Class.
-Member Inner Class.
-
-Local Inner Class.
-Static Nested Class/Static Class.
-
-Generic Class.
-
-POJO Class.
-
-Enum Class.
-
-Final Class.
-
-Singleton Class.
-
-Immutable Class.
-
+Concrete Class.  
+Abstract Class.  
+Super Class and Sub Class.  
+Object Class.  
+Nested Class.  
+|-- Inner Class (Non-static nested class)  
+|-- Anonymous Inner Class.  
+|-- Member Inner Class.  
+|-- Local Inner Class.  
+|-- Static Nested Class/Static Class.  
+Generic Class.  
+POJO Class.  
+Enum Class.  
+Final Class.  
+Singleton Class.  
+Immutable Class.  
 Wrapper Class.
 
 ## Concrete Class.
 
-Class where we can create an instance using new keyword.
-All methods in the class have implementation.
-A class access modifier can be public or package private(no explicit modifier defined).
+- Class where we can create an instance using new keyword.  
+- All methods in the class have implementation.  
+- A class access modifier can be public or package private(no explicit modifier defined).
 
 ```java
 public class Person{}
@@ -50,14 +36,12 @@ public class Person{}
 
 ## Abstract Class
 
-Show only important feature to users and hide its internal implementation.
-2 ways to achieve abstraction.
-
-Class is declared as abstracted through keyword "abstract".
-It can have both abstract(method without body) and non abstract method.
-We cannot create an instance of the class.
-Parent has some features which all child classes have in common, then this can be used.
-Constructors can be created inside them and with super keyword from child classes we can access them.
+- Show only important feature to users and hide its internal implementation.  
+- 2 ways to achieve abstraction - abstract class and interface.  
+- Class is declared as abstracted through keyword "abstract". It can have both abstract(method without body) and non abstract method.  
+- We cannot create an instance of the class.  
+- Parent has some features which all child classes have in common, then this can be used.  
+- Constructors can be created inside them and with super keyword from child classes we can access them.
 
 ```java
 public abstract class Car{
@@ -72,21 +56,17 @@ public abstract class Car{
         return 4;
     }
 }
-
 public abstract class LuxuryCar extends Car{
-
     // Abstract class inheriting above abstract class.
     LuxuryCar(int milage){
         super(milage);
     }
     public abstract void pressDualBreakSystem(); // Additional abstract method.
-
     @Override
     public void pressBreak(){
         // implementation.
     }
 }
-
 public class Audi extends LuxuryCar{
     // Concrete class inheriting abstract class.
     Audi(int milage){
@@ -107,10 +87,9 @@ public class Audi extends LuxuryCar{
 
 ## Super and Sub Class.
 
-Child class subclass.
-In java in the absence of any other explicit superclass, everyclass is implicitly a subclass of Object class.
-Object is the topmost class in Java.
-It has some common method like clone(), toString(), notify(), wait().
+- Child class is subclass.
+- In java in the absence of any other explicit superclass, every class is implicitly a subclass of `Object` class.
+- Object is the topmost class in Java. It has some common method like clone(), toString(), notify(), wait().
 
 ```java
 public class ObjectTest{
@@ -136,15 +115,11 @@ Object is parent class of every class and we know that reference of child class 
 
 ## Nested Class.
 
-Class within another class is called Nested class.
+- Class within another class is called Nested class.
+- When one class A will be used by only one another class B then instead of created new file A.java for it, we create nested class inside class B itself and it group logically related classes in one file. 
+- Scope - It scope is same as its Outer class.
 
-When one class A will beised by only one another class b then instead of created new file A.java for it, we create nested class inside class B itself and it group logically related classes in one file.
-
-Scope - It scope id same as its Outer class.
-
-It is of two types.
-Static Nested Class.
-Non Static Nested class.
+- It is of two types - Static Nested Class. Non Static Nested class.
 
 - Member Inner Class.
 - Local Inner Class.

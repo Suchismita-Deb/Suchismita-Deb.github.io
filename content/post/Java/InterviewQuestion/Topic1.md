@@ -2,13 +2,13 @@
 title = 'Topic 1'
 date = 2024-12-10T21:27:14+05:30
 
+url = "/post/java/interviewquestion/topic1/"
 tags = ['interviewQuestion', 'java']
 +++
-
 ### Question 1. What are the steps to create a Singleton class?
 
-Create the private constructor og the class. static instance variable. Public static method to return the single
-instance of the class. Multithreaded environment hen double check lock.
+Create the private constructor of the class. Static instance variable. Public static method to return the single
+instance of the class. Multithreaded environment then double check lock.
 
 Link - https://github.com/Suchismita-Deb/LowLevel_HighLevel_SystemDesign/blob/main/src/main/java/org/example/DesignPattern/CreationalDesignPattern/SingletonDesignPattern/notes.md
 
@@ -249,42 +249,111 @@ String encoded = Base64.getEncoder().encodeToString("Java8".getBytes());
 ```
 
 
-### Question 3. Difference between flatmap and map.
+### Question 3. What is functional interface and how many type sof functional interface  is there.
 
-Map transform each item in a collection into something else and produces a collection of the same size.
-Transforms each element of the stream into another form (1-to-1 mapping). The result is a Stream of Streams if the transformation returns a Stream.
-```java
-List<String> words = Arrays.asList("hello", "world");
-List<Stream<Character>> result = words.stream()
-                                       .map(word -> word.chars().mapToObj(c -> (char) c))
-                                       .collect(Collectors.toList());
-// Result: [Stream[h, e, l, l, o], Stream[w, o, r, l, d]]
-```
-Use when you want to transform each element independently, and the transformation results in a single output per input. Example: Converting a list of strings to their lengths.
-```java
-List<String> words = Arrays.asList("hello", "world");
-List<Integer> lengths = words.stream()
-                             .map(String::length)
-                             .collect(Collectors.toList());
-// Result: [5, 5]
-```
+designed to support functional programming concepts like lambda expressions and method references.
 
-Flatmap transforms each item but can combine items from nested collections into a single flat collections.
-Transforms each element into a Stream and flattens all these Streams into a single Stream (1-to-many mapping).
+**Predicate<T>**.  
+
+**Description** - Represents a condition (boolean-valued function) on an input argument.  
+**Abstract Method** - `boolean test(T t);`  
+**Default Methods**.  
+`and(Predicate)` -  Combines two predicates using logical AND.  
+`or(Predicate)` -  Combines two predicates using logical OR.  
+`negate()` -  Negates the predicate.  
+**Use Case**: Filtering data, such as filtering elements in a collection.
+
+**Consumer<T>**.
+
+**Description** - Represents an operation that accepts a single input argument and returns no result.  
+**Abstract Method** - `void accept(T t);`  
+**Default Method**.  
+`andThen(Consumer)` - Chains another consumer to execute after the current one.
+Use Case: Performing actions, like printing or modifying an input without returning a result.
+
+**Supplier<T>**. 
+
+**Description** - Represents a supplier of results (provides data without accepting any input).
+**Abstract Method** - `T get();`  
+**Use Case**: Lazy initialization or factory methods to generate or supply values.
+
+**Function<T, R>**.
+
+**Description**: Represents a function that accepts one argument and produces a result.
+**Abstract Method** - `R apply(T t);`
+**Default Methods** -  
+andThen(Function): Chains another function to apply after this function.
+compose(Function): Chains another function to apply before this function.  
+**Use Case**: Data transformation, such as mapping values.
+
+**BiFunction<T, U, R>**.
+
+**Description**: Represents a function that accepts two arguments and produces a result.
+**Abstract Method** - `R apply(T t, U u);`  
+**Use Case**: Combining two inputs to produce a single output.
+
+**UnaryOperator<T>**
+**Description**: A special case of Function<T, R> where the input and output types are the same.
+**Abstract Method** - `T apply(T t);`  
+**Use Case**: Unary operations like incrementing a number.
+
+**BinaryOperator<T>**
+**Description:** A special case of BiFunction<T, U, R> where all three types are the same.
+**Abstract Method** - `T apply(T t1, T t2);`  
+**Use Case**: Operations on two operands of the same type, such as summing or finding the maximum.
+
+**BiPredicate<T, U>**
+Description: Represents a predicate (boolean-valued function) that operates on two arguments.
+**Abstract Method** - `boolean test(T t, U u);`  
+**Use Case**: Testing relationships or conditions involving two inputs.
+
+**ToIntFunction<T>, ToDoubleFunction<T>, ToLongFunction<T>**
+**Description**: Variants of Function<T, R> that specialize in returning a primitive type (int, double, or long).
+**Abstract Method** - `int applyAsInt(T t);`  
+**Use Case**: Efficiently returning primitive values from a function.
+
+**IntPredicate, DoublePredicate, LongPredicate**
+**Description**: Specialized predicates for primitive types.
+**Abstract Method** - `boolean test(int value);`  
+**Use Case**: Testing conditions on primitive values without boxing/unboxing.
+
+**IntConsumer, DoubleConsumer, LongConsumer**
+
+**Description**: Specialized consumers for primitive types.  
+**Abstract Method** - `void accept(int value);`  
+**Use Case**: Performing actions on primitive types efficiently
+
+**IntSupplier, DoubleSupplier, LongSupplier**
+**Description**: Specialized suppliers for primitive types.
+**Abstract Method** - `int getAsInt();`  
+**Use Case**: Supplying primitive values efficiently.
+
 ```java
-List<String> words = Arrays.asList("hello", "world");
-List<Character> result = words.stream()
-                              .flatMap(word -> word.chars().mapToObj(c -> (char) c))
-                              .collect(Collectors.toList());
-// Result: [h, e, l, l, o, w, o, r, l, d]
-```
-Use when each element needs to be transformed into multiple elements (or a stream of elements) and you want a flat result. Example: Splitting a list of sentences into words.
-```java
-List<String> sentences = Arrays.asList("hello world", "java streams");
-List<String> words = sentences.stream()
-                              .flatMap(sentence -> Arrays.stream(sentence.split(" ")))
-                              .collect(Collectors.toList());
-// Result: [hello, world, java, streams]
+import java.util.function.*;
+
+public class FunctionalInterfaceExample {
+    public static void main(String[] args) {
+        // Predicate example
+        Predicate<Integer> isEven = num -> num % 2 == 0;
+        System.out.println(isEven.test(4)); // true
+
+        // Function example
+        Function<String, Integer> stringLength = String::length;
+        System.out.println(stringLength.apply("Hello")); // 5
+
+        // Consumer example
+        Consumer<String> printer = System.out::println;
+        printer.accept("Hello, World!"); // Prints: Hello, World!
+
+        // Supplier example
+        Supplier<Double> randomValue = Math::random;
+        System.out.println(randomValue.get()); // Random number
+
+        // BinaryOperator example
+        BinaryOperator<Integer> sum = Integer::sum;
+        System.out.println(sum.apply(3, 5)); // 8
+    }
+}
 ```
 
 ### Question 3. Stream Operation.
@@ -338,11 +407,7 @@ Each bucket can store multiple entries via linked list.
 
 The hash code of the key is computed and compressed to find the bucket index. The bucket is searched for the node using the hash and then equal() to compare key. When the key is found then return the value else null.
 
-### Question 5. Method Overloading.
 
-More than one method with same name as long as the method has different parameter lists (different number of parameter or different types of parameters). It is a compile time polymorphism.
-
-Return type can be same or different, method signature (name and parameter) should be unique. Java determines which method to call based on the method signature at compile time.
 
 ### Question 6. Difference between .equals() and ==
 

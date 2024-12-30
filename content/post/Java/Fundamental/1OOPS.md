@@ -7,12 +7,12 @@ tags = ['interviewQuestion', 'java']
 +++
 ### Java OOPS.
 
-| Procedural Programming                                                                       | Object Oriented Programming.          |
-| -------------------------------------------------------------------------------------------- | ------------------------------------- |
-| Program is divided into parts called functions.                                              | Program is divided into Objects.      |
-| Does not provide proper way to hide data, gives importance to function and data move freely. |
-| Overloading, Inheritance is not possible.                                                    | Overloading, Inheritance is possible. |
-| C                                                                                            | Java                                  |
+| Procedural Programming                                                                       | Object Oriented Programming.                 |
+| -------------------------------------------------------------------------------------------- |----------------------------------------------|
+| Program is divided into parts called functions.                                              | Program is divided into Objects.             |
+| Does not provide proper way to hide data, gives importance to function and data move freely. | It does provide proper way to hide the data. |
+| Overloading, Inheritance is not possible.                                                    | Overloading, Inheritance is possible.        |
+| C                                                                                            | Java                                         |
 
 ### Abstraction.
 
@@ -27,11 +27,11 @@ It is also known as Data Hiding.
 
 ### Overview.
 
-Java is a Object oriented language and it is WORA - Write Once and Run Anywhere.
+Java is a Object oriented language and it is **WORA** - Write Once and Run Anywhere.
 
-JDK - has JRE - has JVM.
+> JDK - has JRE - has JVM.
 
-Java PRogram is platform independent and it compiles to bytecode (.class file is generated) and then JVM converts to the machine code and runs by CPU.
+Java Program is platform independent and it compiles to bytecode (.class file is generated) and then JVM converts to the machine code and runs by CPU.
 
 JVM is machine dependent installed for mac or window and it can convert the java program as it has JIT(Just In Time) compiler.
 
@@ -68,15 +68,15 @@ Sequence diagram - Sequence diagrams describes interactions among classes in ter
 
 ### There are different types of relationship in a class.
 
-**Association**
+**Association**.
 
 Relationship between 2 different object.
 Both the class know about each other. Example the `Pilot` and `FlightInsurance` both class know each other exists.
 
-Aggregation - Both object can survive individually, means ending of one object will not end another object.
+Aggregation - Both object can survive individually, means ending of one object will not end another object.  
 Composition - Ending of one object will end another object.
 
-### *Multiplicity*
+### *Multiplicity*.
 - Indicates number of instance of the class is there in the relationship.
 - Example One FlightInstance will have two Pilots, while a Pilot can have many FlightInstances.
   ![img.png](/images/img28.png)
@@ -90,7 +90,7 @@ Composition - Ending of one object will end another object.
 
 
 ### *Composition*
-* It is a type of aggregation where the child class's instance lifecycle is dependent on the parent class’s instance lifecycle.
+* It is a type of aggregation where the child class's instance lifecycle is dependent on the parent class’s instance lifecycle. A stronger "whole-part" relationship where the part cannot exist without the whole. If the container object is destroyed, the contained objects are also destroyed. Example: A car "has" an engine, and if the car is destroyed, so is the engine.
 * Child cannot exist without parents.
 * WeeklySchedule is composed in Flight which means when Flight lifecycle ends, WeeklySchedule gets destroyed automatically.
 

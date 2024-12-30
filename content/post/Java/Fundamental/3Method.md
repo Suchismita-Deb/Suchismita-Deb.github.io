@@ -7,21 +7,17 @@ tags = ['interviewQuestion', 'java']
 +++
 ### Method in Java
 
-Access Modifiers.
-Defines the accessibility of the method, who can use the method.
+**Access Modifiers** - Defines the accessibility of the method, who can use the method.
 There are 4 types of access specifiers in Java Methods.
 
-Public - can be accessed through any class in any package.
-
-Private - can be accessed by method only in the same class.
-
-Protected - can be accessed by other classes in same package or other sub classes in different package.
-
-Default - It can be only be accessed by classes in same package. If we donot mention anything then default access specifier is used by Java.
+**Public** - It can be accessed through any class in any package.  
+**Private** - It can be accessed by method only in the same class.  
+**Protected** - It can be accessed by other classes in same package or other sub classes in different package.  
+**Default** - It can be only be accessed by classes in same package. If we donot mention anything then default access specifier is used by Java.
 
 ### Types of Method.
 
-**System Defined Methods** - Methods which are already defind and ready to use in Java like Math.sqrt().
+**System Defined Methods** - Methods which are already defined and ready to use in Java like Math.sqrt().
 
 **User Defined Methods** - Method which the programmer create based upon the program necessity.
 
@@ -136,7 +132,7 @@ public class Main{
 }
 ```
 
-super() - call default contructor of the class. When there is a parameter then we need to pass parameter inside super().
+super() - call default constructor of the class. When there is a parameter then we need to pass parameter inside super().
 this() and super() is used for constructor chaining.
 
 If the parent class has a parameterised then we will have to mandatorily pass an argument to super() to call the paret class parameterised constructor.

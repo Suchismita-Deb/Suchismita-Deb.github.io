@@ -78,4 +78,8 @@ In the front matter we have to set the url `url= "/post/java/interviewquestion/t
 
 Making a text centered.
 
-`<h2 style="text-align: center;">Your Heading Here</h2>`
+`<h2 style="text-align: center;">Your Heading Here</h2>` Not showing properly.
+
+Inorder to make new line and not new paragraph.
+
+We need to write the line then two space then hit enter and the next line. It will create new line.

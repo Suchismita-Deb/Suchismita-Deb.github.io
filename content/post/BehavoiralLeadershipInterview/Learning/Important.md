@@ -23,6 +23,7 @@ Structure - One minute or less, Rule of Three focus on specific three items, no 
 Sample - I would say from the user perspective. Every one uses google product everyday search, youtube, meeting. More importantly the culture is what I am relly fascinated about like the positivity, inclusivity and really fond of the opportunity to learn and grow in any position at the organization. My passion and excitement to the product and the way it serves millions of people in a most efficient way. I am happy to work in any of the product and all of them get me exited  join google and my input.
 
 
+
 **Take the interview in your hand.**
 ### Tell me about yourself.
 Sample - My core principle stays in these areas. Based on the requirements, news and job descriptions add those points and say like I think my core skills really align with the role.
@@ -30,6 +31,16 @@ But as you think about the role today the company needs and if we are talking ab
 
 Think in this space with the role, core skills and the purpose.
 
+
+> Hi, I am Suchismita working as a Java Developer for the past 3 years where I have the opportunity to work on various projects. 
+> 
+> I have worked with Java Lts version and Spring Boot framework that helps teh development with rapid development using the REST microservice.
+> 
+> In the messaging system I got the chance to work in Kafka event driven architecture its the best in streaming system with high throughput structure.
+> 
+> In the version control and collaboration I have used Bitbucket where all the pr and code review stuff happens. In CI CD I have used jenkins and for the code review, code quality, code coverage code standard I have used SonarQube.
+
+I can see the position needs microservice and spring and rest api and I have hands on knowledge for the role. I believe I am a great fit for the role to exhibit my knowledge.
 
 ### What is your greatest accomplishment?
 Dynamic Example. Think in terms of core skills and purpose. 

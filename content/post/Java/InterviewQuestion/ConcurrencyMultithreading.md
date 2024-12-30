@@ -1,7 +1,9 @@
 +++
-title = 'ConcurrencyMultithreading'
+title = 'Concurrency Multithreading'
 date = 2024-06-11T08:18:37+05:30
-draft = true
+
+
+url = "/post/java/interviewquestion/thread/"
 +++
 
 
@@ -9,15 +11,7 @@ Introduction.
 
 Rate in Java.
 
-Garbage Collection.
-
-We can remove the object when not needed.
-
-Dynamic binding in java.
-Polymorphism type - Child class and parent class and want to refer the object of the
-
-animal and dog class.
-animal has bark method and dog overrides the bark method and creted an object of dog class then the dog class bark will be called.
+Garbage Collection - We can remove the object when not needed.
 
 String.
 Memory storage.
@@ -155,14 +149,14 @@ Reverse a list using stream.
 | Generally faster unsynchronized.              | Slower due to synchronization overhead. |
 
 Features in Java 8.
-Lambda Expressions.
-Stream API.
-Default methods.
-Optional Classes.
-Functional Class.
-Method Reference.
-Date and Time API.
-Default and Static Interface Methods.
+Lambda Expressions.  
+Stream API.  
+Default methods.  
+Optional Classes.  
+Functional Class.  
+Method Reference.  
+Date and Time API.  
+Default and Static Interface Methods.  
 
 ### Exception Handling in Java. Checked and Unchecked Exception.
 
@@ -172,25 +166,11 @@ Checked Exception - By the compiler at the compile time. SQLException, ClassNotF
 
 Unchecked Exception - Runtime Exception occurs during the program execution. ArrayIndexOutOfBound, NPE.
 
-### What is the difference between the equals() and hashCode() methods. Why it is important to override both when necessary.
 
-The equal() method is used to compare the two objects for equality. It is defined in the object class.
-The hashCode() method is used to generate a hash code value for an object.
+### Shallow copy and deep cody.
 
-The general contract between the equal and hashCode().
-
-When two objects are equal according to the equal() method then the hash code must be equal as well.
-
-When two objects have same hash code then the equal() may or may not be same. It is possible for different objects to have the same hash code due to collision.
-
-When override the equal() method we should ensure the hashcode() method is also overridden consistently to satisfy the contact. Failure to do so can lead to unexpected behaviour when objects are used as keys in hash based collections.
-
-# Need to see.
-
-shallow copy and deep cody..
-
-The difference between a shallow copy and a deep copy lies in how the data of an object is duplicated when creating a copy. Shallow Copy - It creates a new object that refernces the same memory locations as the original object. Changes made to the data in one object will be reflected in the other object.
-
+The difference between a shallow copy and a deep copy lies in how the data of an object is duplicated when creating a copy.  
+Shallow Copy - It creates a new object that refernces the same memory locations as the original object. Changes made to the data in one object will be reflected in the other object.  
 Deep copy creates a new object with entirey new copies of all the data within the original object. Changes made to the data in one object will not affect the other object.
 
 By implementing the Clonable interface and overriding the clone() method, you can create a deep copy of the objects. Within the clone() method we perform deep copy of all field, including the referenced objects.

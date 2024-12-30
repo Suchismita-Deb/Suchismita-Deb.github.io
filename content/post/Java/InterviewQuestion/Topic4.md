@@ -5,186 +5,91 @@ date = 2024-12-24T08:43:39+05:30
 url= "/post/java/interviewquestion/topic4/"
 tags = ['interviewQuestion', 'java']
 +++
-### Question 1. What is the pom file in maven apart form the dependencies.
 
-In Maven, the POM file (Project Object Model) is the central configuration file (pom.xml) for a Maven project. Apart from managing dependencies, it provides the following functionalities:
+## What is finally, finalise and final.
 
-**Project Information**
+### finally
 
-Defines basic metadata about the project. It includes:
+Definition: A block in a try-catch statement that always executes, regardless of whether an exception is thrown or not.
+Purpose: Used for cleanup actions like closing files, releasing resources, or disconnecting from a database.
+Key Points:
 
-**groupId**: A unique identifier for your organization or project (e.g., com.example).
+The finally block executes even if the try block contains a return statement.
+It does not execute if the JVM terminates abruptly (e.g., with System.exit())
 
-**artifactId**: The project's name, which is usually the name of the generated JAR/WAR file (e.g., my-project).
-
-**version**: Indicates the current version of your project. A typical format is major.minor.patch (e.g., 1.0.0).
-
-These attributes help Maven identify your project uniquely within a repository.
-```xml
-<groupId>com.example</groupId>
-<artifactId>my-project</artifactId>
-<version>1.0.0</version>
-<name>My Maven Project</name>
-<description>A sample Maven project</description>
-<url>https://example.com/my-project</url>
+```java 
+public class FinallyExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0; // Will throw ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        } finally {
+            System.out.println("This block always executes.");
+        }
+    }
+}
 ```
-**Build Settings**
-
-Customizes the build process.
-
-**Source Directory**: Specifies where the source code is located (default: src/main/java).
-
-**Resources**: Defines non-code files (e.g., configuration files) needed during the build.
-
-**Plugins**: Enables customization of the build process by using Maven plugins, such as maven-compiler-plugin for setting Java version compatibility.
-
-This ensures compatibility with Java 1.8 during compilation.
-```xml
-<build>
-    <sourceDirectory>src/main/java</sourceDirectory>
-    <resources>
-        <resource>
-            <directory>src/main/resources</directory>
-        </resource>
-    </resources>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.1</version>
-            <configuration>
-                <source>1.8</source>
-                <target>1.8</target>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+The output.
 ```
-**Repositories**.
-
-Specifies custom or additional repositories for dependencies.
-
-If your dependencies are not available in Maven Central, you can specify additional repositories to search for them. For instance, if  company has a private repository we can set it.
-```xml
-<repositories>
-    <repository>
-        <id>central</id>
-        <url>https://repo.maven.apache.org/maven2</url>
-    </repository>
-</repositories>
+Exception caught: / by zero
+This block always executes.
 ```
-**Plugin Management**.
 
-Configures and manages Maven plugins. This section centralizes plugin configurations. 
+finalize:
 
-It defines plugin versions and settings so that they can be reused in the <build> section without redefining configurations each time.
-```xml
-<pluginManagement>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.1</version>
-        </plugin>
-    </plugins>
-</pluginManagement>
+Definition: A method in the Object class that can be overridden to clean up resources before an object is garbage collected.
+Purpose: Used for resource management (like closing files or releasing memory), though it's not recommended for modern applications.
+Deprecated: As of Java 9, finalize() is deprecated due to performance issues and unpredictability.
+Key Points:
+
+Called by the garbage collector before the object is destroyed.
+Not guaranteed to execute promptly or even at all.
+
+```java
+public class FinalizeExample {
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Finalize method called.");
+    }
+
+    public static void main(String[] args) {
+        FinalizeExample obj = new FinalizeExample();
+        obj = null; // Make the object eligible for garbage collection
+        System.gc(); // Suggest garbage collection
+        System.out.println("End of main method.");
+    }
+}
+
 ```
-**Profiles**.
-
-Defines profiles for environment-specific configurations.
-
-You can activate a profile using the -P flag in Maven commands. Running `mvn clean install -Pproduction` activates the production profile.
-```xml
-<profiles>
-    <profile>
-        <id>development</id>
-        <properties>
-            <env>dev</env>
-        </properties>
-    </profile>
-    <profile>
-        <id>production</id>
-        <properties>
-            <env>prod</env>
-        </properties>
-    </profile>
-</profiles>
+The output
 ```
-**Properties**.
-
-Declares reusable properties for the project. Properties are reusable variables that make your POM file cleaner and easier to manage. They can be used in various parts of the file with `${property-name}`.
-```xml
-<properties>
-    <java.version>1.8</java.version>
-    <encoding>UTF-8</encoding>
-</properties>
+End of main method.
+Finalize method called.
 ```
-**Parent POM**.
 
-Inherits configuration from a parent project.
-The parent tag allows a project to inherit configurations from a parent POM file. This is particularly useful in multi-module projects to centralize dependency and plugin configurations.
+final:
 
-All child modules automatically inherit dependencies and plugins defined in the parent POM.
-```xml
-<parent>
-    <groupId>com.example</groupId>
-    <artifactId>parent-project</artifactId>
-    <version>1.0.0</version>
-</parent>
+Definition: A keyword that can be applied to variables, methods, or classes to restrict their behavior.
+Purpose: Used to define constants, prevent method overriding, and prevent inheritance.
+Key Points:
+
+Final Variables: Once assigned, their value cannot change.
+Final Methods: Cannot be overridden in subclasses.
+Final Classes: Cannot be extended by other classes
+
+```java
+public class FinalVariableExample {
+    public static void main(String[] args) {
+        final int CONSTANT = 10;
+        // CONSTANT = 20; // Compilation error: cannot assign a value to final variable
+        System.out.println("Final variable value: " + CONSTANT);
+    }
+}
 ```
-**Modules**.
 
-Configures a multi-module project structure.
-Modules define a multi-module project, where a parent POM can manage multiple sub-projects (modules). These modules are listed in the <modules> tag.
-```xml
-<modules>
-    <module>module-one</module>
-    <module>module-two</module>
-</modules>
-```
-**Dependency Management**.
 
-Manages and centralizes dependency versions. Dependencies defined here are not added to the build unless explicitly included in the `<dependencies>` section of the child POM. This ensures that all modules use the same version of spring-core.
-```xml
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>5.3.10</version>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
-```
-**Licenses and Developers**.
-
-Includes project contributors and license details.
-```xml
-<developers>
-    <developer>
-        <id>john</id>
-        <name>John Doe</name>
-        <email>john@example.com</email>
-    </developer>
-</developers>
-<licenses>
-    <license>
-        <name>Apache 2.0</name>
-        <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-    </license>
-</licenses>
-```
-**Reporting**.
-
-Configures project reporting tools. Maven can generate project documentation using the <reporting> section, which specifies plugins that provide information about the project (e.g., code coverage, Javadocs).
-```xml
-<reporting>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-site-plugin</artifactId>
-        </plugin>
-    </plugins>
-</reporting>
-```
-The POM file is a comprehensive configuration file that governs the project's lifecycle, build, and other settings. It centralizes everything needed for consistent builds and dependency management.
+Path sum binary tree.
+Linked list.
+Kadane.
+Graph.

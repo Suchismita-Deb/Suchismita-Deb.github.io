@@ -59,7 +59,7 @@ The type of Exception is `Arithmetic Exception` the message is `/ by zero` Then 
 
 The first line in the output shows the exception and the next lines shows the stack trace. Stack Trace - Starting the place where exception to the main.
 
-When exception happened in one method say 3 then it see the method declaring the method 3 say method 2 if it can handle then good else it will go to the method that decalared method 2 say method 1.
+When exception happened in one method say 3 then it see the method declaring the method 3 say method 2 if it can handle then good else it will go to the method that declared method 2 say method 1.
 
 
 
@@ -68,10 +68,10 @@ When exception happened in one method say 3 then it see the method declaring the
 
 
 ### Error and Exception
-Object is parent of all and its child class is Throwable and it has Error and Exception.
-Error - You cannot control. Like **OutofMemoryError**, **StackOverflowError**.
-These are related to JVM issue. Like JVM can not able to create any new object in heap and heap is full then OutofMemoryError.
-Error is unchecked exception as it will compile when running I will get the outof memory error.
+Object is parent of all and its child class is Throwable and it has Error and Exception
+
+Error - You cannot control. Like **OutOfMemoryError**, **StackOverflowError**.
+These are related to JVM issue. Like JVM can not able to create any new object in heap and heap is full then OutOfMemoryError. Error is unchecked exception as it will compile when running I will get the out of memory error.
 
 
 ```java

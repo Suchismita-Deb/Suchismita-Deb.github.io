@@ -106,6 +106,7 @@ Constructor Injection.
 public class Controller{
     private Service service;
     public Controller(Service service){
+        // Dependency in the constructor.
         this.service = service;
     }
     public void handleRequest(){
@@ -125,8 +126,9 @@ Setter Injection.
 ```java
 public class Controller{
     private Service service;
+    
     public void setService(Service service){
-        this.service = service;
+        this.service = service; // DI via the setter method.
     }
     public void handleRequest(){
         servcie.doSomething();
