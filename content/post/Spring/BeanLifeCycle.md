@@ -1,6 +1,8 @@
 +++
 title = 'BeanLifeCycle'
 date = 2024-05-05T12:25:01+05:30
+
+url= "/post/spring/fundamental/beanLifeCycle"
 tags=["spring"]
 +++
 
