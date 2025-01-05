@@ -1,6 +1,8 @@
 +++
 title = 'Caching'
 date = 2023-11-29T09:48:54+05:30
+url= "/post/systemDesign/caching"
+tags = ['interview question', 'system design']
 +++
 
 

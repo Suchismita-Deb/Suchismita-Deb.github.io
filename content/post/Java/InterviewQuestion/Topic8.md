@@ -1,5 +1,5 @@
 +++
-title = 'Topic 8'
+title = 'Topic 8 Java'
 date = 2024-12-26T22:59:50+05:30
 url= "/post/java/interviewquestion/topic8/"
 tags = ['interviewQuestion', 'design pattern']

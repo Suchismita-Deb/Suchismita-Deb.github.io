@@ -1,7 +1,9 @@
 +++
 title = 'Follow Other Principle'
-date = 2024-08-02T11:52:36+05:30
-tags = ['Behavoiral Interview', 'Leadership Interview', 'Grokking the Behavioral Interview',"STAR"]
+date = 2024-08-01T22:32:18+05:30
+
+url = "/post/behavoiral/interview/principle/pattern"
+tags = ['Behavoiral Interview', 'Leadership']
 +++
 
 

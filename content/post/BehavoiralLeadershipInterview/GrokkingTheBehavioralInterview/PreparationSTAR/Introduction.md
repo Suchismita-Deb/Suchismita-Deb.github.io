@@ -1,7 +1,9 @@
 +++
-title = 'Introduction'
-date = 2024-08-01T23:10:30+05:30
-tags = ['Behavoiral Interview', 'Leadership Interview', 'Grokking the Behavioral Interview', "STAR"]
+title = 'Introduction to Leadership Interview.'
+date = 2024-08-01T22:32:19+05:30
+
+url = "/post/behavoiral/interview/Grokking/introduction"
+tags = ['Behavoiral Interview', 'Leadership Interview']
 +++
 
 

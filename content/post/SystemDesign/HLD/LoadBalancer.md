@@ -1,34 +1,33 @@
 +++
-title = 'LoadBalancer'
+title = 'Load Balancer'
 date = 2024-12-24T08:26:36+05:30
-url= "/post/systemDesign/fundamental/loadbalancer"
+url= "/post/systemDesign/hld/loadbalancer"
 tags = ['interview question', 'system design']
 +++
 
 ## Load Balancer.
 
-It distributes the load to the application and there are two types Application L7 load balance (modern) and Network L4 Load Balancer (faster).
+It distributes the load to the application and there are two types **Application L7 load balance** (modern) and **Network L4 Load Balancer** (faster).
 
 Application is layer 7 in the OSI model and Network is the layer 4 in OSI Model.
 
-There are many algorithm.
-Static Algorithm - Round Robin, Weighted Round Robin, IP Hash.
-Dynamic Algorithm - Least Connection, Weighted Least Connection, Least Response Time.
+The main difference between Application and Network Lead Balancer is Application loadbalancer can read the header/session/data/response. It takes dicision to distribute the traffic based on the data. It can also do the caching as it can store the response.  
+Loadbalancer can also be used for caching.
+
+Network has the TCP port, IP port and based on it it source the request to the server. It is faster.
+
+There are many algorithm.  
+>**Static Algorithm** - Round Robin, Weighted Round Robin, IP Hash.  
+**Dynamic Algorithm** - Least Connection, Weighted Least Connection, Least Response Time.
 
 ### Round Robin.
 
 It will assign the request to one server then to the next one then to the other one. It will simple count and assign the request to the server sequence.
 
-Advantage - Very easy implementation. Equal load distribution to all the servers.
+**Advantage** - Very easy implementation. Equal load distribution to all the servers.
 
-Disadvantage - One server with high capacity and another wit low capacity will be treated the same.
+**Disadvantage** - One server with high capacity and another wit low capacity will be treated the same.
 Change that low capacity server will go down because of overload of requests.
-
-### LoadBalancer.
-
-The main difference between Application and Network Lead Balancer is Application loadbalancer can read the header/session/data/response. It takes dicision to distribute the traffic based on the data. It can also do the caching as it can store the response. Loadbalancer can also be used for caching.
-
-Network has the TCP port, IP port and based on it it source the request to the server. It is faster.
 
 ### Weighted Round Robin.
 
@@ -36,9 +35,7 @@ In round robin the issue was that it assign both for high and low as same. Here 
 
 When request come it will be assigned and 3 requets will assign to server 1 then request will be assigned to server 2.
 
-**Advantage** - Low capacity serevr will get saved from recieving large number fo requests.
-
-Easy to implement as weights are static and no dynamic computation.
+**Advantage** - Low capacity serevr will get saved from recieving large number fo requests. Easy to implement as weights are static and no dynamic computation.
 
 **Disadvantage** - If request have differet processing time, then its possible that low capacity server get high processing requests and get overburdened.
 
@@ -89,4 +86,5 @@ Server 2 - TTFB - 1, Active Connection - 4, Server - 2.
 Server 3 - TTFB - 2, Active Connection - 0, Server - 3.
 
 Server 1 has the value 6, Server 2 has the value 4, Server 3 has value 0. The least one meaning Server 3 will get the request.
-
+### Top 6 types of Load Balancer
+![img.png](/images/img8.png)

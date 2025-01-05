@@ -1,6 +1,7 @@
 +++
 title = 'My First Post'
 date = 2023-11-25T23:30:18+05:30
+url= "/post/mypost"
 draft = true
 +++
 

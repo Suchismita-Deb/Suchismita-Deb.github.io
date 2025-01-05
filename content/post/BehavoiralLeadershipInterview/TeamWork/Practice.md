@@ -1,9 +1,11 @@
 +++
-title = 'Practice'
-date = 2024-08-01T22:33:00+05:30
+title = 'Practice Team Work Style in Behavioral Interview.'
+date = 2024-08-01T22:32:08+05:30
+url = "/post/behavoiral/interview/teamwork/practice/"
 tags=['Behavoiral Interview','Leadership Interview','Team Work Behavoiral Interview']
 +++
-### Practice Team Work Related Behavioral Question.
+
+## Practice Team Work Related Behavioral Question.
 
 ### Tell me about a time when you had to escalate a person in your team/organization?
 
@@ -11,7 +13,7 @@ Always start with the premise that the other person has good intention, and once
 
 You may have some example to illustrate that, such as, "Once we had a person in the team that refused to have his code reviewed before promoting into production, even though it never resulted in a production issue, it was against our code development standards and after several attempts to work it out directly with that person, I have no other option but escalate for help... bla, bla..."
 
-### Answer any question in the round like "Experience + Learn = Grow" format or STAR technique
+## Answer any question in the round like  "Experience + Learn = Grow" format or STAR technique
 
 ### How do you handle a heavy workload?
 
@@ -30,19 +32,39 @@ How do you rate yourself. In case if donot know the answer then say it and then 
 
 "On a scale of 1 to 10, a 5 would be a true average, and a 10 is perfect. I think I’m better than average, and no one is perfect."
 
+### Do you have experience training new hires? Describe a time when you had to teach a coworker to do something.
+
+**Situation** - In my recent project when one of my team mate moved to another team, the business hired 3 new candidate and I was assigned to train the new joined members.
+
+Task: "My goal was to make sure these new team members were fully up to speed with our day-to-day operations and understood our department's protocols."
+
+Action: "I organized a series of training sessions covering everything from basic procedures to more complex tasks they would encounter on the job. I also included hands-on training exercises and paired each new hire with a mentor from our team for additional support."
+
+Results: "The training really paid off. Within a few weeks, the new hires were handling their responsibilities smoothly and fitting right into the team. They even started bringing fresh ideas to our projects, which was fantastic to see. It was great to hear them say how prepared they felt, and it definitely showed in their work."
 
 ### Team Work.
-Describe a time when you helped a member of your team succeed.
+Describe a time when you helped a member of your team succeed.  
+
 Tell me about a time when you had to work with someone completely different from you. How did you adapt to collaborate better?
+
 Have you ever had an interpersonal conflict at work? If so, how did you handle it?
+
 What do you do when your team member refuses to or just can’t complete their part of the work? Give me an example.
+
 Have you ever mentored a coworker or been mentored? Tell me about it.
+
 In your previous roles, did you have a time when you disagreed with a supervisor’s decision? If so, how did you handle it?
+
 Tell me about an experience that helped you feel like part of the team at your previous job.
+
 Do you have experience training new hires? Describe a time when you had to teach a coworker to do something.
 
 Tell me about a time when you had to work closely with someone whose personality was very different from yours.
+
 Give me an example of a time you faced a conflict with a coworker. How did you handle that?
+
 Describe a time when you had to step up and demonstrate leadership skills.
+
 Tell me about a time you made a mistake and wish you’d handled a situation with a colleague differently.
+
 Tell me about a time you needed to get information from someone who wasn’t very responsive. What did you do?

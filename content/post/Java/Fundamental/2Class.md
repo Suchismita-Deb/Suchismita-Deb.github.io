@@ -561,3 +561,68 @@ public class Main{
     }
 }
 ```
+
+```java
+
+package org.example.tips.Project;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public final class ImmutableClass {
+
+    private final int id;
+    private final List<String> places;
+
+    ImmutableClass(int id, List<String> places){
+        List<String> place = new ArrayList<>(places);
+        this.id=id;
+        this.places = place;
+    }
+
+    int getId(){
+        return this.id;
+    }
+    List<String> getPlaces(){
+        List<String> tempList = new ArrayList<>(this.places);
+
+        return tempList;
+    }
+}
+
+class TestClass{
+    public static void main(String[] args) {
+        /*ArrayList<String> arr = new ArrayList<>();
+        arr.add("Hello");
+        arr.add("World");
+        ImmutableClass obj = new ImmutableClass(3,arr);
+        System.out.println(obj.getPlaces());
+        obj.getPlaces().add("India");
+        System.out.println(obj.getPlaces());
+        arr.add("Java");
+        System.out.println(obj.getPlaces());
+        System.out.println(obj.getClass());
+
+
+
+        HashMap<String,String> mp = new HashMap<>();
+        mp.put("Suchi","smita");
+
+        HashMap<ImmutableClass,String> hmap = new HashMap<>();
+        hmap.put(obj,"1");
+        System.out.println(hmap);*/
+        String str = new String("Suchi");
+        String str1  = new String("Suchi");
+        System.out.println(str.hashCode()+" "+str1.hashCode());
+        // When making the hashcode and equal we need to look to a specific paramter like id r primary key that will say when an object is same.
+        // Map linkedlist will store the key and value.
+    }
+}
+
+```
+
+Print the reverse of linked list.
+
+recursively calling to the next and and when next is null then print the val.
+When the recursive call end then the print of value.

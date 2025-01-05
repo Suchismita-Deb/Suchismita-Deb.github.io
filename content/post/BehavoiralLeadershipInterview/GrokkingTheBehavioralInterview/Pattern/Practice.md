@@ -1,6 +1,8 @@
 +++
-title = 'Patterns for the Behavioral interviews.'
-date = 2024-08-01T23:13:35+05:30
+title = 'Patterns for the Behavioral Interviews.'
+date = 2024-08-01T22:32:16+05:30
+
+url = "/post/behavoiral/interview/Grokking/pattern"
 tags=['Behavoiral Interview','Leadership Interview', 'Grokking the Behavioral Interview']
 +++
 

@@ -1,7 +1,8 @@
 +++
 title = 'Introduction'
 date = 2024-03-07T12:14:32+05:30
-tags=["system design"]
+url= "/post/systemDesign/designpattern/solid"
+tags = ['interview question', 'system design']
 +++
 
 

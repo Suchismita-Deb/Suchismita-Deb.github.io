@@ -1,7 +1,8 @@
 +++
-title = 'Important Topic'
+title = 'Important Topic in System Design.'
 date = 2023-11-18T14:19:48+05:30
-tags=["system design"]
+url= "/post/systemdesign/importantTopic"
+tags = ['interview question', 'system design']
 +++
 
 

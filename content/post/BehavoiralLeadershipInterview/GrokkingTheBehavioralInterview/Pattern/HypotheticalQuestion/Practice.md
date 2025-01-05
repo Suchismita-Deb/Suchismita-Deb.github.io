@@ -1,6 +1,8 @@
 +++
-title = 'Practice'
-date = 2024-08-02T20:11:07+05:30
+title = 'Practice Hypothetical Question Style in Behavioral Interview.'
+date = 2024-08-02T22:32:14+05:30
+
+url = "/post/behavoiral/interview/Grokking/hypothetical/pattern"
 tags = ['Behavoiral Interview', 'Leadership Interview', 'Grokking the Behavioral Interview', 'Hypothetical Behavioral Interview']
 +++
 

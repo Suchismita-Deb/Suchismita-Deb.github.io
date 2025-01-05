@@ -30,66 +30,55 @@ Part 5.
 
 Part 6.
 
-{{<youtube bUHFg8CZFws>}}
+{{<youtube iYIjJ7utdDI>}}
 
 Part 7.
 
-{{<youtube FJdryrcDD2s>}}
+{{<youtube F9lcK1jnAcs>}}
 
-Part 8.
+## Java
 
-{{<youtube AZzTHWF7tEc>}}
+|Topic|Link|
+|---|---|
+|Interview|https://suchismita-deb.github.io/tags/interviewquestion/|
+|Java|https://suchismita-deb.github.io/tags/java/|
+|Git|https://suchismita-deb.github.io/tags/git/|
 
-Part 9.
+## Spring
 
-{{<youtube Dsj8qQ1m5fA>}}
-
-Part 10.
-
-{{<youtube kIcq1_pBQSY>}}
-
-Part 11.
-
-{{<youtube WzHgOl3xvu4>}}
-
-Part 12.
-
-{{<youtube gvIn5QBdGDk>}}
-
-Part 13.
-
-{{<youtube p_q-n09B8K>}}
-
-Part 14.
-
-{{<youtube _KoiMoZZ3C8>}}
-
-Part 15.
-
-{{<youtube D5VIvdAuohc>}}
-
-Part 16.
+| Topic              |Link|
+|--------------------|---|
+| Spring             |https://suchismita-deb.github.io/tags/spring/|
+| Redis              |https://suchismita-deb.github.io/tags/redis/|
+| Crud               |https://suchismita-deb.github.io/tags/crud/|
+| Rest               |https://suchismita-deb.github.io/tags/rest/|
+| JDBC               |https://suchismita-deb.github.io/tags/jdbc/
+| Spring Boot Course |https://suchismita-deb.github.io/tags/springbootcourse/
+| Spring Security    |https://suchismita-deb.github.io/tags/spring-security/|
 
 
 
-Part 17.
+## System Design
+
+| Topic            |Link|
+|------------------|---|
+| Computer Network |https://suchismita-deb.github.io/tags/computer-networks/|
 
 
+## Design Pattern
 
-Part 18.
+| Topic            |Link|
+|------------------|---|
 
+## DSA
 
+| Topic            | Link                                       |
+|------------------|--------------------------------------------|
+| Bit Manipulation | https://suchismita-deb.github.io/tags/dsa/ |
 
-Part 19.
+## Behavioral Interview
 
-
-
-Part 20.
-
-
-
-Part 21.
-
-
-
+|Topic| Link                                                         |
+|---|--------------------------------------------------------------|
+|Behavioral Interview| https://suchismita-deb.github.io/tags/behavoiral-interview/  |
 

@@ -2,6 +2,7 @@
 title = 'Observation'
 date = 2024-11-18T11:22:25+05:30
 
+url= "/post/observation"
 tags=["observation"]
 +++
 

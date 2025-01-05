@@ -1,6 +1,8 @@
 +++
-title = 'Introduction'
-date = 2024-08-01T23:10:00+05:30
+title = 'Introduction to the importance of Leadership Interview.'
+date = 2024-08-01T22:32:12+05:30
+
+url = "/post/behavoiral/interview/introduction"
 tags = ['Behavoiral Interview', 'Leadership Interview', 'Grokking the Behavioral Interview']
 +++
 

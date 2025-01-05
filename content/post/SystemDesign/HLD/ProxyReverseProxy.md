@@ -1,7 +1,7 @@
 +++
 title = 'Proxy and Reverse Proxy'
 date = 2024-12-24T00:02:16+05:30
-url= "/post/systemDesign/fundamental/proxyReverseProxy"
+url= "/post/systemDesign/hld/proxyReverseProxy"
 tags = ['interview question', 'system design']
 +++
 
@@ -11,7 +11,7 @@ Client or group of client gives the request to the proxy server and it gets the 
 
 Proxy server sits between server and client and no request directly goes to the server.
 
-### Type sof proxy server.
+### Types of proxy server.
 
 **Forward Proxy** - Simple proxy.
 

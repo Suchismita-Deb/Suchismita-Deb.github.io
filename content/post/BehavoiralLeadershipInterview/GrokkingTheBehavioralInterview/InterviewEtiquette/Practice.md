@@ -1,7 +1,8 @@
 +++
-title = 'Practice Introduce Yourself.'
-date = 2024-08-01T23:14:36+05:30
+title = 'Practice Interview Etiquettes and Introduce Yourself.'
+date = 2024-08-01T22:32:13+05:30
 
+url = "/post/behavoiral/interviewetiquette"
 tags = ['Behavoiral Interview', 'Leadership Interview', 'Grokking the Behavioral Interview']
 +++
 

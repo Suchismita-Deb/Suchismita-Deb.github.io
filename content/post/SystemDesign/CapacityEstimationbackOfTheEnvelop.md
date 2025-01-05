@@ -1,8 +1,8 @@
 +++
 title = 'Capacity Estimation Back Of The Envelop'
 date = 2024-02-13T19:59:08+05:30
-tags=['system design']
-categories = ['low level design','system design']
+url= "/post/systemDesign/capacityestimation"
+tags = ['interview question', 'system design']
 +++
 
 |Metric System|Value|

@@ -1,5 +1,5 @@
 +++
-title = 'JavaVersionDetails'
+title = 'Java Version Details'
 date = 2024-12-27T13:00:20+05:30
 
 url= "/post/java/fundamental/JavaVersionDetails"

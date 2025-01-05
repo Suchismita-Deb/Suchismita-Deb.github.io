@@ -1,7 +1,9 @@
 +++
-title = 'Experiences'
-date = 2024-08-02T10:42:38+05:30
-tags=['Behavoiral Interview','Leadership Interview', 'Grokking the Behavioral Interview','Experience Based Behavoiral Interview']
+title = 'Experiences Style Behavioral Interview.'
+date = 2024-08-01T22:32:17+05:30
+
+url = "/post/behavoiral/interview/Grokking/exp/pattern"
+tags=['Behavoiral Interview','Leadership Interview']
 +++
 
 

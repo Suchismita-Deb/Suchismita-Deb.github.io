@@ -1,13 +1,18 @@
 +++
-title = 'Practice Customer'
-date = 2024-08-01T23:34:11+05:30
+title = 'Practice Customer Style in Behavioral Interview.'
+date = 2024-08-01T22:32:03+05:30
+
+url = "/post/behavoiral/interview/customer/practice/"
 tags=['Behavoiral Interview','Leadership Interview','Client Behavoiral Interview','Customer Behavoiral Interview']
 +++
 
 
 ### Show me a time when you demonstrated customer empathy in your role? How did you become aware of what the customer needed? How did you know the end result? What was the most challenging thing about delivering the solution. How did you overcome resistance.
 
-Technical Program Manager. This is the time when I was a technical program manager at the techSolution XYZ. I was tasked with a particularly challenging project for the largest enterprise client, Bank Corp. Teh bank was facing significant issue i the financial analysis software which was not integrated smoothly wth the legacy system leading to some data discrepancies and operation delays. The project not only involved the technical enhancement but also involved collaboration with the client it and operations team to ensure the solution meets their specific needs. My responsibility was to redesign and optimize the integration of our software with the client system. The project timeline was set to 3 months and in that time we need to design and develop and test and deploy the changes.
+Sample - Technical Program Manager.  
+This is the time when I was a technical program manager at the techSolution XYZ.  
+
+I was tasked with a particularly challenging project for the largest enterprise client, Bank Corp. Teh bank was facing significant issue i the financial analysis software which was not integrated smoothly wth the legacy system leading to some data discrepancies and operation delays. The project not only involved the technical enhancement but also involved collaboration with the client it and operations team to ensure the solution meets their specific needs. My responsibility was to redesign and optimize the integration of our software with the client system. The project timeline was set to 3 months and in that time we need to design and develop and test and deploy the changes.
 The first action I took is like a deep dive in the existing issues and research by analysing application logs and system error reports.
 Had detailed discussion with the other staff who had good knowledge of the legacy system. I got a comprehensive understanding of the technical landscape and the specific requirements.
 

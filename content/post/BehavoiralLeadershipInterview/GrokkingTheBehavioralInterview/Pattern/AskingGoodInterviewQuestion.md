@@ -1,6 +1,8 @@
 +++
 title = 'Asking Good Interview Question'
-date = 2024-08-02T20:05:09+05:30
+date = 2024-08-02T22:32:15+05:30
+
+url = "/post/behavoiral/interview/askingquestionToInterviewer"
 tags = ['Behavoiral Interview', 'Leadership Interview', 'Grokking the Behavioral Interview']
 +++
 

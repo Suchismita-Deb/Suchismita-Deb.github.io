@@ -1,6 +1,8 @@
 +++
 title = 'Memory And Storage System'
 date = 2023-11-15T19:08:53+05:30
+url= "/post/systemDesign/memorystoragesystem"
+tags = ['interview question', 'system design']
 +++
 
 

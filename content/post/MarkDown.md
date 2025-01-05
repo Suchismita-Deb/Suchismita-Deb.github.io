@@ -83,3 +83,7 @@ Making a text centered.
 Inorder to make new line and not new paragraph.
 
 We need to write the line then two space then hit enter and the next line. It will create new line.
+
+### Adding image with caption.
+
+{{< figure src="/images/SystemDesign/2PhaseCommit.png" caption="2 Phase Commit. Prepare Phase. Commit Phase." >}}

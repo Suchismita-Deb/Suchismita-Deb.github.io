@@ -1,17 +1,17 @@
 +++
-title = 'Practice Time Management.'
-date = 2024-08-01T23:38:47+05:30
-tags=['Behavoiral Interview','Leadership Interview','Time Management Behavoiral Interview']
+title = 'Practice Time Management In Behavioral Interview.'
+date = 2024-08-01T22:32:09+05:30
+url = "/post/behavoiral/interview/timemanagement/practice/"
+tags=['Behavoiral Interview','Leadership Interview']
 +++
-
 
 ### How do you accomplish tasks under a tight deadline? Give me an example.
 
-**Situation** - Generally I do not commit task with a time not possible to meet, sometimes unexpected things happen and one time my coworker took leave as he was not well.
+**Situation** - Generally I do not commit task with a time not possible to meet, sometimes unexpected things happen and one time my coworker took leave as he was not well.  
 
 **Task** - We both worked on the same module. I do know the functionality of that segment.
 
-**Action** - Asked my lead if any tsk can bve arranged based on the priority and then the task was managed I gave extra efforts to solve his work and did the analysis nd the development.
+**Action** - Asked my lead if any tsk can bve arranged based on the priority and then the task was managed I gave extra efforts to solve his work and did the analysis nd the development.  
 
 **Result** - The task was completed and validation was done. In the last day my co-worker also joined had  discussion with him and all the changes looks good and the changes were locked.
 
@@ -27,7 +27,7 @@ tags=['Behavoiral Interview','Leadership Interview','Time Management Behavoiral 
 
 ### Sometimes, it’s almost impossible to get everything done on your to-do list. What do you do when your list of responsibilities becomes overwhelming?
 
-**Situation** - College time and thesis and final sem and representative fo the point and student classroom representative. I had to give the updated list of teh class to the subject teacher.
+**Situation** - College time and thesis and final sem and representative fo the point and student classroom representative. I had to give the updated list of the class to the subject teacher.
 
 **Action** - delegate to another batch mate.
 
@@ -46,3 +46,5 @@ Situation - Learning framework by myself over a span of 2 months.
 **Action** - Had one on one and next time onward they take the decision after the discussion.
 
 **Result** - Started gaining confidence on the project and working on the pace.
+
+### Tell me about a time when you felt extremely stressed out by work. What caused it, and how did you manage it?

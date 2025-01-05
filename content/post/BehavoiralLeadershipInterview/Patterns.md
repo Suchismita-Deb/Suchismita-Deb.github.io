@@ -1,38 +1,37 @@
 +++
-title = 'Patterns'
-date = 2024-08-01T22:32:03+05:30
+title = 'Patterns of Bahavioral Question.'
+date = 2024-08-01T22:32:10+05:30
+
+url = "/post/behavoiral/interview/pattern"
 tags=['Behavoiral Interview','Leadership Interview','Decision Making Behavoiral Interview','Imaginary Behavoiral Interview']
 +++
+## Behavioral Questions By Categories.
 
-
-Behavoiral Questions By Categories.
-
-Topic Leadership.
-
-Topic Decision Making.
-
-Topic Problem Solving.
-
-Topic Communication.
-
-Topic Teamwork.
-
-Topic Client Customer.
-
-Topic Time Management.
-
-Topic Adaptability.
+Topic Leadership.  
+Topic Decision Making.  
+Topic Problem Solving.  
+Topic Communication.  
+Topic Conflict Resolution.  
+Topic Teamwork.  
+Topic Client Customer.  
+Topic Time Management.  
+Topic Adaptability.  
 
 All these comes under prior experience, hypothetical questions and value based questions.
 https://www.turing.com/kb/behavioral-and-technical-interview-questions
 
 ### Adaptability.
 
-Tell me about your first job in the industry. What did you do to learn the ropes?
-Have you ever had to put in long hours to finish a task? How did you handle it?
-Can you give me an example of when you had to adapt to a new and sudden change in the workplace? What happened?
-Tell me about a time when you felt extremely stressed out by work. What caused it, and how did you manage it?
-Give me an example of when you had to suddenly perform under pressure. What happened, and how did you handle it?
+Tell me about your first job in the industry. What did you do to learn the ropes?  
+
+Have you ever had to put in long hours to finish a task? How did you handle it? 
+
+Can you give me an example of when you had to adapt to a new and sudden change in the workplace? What happened?  
+
+Tell me about a time when you felt extremely stressed out by work. What caused it, and how did you manage it?  
+
+Give me an example of when you had to suddenly perform under pressure. What happened, and how did you handle it?  
+
 Have you had to switch between an in-office and remote or hybrid work environment? How did you navigate the change?
 
 ### Leadership.
@@ -89,45 +88,7 @@ Results: “In the end, I’m glad to say everything worked out and I actually m
 
 A bit modifycation and story added in this answer - Initial days and I had to prepare for the client visit. So business leader from our company and delivery partner will visitin some 3 weeks and they generally discuss about the work around and how they can improve the features and because of everyone being busy and no such bandwidth I did not get entire picture of the scenario and then I did some of these discussions and got the idea. When manager came to ask my knowledge about the system he was surpried that I already know the majority important portion of it.
 
-### How do you accomplish tasks under a tight deadline? Give me an example.
 
-Situation: “Well, typically, I try to never commit to a deadline I don’t think I can meet. But sometimes unexpected things happen, and you’re forced to think on your feet. For example, at my last job, my coworker had to take some time off work because of an emergency, and his project was left without a manager.”
-
-Task: “My supervisor then instructed me to take over his project and complete what work was left. Suddenly, I had a new project on my hands, and I wasn’t really sure how to handle it, as the deadline was in one week.”
-
-Action: “First, I requested a reduction on my own daily sales goals - which I was granted. This way, I could pay more attention to the project and only dedicate a few hours per day to my original tasks. Once I had a consistent schedule and hours set for each of my tasks, it was mostly easy from there.”
-
-Results: “Thanks to my teammates and my good time management skills, I managed to finish up two days before the deadline. And once my coworker came back to work, I was able to review the whole thing with him before submitting it. For what it’s worth, he was thoroughly impressed. And a few months later, I even got promoted based on my performance.”
-
-### Describe a long-term project you managed. How did you make sure everything was running smoothly?
-
-Situation: “When I was at Company X, I was managing the web development team in charge of setting up a new website for one of our biggest clients at the time. With most projects, we had a process set up and we would get most sites done in up to two months. This project, however, was a bit different, as the website was supposed to be more detailed, with a lot of unique pages. So, we had to be a lot more careful with our time management.”
-
-Task: “We had a strict deadline of 15 weeks, and I had to make sure that we used up our time as efficiently as possible.”
-
-Action: Before getting to actual work, I decided that we should plan everything out by the week. After some research and consulting with our team of developers, we decided to split the workload between different stages. We would devote around one week to the discovery phase, five weeks to design, three weeks to initial development, and the rest to any modifications and updates.
-
-Results: “In the end, we actually finished the website with all the promised functionalities in just under three months. The client was very satisfied with the result and eventually ended up recommending partners to our firm.”
-
-### Sometimes, it’s almost impossible to get everything done on your to-do list. What do you do when your list of responsibilities becomes overwhelming?
-
-Situation: “As a senior at University X, there were times when I just couldn’t physically get everything done on time. For example, towards the end of my final semester, I was the Student Council President and I was also writing my thesis. I had to submit my thesis the next day, and I was also working with my fellow student council members to organize the end-of-the-year ceremony for the university.”
-
-Task: “If I had tried to multitask both, I would just have done a poor job. Now, for me, the University thesis was clearly higher up on my list of priorities. After all, this was what my studies had been building up to for so long. But I couldn’t just abandon my council members either. With 24 hours until my thesis deadline, I had to think fast.”
-
-Action: “I decided that the best approach was to send all of my notes and outlines for the event to the Student Council Vice President, who was also a close friend of mine. Luckily, he understood my situation and took over my event-management responsibilities. Then I had just enough time to edit and finalize my paper.”
-
-Results: “Thanks to the VP, I was able to fix and finalize my thesis. Fortunately, the event went without a hitch too. In the end, I learned a valuable lesson on time management and how important it is to have a team you can rely on.”
-
-### Tell me about a time you set a personal goal for yourself. How did you make sure you would meet your objectives, and what steps did you take?
-
-Situation: “I think the most recent, and important, personal goal that comes to mind is that I managed to teach myself web development from scratch. You see, I wasn’t very satisfied as a sales rep at Company X. My coworkers were nice, and the pay was decent too, but I just didn’t see myself growing there.”
-
-Task: “So, I decided that I wanted a career change in a field I’ve always been interested in - web development. Now, because I was working full-time, I had to be very efficient with my time management skills.”
-
-Action: “I did some research, and all that was left to do was just follow my routine and stay committed. I set up a personal calendar and made sure to study HTML, CSS, and JavaScript for at least 2 hours every day. I gathered a list of beginner-friendly books to start with, and once I was done with those, I paid for some advanced online courses to improve my React and Vue.js skills. When I felt comfortable, I started working on some personal projects for my portfolio and did some freelance work part-time while I was still working at Company X.”
-
-Results: “In the end, I’m glad I stuck to my plan and continued with my set curriculum. If I hadn’t had my calendar planned out with specific objectives, I definitely would have been overwhelmed. Sure, at times, it felt like I was basically working two jobs and that a lot of the material wasn’t making sense. But I just kept moving forward, and then I got my first real break as a junior web developer at Company Y.”
 
 ### Can you describe a time when your supervisor or manager just gave you too much work with too little time? What did you do?
 
@@ -139,92 +100,6 @@ Action: “During the meeting, I remained calm and just went straight to the poi
 
 Results: “Luckily, he was understanding. I was the first in-house graphic designer they’d hired, and they weren’t 100% sure what was a lot of work, and what wasn’t. We ended up working together to better define my responsibilities. From then on, I was, for the most part, only getting the workload I could handle without diminishing the quality of my work.”
 
-How do you handle a disagreement with your coworkers? Give me an example of a time when you successfully persuaded someone to see things your way.
-
-Situation: “When I was working as a recruiter at Company X, I noticed that one of the candidates who had sent in their application was perfect for the role. Though he didn’t have a university degree and his resume wasn’t too polished, reading his cover letter, it was obvious he knew the industry and had delivered clear results.”
-
-Task: “I thought it was worth giving him a shot, but my supervisor didn’t see it that way. She skimmed through the resume and told me not to waste time and just discard the candidate.”
-
-Action: “I was, however, still pretty confident in the candidate, so I talked to the supervisor over lunch. I took a bit of an indirect approach, though. Instead of trying to directly pitch the candidate, I asked her to clarify the job description a bit more. We went a bit in-depth on what, exactly, we were looking for in the candidate, and once we were done discussing it, I told her that we happened to have a candidate who possessed all the relevant experience, but his resume was a bit weak.”
-
-Results: “Convinced, the supervisor decided to give the candidate’s application a more in-depth look and realized that they were, in fact, very qualified. She thanked me for bringing it up and agreed with me that the candidate was worth calling in for an interview.”
-
-Question #7
-What would you do if you misunderstood an important task on the job? Give me an example.
-
-Situation: “At my previous internship at Company X, I underestimated the amount of time it would take me to finish a presentation for a team meeting. The deadline my boss gave me was around a week, which was completely fair and I didn’t think it would be a problem. However, apparently, we had some miscommunication about what he meant with the deadline. I thought it was the date when we would go through the presentation, edit it together, and submit it like that. Apparently, what he’d meant, though, was to have the presentation 100% ready on that date.”
-
-Task: “So, I had to submit a draft presentation first, edit it based on my manager’s comments, and then present the report, all within two days.”
-
-Action: “I booked a meeting with the manager for the following day and spent four extra hours at the office to make sure that the first draft of the presentation was spotless. We held the meeting the next day and went through the presentation together to make sure it was spotless.”
-
-Results: “The manager loved the work, and it only took us around 30 minutes to finalize the whole thing.”
-
-Question #8
-How do you handle criticism from coworkers or supervisors?
-
-Situation: "Early in my role at Company X, during a quarterly review, my project manager said that some of my project reports weren't as detailed as we needed them to be. This took me by surprise since I had been receiving praise from my immediate team."
-
-Task: "But the timing was crucial. These reports were going to shape our strategy for the next quarter, so I needed to quickly improve. I had to make sure my reports met the higher standards expected by senior management."
-
-Action: "I decided to schedule extra meetings with my project manager to go over the reports in depth. I also sought advice from a couple of coworkers who I knew made detailed reports. Then, I dedicated some time each day to reviewing past reports that were praised, so I could figure out what I was missing and adopt the best practices."
-
-Results: "My efforts paid off - my reports became more thorough, and they were well received. We enhanced the decision-making for our next quarter's strategy and I got to strengthen my relationship with the team. My project manager was especially grateful for how quickly I took his feedback to heart and ended up ultimately contributing to a more streamlined process."
-
-Question #9
-Tell me about a time you disagreed with a performance assessment you received. How did you handle it?
-
-Situation: "At my last annual review at Company X, my supervisor marked me as 'meeting expectations' in some areas where I honestly felt I had gone above and beyond. I had even taken on extra projects throughout the year.”
-
-Task: "I knew I needed to clear this up. On one hand, my career’s progression depended on it, but I also needed to feel valued and appreciated at work."
-
-Action: "I requested a follow-up meeting with my supervisor to discuss the assessment in more detail. Before the meeting, I put together a clear summary of my additional projects and the positive feedback I had received from different teams. Then, I shared everything during our meeting to highlight my contributions over the past year.”
-
-Results: “The meeting went really well. My supervisor appreciated the detailed overview and, after discussing my achievements, agreed to adjust my performance rating. My contributions were reflected more accurately, and we also made an agreement to sync up more frequently so we could better align our expectations moving forward.”
-
-Question #10
-Have you ever had to work under someone who wasn’t very good at communicating? What happened?
-
-Situation: “Yes, at my last job as a tech recruiter, the hiring manager I was working directly with was somewhat more difficult to communicate with. He had very strict and precise requirements for the types of candidates he wanted to invite for interviews. He wasn’t open to much communication on the matter or trying new things, even when the company desperately needed new hires. This one time, I got a candidate that was a pretty good fit for the job but was lacking in a few aspects.”
-
-Task: “I wanted to make sure that we got the person in for an interview, but I was 100% sure that my hiring manager would shut me down.”
-
-Action: “So, before running the candidate through him, I called them and collected his biggest strengths to present to the hiring manager.”
-
-Results: “The hiring manager did indeed end up liking the candidate and calling them in for an interview.”
-
-Question #11
-Tell me about a time when you successfully explained a technical problem to a coworker or a customer who didn’t have a tech background.
-
-Situation: “I’ve worked as a tech support specialist before, so I really excel at this. I’ve had to explain complex concepts to customers on a regular basis, but to give you one single example, I’ve had to explain to customers with next to no understanding of computers how to delete a virus on their computer, which usually requires at least some computer skills.”
-
-Task: “After trying to give basic instructions to the customer, they still didn’t really understand much, so I had to come up with a smarter solution.”
-
-Action: “So what I did was walk them through the entire thing step by step while explaining it simply but in no condescending terms. Instead of making them do most of the work, I walked them through the process of getting me to connect with their computer, and then I explained to them what, exactly, I did.”
-
-Results: “The customer was very happy with my work, and we managed to fix the issue with their computer.”
-
-Question #12
-What do you think about one-on-one meetings? How often do you think they should happen?
-
-Situation: "I think one-on-one meetings are great. When I was at Company X, at first our team rarely had scheduled one-on-one meetings. That sometimes left us unsure about project details or personal performance feedback."
-
-Task: "I saw the need for more consistent communication to help myself and the whole team stay on track and feel supported."
-
-Action: "So, I suggested to our team leader that we start having one-on-one meetings every other week. I explained how these could help clarify our project roles and give us each a regular opportunity to voice concerns and receive feedback."
-
-Results: "After we started the bi-weekly meetings, I noticed a real change. My projects ran smoother because I had clearer expectations, and it was easier to discuss any issues when they appeared. Plus, it’s helped me build a stronger relationship with my manager, which made work feel more collaborative and the environment more supportive."
-
-Question #13
-Can you tell me about a time you gave a presentation that was particularly successful? Why do you think it went well?
-
-Situation: “Sure thing. As the business development manager at Firm X, there were quite a few opportunities when I had to speak in front of a crowd. The most recent and successful one was for the new project we were launching. “
-
-Task: “I was called on to speak for a two department-wide meeting of up to 50 people. Now, I had never delivered a presentation to this many people, but luckily, I knew most of them quite well after years of working with them.”
-
-Action: “Working with two other members of my team, I decided to take a more creative approach and create a short video, a skit, to hook the audience. That was the intro, and then we used PowerPoint and hands-on examples to show what to expect from the new project launch. And finally, we dedicated the last five minutes to a Q&A session.”
-
-Results: “It felt longer, but the whole speech took about 15 minutes in total. We got great feedback from the audience, and I was later asked to present at the all-hands meeting the next month. I knew my colleagues well enough and I tried to make the speech as if I were having a one-on-one conversation with a friend - with a few jokes in-between.”
 
 Question #14
 Describe a time when you helped a member of your team succeed.
@@ -302,17 +177,6 @@ Task: "But I wanted to integrate into the team and really contribute to the camp
 Action: "So, I volunteered to take on a task everyone was overlooking—managing the outreach for user feedback, which was critical for the campaign's next phase. I coordinated with different team members to gather the necessary information and crafted a strategy to collect feedback."
 
 Results: "This let me work closely with different team members and helped me learn about their strengths and working styles. I feel like my success there allowed me to contribute to the campaign and really solidified my position on the team. It made me feel like a valued member of the group, and the team appreciated my efforts, so it was great."
-
-Question #21
-Do you have experience training new hires? Describe a time when you had to teach a coworker to do something.
-
-Situation: "At Company X, soon after I was promoted to a team lead role, I was tasked with training a group of new hires who were just starting out in our department."
-
-Task: "My goal was to make sure these new team members were fully up to speed with our day-to-day operations and understood our department's protocols."
-
-Action: "I organized a series of training sessions covering everything from basic procedures to more complex tasks they would encounter on the job. I also included hands-on training exercises and paired each new hire with a mentor from our team for additional support."
-
-Results: "The training really paid off. Within a few weeks, the new hires were handling their responsibilities smoothly and fitting right into the team. They even started bringing fresh ideas to our projects, which was fantastic to see. It was great to hear them say how prepared they felt, and it definitely showed in their work."
 
 Question #22
 Sometimes, clients can be difficult to work with. Can you describe a situation when a client was wrong and you had to correct them?
@@ -435,29 +299,9 @@ Action: “So, I sat down with each team member individually, really got to know
 
 Results: “Team members were pretty happy with the tasks they got and started off their relationship with our company on a positive note.”
 
-Question #33
-What’s one project or achievement you’re very proud of?
 
-Situation: "One project I'm particularly proud of was at Company X, where I led the development of a new software tool designed to streamline our inventory management."
 
-Task: "The goal was to reduce the time and effort it required to manage our inventory while also reducing the errors that came with manual entry."
-
-Action: "So, I spearheaded the project. I collaborated closely with the IT and logistics teams to make sure our needs were met accurately. I guided the design, testing, and implementation phases and regularly updated key stakeholders while adapting the project’s scope based on their feedback."
-
-Results: "The new tool significantly improved our efficiency. We cut inventory processing time by 40% and reduced errors by 50%. It was incredibly satisfying to see our work make such a significant impact on our operations. The team's positive reaction to the improvements was also really encouraging, so it’s an experience I’m glad I had."
-
-Question #34
-Tell me about a time when you had to perform a task or work on a project you had no previous experience with. How did you approach this situation, and what did you learn?
-
-Situation: “In my previous position at Company X, my manager had to leave unexpectedly for about a month due to a medical condition. Fortunately, she was able to give us a week's notice.”
-
-Task: “Because of that, our director asked me to fill in as the interim manager. I was familiar with the basics of management on a theoretical level, and I had worked with my manager closely before, but I certainly wasn’t trained to be a manager yet. Though I wasn’t going to say no, and I, more or less, felt confident about my ability to take on the new challenge.”
-
-Action: “So, I accepted the position. The first thing I did was gather the team and let them know about the situation. I was very open about my lack of experience and asked them to be open about giving feedback when possible. I also asked a manager for an hour of their time to pick their brain and make sure I’m doing everything right.”
-
-Results: “In the end, we managed to get through the month without any problems and we delivered all the projects on time. When my manager returned, she was very pleased with the work, and I even got compliments from our director. Because of my success with the role, I was even promoted to team manager at the end of that year.”
-
-Question #35
+### Question #35
 Have you ever wanted to improve the company culture? What did you do to contribute?
 
 Situation: "Well, I don’t have a lot of work experience that’s relevant here, but I do have an example from when I was a student. During my junior year at high school, I noticed that a lot of students felt disconnected from the school as a community, particularly those of us who weren’t involved in sports or any major clubs like theatre."
@@ -468,69 +312,6 @@ Action: "I worked with the student council to organize a 'Culture Week,' where e
 
 Results: "The event was a big hit and it even became an annual tradition. Students who previously felt left out were now a lot more involved and visibly happier at school. It was really rewarding to see how a couple of new activities can help people connect with each other and find their place among everyone else."
 
-Question #36
-Describe a time when you didn’t know how to solve a problem. What did you do to resolve the issue?
-
-Situation: "Hmm, well, for example, back when I worked in customer support, I used to get tasked with solving problems I knew nothing about. One evening, I found myself as the most senior person on shift, despite being relatively new myself. Right then, a customer called with a technical issue that I had never encountered before."
-
-Task: "So, I needed to resolve the customer's issue and make sure they’re satisfied with our support, while at the same time, I had to learn how to fix the problem with no one to help me."
-
-Action: "I was a little tense but kept my composure and assured the customer that I would find a solution and get back to them shortly. So, after hanging up, I did some research. I started by checking our internal knowledge base, then I started searching tech forums for similar issues. It took a bit of time, but I was able to piece together the information I needed to troubleshoot the problem."
-
-Results: "In the end, I called the customer back with a step-by-step solution, which resolved their issue. They were grateful for the help and they were pretty satisfied with how I handled the problem, even though it took longer than it probably should have. I learned how to handle that particular problem like a pro, and I felt a lot more confident at work after that. Now, I feel like I can handle just about any unfamiliar problem that comes my way."
-
-Question #37
-Tell me about a time when you solved a problem at your job that wasn’t part of your job description.
-
-Situation: "I was working as a sales associate at a popular clothing store, and one day our point-of-sale system went down. It was a busy Saturday afternoon, and the store was packed with customers."
-
-Task: "Although fixing tech issues wasn’t part of my job description, I knew we needed to get the system back up quickly to avoid losing sales and frustrating customers."
-
-Action: "I remembered a few troubleshooting steps from a previous job where I had seen a similar issue. I decided to try them out. I reset the main router and then restarted the POS system to see if it would clear the error. I also called our tech support line to confirm I was doing everything correctly."
-
-Results: "To everyone’s relief, the system started working again within a few minutes. Customers were able to continue their purchases smoothly, and we avoided a potentially significant interruption on one of our busiest days. So, I managed to help the store that day and I learned how important it is to take initiative, no matter what your role is. I’d say it’s something that’s stuck with me ever since."
-
-Question #38
-How would you solve a specific problem in your line of work?
-
-Situation: "In my role as a video game animator at Company X, we encountered a challenge where the animations for a certain character in our newest game weren’t syncing properly with the game physics engine. So, this basically caused the character’s movements to look unnatural and disrupted the gameplay, especially during some critical action sequences."
-
-Task: "My main goal was to make sure that the character animations were both visually appealing and mechanically in sync with the game’s physics. We were aiming for a seamless and immersive gameplay experience, so we couldn’t risk this coming up later."
-
-Action: "First, I collaborated closely with the physics programmers to really understand the ins and outs of the engine. Then, I adjusted the keyframes in the character’s animation to align them better with the physics calculations. It still needed some refining, so I implemented a middleware tool specifically designed for animation blending and real-time adjustments."
-
-Results: "The adjustments worked well. After the gameplay team and I tested the changes, the character's movements became much smoother and more realistic. We eliminated all the previous glitches, and the game was a success after its release.”
-
-Question #39
-What have you done to make your work more productive in your previous roles?
-
-Situation: "When I was working as an administrative assistant at a law firm, I noticed that a lot of my time was spent just looking for things. Whether it was a misplaced file on my desk or a lost email in my inbox, it was slowing me down."
-
-Task: "I decided to tackle this problem head-on to make my days more productive and keep everything running smoothly."
-
-Action: "First, I reorganized my desk. I set up a system where the most frequently used items were right at my fingertips. For my digital files, I meticulously organized my bookmarks and online folders, labeling everything clearly and setting up shortcuts for the files I accessed daily."
-
-Results: "These changes really streamlined my workflow. I spent less time digging through drawers or clicking through folders, which gave me more time to focus on the real work. My coworkers and bosses noticed the improvement too, which definitely felt good. It just goes to show that sometimes it's the little things that can make the biggest difference in how productive you are."
-
-### Tell me about a time you went above and beyond at work.
-
-Situation: "When I was working as a social worker at a community health center, one of the families I was helping was really struggling. They had lost their main source of income and were facing a bunch of issues like not having stable housing and dealing with health problems."
-
-Task: "I knew the usual resources wouldn’t be enough to really help them get back on their feet."
-
-Action: "So, I went beyond what I would usually do. I contacted multiple local charities and community groups to find extra help for them. I managed to secure donations, arrange temporary housing, and fill out a lot of paperwork for more permanent solutions during my own time in the evenings and over the weekends."
-
-Results: "All the extra work paid off. The family got into a stable housing program pretty quickly, received the medical care they needed, and got some financial aid to tide them over. It was a lot of effort, but seeing how much it helped them made it all worth it. It really showed me the impact I can have in this job."
-
-### Have you ever contributed something in any of your previous roles that made people congratulate you?
-
-Situation: "In my previous role as a sales representative at Company X, we had been trying to land a major client that was known for their extensive market influence. Securing them had been a goal for our team for over a year."
-
-Task: "So, I was determined to win this client. A win like that could boost our company's revenue and enhance our market reputation."
-
-Action: "I took the initiative to thoroughly research the client’s business needs and the challenges they might be facing. Based on this, I tailored our pitch to highlight how our services could uniquely address each. I also coordinated with our product teams to make sure we could confidently deliver on any commitments made in the proposal. After several meetings and discussions, I finally presented our tailored services to their executive board. I don’t think I’ve ever been in a situation as high-stakes as that before or since!"
-
-Results: "Thankfully, the client was impressed with our dedication and the customized approach, and they signed on. This was one of the largest deals our company had ever secured. The success was such a huge morale booster for the team, and I received commendations from our senior management for my involvement. It was incredibly rewarding to see our collective efforts pay off in such a big way."
 
 ### Give me an example of a goal you failed to meet and how you handled the situation.
 
@@ -552,40 +333,23 @@ Action: "I took a risk and invited a couple of well-known activists to speak at 
 
 Results: "Unfortunately, I was wrong. It turned out to be too much, too soon. Instead of creating a place for dialogue, the high-profile activists brought out protestors, and we saw lower attendance than we expected. The event didn’t have the impact we were aiming for, and that was tough to see. I realized I made a mistake by not listening to the other volunteers. But I definitely learned how important it is to understand the community you’re based in and to do the groundwork before taking risks like that.”
 
-### Describe a time you realized you were wrong about something. What happened?
+### If you have not faced the situation.
 
-Situation: "Oh yeah, absolutely. One time, during my game design internship, I was super excited to put together a complex puzzle for a new mobile game. I thought it would really impress players with its intricacy."
-
-Task: "I wanted this puzzle to be a standout feature in the game. But during our initial playtests, the reaction wasn’t what I expected at all."
-
-Action: "I sat down to watch the playtest sessions and also got some advice from the senior game designers. They helped me see that my puzzle, while cool, was too complex for the quick gameplay style of our game. Realizing this, I went back to the drawing board to simplify things."
-
-Results: "After I toned down the puzzle, we tested it again and the response was way better. Players enjoyed it more because it fit the fast pace of the game without being too much of a challenge. I really saw how crucial it is to align game elements with the game’s overall vibe and what players are looking for."
-
-### Do you have any work habits you’d like to improve?
-
-Situation: "I’m a content writer, and I have a bit of a habit of pushing my work until the last minute. It's something I've managed to get away with because I always meet my deadlines, but it definitely turns into a crunch."
-
-Task: "I realized this isn’t the best way to work, especially when things get really busy. I knew I needed to start spreading out my workload to avoid the stress of last-minute rushes."
-
-Action: "I decided to use a digital planner to keep track of my tasks. I set daily goals for myself and made sure to start on assignments earlier than before. I also started checking in on my progress more frequently during the week."
-
-Results: "It’s been working out pretty well. I’m less stressed, and I think my writing is better for it because I’m not rushing through it, especially when it’s time for editing. I’m still working on making this a consistent habit, but I can already see the benefits."
-
-If you have not faced the situation.
 "I don’t think I’ve been in a situation like that before, but here’s how I would approach it."
 
 https://igotanoffer.com/blogs/tech/google-behavioral-interview
 
-Categories of the question.
-
-General
-Teamwork
-Leadership / people management
-Project management
-Adaptability
-Communi
-
 https://www.tryexponent.com/blog/the-complete-google-behavioral-interview-guide
 
 https://leetcode.com/discuss/interview-question/5305486/Google-L4-(OFFER)
+
+What Are Behavioral Interview Questions?
+45 Common Behavioral Interview Questions
+5 Questions About Time Management
+8 Questions About Communication Skills
+8 Questions About Teamwork
+3 Questions About Working with Clients and Customers
+6 Questions About Adaptability
+5 Questions About Leadership
+4 Questions About Problem-Solving
+6 Questions About Success and Failure

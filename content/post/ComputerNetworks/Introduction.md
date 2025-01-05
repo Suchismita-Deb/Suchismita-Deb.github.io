@@ -1,6 +1,8 @@
 +++
-title = 'Introduction'
+title = 'Introduction to Computer Network.'
 date = 2024-03-17T22:49:56+05:30
+
+url= "/post/computernetwork/introduction"
 tags=["computer networks"]
 +++
 

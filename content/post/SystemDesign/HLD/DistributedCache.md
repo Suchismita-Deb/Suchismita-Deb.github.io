@@ -1,7 +1,7 @@
 +++
-title = 'DistributedCache'
+title = 'Distributed Cache'
 date = 2024-12-24T00:04:11+05:30
-url= "/post/systemDesign/fundamental/distributedcache"
+url= "/post/systemDesign/hld/distributedcache"
 tags = ['interview question', 'system design']
 +++
 

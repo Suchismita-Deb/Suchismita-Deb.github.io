@@ -1,7 +1,9 @@
 +++
-title = 'PracticeSTAR'
-date = 2024-08-02T11:42:52+05:30
-tags = ['Behavoiral Interview', 'Leadership Interview', 'Grokking the Behavioral Interview']
+title = 'Practice STAR Principle.'
+date = 2024-08-01T22:32:20+05:30
+
+url = "/post/behavoiral/interview/Grokking/practiceSTAR"
+tags = ['Behavoiral Interview', 'Leadership Interview']
 +++
 
 

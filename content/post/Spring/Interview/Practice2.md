@@ -1,5 +1,5 @@
 +++
-title = 'Practice2'
+title = 'Practice 2 Spring'
 date = 2024-12-29T22:13:20+05:30
 
 url = "/post/spring/interview/topic2/"

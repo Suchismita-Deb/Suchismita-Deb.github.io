@@ -1,6 +1,8 @@
 +++
 title = 'Git Guide'
 date = 2023-11-18T08:01:08+05:30
+
+url= "/post/gitguide"
 tags=['git']
 +++
 

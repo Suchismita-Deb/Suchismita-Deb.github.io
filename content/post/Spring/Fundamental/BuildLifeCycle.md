@@ -18,19 +18,13 @@ In the pom file there is some xml and then parent and every pom is a child of so
 
 ### Build lifecycle.
 
-**Validate**.
-
-**Compile**.
-
-**Test**.
-
-**Package**.
-
-**Verify**.
-
-**Install**.
-
-**Deploy**.
+**Validate**.  
+**Compile**.  
+**Test**.  
+**Package**.  
+**Verify**.  
+**Install**.  
+**Deploy**.  
 
 When we want to run the package phase then all the first phase is executed. Each phase has multiple tasks.
 
@@ -38,7 +32,7 @@ When we want to add task in one phase then with the build tag we can add the tas
 
 In the install step it will install the .jar pacakge in local maven repository which is in home directory.
 
-@RestController = @Controller + @ResponseBody.
+**@RestController = @Controller + @ResponseBody.**
 
 @ResponseBody Meaning the return type is the http response.
 
@@ -255,51 +249,11 @@ Service layer will do the value coming from db and map it to the response dto.
 
 Entity - Direct representation of the table. When servcie enter a data then it will put the value in the entity and repository will add the value.
 
-### Lifecycle of Maven.
-
-Maven is a project management tool not just build management tool.
-
-It helps in build generation, dependency resolution and documentation.
-
-Maven uses POM(Project Object Model) to do it. When maven command given it looks pom and get the configuration.
-
-In the pom file there is some xml and then parent and every pom is a child of some other pom. When in the pom file no parent tag present then the pom is a child of superPom.xml The groupId, artifactId, version and project name are the unique identifier of the project. There is a properties tag and it is a key value pair where java.version is the ket and the version is the property. In the repository tag we send the link from where maven will download the dependencies. Then there is the build tag.
-
-### Build lifecycle.
-
-**Validate**.
-
-**Compile**.
-
-**Test**.
-
-**Package**.
-
-**Verify**.
-
-**Install**.
-
-**Deploy**.
-
-When we want to run the package phase then all the first phase is executed. Each phase has multiple tasks.
-
-When we want to add task in one phase then with the build tag we can add the task in plugin.
-
-In the install step it will install the .jar pacakge in local maven repository which is in home directory.
-
-@RestController = @Controller + @ResponseBody.
-
-@ResponseBody Meaning the return type is the http response.
-
-@RequestParamter - In the path there is ? and & and contain the value.
-
-@RequestBody - Data in the body will be mapped to the dto.
-
 ### Lifecycle of Bean.
 
 Bean ia a Java object which is managed by spring container also known as IOC container.
 
-2 ways to createthe bean @Component and @Bean.
+2 ways to create the bean @Component and @Bean.
 
 @Component - Convention over configuration. Asking spring to make th object and manage it.
 

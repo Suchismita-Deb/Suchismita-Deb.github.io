@@ -1,6 +1,7 @@
 +++
 title = 'Design Booking System'
 date = 2024-09-27T10:05:46+05:30
+url= "/post/systemdesign/designexample/DesignBookingSystem"
 tags = ['interview question','system design']
 categories = ['low level design','system design']
 +++
