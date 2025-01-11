@@ -7,14 +7,14 @@ tags = ['interview question', 'system design']
 
 ## Distributed Cache and Caching Strategies - Cache Aside, Read-Through.
 
-Cachig is a technique to stpre frequently used data ina fast access memory rather than accessing data every time from slow access memory.
+Caching is a technique to store frequently used data ina fast access memory rather than accessing data every time from slow access memory.
 
-Ram is faster than harddisk and db.
+Ram is faster than hard disk and db.
 
 It makes the system fast. It helps to reduce the latency. It also helps to achieve the fault tolerance.
 
 There are different types of caching present at different layer of the system like -
-Client Sied Caching (Browser caching).
+Client Side Caching (Browser caching).
 CDN(used to store the static data).
 Load Balancer.
 Server side Application Caching (Redis).

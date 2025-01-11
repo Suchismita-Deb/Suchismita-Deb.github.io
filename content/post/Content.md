@@ -36,6 +36,37 @@ Part 7.
 
 {{<youtube F9lcK1jnAcs>}}
 
+Part 8.
+
+{{<youtube HgqcT3j7_x0>}}
+
+Part 8.
+
+{{<youtube _pvzcxrKWAs>}}
+
+Part 8.
+
+{{<youtube hB0NjMheu90>}}
+
+Part 8.
+
+{{<youtube WbbCSYWHXE0>}}
+
+Part 9.
+
+{{<youtube GoxrsoxM9sE>}}
+
+Part 10.
+
+{{<youtube yT-Tnehcyl8>}}
+
+Part 11.
+
+{{<youtube GoxrsoxM9sE>}}
+
+
+Global Exception, Mapping, WebServer. Maven command
+
 ## Java
 
 |Topic|Link|

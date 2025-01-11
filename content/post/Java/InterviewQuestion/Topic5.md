@@ -206,7 +206,7 @@ Parallel Stream: ForkJoinPool.commonPool-worker-1 processes A main processes B F
 **ConcurrentHashMap**.
 
 The ConcurrentHashMap class is part of the Java Collections Framework and extends the AbstractMap class. It implements the ConcurrentMap and Serializable interfaces. Below is the hierarchy:
-```xml
+```
 java.lang.Object
    └── java.util.AbstractMap<K, V>
      └── java.util.concurrent.ConcurrentHashMap<K, V>
