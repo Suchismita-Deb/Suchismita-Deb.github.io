@@ -1184,3 +1184,9 @@ CompletableFuture<String> asyncTask2 = CompletableFuture.supplyAsync(()->{return
 
 CompletableFuture<String> combinedFutureObj = asyncTask1.thenCombine(asyncTask2, (Integer val1, String val2) -> val1+val2);
 ```
+
+### Difference between Future and CompletableFuture.
+
+|Future|CompletableFuture|
+|---|---|
+|
