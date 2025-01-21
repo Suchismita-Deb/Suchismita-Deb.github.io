@@ -46,7 +46,7 @@ Reverse Proxy helps in loadbalancer.
 
 ### ReverseProxy and loadbalancer.
 
-When one server then also we need reverse proxy. Reverse proxy can be load balancer and the reverse is ot true.
+When one server then also we need reverse proxy. Reverse proxy can be load balancer and the reverse is not true.
 
 ### Reverse Proxy and Firewall.
 

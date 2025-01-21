@@ -3,63 +3,19 @@ title = 'Concurrency Multithreading'
 date = 2024-06-11T08:18:37+05:30
 
 
-url = "/post/java/interviewquestion/thread/"
+url = "/post/java/interviewquestion/multithreading/"
+tags = ['interviewQuestion', 'java']
 +++
 
 
-Introduction.
-
-Rate in Java.
-
-Garbage Collection - We can remove the object when not needed.
-
-String.
-Memory storage.
-
-Different string builder (thread safe)
-
-### Ways to create thread in java.
-
-By extends the thread class or implement runnable interface and override the run method.
-
-```java
-public class Mythread extends Thread{
-    public void run(){
-        // The start of the thread.
-        System.out.println("Start");
-    }
-}
-public class MyRunnable implements Runnable{
-    public void run(){
-        System.out.println("Thread is running in the runnable interface.");
-    }
-}
-public class ThreadDemo{
-    public static void main(String[] args){
-        MyThread thread1 = new MyThread();
-        thread1.start(); // We donot call the run method directly we call the start method.
-
-        MyRunnable runnable = new Runnable();
-        Thread thread1 = new Thread(runnable); // Thread accepts the runnable.
-        thread1.start();
-    }
-}
-```
-
-It is better to use Runnable as there will be more implementations and we can only extend one class.
-
-thread state - 4-5 New state, start the thread by start, then runnable then pause or block state then resume state call the stop method to stop the thread.
-
-Collection. ArrayList, HashMap, LinkedList.
-
-Bucketing in HashMap.
+mvn command 
+mvn clean install and mvn clean install package.
 
 Concurrent collection.
+
 Concurrent hashmap. - hashmap is not threadsafe. When making and modify the same map then concurrent exception. In concurrent hashmap there will not get the exception and reading and modifying the hashmap is alright.
 
 It looks into the map as a bucket and dont see the entire map.
-
-Spring Boot.
 
 How to connect two data base in the spring boot.
 
@@ -87,86 +43,6 @@ Normalization in sql.
 
 Foreign key in sql.
 
-### Stream problems.
-
-```java
-int num[] = {1,2,3,4,4,5,6,7,8};
-int sum = Arrays.stream(nums).filter(n->n%2==0).sum();
-System.out.println(sum);
-```
-
-Count the occurrence "apple" in the list.
-
-```java
-List<String> list = Arrays.asList("apple","banana","orange","apple","apple");
-long count = list.steam().filter(word->words.equalOrIgnoreCase("apple")).count();
-System.out.println(count);
-```
-
-Given a list of list put all the elements in the same list.
-
-```java
-List<List<String>> skills = Arrays.asList(
-    Arrays.asList("java","Spring","SpringBoot"),
-    Arrays.asList("React","Kafka","Microservice"),
-    Arrays.asList("MVC","Design Pattern");
-);
-List<String> allSkills = skills.stream().flatMap(skillsSets -> skillsSet.stream()).collect(Collectors.toList());
-// With stream first will get one list, flatmpa will combine the list in one list.
-System.out.println(allSkills);
-```
-
-Find the skills starting with character 's'.
-
-```java
-List<String> skillsStartsWithS = allSkills.stream().filter(s -> s.charAt(0)=='s').collect(Collectors.toList());
-List<String> skillsStartsWithS = allSkills.stream().filter(s -> s.startsWith("S")).collect(Collectors.toList());
-System.out.println(skillsStartsWithS);
-```
-
-Age of an employee above 30.
-
-```java
-List<Integer> l = Arrays.asList(1,2,3,4,5);
-List<Integer> list - l.stream().filter(x->x>3).collect(Collectors.toList());
-System.out.println(list);
-```
-
-Count to get the frequency of the string in the list.
-
-```java
-List<String> list = Arrays.asList("Hello","Hello","World");
-
-// Output - "Hello" - 2, World - 1.
-```
-
-Reverse a list using stream.
-
-| HashMap                                       | HashTable                               |
-| --------------------------------------------- | --------------------------------------- |
-| Not synchronised, not thread safe.            | Synchronized and thread safe.           |
-| Allows one null key and multiple null values. | Does not allows null keys or values.    |
-| Generally faster unsynchronized.              | Slower due to synchronization overhead. |
-
-Features in Java 8.
-Lambda Expressions.  
-Stream API.  
-Default methods.  
-Optional Classes.  
-Functional Class.  
-Method Reference.  
-Date and Time API.  
-Default and Static Interface Methods.  
-
-### Exception Handling in Java. Checked and Unchecked Exception.
-
-try, catch, final, finally, throw and throws are the keyword used in hendle of the exception.
-
-Checked Exception - By the compiler at the compile time. SQLException, ClassNotFoundException, IOException.
-
-Unchecked Exception - Runtime Exception occurs during the program execution. ArrayIndexOutOfBound, NPE.
-
-
 ### Shallow copy and deep cody.
 
 The difference between a shallow copy and a deep copy lies in how the data of an object is duplicated when creating a copy.  
@@ -175,14 +51,7 @@ Deep copy creates a new object with entirey new copies of all the data within th
 
 By implementing the Clonable interface and overriding the clone() method, you can create a deep copy of the objects. Within the clone() method we perform deep copy of all field, including the referenced objects.
 
-S - Single Responsibility Principle - Class should have a single responsibility or purpose.
-O - Open-Close Principle - Classes and module should be open for extension and closed for modification. It means that you shoulld be able to extend the behaviour of a class without modifying its exustingcde. We can apply this by using abstration , interfaves and inheritance.
 
-L - Liskov Constitution PRinciple - The LP states that the object if the suerclass should be replacale with ojects of the subclass without affescting the correctness of the program.
-
-I - Interface Segrefation Principle - ISP states that client should not be forces to depend oninterace thet dont use.
-
-D - Dependency Inversion Priciple - DIP - The high level modules or classes should bot depend on low level modules or classes directly.
 
 ### Difference between sleep and wait in multithreading.
 
@@ -219,10 +88,6 @@ Configuration to deploy a service.
 How to make hashmap synchronised. Internal work of hashmap.
 
 Couny occurrence of each character in a string using stream API.
-
-Unit test.
-
-Garbage collection.
 
 How to make object unreferenced for garbage collection.
 
