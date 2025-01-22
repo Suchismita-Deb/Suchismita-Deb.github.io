@@ -38,52 +38,7 @@ Part 7.
 
 Part 8.
 
-{{<youtube HgqcT3j7_x0>}}
-
-Part 8.
-
-{{<youtube _pvzcxrKWAs>}}
-
-Part 8.
-
-{{<youtube hB0NjMheu90>}}
-
-Part 8.
-
-{{<youtube RxTV9dLvKt0>}}
-
-Part 9.
-
-{{<youtube 6rVM7vHjJUI>}}
-
-Part 10.
-
-{{<youtube AFCs4gRxc_s>}}
-
-Part 11.
-
-{{<youtube tOUXSd-8SVg>}}
-
-Part 12.
-
-{{<youtube hn1Vi6qD2Cg>}}
-
-Part 13.
-
-{{<youtube t6aN8SzMah0>}}
-
-Part 14.
-
-{{<youtube 6afInj2WOQI>}}
-
-Part 15.
-
-{{<youtube GAb8QOchLyM>}}
-
-Part 16.
-
-{{<youtube boBG8bGjZHA>}}
-
+{{<youtube tPFYFbamoQk>}}
 
 Part 17.
 
@@ -149,3 +104,6 @@ Global Exception, Mapping, WebServer. Maven command.
 |---|--------------------------------------------------------------|
 |Behavioral Interview| https://suchismita-deb.github.io/tags/behavoiral-interview/  |
 
+
+You can download the PDF file from [System Design Handbook](/files/SystemDesignHandbook.pdf).  
+You can download the PDF file from [OS_Full_Notes](/files/OS_Full_Notes.pdf).
