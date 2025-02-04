@@ -327,3 +327,5 @@ Global Exception, Mapping, WebServer. Maven command.
 
 You can download the PDF file from [System Design Handbook](/files/SystemDesignHandbook.pdf).  
 You can download the PDF file from [OS_Full_Notes](/files/OS_Full_Notes.pdf).  
+You can download the PDF file from [Grokking-the-advanced-system-design-interview](/files/Grokking-the-advanced-system-design-interview.pdf).  
+You can download the PDF file from [Grokking-the-system-design-interview](/files/Grokking-the-system-design-interview.pdf).  
