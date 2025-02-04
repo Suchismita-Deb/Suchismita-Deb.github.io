@@ -379,3 +379,14 @@ public class Main {
 ### Question. Difference between synchronized and volatile.
 
 ### Question. Difference between process and thread.
+
+|Future|CompletableFuture|
+|---|---|
+|Future represents the result of an asynchronous computation.| Completable Future is Future result + methods like compose, combine, exceute async task.|
+|Future replies on blocking methods like get() for result retrieval. No support for multiple async operations.| Completable Future provides non blocking methods like thenAccept() for completion handling.|
+|Does not provide any build in mechanism for handling exceptions. Exception handlingneeds to e implemented externally. Exceptions are caught during the get() method call.|CompetableFuture supports fluent API and allows chaining of multiple asynchronous operations.|
+
+|Runnable|Callable|
+|---|---|
+|Nothing is returned as a result `java.lang.Runnable` It is abstrcat and no exception is handled.|Throws a checked exception and returns some result. It either compute result or throws exception `java.util.concurrent`|
+public abstract void run();|V call() throws exception;|

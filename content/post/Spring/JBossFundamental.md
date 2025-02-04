@@ -102,7 +102,8 @@ JBoss - JavaBeans Open Source Software.
 
 In domain mode there are two thing domain controller and host controller.
 
-Image.
+![img.png](/images/Spring/JBoss/DomainHomeController.png)
+
 The master controller is the place contains all configuration is Domain controller.  
 The independent other server in the same domain is host controller. Inside the host controller there will be some manage server.
 Core Component - Domain and host controller, server group and profiles.
@@ -113,12 +114,11 @@ Core Component - Domain and host controller, server group and profiles.
 Configuration Files and Structure
 JBoss configurations are defined in XML and property files located within the server's directory structure:
 
-Standalone Mode:
-Path: $JBOSS_HOME/standalone/configuration/
-Key file: standalone.xml
-Domain Mode:
+Standalone Mode: Path: $JBOSS_HOME/standalone/configuration/
+Key file: standalone.xml  
+Domain Mode:  
 Path: $JBOSS_HOME/domain/configuration/
-Key files:
+Key files:  
 domain.xml (domain-level settings)
 host.xml (host-specific settings)
 These XML files define:
