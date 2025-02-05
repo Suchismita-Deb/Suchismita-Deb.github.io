@@ -58,25 +58,35 @@ Part 20.
 
 Part 21.
 
-{{<youtube Hb6WePtPQhg>}}
+{{<youtube dUMWMZmMsVE>}}
 
-Part Logger.
+Part 22.
 
 {{<youtube Zvr-ffhvw0Y>}}
 
+Part 23.
+
 {{<youtube bdBCdrrAwkg>}} 
+
+Part 24.
 
 {{<youtube erusCJu6CQY>}}
 
+Part 25.
+
 {{<youtube gQfaWHOrITI>}}
+
+Part 26.
 
 {{<youtube hHaPGP17elo>}}
 
+Part 27.
+
 {{<youtube dGYfpO3WJ1o>}}
 
-{{<youtube 2rMJguHuqoA>}}
+Part 28.
 
-{{<youtube dUMWMZmMsVE>}}
+{{<youtube 2rMJguHuqoA>}}
 
 https://www.lldcoding.com/design-logging-library-like-log4j-machine-coding  
 https://medium.com/@behindjava.com/how-to-do-low-level-system-design-for-a-logging-framework-like-log4j-91c66cc5d8d7  
