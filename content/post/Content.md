@@ -88,15 +88,79 @@ Part 28.
 
 {{<youtube 2rMJguHuqoA>}}
 
-https://www.lldcoding.com/design-logging-library-like-log4j-machine-coding  
-https://medium.com/@behindjava.com/how-to-do-low-level-system-design-for-a-logging-framework-like-log4j-91c66cc5d8d7  
-https://www.digitalocean.com/community/tutorials/log4j2-example-tutorial-configuration-levels-appenders
+Part 28.
+
+{{<youtube ChzHvsn76IE>}}
+
+Part 28.
+
+{{<youtube xae9XoVeoEg>}}
+
+Part 28.
+
+{{<youtube sppO1_StinA>}}
+
+Part 28.
+
+{{<youtube 3ExEbFJYC6k>}}
+
+Part 28.
+
+{{<youtube OWLeWq2dQf8>}}
+
+Part 28.
+
+{{<youtube F-ok4q4D4SE>}}
+
+Part 28.
+
+{{<youtube jE9XQ8GI4GQ>}}
+
+Part 28.
+
+{{<youtube gc2sAKSEwGU>}}
+
+Part 28.
+
+{{<youtube _Zom17aqj7U>}}
+
+Part 28.
+
+{{<youtube aanRRVHf6hQ>}}
+
+Part 28.
+
+{{<youtube rqnOclscS4Y>}}
+
+Part 28.
+
+{{<youtube V2IfHMrw5Tg>}}
+
+Part 28.
+
+{{<youtube 5Tr-jwhAMrM>}}
+
+Part 28.
+
+{{<youtube vdR481VVL-k>}}
+
+https://leetcode.com/discuss/interview-question/system-design/1049541/looking-for-guidance-to-prepare-for-thoughtworks-oops-concepts-modelling-and-design-round
+
+https://medium.com/@yogeshsharma_50096/thoughtworks-interview-experience-284adb209c26
+
+https://medium.com/@lovverma001/interview-experience-with-thoughtworks-senior-consultant-e45cfb64f28c
+
+https://sumitvairagar.hashnode.dev/my-interview-experience-thoughtworks-remote
+
+https://www.geeksforgeeks.org/thoughtworks-interview-experience-set-6-on-campus/
+
+https://leetcode.com/discuss/interview-experience/2101786/thoughtworks-application-developer-india-may-2022-offer
+
+https://leetcode.com/discuss/interview-experience/6111508/ThoughtWorks-or-Graduate-application-developer-or-India-or-Nov-2024-Offer/
 
 Here’s the low-level code for a logging framework in Java that meets your requirements. It includes support for multiple levels, asynchronous logging, appenders, thread-safety, configurable formatters, and dynamic configuration using a JSON file.
 
-java
-Copy
-Edit
+```java
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -239,6 +303,7 @@ public class LoggerFramework {
         shutdown();
     }
 }
+```
 Key Features:
 Logging Levels: Supports DEBUG, INFO, WARN, ERROR, FATAL.
 Asynchronous Logging: Uses a queue to handle logs efficiently.
