@@ -1,5 +1,5 @@
 +++
-title = 'DesignAmazonRetailSystem'
+title = 'Design Amazon Retail System'
 date = 2025-01-25T18:16:55+05:30
 url= "/post/systemdesign/designexample/DesignAmazonRetailSystem"
 tags = ['interview question','system design']
