@@ -7,8 +7,7 @@ tags = ['interviewQuestion', 'java']
 +++
 ### VPC - Virtual Private Network.
 
-Google Cloud VPC (Virtual Private Cloud) is a logically isolated network that allows you to securely connect, manage, and control communication between resources within Google Cloud. The Virtual Private Cloud gives users a great deal of wiggle room in terms of regulating regional and global workload connectivity. Without having to rely on the public internet, virtual private networks (VPCs) make it possible for multiple regions to communicate with one another.
-
+Google Cloud VPC (Virtual Private Cloud) is a logically isolated network that allows you to securely connect, manage, and control communication between resources within Google Cloud. The Virtual Private Cloud gives users a great deal of wiggle room in terms of regulating regional and global workload connectivity. Without having to rely on the public internet, virtual private networks (VPCs) make it possible for multiple regions to communicate with one another.  
 Google Cloud VPC is a global, highly scalable virtual network.  
 It enables secure, private communication between resources.  
 Supports multi-region deployments, hybrid connectivity, and fine-grained access control.
@@ -18,7 +17,6 @@ Key Features.
 **Global Networking.**    
 Google Cloud VPC is global, meaning a single VPC can span across multiple regions.  
 Unlike AWS, where VPCs are region-specific, GCP VPC enables cross-region communication without requiring VPC peering.
-
 
 **Subnetworks (Subnets).**  
 A VPC contains subnets, which define the IP range and region.  
