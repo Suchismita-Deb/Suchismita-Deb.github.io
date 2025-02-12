@@ -1,5 +1,5 @@
 +++
-title = 'Topic1'
+title = 'Topic 1'
 date = 2025-02-11T05:23:30+05:30
 
 url = "/post/Cloud/GCP/InterviewQuestion/Topic1/"
@@ -54,4 +54,42 @@ There are two different web hosting options available, and you have the option t
 
 ### Google Compute Engine and Google App Engine
 
-The product that Google offers in the category of infrastructure as a service (IaaS) is referred to as Google Compute Engine, whereas the product that Google offers in the category of the platform as a service (PaaS) is referred to as Google App Engine.
+The product that Google offers in the category of infrastructure as a service (IaaS) is referred to as Google Compute Engine, whereas the product that Google offers in the category of the platform as a service (PaaS) is referred to as Google App Engine.  Google Compute Engine offers scalable virtual machines that operate within Google's data centers
+
+Autoscaling in Google Compute Engine, start by setting up instance groups. Define autoscaling policies based on relevant metrics such as CPU utilization and load balancing usage. This configuration ensures that the system scales up during high demand to maintain performance and scales down during low demand to optimize cost efficiency.
+
+### Main in GCP.
+
+
+Compute Engine, Kubernetes Engine, Cloud Storage, BigQuery, Cloud SQL, and Pub/Sub.
+
+Identity and Access Management (IAM): Understanding IAM roles, permissions, custom roles, service accounts, workload identity federation and how to manage user access within GCP.   
+Data Storage and Databases: Knowledge of Cloud Storage, Cloud SQL, Cloud Spanner, Firestore, and Bigtable, including their use cases and configurations.  
+Serverless Computing: Familiarity with Cloud Functions, Cloud Run, and App Engine, and how to deploy and manage serverless applications.  
+Compute and Scaling Solutions: You should have a thorough understanding of Compute Engine, Kubernetes Engine, and App Engine, including concepts such as autoscaling, load balancing, and resource optimization.  
+Monitoring and Logging: Proficiency with Google Cloud's Operations Suite (formerly Stackdriver), including Monitoring, Logging, Trace, Debugger, and Error Reporting to ensure system reliability and performance.  
+Networking: It is essential to be familiar with Virtual Private Cloud (VPC), VPC Peering, Shared VPC, and VPNs, as well as the configuration and management of subnets, firewalls, routes, VPNs, and load balancing.   
+DevOps and CI/CD Practices: Knowledge of Cloud Build, Container Registry, and CI/CD pipeline automation is important for efficient development and deployment practices.  
+Security and Compliance: You should be aware of GCP’s security offerings, including encryption methods, security key management, and adherence to compliance standards.  
+Big Data and Analytics: A good grasp of BigQuery, Data Studio, Dataprep, and Looker is necessary for large-scale data analysis and visualization tasks.
+
+### What are the Google Cloud Storage Classes?
+
+Google Cloud Storage offers four main storage classes -    
+Standard Storage for frequently accessed data with high performance.  
+Nearline Storage for data accessed less than once a month at a lower cost.  
+Coldline Storage for data accessed less than once a year at an even lower cost.  
+Archive Storage for long-term data archiving and backup with the lowest cost.
+
+Give some real world data like the profile image, real life, activity log.
+
+### What is Google Cloud Pub/Sub?
+
+Pub/Sub is designed for real-time messaging and event-driven architectures to support asynchronous communication between services. Some of its typical use cases include logging systems, data ingestion pipelines, real-time analytics, and integrating microservices.
+
+### What is a BigQuery and how does it handle large datasets?
+
+BigQuery is Google’s serverless data warehouse and is designed to handle large datasets efficiently with SQL. It uses columnar storage, which stores data on disk in columns instead of rows, to optimize for read-heavy operations. It also leverages parallel processing, allowing for task distribution across multiple machines to process data simultaneously. This enables BigQuery to run fast queries, even on petabytes of data. Additionally, it integrates with other GCP services like Dataflow for data processing and Pub/Sub for real-time data ingestion. BigQuery also includes features like BigQuery ML for performing machine learning directly within the platform.
+
+### Advantage of GCP.
+

@@ -9,52 +9,96 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
 
 
 Part 1.
-{{<youtube weM2bObz7iI>}}
+{{<youtube DJ2u7gjSl90>}}
 
 Part 1.
-{{<youtube WXTAeim_blE>}}
+{{<youtube rbjxmlYP19k>}}
 
 Part 1.
-{{<youtube gPUWp1ICHMs>}}
+{{<youtube GNdGJQIiVGs>}}
 
 Part 1.
-{{<youtube 0d2yHFjuZsA>}}
+{{<youtube je_VAPptMzA>}}
 
 Part 1.
-{{<youtube 0zJUK-SwPqQ>}}
+{{<youtube gwLnrAY_Udo>}}
 
 Part 1.
-{{<youtube ETizCV4SakU>}}
+{{<youtube RxWzGyKpm3I>}}
 
 Part 1.
-{{<youtube Al4wvJsDVSk>}}
+{{<youtube fMBeFDdBxKI>}}
 
 Part 1.
-{{<youtube zu8-9RULD5E>}}
+{{<youtube CcUGJ2RCP64>}}
+
+New Playlist.
 
 Part 1.
-{{<youtube TONoK4Npcus>}}
+{{<youtube IbZHLDKNwRE>}}
 
 Part 1.
-{{<youtube WXTAeim_blE>}}
+{{<youtube Wg-VNtWtDtU>}}
 
 Part 1.
-{{<youtube -ykwb1d0DXU>}}
+{{<youtube yEWzMX1VRFc>}}
 
 Part 1.
-{{<youtube sBkuXIKdsp4>}}
+{{<youtube DCMMNHCe-Og>}}
 
 Part 1.
-{{<youtube w51lDVuRWuk>}}
+{{<youtube 7igW9H1jcXg>}}
 
 Part 1.
-{{<youtube M6ZavWvKlcc>}}
+{{<youtube jkIBkdx8KeY>}}
 
 Part 1.
-{{<youtube jUYNS90nq8U>}}
+{{<youtube 2qxbLvc29j0>}}
 
 Part 1.
-{{<youtube FduRn_u6ipQ>}}
+{{<youtube mIyi2iLwWYk>}}
+
+Part 1.
+{{<youtube OQFTy6c5P_o>}}
+
+Part 1.
+{{<youtube YfG7LxNiZ0c>}}
+
+Part 1.
+{{<youtube Ovqi_ny6yxY>}}
+
+Part 1.
+{{<youtube 9lCJ4Gb0yZ4>}}
+
+Part 1.
+{{<youtube Ow__vL9RJiA>}}
+
+Part 1.
+{{<youtube JECJAiZFgNs>}}
+
+Part 1.
+{{<youtube JlAGqE-bXTE>}}
+
+Part 1.
+{{<youtube pnTeb_nJEy8>}}
+
+Part 1.
+{{<youtube QN529zzV9X4>}}
+
+Part 1.
+{{<youtube rRkAhU965Mg>}}
+
+Part 1.
+{{<youtube 8cIhbuvygBM>}}
+
+Part 1.
+{{<youtube Y_P9zQ3U7L8>}}
+
+Part 1.
+{{<youtube KuJ9p9Sx0Ms>}}
+
+Part 1.
+{{<youtube YpFe32A7X44>}}
 
 ## Java
 
