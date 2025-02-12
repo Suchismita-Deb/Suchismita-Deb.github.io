@@ -2,8 +2,7 @@
 title = 'Topic2'
 date = 2025-02-11T14:43:06+05:30
 
-url = "/post/Cloud/GCP/InterviewQuestion/Topic2
-/"
+url = "/post/Cloud/GCP/InterviewQuestion/Topic2"
 tags = ['interviewQuestion', 'java']
 +++
 ### How to deploy application to Google Cloud.
