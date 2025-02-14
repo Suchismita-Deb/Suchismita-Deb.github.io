@@ -100,6 +100,18 @@ Part 1.
 Part 1.
 {{<youtube YpFe32A7X44>}}
 
+Part 1.
+{{<youtube iKKbUMXDcj4>}}
+
+Part 1.
+{{<youtube PChgZ-FD7YQ>}}
+
+Part 1.
+{{<youtube DgdPQ6md-sI>}}
+
+Part 1.
+{{<youtube g9OqgYS6ICI>}}
+
 ## Java
 
 |Topic|Link|

@@ -3,7 +3,7 @@ title = 'Practice Spring 1'
 date = 2024-10-29T13:11:38+05:30
 
 url = "/post/spring/interview/topic1/"
-tag = ["spring", "interview question"]
+tags = ["Spring", "interviewQuestion"]
 +++
 ![Process.png](/images/Spring/Interview/Process.png)
 
