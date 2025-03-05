@@ -125,6 +125,7 @@ p.run();
 Sliding Window.|	Overlapping windows with a slide interval (e.g., 10 min window, slides every 5 min).|	Trend detection.|
 Session Window.|	Based on user-defined inactivity (e.g., 30 min of user inactivity).|	User sessions in web tracking.|
 Global Window.|	Treats all elements as one infinite window.|	Batch processing or no windowing needed.|
+
 Fixed window with time fo 5 mins.
 ```java
 PCollection<KV<String, Integer>> windowedCounts = input

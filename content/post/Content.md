@@ -112,6 +112,13 @@ Part 1.
 Part 1.
 {{<youtube g9OqgYS6ICI>}}
 
+Part 1.
+{{<youtube BTjxUS_PylA>}}
+
+
+Part 12.
+{{<youtube xMNSTBGoGbU>}}
+
 ## Java
 
 |Topic|Link|

@@ -76,3 +76,6 @@ Compute Engine.
 Cloud computing helps in computing, networking and storage and security. 
 
 What libraries and tools are provided by GCP.
+
+
+gcloud sdk - 
