@@ -66,7 +66,7 @@ Part 1.
 
 Part 1.
 {{<youtube Ovqi_ny6yxY>}}
-
+asbfkjanfdkajnsfdlajk
 Part 1.
 {{<youtube 9lCJ4Gb0yZ4>}}
 
@@ -81,7 +81,7 @@ Part 1.
 
 Part 1.
 {{<youtube pnTeb_nJEy8>}}
-
+asbfkjanfdkajnsfdlajk
 Part 1.
 {{<youtube QN529zzV9X4>}}
 
@@ -95,29 +95,20 @@ Part 1.
 {{<youtube Y_P9zQ3U7L8>}}
 
 Part 1.
-{{<youtube KuJ9p9Sx0Ms>}}
-
-Part 1.
-{{<youtube YpFe32A7X44>}}
-
-Part 1.
-{{<youtube iKKbUMXDcj4>}}
-
-Part 1.
-{{<youtube PChgZ-FD7YQ>}}
-
-Part 1.
-{{<youtube DgdPQ6md-sI>}}
-
-Part 1.
 {{<youtube g9OqgYS6ICI>}}
 
 Part 1.
 {{<youtube BTjxUS_PylA>}}
 
 
+Part 11.
+{{<youtube uxe_0RFgT7A>}}
+
 Part 12.
 {{<youtube xMNSTBGoGbU>}}
+
+
+
 
 ## Java
 
@@ -170,3 +161,16 @@ You can download the PDF file from [System Design Handbook](/files/SystemDesignH
 You can download the PDF file from [OS_Full_Notes](/files/OS_Full_Notes.pdf).  
 You can download the PDF file from [Grokking-the-advanced-system-design-interview](/files/Grokking-the-advanced-system-design-interview.pdf).  
 You can download the PDF file from [Grokking-the-system-design-interview](/files/Grokking-the-system-design-interview.pdf).  
+
+|Company|YOE|Base|
+|---|---|---|
+|TOP Product Based|1 YOE|15 to 25.|  
+|Medium Comapny|1 YOE|8 to 15.|  
+|Top product Based|2YOE|20 to 35.
+|Medium Company|2 YOE|12 to 22.
+|Top Product Based|3 YOE|25 to 45.
+|Medium Company|3 YOE|15 to 30.
+
+
+System Design.
+https://github.com/SweetCodey/system-design-masterclass/tree/main

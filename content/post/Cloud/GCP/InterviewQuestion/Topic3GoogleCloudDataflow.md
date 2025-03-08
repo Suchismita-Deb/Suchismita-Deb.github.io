@@ -17,8 +17,9 @@ Key features.
 **Flexible SDKs** – Supports Java, Python, and SQL through Apache Beam. 
 
 ### How the Dataflow Works.
-Dataflow pipeline lifecycle.
+Dataflow pipeline lifecycle.  
 Define a pipeline using Apache Beam SDK(Java/Python).  
+
 Pipeline is submitted to dataflow which compiles it to a DAG.  
 Dataflow automatically scales and optimizes the execution and process the streaming and batch data.  
 The processed and the resulted data is stored in Bigquery, CloudStorage, Pub/Sub, Spanner.
