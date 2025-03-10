@@ -87,3 +87,10 @@ We need to write the line then two space then hit enter and the next line. It wi
 ### Adding image with caption.
 
 {{< figure src="/images/SystemDesign/2PhaseCommit.png" caption="2 Phase Commit. Prepare Phase. Commit Phase." >}}
+
+### Making code in the table.
+
+| Format      | Example Code |
+|------------|-------------|
+| Inline Code | `System.out.println("Hello, World!");` |
+| Block Code | {{< highlight java >}} public class Main { public static void main(String[] args) { System.out.println("Hello, World!"); } } {{< /highlight >}} |

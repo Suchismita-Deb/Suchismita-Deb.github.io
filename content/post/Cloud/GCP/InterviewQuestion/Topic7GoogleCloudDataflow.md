@@ -4,34 +4,29 @@ date = 2025-03-08T15:32:26+05:30
 draft = true
 +++
 
+## Google Cloud Dataflow and cloud functions.
+Google Cloud Dataflow and the Apache Beam are the same open source technologies with Google Cloud Data flow is the managed version of the Apache Beam in the Google Cloud platform.
 
-### Google cloud data flow and cloud functions.
-Google cloud dataflow and the Apache Beam are the same open source Technologies with Google Cloud data flow is the managed version of the Apache Beam in the Google cloud platform.
 
-### Google Cloud DataFlow.
-What is Apache Beam? What are PCollections and PTransforms in Apache Beam?
+### What is Apache Beam? What are PCollections and PTransforms in Apache Beam?
 
-Apache beam is an open-source platform it's a unified model for both batch and stream processing pipelines and it it allows you to build complex uh data and processing workflows that are like portable across all different types of execution engines known as Runners.
-PCollections is mainly a data abstraction layer in beam which represents a distributed immutable and possibly a bounded or an unbounded data set.
+Apache beam is an open-source platform it's a unified model for both batch and stream processing pipelines and it allows you to build complex uh data and processing workflows that are like portable across all different types of execution engines known as Runners.  
+PCollections is mainly a data abstraction layer in beam which represents a distributed immutable and possibly a bounded or an unbounded data set.  
 PTransforms are the operation that you perform on this P collection so they can be ParDo, GroupBy, Combine all these other types of Transformations.
 
-
-### How does Beam handle windowing?
-
-beam handles windwing by its window strategies like fixed windows sliding Windows session windows and Global windows
-
 ### What are the different runners available in Apache Beam?
-the Google data flow Runner the Flink Runner the spark Runner the direct runner for your local execution and finally the samza runner
+In Apache Beam, a runner is a component that is responsible for executing a pipeline on an underlying distributed processing engine or runtime.
+The Google Data flow Runner, The Flink Runner, The Spark Runner, The Direct Runner for your local execution and finally the Samza Runner.
 ### How does Apache Beam handle data shuffling?
-beam handles data shuffling by using the part do and the group by transforms.
-the data that is shuffled between the workers and it ensures that the same data with the same key are sent to to the same workers for processing.
+Beam handles data shuffling by using the ParDo and the GroupBy transforms.
+The data that is shuffled between the workers and it ensures that the same data with the same key are sent to the same workers for processing.
 
 ### What is the role of SideInputs and SideOutputs in Apache Beam?
-SideInputs are a small additional data set that can be used in that same P transform in additional uh to the main P collection that you are using so this is basically used when you need to filter on a particular data set based on a certain predefined condition or a lookup value.
-SideOutputs - side outputs is a specialized paru transform when you need to Output multiple P collections from a single input and what are the use case for it suppose you want to use uh two different P collections one for valid records and other for invalid records so you can do that using the side outputs.
+SideInputs - SideInputs are a small additional data set that can be used in that same PTransform in additional to the main PCollection that you are using so this is basically used when you need to filter on a particular data set based on a certain predefined condition or a lookup value.  
+SideOutputs - SideOutputs is a specialized ParDo transform when you need to Output multiple P collections from a single input and what are the use case for it suppose you want to use uh two different P collections one for valid records and other for invalid records so you can do that using the side outputs.
 
-### Whar is a combiner in Apache Beam?
-combiners are a specialized P transform used for aggregation and you can mention the two types of combiners that are present the predefined combiners which includes the sum mean Max count and the custom combiners which you can do by extending the combine F class.
+### What is a combiner in Apache Beam?
+Combiners are a specialized PTransform used for aggregation and you can mention the two types of combiners that are present the predefined combiners which includes the sum mean Max count and the custom combiners which you can do by extending the combine F class.
 ### Difference between Map and FlatMap?
 map applies a function and returns a new collection so add the source element and the destination elements are one to one mapped and what is a flat map so a flat Maps applies a similar type of function but the source elements and the destination elements may not be one to one map so there might be one to many map or one to zero map.
 ### Explain the various transformers in Beam like ParDo, GBK, CPK.

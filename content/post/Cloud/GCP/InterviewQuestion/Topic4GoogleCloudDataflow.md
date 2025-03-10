@@ -25,7 +25,7 @@ Other integration - Cloud IAM, Compute Engine, Cloud Network.
 Producer-Consumer Fusion.
 Sibling Fusion.
 
-### Monitoring.
+### Monitoring.  
 Dataflow job page. Enhanced observalibility features.
 
 The Ui will show the dataflow job id and we can see the steps of the beam pipeline and the source and sink. There will be some job metric, cpu usage, memory usage. The steps details will be shown. The bottom will be the logging.
@@ -63,7 +63,7 @@ Identity Access Management.
 There are minimum 2 service account that needs to be provisioned.
 **Dataflow service account** - `service-<project-number>@dataflow- service-producer-prod.iam.gserviceaccount.com`.
 It is mapping to the primary worker.
-Used for worker creation, monitoring, etcetera.
+Used for worker creation, monitoring, etc.
 **Controller Service Account** -
 `<project-number>-compute@developer.gserviceaccount.com`
 Mapped to the secondary workers.

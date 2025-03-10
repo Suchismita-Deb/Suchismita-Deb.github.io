@@ -69,7 +69,8 @@ System.out.println("Epoch Milliseconds: " + epochMillis);
 |LocalDate to LocalDateTime|date.atTime(LocalTime.now())|
 
 
-| Format      | Example Code |
-|------------|-------------|
-| Inline Code | `System.out.println("Hello, World!");` |
-| Block Code | {{< highlight java >}} public class Main { public static void main(String[] args) { System.out.println("Hello, World!"); } } {{< /highlight >}} |
+| Format      | Example Code                                                                                                                                       |
+|------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Inline Code | `System.out.println("Hello, World!");`                                                                                                             |
+| Block Code | {{< highlight java >}}public class Main { public static void main(String[] args) { System.out.println("Hello, World!"); } } {{< /highlight >}} |
+
