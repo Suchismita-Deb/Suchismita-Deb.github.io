@@ -1,13 +1,9 @@
 +++
-title = 'StrategyDesignPattern'
+title = 'Strategy Design Pattern'
 date = 2024-03-07T13:13:16+05:30
 tags = ['system design']
 categories = ['low level design','system design']
 +++
-
-### UML Class Diagram
-
-![img.png](/images/img3.png)
 
 The example of the Strategy Design Pattern.
 
@@ -23,7 +19,7 @@ When child override the method and other child also have the same method then th
 
 Previously all the functionality we were putting in the base class. Now we will not define in the base class. We will say that the **Vehicle HAS - A drive interface**
 
-In the base class we just defined the Drive Strategy Object. The type of the drive strategy like normal or special that will be defined by the child class.
+In the base class we just defined the DriveStrategy Object. The type of the drive strategy like normal or special that will be defined by the child class.
 
 We created one constructor in the vehicle which will put the value to the object. This is **Constructor Injection**.
 The functionality will be given by the child class will be passed in the constructor. It will be assigned by the constructor.
@@ -87,6 +83,7 @@ In the Vehicle class.
 public class Vehicle {
     DriveStrategy driveObject;
     // Will not make like new NormalDriveStrategy. It is only the object of DriveStrategy.
+    // When we have to add the interface then we add in the autowired.
 
     // Constructor Injection.
     Vehicle(DriveStrategy driveObj){

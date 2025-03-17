@@ -18,3 +18,7 @@ L - Liskov Constitution PRinciple - The LP states that the object if the suercla
 I - Interface Segrefation Principle - ISP states that client should not be forces to depend oninterace thet dont use.
 
 D - Dependency Inversion Priciple - DIP - The high level modules or classes should bot depend on low level modules or classes directly.
+
+### UML Class Diagram
+
+![img.png](/images/img3.png)

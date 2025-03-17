@@ -1,0 +1,153 @@
++++
+title = 'Content'
+date = 2025-03-16T12:38:14+05:30
+
+url= "/post/systemdesign/content"
+tags = ['interview','system design']
++++
+Design System.
+
+Volume 1.
+Designer Rate Limiter.
+Design consistent hashing.
+Design a key value store.
+Design A unique ID generator in distributor system.
+Design A URL shortener.
+Design a web crawler.
+Design a notification system.
+Design news feed system.
+Design a chat system.
+Design a search auto complete system.
+Design YouTube.
+Design Google Drive.
+
+Volume 2.  
+Design Google map.
+Design message queue.
+Design metrics monitoring and alerting system.
+Design at click events aggregator.
+Design hotel reservation system.
+Design distributed e-mail service system.
+Design S3 like object storage.
+Design real time gaming leaderboard system.
+Design payment system.
+Design digital wallet.
+Design Stock Exchange.
+
+Design Spotify.
+
+Design Uber.
+Design hotstar.
+Design top k YouTube videos.
+Design Redis.
+
+Hello Interview.
+
+Design a ticket booking system.
+Design a file storage system like Dropbox.
+Design a local delivery service like gopuff.
+Design Facebook news feed.
+Design a dating app like Tinder.
+Design A coding platform like leetcode.
+Design local business review site like Yelp.
+Design A fitness tracking app.
+Design an online auction platform.
+Design a Facebook live comment.
+Design Facebook post search.
+Design photo sharing app like Instagram.
+Design A collaborative document editor like Google Docs.
+Design A distributor job scheduler like air flow.
+Design a web crawler.
+
+Link.
+Design Twitter design Amazon design Airbnb design food delivery app design tiktok design Reddit design code deployment system design notification service Design notification service design distributed cash design a parking garage design a flight booking system design online code editor 
+
+https://www.educative.io/blog/system-design-interview-questions
+
+https://www.geeksforgeeks.org/most-commonly-asked-system-design-interview-problems-questions/
+
+https://dev.to/somadevtoo/top-50-system-design-interview-questions-for-2024-5dbk
+
+https://www.reddit.com/r/leetcode/comments/1aqw7vo/system_design_interview_coming_up_read_this/
+
+https://igotanoffer.com/blogs/tech/system-design-interviews
+
+https://www.linkedin.com/pulse/top-20-system-design-interview-questions-answers-soma-sharma-g0pqc/
+
+
+{{<youtube nErcdi7LpTM>}}
+
+{{<youtube 0FKa885MsG4>}}
+
+All Design Pattern.
+
+|Design Pattern|Uses|
+|---|---|
+|Singleton|Ensures the class has only one instance.|
+|Factory|Creates objects without specifying the exact class.|
+
+Abstract Factory — Creates families of related objects.
+Builder — Separates construction and representation of complex objects.
+Prototype — Creates new objects by copying an existing object.
+
+
+Structural.
+
+Adapter (Wrapper) — Bridges incompatible interfaces.
+Bridge — Separates abstraction from implementation.
+Composite — Composes objects into tree structures.
+Decorator — Adds new behavior to objects dynamically.
+Facade — Provides a simplified interface to a complex system.
+Flyweight — Shares common parts to reduce memory usage.
+Proxy — Controls access to another object.
+
+
+Behavioral
+Chain of Responsibility — Passes requests along a chain of handlers.
+Command — Encapsulates requests as objects.
+Interpreter — Defines a grammar and interprets sentences.
+Iterator — Sequentially accesses elements without exposing the structure.
+Mediator — Centralizes communication between objects.
+Memento — Captures and restores object states.
+Observer (Pub-Sub) — Notifies observers when state changes.
+State — Manages state-specific behavior.
+Strategy — Selects behavior at runtime.
+Template Method — Defines a skeleton of an algorithm with steps overridden by subclasses.
+Visitor — Adds new operations to existing object structures.
+
+
+Concurrency Patterns — Manage multi-threaded applications:
+Thread Pool — Limits the number of threads.
+Producer-Consumer — Separates data production and consumption.
+Read-Write Lock — Manages concurrent read/write access.
+Semaphore — Controls access to resources.
+Future/Promise — Handles results of asynchronous operations.
+
+Architectural Patterns — High-level solutions for large systems:
+MVC (Model-View-Controller) — Separates concerns into three components.
+MVVM (Model-View-ViewModel) — Similar to MVC but binds View and ViewModel.
+Microservices — Splits applications into loosely coupled services.
+Service-Oriented Architecture (SOA) — Organizes services for distributed systems.
+Layered Architecture — Organizes code into layers (UI, Business, Data).
+Hexagonal (Ports and Adapters) — Isolates core logic from external systems.
+Event-Driven Architecture — Reacts to events asynchronously.
+Pipeline — Breaks down processing into discrete stages.
+
+Advanced Patterns — For complex distributed systems:
+Saga — Manages distributed transactions with compensating actions.
+CQRS (Command Query Responsibility Segregation) — Separates read and write models.
+Event Sourcing — Stores state as a sequence of events.
+Circuit Breaker — Prevents cascading failures in distributed systems.
+API Gateway — Central entry point for APIs in microservices.
+Bulkhead — Isolates failures by partitioning resources.
+Outbox Pattern — Ensures message delivery in distributed systems.
+Retry Pattern — Retries failed operations automatically.
+Rate Limiting — Controls request rate to prevent overload.
+
+Choreography: Decentralized flow where services react to events independently, enhancing scalability but making tracing harder.
+Orchestration: Centralized controller manages the workflow, simplifying error handling but creating a single point of control.
+Compensating Transaction: Rolls back completed operations when a failure occurs in a multi-step process, ensuring consistency in distributed systems.
+Bulkhead Pattern: Isolates service components to prevent failures from spreading across the system, improving resilience.
+Outbox Pattern: Ensures reliable event publishing by persisting events in the database as part of the local transaction, preventing message loss.
+Strangler Pattern: Incrementally replaces legacy system components with new services, enabling gradual modernization.
+Process Manager: Coordinates long-running business processes across multiple services, tracking each step and ensuring proper execution or rollback.

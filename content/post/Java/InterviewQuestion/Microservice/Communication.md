@@ -170,7 +170,7 @@ Broker will be the interface between the producer and consumer. Broker stores th
 ### Topic.
 A topic is similar to a folder, and these messages are the files in that folder. Topics are multi-producer and multi-subscriber. Messages can be read as many times as needed, unlike traditional messaging systems, msgs/events in kafka are not deleted after consumption. Instead, you can define for how long Kafka should retain those events/msgs. The message will be stored for the time duration.
 
-Kafka topics are divided into a number of partitions, which contain msgs/events in an unchangeable sequence. Each msg in a partitiofis assigned and identified by its unique offset. A topic can also have multiple partition. This allows multiple consumers to read from a topic in parallel.
+Kafka topics are divided into a number of partitions, which contain msgs/events in an unchangeable sequence. Each msg in a partition is assigned and identified by its unique offset. A topic can also have multiple partition. This allows multiple consumers to read from a topic in parallel.
 
 In Kafka, **replication is implemented at the partition level**. The redundant unit of a partition is called a replica. Each partition usually has one or more replicas over a few Kafka brokers in the cluster.
 
@@ -185,7 +185,7 @@ A Kafka cluster is a system that comprises of different brokers topics, and thei
 ### Producers.
  A producer sends or writes data/messages to the topic within the cluster. Before a producer can send any msgs, it has to request metadata about the cluster from the broker. The metadata contains information on which broker is the leader for each partition and a producer always writes to the partition leader.
 
-A producer must know which partition to write to, this is not up to the broker. The producer attach a key to the message and the message goes to the partition. All msgs with the same key will arrive at the same partition. The producer uses the hash function on the key to know the partion to go as there will be multiple partition in the one topic of partition leader. Say there are 5 partions then it will equally divide the message in the partitions. The partitions has offset and the data fills sequentially in the offset.
+A producer must know which partition to write to, this is not up to the broker. The producer attach a key to the message and the message goes to the partition. All msgs with the same key will arrive at the same partition. The producer uses the hash function on the key to know the partition to go as there will be multiple partition in the one topic of partition leader. Say there are 5 partitions then it will equally divide the message in the partitions. The partitions has offset and the data fills sequentially in the offset.
 
 A common error when publishing msgs is setting the same key or null key for all msgs, which results in all records ending up in the same partition and you get an unbalanced topic.
 

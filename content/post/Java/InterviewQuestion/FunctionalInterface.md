@@ -3,7 +3,7 @@ title = 'Functional Interface'
 date = 2024-06-11T08:18:15+05:30
 
 url = "/post/java/interviewquestion/functionalInterface/"
-tags = ['interviewQuestion']
+tags = ['interviewQuestion', 'java']
 categories = ['java']
 +++
 
