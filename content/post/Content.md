@@ -17,6 +17,12 @@ Part 1.
 Part 2.
 {{<youtube S2y9_XYOZsg>}}
 
+Part3.
+{{<youtube ICYoOKO2C8s>}}
+
+Part 4.
+{{<youtube vsoyECXUcBc>}}
+
 
 Design bulk file processing system.
 Design promotional notification system.

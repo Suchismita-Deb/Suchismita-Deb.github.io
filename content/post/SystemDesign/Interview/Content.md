@@ -81,48 +81,47 @@ https://www.linkedin.com/pulse/top-20-system-design-interview-questions-answers-
 
 All Design Pattern.
 
-|Design Pattern|Uses|
+| Creational Design Pattern |Uses|
+|---------------------------|---|
+| Singleton                 |Ensures the class has only one instance.|
+| Factory                   |Creates objects without specifying the exact class.|
+|Abstract Factory|Creates families of related objects.|
+|Builder|Separates construction and representation of complex objects.|
+|Prototype|Creates new objects by copying an existing object.|
+
+
+|Structural Design pattern | Uses                                                 |
+|---|------------------------------------------------------|
+|Adapter (Wrapper)| Bridges incompatible interfaces.                     |
+|Bridge| Separates abstraction from implementation.           |
+|Composite| Composes objects into tree structures.               |
+|Decorator| Adds new behavior to objects dynamically.            |
+|Facade| Provides a simplified interface to a complex system. 
+|Flyweight| Shares common parts to reduce memory usage.          |
+|Proxy| Controls access to another object.                   |
+
+
+|Behavioral Design Pattern|Uses|
 |---|---|
-|Singleton|Ensures the class has only one instance.|
-|Factory|Creates objects without specifying the exact class.|
-
-Abstract Factory — Creates families of related objects.
-Builder — Separates construction and representation of complex objects.
-Prototype — Creates new objects by copying an existing object.
-
-
-Structural.
-
-Adapter (Wrapper) — Bridges incompatible interfaces.
-Bridge — Separates abstraction from implementation.
-Composite — Composes objects into tree structures.
-Decorator — Adds new behavior to objects dynamically.
-Facade — Provides a simplified interface to a complex system.
-Flyweight — Shares common parts to reduce memory usage.
-Proxy — Controls access to another object.
+|Chain of Responsibility|Passes requests along a chain of handlers.|
+|Command|Encapsulates requests as objects.|
+|Interpreter|Defines a grammar and interprets sentences.|
+|Iterator|Sequentially accesses elements without exposing the structure.|
+|Mediator|Centralizes communication between objects.|
+|Memento|Captures and restores object states.|
+|Observer (Pub-Sub)|Notifies observers when state changes.|
+|State|Manages state-specific behavior.|
+|Strategy|Selects behavior at runtime.|
+|Template Method|Defines a skeleton of an algorithm with steps overridden by subclasses|
+|Visitor|Adds new operations to existing object structures.|
 
 
-Behavioral
-Chain of Responsibility — Passes requests along a chain of handlers.
-Command — Encapsulates requests as objects.
-Interpreter — Defines a grammar and interprets sentences.
-Iterator — Sequentially accesses elements without exposing the structure.
-Mediator — Centralizes communication between objects.
-Memento — Captures and restores object states.
-Observer (Pub-Sub) — Notifies observers when state changes.
-State — Manages state-specific behavior.
-Strategy — Selects behavior at runtime.
-Template Method — Defines a skeleton of an algorithm with steps overridden by subclasses.
-Visitor — Adds new operations to existing object structures.
-
-
-Concurrency Patterns — Manage multi-threaded applications:
-Thread Pool — Limits the number of threads.
-Producer-Consumer — Separates data production and consumption.
-Read-Write Lock — Manages concurrent read/write access.
-Semaphore — Controls access to resources.
-Future/Promise — Handles results of asynchronous operations.
-
+Concurrency Patterns — Manage multi-threaded applications.  
+Thread Pool — Limits the number of threads.  
+Producer-Consumer — Separates data production and consumption.  
+Read-Write Lock — Manages concurrent read/write access.  
+Semaphore — Controls access to resources.  
+Future/Promise — Handles results of asynchronous operations.  
 Architectural Patterns — High-level solutions for large systems:
 MVC (Model-View-Controller) — Separates concerns into three components.
 MVVM (Model-View-ViewModel) — Similar to MVC but binds View and ViewModel.
@@ -151,3 +150,36 @@ Bulkhead Pattern: Isolates service components to prevent failures from spreading
 Outbox Pattern: Ensures reliable event publishing by persisting events in the database as part of the local transaction, preventing message loss.
 Strangler Pattern: Incrementally replaces legacy system components with new services, enabling gradual modernization.
 Process Manager: Coordinates long-running business processes across multiple services, tracking each step and ensuring proper execution or rollback.
+
+System design of a ledger system. where they want to store all transactions done by multiple services. Db design entity design fields. in the entity services how the services will communicate with the entities. Api structure.
+
+Design bookmyshow lldn hld.
+write in all the features. Design the table and the class. do the mapping one on one or one to many Do the DB design. It should follow the DB normalization. Do the api design. Then do the HLA.
+
+Design a flight booking system. Start with hldra w the components justification for picking up those components. Db, message broker, Circuit Breaker. Sink flow, or a sink flow gateway. Proxy index stored. Db design data. modeling.
+
+Designer calculator with basic functionalities that can store the last five operations and allow users to modify any stored operations.
+
+Design Spotify.
+api design schema design schema relation database and indexing.
+
+System design of a ledger system. where they want to store all transactions done by multiple services. Db design entity design fields. in the entity services how the services will communicate with the entities. Api structure.
+
+Design bookmyshow lldn hld.
+write in all the features. Design the table and the class. do the mapping one on one or one to many Do the DB design. It should follow the DB normalization. Do the api design. Then do the HLA.
+
+Design a flight booking system. Start with hldra w the components justification for picking up those components. Db, message broker, Circuit Breaker. Sink flow, or a sink flow gateway. Proxy index stored. Db design data. modeling.
+
+Designer calculator with basic functionalities that can store the last five operations and allow users to modify any stored operations.
+
+Design Spotify.
+api design schema design schema relation database and indexing.
+
+Machine Coding Round.
+Designed a task planner. different types of tasks are present. Bug feature story. Sprint, which is a collection of tasks. A person should be able to create a sprint, add a task in this print, change assignee or status of the task. Show all the task in the particular Sprint and the task assigned to the user.
+
+Design a computer system with multiple level of cash. There are 311L1L2L3. We can add more or remove level if required. Each. cache has its distinct capacity, read time, write time and evictions. The cash should support two primary operations. Command behavior. Get. key. Start with the lowest tier. L1 If exist. then the value upward. If not found, then go to the deeper level. L2. set key. Check the lowest level. L1 If exists If not, add it there and proceed to deeper level If already in deeper level bounce back from there. Stats. average read time of last in operation. Average right time of last 10 operation. Free capacity and total eviction count.
+
+Design a wallet system. requirement user need to register on Flipkart to use the wallet next time. The user can load money into his wallet via various sources like credit card or debit card
+minimum amount of load money should be greater than zero. Assumption no need for integration from a source can be implemented just success acknowledged the user can send money to other user from his wallet. The minimum transaction should always be greater than zero. The user must have a sufficient balance in his wallet while doing the transaction. The user can fetch their wallet balance at any point of time. This should consider both credit and debit type of transaction the user can get transaction history based on. sort their all transaction history based on amount("amount"), Based on transaction date time.("time")
+Filter transaction history based on sent or receive amount. Assumption consider single filter or sorted field.
