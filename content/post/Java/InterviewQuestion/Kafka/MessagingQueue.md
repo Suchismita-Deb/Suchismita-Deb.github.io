@@ -42,3 +42,32 @@ When the data is sent with a key value, then save it. Then say, for all the keys
 
 Kafka managed by the Confluent company. Here we can select the particular service provider in AWS or GCP and then start up application.
 
+What is Kafka?  
+Kafka is a distributed event streaming platform designed for high throughput and fault tolerant.
+Distributed and Scalable - Kafka handles massive data volumes by partitioning topics across brokers.  
+Pull-based Consumption - Consumers pull messages at their own pace.  
+Persistent Storage: Messages are persisted on disk for a configurable retention period.  
+Consumer Groups: Kafka allows multiple consumers in a group to process messages in parallel.  
+Decoupled Producers and Consumers: Producers and consumers operate independently.
+
+
+### Core components of Kafka.
+**Topic** - It is like a folder or stream of data, where producers write and consumers read. Each topic can have multiple partitions to distribute load. Topics are identified by a unique name across the Kafka cluster. Example: In a food ordering system, you might have topics like order-placed, payment-success, and delivery-updates.  
+Retention Period: Determines how long messages are stored (log.retention.hours).  
+Replication Factor: Ensures fault tolerance by replicating topic data across brokers.
+```java
+// Create a new topic using Kafka AdminClient (Java)
+NewTopic newTopic = new NewTopic("order-placed", 3, (short) 2); // 3 partitions, 2 replicas
+adminClient.createTopics(Collections.singletonList(newTopic));
+```
+
+
+
+
+
+
+
+
+
+
+Kafka internals like the log replication, leader election, durability, prtitions and consumers group and use cases.
