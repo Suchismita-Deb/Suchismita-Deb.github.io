@@ -81,9 +81,9 @@ You can download the PDF file from [System Design Handbook](/files/SystemDesignH
 You can download the PDF file from [OS_Full_Notes](/files/OS_Full_Notes.pdf).  
 You can download the PDF file from [Grokking-the-advanced-system-design-interview](/files/Grokking-the-advanced-system-design-interview.pdf).  
 You can download the PDF file from [Grokking-the-system-design-interview](/files/Grokking-the-system-design-interview.pdf).  
-You can download the PDF file from [System-design-interview-an-insiders-guide-volume2_compressed-1-200-1-100](/files/System-design-interview-an-insiders-guide-volume2_compressed-1-200-1-100.pdf).  
-You can download the PDF file from [System-design-interview-an-insiders-guide-volume2_compressed-1-200-100-200](/files/System-design-interview-an-insiders-guide-volume2_compressed-1-200-100-200.pdf).  
-You can download the PDF file from [System-design-interview-an-insiders-guide-volume2_compressed-201-427](/files/System-design-interview-an-insiders-guide-volume2_compressed-201-427.pdf).
+You can download the PDF file from [System-design-interview-an-insiders-guide-volume2-1-100](/files/System-design-interview-an-insiders-guide-volume2_compressed-1-200-1-100.pdf).  
+You can download the PDF file from [System-design-interview-an-insiders-guide-volume2-100-200](/files/System-design-interview-an-insiders-guide-volume2_compressed-1-200-100-200.pdf).  
+You can download the PDF file from [System-design-interview-an-insiders-guide-volume2-201-427](/files/System-design-interview-an-insiders-guide-volume2_compressed-201-427.pdf).
 
 |Company|YOE|Base|
 |---|---|---|
