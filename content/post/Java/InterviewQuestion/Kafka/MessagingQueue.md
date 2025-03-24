@@ -8,11 +8,6 @@ categories = ['Interview Question']
 +++
 
 
-Kafka topics are specific streams of data within the Kafka Cluster. Kafka cluster can have as many topics.  
-In the new Kafka there is no need of zookeeper, and there can be millions of topic and partition. Kafka topic can have names like logs, purchases, tweets.
-A kafka topic is like a table in the database.  
-A topic is identified in the kafka cluster by its name.
-
 Partitions and offset.
 
 Topic is divided into partitions. Each partition can be located on different broker which will help to horizontally scale upward. Each topic can be made up of hundreds of partitions, more partitions you have more parallelism and high throughput can achieve.  
@@ -51,15 +46,155 @@ Consumer Groups: Kafka allows multiple consumers in a group to process messages 
 Decoupled Producers and Consumers: Producers and consumers operate independently.
 
 
-### Core components of Kafka.
-**Topic** - It is like a folder or stream of data, where producers write and consumers read. Each topic can have multiple partitions to distribute load. Topics are identified by a unique name across the Kafka cluster. Example: In a food ordering system, you might have topics like order-placed, payment-success, and delivery-updates.  
-Retention Period: Determines how long messages are stored (log.retention.hours).  
-Replication Factor: Ensures fault tolerance by replicating topic data across brokers.
+## Core components of Kafka.
+**Topic** - Kafka topics are specific streams of data within the Kafka Cluster. Kafka cluster can have as many topics. It is like a folder or stream of data, where producers write and consumers read. Each topic can have multiple partitions to distribute load. Topics are identified by a unique name across the Kafka cluster.  
+Example - In a food ordering system, you might have topics like order-placed, payment-success, and delivery-updates.
+A topic is identified in the kafka cluster by its name.  
+**Retention Period** - Determines how long messages are stored _log.retention.hours_.  
+**Replication Factor** - Ensures fault tolerance by replicating topic data across brokers.
 ```java
 // Create a new topic using Kafka AdminClient (Java)
 NewTopic newTopic = new NewTopic("order-placed", 3, (short) 2); // 3 partitions, 2 replicas
 adminClient.createTopics(Collections.singletonList(newTopic));
 ```
+```java
+// Kafka Config (Application Configuration)
+spring:kafka:bootstrap-servers: localhost:9092
+spring:kafka:topic:orderPlaced: "order-placed"
+```
+Kafka topic name is given based on the business logic.  
+The name structure is like the domain.serviceName.eventType like ecommerce.order.created.
+
+**Partition** - Topic can have multiple partitions. Messages in each partition are ordered, but Kafka does not guarantee ordering across partitions.  
+Each message is assigned to a partition (based on a key or round-robin if no key).  
+Partitions allow Kafka to scale horizontally. Each partition can be consumed independently.
+Keyed Messages ensure that messages with the same key always go to the same partition.
+```java
+// Send message with key to ensure ordering in one partition
+kafkaTemplate.send("order-placed", "order123", "New Order Received");
+```
+**Producers** - Producers are clients that send data to Kafka topics. They handle partitioning, serialization, and retries.
+
+Producers can be configured for delivery semantics.  
+At least once - Ensures no message loss but may result in duplicates.  
+At most once - No duplicates, but messages can be lost.  
+Exactly once - No duplicates, no loss (more complex setup).
+```java
+@Autowired
+private KafkaTemplate<String, String> kafkaTemplate;
+
+public void sendMessage(String message) {
+    kafkaTemplate.send("order-placed", message);
+}
+```
+
+**Consumers** - Consumers read data from Kafka topics. Multiple consumers in a consumer group can read from the same topic, with each partition assigned to only one consumer in the group at any time.
+
+Kafka tracks each consumer's offset (the position of the last message read).  
+If a consumer crashes, Kafka reassigns its partitions to another consumer.
+
+```java
+@KafkaListener(topics = "order-placed", groupId = "order-service")
+public void listen(String message) {
+    System.out.println("Order Received: " + message);
+}
+```
+
+**Broker** - A broker is a Kafka server that handles message storage, delivery, and replication.
+
+A Kafka cluster has multiple brokers for load balancing and fault tolerance.  
+Each broker is responsible for a subset of partitions.
+
+Brokers register themselves with ZooKeeper (or KRaft in newer versions).
+
+```java
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+```
+
+**Zookeeper** - ZooKeeper manages the cluster metadata (like broker information).
+
+Leader election for partitions and failure detection like reassigns leaders when brokers fail.  
+Kafka 2.8+ introduced KRaft (Kafka Raft), eliminating ZooKeeper and simplifying cluster management.
+
+```java
+zookeeper.connect=localhost:2181
+```
+**Leader and Replicas** - For each partition one broker acts as the leader and handles all read and write requests. Other brokers hold replicas (backup copies).
+
+If the leader fails, Kafka promotes a replica to leader. In `replication.factor=3`, Kafka creates 3 copies of each message across different brokers.
+
+**In-Sync Replicas (ISRs)** - The set of replicas that are fully caught up with the leader.
+
+If a replica falls behind, it’s removed from the ISR set.
+
+Kafka only acknowledges writes when all ISRs confirm receipt, ensuring durability.
+
+**acks=0** - No acknowledgment. The producer doesn’t wait for confirmation.
+
+**acks=1** (default) -  Leader writes the message to its log and sends an acknowledgment.
+
+
+**acks=all** (or acks=-1) - Leader waits for all in-sync replicas (ISRs) to acknowledge before confirming.
+```yml
+acks: all  # Ensures data is replicated to all ISRs before acknowledging.
+```
+**Offset** - Kafka maintains an offset for each consumer, representing the last consumed message. Consumers can control this:
+
+earliest: Start from the oldest message.
+
+latest: Start from new messages only.
+
+none: Fail if no previous offset is found.
+```java
+@KafkaListener(topics = "order-placed", groupId = "order-service")
+public void listen(String message, @Header(KafkaHeaders.OFFSET) long offset) {
+    System.out.println("Received: " + message + " at offset: " + offset);
+}
+```
+**Log Segment and Retention**.
+Kafka stores data in logs on disk before ack it to the producer.
+
+Logs are split into segments for faster access.
+
+Messages are retained based on time (log.retention.hours) or size (log.retention.bytes)
+```yml
+log:retention:hours: 72  # Retain messages for 72 hours
+```
+
+Rebalancing
+A rebalance occurs when:
+
+A consumer joins/leaves the group.
+
+Partitions are reassigned to ensure balanced processing.
+
+This can cause delays, so Kafka introduced Sticky Partition Assignment to minimize rebalancing.
+
+Connectors and Streams
+Kafka Connect: Integrates Kafka with other systems like databases.
+
+Kafka Streams: Processes data directly in Kafka using stream processing.
+
+**Monitoring** - Tools like Confluent Control Center, Prometheus, or Grafana monitor Kafka metrics like:
+
+Consumer Lag  
+Broker Health  
+Partition Distribution.
+
+
+### How does Kafka ensure message durability?
+
+**Replication Across Brokers**.  
+**Persistent Storage** (Log-Based Storage) - Store in disk. Even if brokers restart, messages aren’t lost — they’re safely stored on disk..  
+**Acknowledgment Mechanism.  
+In-Sync Replicas (ISRs).  
+Minimum ISR Configuration.  
+Fault-Tolerance with Leader Election.  
+Consumer Offsets in Durable Storage.  
+Retention Policies.  
+Write-ahead log (WAL)** – Messages are first recorded on logs before they are persisted to the disk. This means if a broker crashes before a message is fully written to the disk, it can be recovered from the log.
 
 
 
@@ -70,4 +205,5 @@ adminClient.createTopics(Collections.singletonList(newTopic));
 
 
 
-Kafka internals like the log replication, leader election, durability, prtitions and consumers group and use cases.
+
+Kafka internals like the log replication, leader election, durability, partitions and consumers group and use cases.
