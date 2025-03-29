@@ -188,3 +188,6 @@ The .gitmodule should look like this.
 ```
 
 ### Git SubModule.
+
+
+### In Blog when large file entered into the

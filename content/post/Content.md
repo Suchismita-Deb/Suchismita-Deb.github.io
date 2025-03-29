@@ -18,14 +18,22 @@ Part 2.
 {{<youtube S2y9_XYOZsg>}}
 
 Part3.
-{{<youtube ICYoOKO2C8s>}}
+{{<youtube EpASu_1dUdE>}}
 
 Part 4.
-{{<youtube vsoyECXUcBc>}}
+{{<youtube vNDz6jqtR40>}}
 
 Part 5.
-{{<youtube -iwdSA5egBY>}}
+{{<youtube F9lcK1jnAcs>}}
 
+Part 6.
+{{<youtube 2811UT5r5Jk>}}
+
+{{<youtube XMpchIp746s>}}
+
+Part 7.
+
+{{<youtube s9Qh9fWeOAk>}}
 
 Design bulk file processing system.
 Design promotional notification system.
