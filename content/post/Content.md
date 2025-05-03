@@ -108,36 +108,6 @@ https://github.com/SweetCodey/system-design-masterclass/tree/main
 
 
 ```java
-
-package com.artist;
-
-import com.artist.dto.ArtistRequest;
-import com.artist.model.Artist;
-import com.artist.repository.ArtistRepository;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.apachecommons.ReflectionEquals;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.web.servlet.MockMvc;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.isA;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-
 @SpringBootTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @AutoConfigureMockMvc
@@ -313,3 +283,37 @@ How would you ensure data integrity in a multi-region database setup?
 Explain Leader Election. How would you implement it in a microservices-based system?
 What are the trade-offs between CQRS and traditional CRUD-based systems?
 How does a Distributed Message Queue (like Kafka) handle backpressure?
+
+
+Design a URL shortener (like Bit.ly).  
+Design a distributed rate limiter.  
+Design a key-value store (like Redis).  
+Design a global notification system.  
+Design a load balancer.  
+Design a scalable search engine.  
+Design a messaging queue (like Kafka).  
+Design a sharding strategy for a database.  
+Design an API Gateway.  
+Design a real-time chat application (like WhatsApp).  
+Design a distributed file storage system (like Google Drive).  
+Design a content delivery network (CDN).  
+Design a ride-sharing service (like Uber).  
+Design a Youtube.  
+Design a Amazon.  
+
+
+Tic Tac Toe Game.  
+Parking Lot.  
+ATM.  
+Snake Game.  
+Loggin System.  
+Hashmap Internals..  
+Book My Show.  
+Splitwise.  
+Uber.  
+Chess Game.  
+File Systems.  
+Message Queue.  
+Inventory Management System.  
+Calendar.  
+Stack Overflow.  
