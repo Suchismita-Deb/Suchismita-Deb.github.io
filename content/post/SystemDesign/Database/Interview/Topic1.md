@@ -85,5 +85,3 @@ SELECT Candidate_id, COUNT(skills) FROM Applications WHERE skills IN ("Python","
 ### What are rank, dense_rank and row_number.
 
 ### What are clustered and non clustered index in SQL.
-
-
