@@ -94,7 +94,11 @@ You can download the PDF file from [System-design-interview-an-insiders-guide-vo
 You can download the PDF file from [System-design-interview-an-insiders-guide-volume2-100-200](/files/System-design-interview-an-insiders-guide-volume2_compressed-1-200-100-200.pdf).  
 You can download the PDF file from [System-design-interview-an-insiders-guide-volume2-201-427](/files/System-design-interview-an-insiders-guide-volume2_compressed-201-427.pdf).
 
-You can download the PDF file from [Jonathan-Livingston-Seagull](/files/Jonathan-Livingston-Seagull.pdf).
+You can download the PDF file from [Jonathan-Livingston-Seagull](/files/Jonathan-Livingston-Seagull.pdf).  
+You can download the PDF file from [Deep Work_ Rules for focused success in a distracted world](/files/Deep_Work_Rules.pdf).  
+You can download the PDF file from [Eric-Jorgenson_The-Almanack-of-Naval-Ravikant_Final](/files/Eric-Jorgenson_The-Almanack-of-Naval-Ravikant_Final.pdf).  
+You can download the PDF file from [GM-The-Secret-LOA-Power-of-Intention-eBook](/files/GM-The-Secret-LOA-Power-of-Intention-eBook.pdf).  
+You can download the PDF file from [How-To-Win-Friends](/files/How-To-Win-Friends.pdf).
 
 |Company|YOE|Base|
 |---|---|---|
