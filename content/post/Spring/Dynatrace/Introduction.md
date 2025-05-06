@@ -2,7 +2,8 @@
 title = 'Introduction'
 date = 2025-05-04T11:55:12+05:30
 
-
+url= "/post/spring/dynatrace/introduction"
+tags = ['dynatrace', 'spring', 'kafka-confluent']
 +++
 
 
@@ -54,4 +55,22 @@ Dynatrace monitor hosts through one Agent. OneAgent is licenced on per host basi
 Settings - Monitoring - Monitoring overview - There will be one host - Edit and see the enable options. 
 
 When the full stack monitor is off then it will only monitor the infrastructure. No user application data and it will consume less data.
+
+
+
+
+
+
+
+------
+------
+
+There we can clone any dashboard and change any property. Select the data explorer option and change the query.  
+
+In the observe and explorer - Dashboard - Create Dashboard.
+
+**CPU Usage.**  
+Get the graph and the data explorer. There set up available like host, kubernetes, database. The CPU utilization is available in Host.  
+**System Up Time**.  
+Select the graph and host and the Host Availability.  
 
