@@ -10,14 +10,11 @@ tags = ['dynatrace', 'spring', 'kafka-confluent']
   :filter(
     and(
       or(
-        in("dt.entity.prometheus:confluent_kafka_topic",
-        entitySelector("type(prometheus:confluent_kafka_topic),entityName.contains(~\"dlq~\")")
+        in("dt.entity.prometheus:confluent_kafka_topic", entitySelector("type(prometheus:confluent_kafka_topic),entityName.contains(~\"dlq~\")")
         ),
-        in("dt.entity.prometheus:confluent_kafka_topic",
-        entitySelector("type(prometheus:confluent_kafka_topic),entityName.contains(~\"dlt~\")")
+        in("dt.entity.prometheus:confluent_kafka_topic", entitySelector("type(prometheus:confluent_kafka_topic),entityName.contains(~\"dlt~\")")
         ),
-        in("dt.entity.prometheus:confluent_kafka_topic", 
-           entitySelector("type(prometheus:confluent_kafka_topic),entityName.contains(~\"error~\")")
+        in("dt.entity.prometheus:confluent_kafka_topic", entitySelector("type(prometheus:confluent_kafka_topic),entityName.contains(~\"error~\")")
         )
       )
     )
