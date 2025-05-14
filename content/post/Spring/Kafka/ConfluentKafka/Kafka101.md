@@ -46,13 +46,6 @@ Create a topic.
 
 Select the Topic option in the left side of the panel and create a topic. Give a topic name like `poems` and the default partitions is 6.
 
-![TopicsProducerAndConsumer.png](/images/Spring/Kafka/ConfluentKafka/TopicsProducerAndConsumer.png)
+{{< figure src="/images/Spring/Kafka/ConfluentKafka/TopicsProducerAndConsumer.png" alt="Subset" caption="Subset tree execution" >}}
 
 
-
-{{<figure src="/images/Spring/Kafka/ConfluentKafka/TopicsProducerAndConsumer.png" alt="Subset" caption="Subset tree execution">}}
-
-
-
-
-Hello There
