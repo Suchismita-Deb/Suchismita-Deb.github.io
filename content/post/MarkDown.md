@@ -94,3 +94,16 @@ We need to write the line then two space then hit enter and the next line. It wi
 |------------|-------------|
 | Inline Code | `System.out.println("Hello, World!");` |
 | Block Code | {{< highlight java >}} public class Main { public static void main(String[] args) { System.out.println("Hello, World!"); } } {{< /highlight >}} |
+
+
+### Making a caption in the image.
+```md
+{{<figure src="/images/Spring/Kafka/ConfluentKafka/TopicsProducerAndConsumer.png" alt="Subset" caption="Subset tree execution">}}
+```
+In the layout html page there mentioned one page figure.html.
+```html
+<figure class="centered-figure">
+    <img src="{{ .Get "src" }}" alt="{{ .Get "alt" }}">
+    <figcaption>{{ .Get "caption" }}</figcaption>
+</figure>
+```

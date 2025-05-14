@@ -35,6 +35,6 @@ tags = ['dynatrace', 'spring', 'kafka-confluent']
 `sort(value(auto, descending))` - Sort the results by record count, in descending order.  
 `Final filter(...)` - Further narrows down the result to only one specific Kafka topic, identified by ID CUSTOM_DEVICE-CF707F1B308F5901.
 
-The drop to 0 might suggest that the selected topic (CF707F1B308F5901) stopped receiving messages — possibly the reason for the problem alert shown above (P-250466249).
+The drop to 0 might suggest that the selected topic (`CF707F1B308F5901`) stopped receiving messages — possibly the reason for the problem alert shown above (`P-250466249`).
 
 This Dynatrace chart shows Kafka topics (error, dlq, dlt) and monitors how many messages they received. You're specifically monitoring one Kafka topic (`CUSTOM_DEVICE-CF707F1B308F5901`). A sudden drop in records could indicate a misconfiguration, consumer failure, or a message production halt — possibly triggering a Dynatrace problem alert.
