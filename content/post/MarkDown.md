@@ -107,3 +107,18 @@ In the layout html page there mentioned one page figure.html.
     <figcaption>{{ .Get "caption" }}</figcaption>
 </figure>
 ```
+
+
+Adding the border around the image.
+Manual make an online image.
+
+Another way to chnage the figure.html and add a bordered-img class.
+```css
+.bordered-img {
+  border: 3px solid black;
+  border-radius: 8px;
+  padding: 4px;
+  max-width: 100%;
+  height: auto;
+}
+```
