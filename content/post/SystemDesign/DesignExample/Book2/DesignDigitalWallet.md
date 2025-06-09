@@ -538,7 +538,39 @@ Once synchronous execution is adapted for every sourcing nodigroup we can reuse 
 {{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/FinalDesignInNumberedSequence.png" alt="Subset" caption="Final Design In Numbered Sequence.">}}
 
 
+Lets see how the money transfer works in the final distributed event sourcing architecture. To make it easier to understand we use the saga distributed transaction model and only explain the happy path without any rollback.
 
+The money transfer operation contains two distributor operation a $1 and C $1.
+
+One user a sends a distributed transaction to the saga coordinated. Tends to operation a $1 and C $1.
+
+2. Saavre coordinator creates a record in the face status table to trace the status of a transaction.
+
+Saga coordinated examines the order of operation determines that it needs to handle a dollar one first bid the coordinator sends a dollar one as a command to partition one which contains account A's information.
+
+Partition 1’s raft leader receives the A $1 command and stores it in the command list. Indian validates the command. Is valid it will converted into an event. Consensus algorithm is used to synchronize data across different nodes. (deducting $1 from A’s account balance) is executed after synchronisation is complete.
+
+5. After the event is synchronised they went sourcing framework of partition once recognises the data to the read path using cqrs. Battery constructs the state and the state of execution.
+
+The read path of partition one pushes the status back to the caller of this event sourcing framework which is the saga coordinated.
+
+Saga coordinate and receives the success status from partition 1.
+
+The saga coordinator creates an order indicating the partition of partition 1 is successful in phase status stable.
+
+Because the first operation succeeded the Saga coordinator executes the second operation which is C $1. United Sensei $1 as Kamal to partition to which ventricular count sees information.
+
+Partition two's raft leader receives the C $1 command and save it to the command list. Is valid it is converted into an even. Consensus algorithm is used to synchronise data across different notes. Event add $1 to account is executive representation is complete.
+
+After Devanti Synchronise the event sourcing Prema Ka partition to synchronise the data to the read path using CQRS. Rare path reconstructs the state and the state of execution.
+
+Read Pathak partition to pushes the status back to the caller of the event sourcing framework which is the saga coordinated.
+
+The coordinator receives the success status from partition 2.
+
+Creates a record indicating the operational partition to a successful in the phase status table.
+
+At this time all operations succeed ed and the distributed transaction is completed. The saga coordinator responds to a scholar with the results.
 
 ### Summary.
 
