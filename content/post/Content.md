@@ -70,13 +70,14 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
 | System Design Insider Guide Alex Xu Book 200 - 500. |[Link](/files/System-design-interview-an-insiders-guide-volume2_compressed-201-427.pdf).|
 
 
-| Self Improvement Books.                                     | Link                                            |
-|-------------------------------------------------------------|-------------------------------------------------|
-| Jonathan Livingston Seagull.                                | [Link](/files/Jonathan-Livingston-Seagull.pdf). |
-| Deep Work_ Rules for focused success in a distracted world. |[Link](/files/Deep_Work_Rules.pdf).|
-| Eric-Jorgenson_The-Almanack-of-Naval-Ravikant_Final.        |[Link](/files/Eric-Jorgenson_The-Almanack-of-Naval-Ravikant_Final.pdf).|
-| GM-The-Secret-LOA-Power-of-Intention-eBook                  |[Link](/files/GM-The-Secret-LOA-Power-of-Intention-eBook.pdf).|
-| How-To-Win-Friends                                          |[Link](/files/How-To-Win-Friends.pdf).|
+| Self Improvement Books.                                     | Link                                                                    |
+|-------------------------------------------------------------|-------------------------------------------------------------------------|
+| Jonathan Livingston Seagull.                                | [Link](/files/Jonathan-Livingston-Seagull.pdf).                         |
+| Deep Work_ Rules for focused success in a distracted world. | [Link](/files/Deep_Work_Rules.pdf).                                     |
+| Eric-Jorgenson_The-Almanack-of-Naval-Ravikant_Final.        | [Link](/files/Eric-Jorgenson_The-Almanack-of-Naval-Ravikant_Final.pdf). |
+| GM-The-Secret-LOA-Power-of-Intention-eBook                  | [Link](/files/GM-The-Secret-LOA-Power-of-Intention-eBook.pdf).          |
+| How-To-Win-Friends                                          | [Link](/files/How-To-Win-Friends.pdf).                                  |
+| Atomic Habits                                               | [Link](/files/AtomicHabits.pdf).                                        |
 
 
 [//]: # (
