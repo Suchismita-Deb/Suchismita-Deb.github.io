@@ -7,8 +7,7 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
 
 # Content.
 
-Design bulk file processing system.
-Design promotional notification system.
+
 
 ## Java
 
@@ -71,11 +70,14 @@ Design promotional notification system.
 | System Design Insider Guide Alex Xu Book 200 - 500. |[Link](/files/System-design-interview-an-insiders-guide-volume2_compressed-201-427.pdf).|
 
 
-You can download the PDF file from [Jonathan-Livingston-Seagull](/files/Jonathan-Livingston-Seagull.pdf).  
-You can download the PDF file from [Deep Work_ Rules for focused success in a distracted world](/files/Deep_Work_Rules.pdf).  
-You can download the PDF file from [Eric-Jorgenson_The-Almanack-of-Naval-Ravikant_Final](/files/Eric-Jorgenson_The-Almanack-of-Naval-Ravikant_Final.pdf).  
-You can download the PDF file from [GM-The-Secret-LOA-Power-of-Intention-eBook](/files/GM-The-Secret-LOA-Power-of-Intention-eBook.pdf).  
-You can download the PDF file from [How-To-Win-Friends](/files/How-To-Win-Friends.pdf).
+| Self Improvement Books.                                     | Link                                            |
+|-------------------------------------------------------------|-------------------------------------------------|
+| Jonathan Livingston Seagull.                                | [Link](/files/Jonathan-Livingston-Seagull.pdf). |
+| Deep Work_ Rules for focused success in a distracted world. |[Link](/files/Deep_Work_Rules.pdf).|
+| Eric-Jorgenson_The-Almanack-of-Naval-Ravikant_Final.        |[Link](/files/Eric-Jorgenson_The-Almanack-of-Naval-Ravikant_Final.pdf).|
+| GM-The-Secret-LOA-Power-of-Intention-eBook                  |[Link](/files/GM-The-Secret-LOA-Power-of-Intention-eBook.pdf).|
+| How-To-Win-Friends                                          |[Link](/files/How-To-Win-Friends.pdf).|
+
 
 [//]: # (
 |Company|YOE|Base|
@@ -152,40 +154,47 @@ Explain Leader Election. How would you implement it in a microservices-based sys
 What are the trade-offs between CQRS and traditional CRUD-based systems?   
 How does a Distributed Message Queue (like Kafka) handle backpressure?   
 
-|Level|Topic| Status |
-|---|---|-------|
-|Medium|Design a high-throughput, low-latency stock exchange.|Todo.|
-|Easy|Design a URL shortener (like Bit.ly)| Todo. |  
-|Easy|Design a distributed rate limiter.|Todo.|  
-|Easy|Design a key-value store (like Redis).|Todo.|  
-|Easy|Design a global notification system.|Todo.|  
-|Easy|Design a load balancer.|Todo.|  
-|Easy|Design a scalable search engine.|Todo.|  
-|Easy|Design a messaging queue (like Kafka).|Todo.|  
-|Easy|Design a sharding strategy for a database.|Todo.|  
-|Easy|Design an API Gateway.|Todo.|  
-|Easy|Design a real-time chat application (like WhatsApp).|Todo.|  
-|Easy|Design a distributed file storage system (like Google Drive).|Todo.|  
-|Easy|Design a content delivery network (CDN).|Todo.|  
-|Easy|Design a ride-sharing service (like Uber).|Todo.|  
-|Easy|Design a Youtube.|Todo.|  
-|Easy|Design a Amazon.|Todo.|
-|Medium|Uber|Todo.
+|Level| Topic HLD                                                     | Status |
+|---|---------------------------------------------------------------|-------|
+|Medium| Design a high-throughput, low-latency stock exchange.         |Todo.|
+|Easy| Design a URL shortener (like Bit.ly)                          | Todo. |  
+|Easy| Design a distributed rate limiter.                            |Todo.|  
+|Easy| Design a key-value store (like Redis).                        |Todo.|  
+|Easy| Design a global notification system.                          |Todo.|  
+|Easy| Design a load balancer.                                       |Todo.|  
+|Easy| Design a scalable search engine.                              |Todo.|  
+|Easy| Design a messaging queue (like Kafka).                        |Todo.|  
+|Easy| Design a sharding strategy for a database.                    |Todo.|  
+|Easy| Design an API Gateway.                                        |Todo.|  
+|Easy| Design a real-time chat application (like WhatsApp).          |Todo.|  
+|Easy| Design a distributed file storage system (like Google Drive). |Todo.|  
+|Easy| Design a content delivery network (CDN).                      |Todo.|  
+|Easy| Design a ride-sharing service (like Uber).                    |Todo.|  
+|Easy| Design a Youtube.                                             |Todo.|  
+|Easy| Design a Amazon.                                              |Todo.|
+|Medium| Uber                                                          |Todo.
+|Easy| Design a Digital Wallet.                                      |Todo.|
+|Easy| Design bulk file processing system.|Todo.|
+|Easy| Design promotional notification system.|Todo.|
 
+---
 
-|Level|Topic| Status |
-|---|---|-------|
-|Easy|Tic Tac Toe Game.|Todo.|  
-|Easy|Parking Lot.|Todo.|  
-|Easy|ATM.|Todo.|  
-|Easy|Snake Game.|Todo.|  
-|Easy|Loggin System.|Todo.|  
-|Easy|Hashmap Internals.|Todo.|  
-|Easy|Book My Show.|Todo.|  
-|Easy|Splitwise.|Todo.|
-|Easy|Chess Game.|Todo.|  
-|Easy|File Systems.|Todo.|  
-|Easy|Message Queue. |Todo.| 
-|Easy|Inventory Management System. |Todo.|
-|Easy|Calendar.|Todo.|  
-|Easy|Stack Overflow. |Todo.| 
+|Level| Topic LLD                    | Status |
+|---|------------------------------|-------|
+|Easy| Tic Tac Toe Game.            |Todo.|  
+|Easy| Parking Lot.                 |Todo.|  
+|Easy| ATM.                         |Todo.|  
+|Easy| Snake Game.                  |Todo.|  
+|Easy| Loggin System.               |Todo.|  
+|Easy| Hashmap Internals.           |Todo.|  
+|Easy| Book My Show.                |Todo.|  
+|Easy| Splitwise.                   |Todo.|
+|Easy| Chess Game.                  |Todo.|  
+|Easy| File Systems.                |Todo.|  
+|Easy| Message Queue.               |Todo.| 
+|Easy| Inventory Management System. |Todo.|
+|Easy| Library Management System.   |Todo.|
+|Easy| Calendar.                    |Todo.|  
+|Easy| Stack Overflow.              |Todo.| 
+
+---
