@@ -530,60 +530,63 @@ When we have the reverse proxy we could make the response faster by modifying th
 
 {{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/PushModel.png" alt="Subset" caption="Push Model">}}
 
-Distributed transaction.
+### Distributed transaction.
 
-Once synchronous execution is adapted for every sourcing nodigroup we can reuse the distributed transaction solution this is your saga assuming we partition the data by dividing the hash value of key by 2.
+Once synchronous execution is adapted for every sourcing node group we can reuse the distributed transaction solution TC/C or Saga. Assuming we partition the data by dividing the hash value of key by 2.
 
 
 {{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/FinalDesignInNumberedSequence.png" alt="Subset" caption="Final Design In Numbered Sequence.">}}
 
 
-Lets see how the money transfer works in the final distributed event sourcing architecture. To make it easier to understand we use the saga distributed transaction model and only explain the happy path without any rollback.
+Lets see how the money transfer works in the final distributed event sourcing architecture.  
+Saga distributed transaction model and only explain the happy path without any rollback.
 
-The money transfer operation contains two distributor operation a $1 and C $1.
+The money transfer operation contains two distributed operation `A -$1` and `C +$1`.
 
-One user a sends a distributed transaction to the saga coordinated. Tends to operation a $1 and C $1.
+1. User A sends a distributed transaction to the Saga coordinator. It contains two operations `A -$1` and `C +$1`.
 
-2. Saavre coordinator creates a record in the face status table to trace the status of a transaction.
+2. Saga coordinator creates a record in the phase status table to trace the status of a transaction.  
 
-Saga coordinated examines the order of operation determines that it needs to handle a dollar one first bid the coordinator sends a dollar one as a command to partition one which contains account A's information.
+3. Saga coordinator examines the order of operations determines that it needs to handle `A -$1` first. The coordinator sends `A -$1` as a command to partition one which contains account A's information.
 
-Partition 1’s raft leader receives the A $1 command and stores it in the command list. Indian validates the command. Is valid it will converted into an event. Consensus algorithm is used to synchronize data across different nodes. (deducting $1 from A’s account balance) is executed after synchronisation is complete.
+4. Partition 1’s raft leader receives the `A -$1` command and stores it in the command list. It then validates the command. Is valid ? it will converted into an event. Raft Consensus Algorithm is used to synchronize data across different nodes. The event (deducting `$1` from A’s account balance) is executed after synchronisation is complete.
 
-5. After the event is synchronised they went sourcing framework of partition once recognises the data to the read path using cqrs. Battery constructs the state and the state of execution.
+5. After the event is synchronised they event sourcing framework of partition 1 synchronizes the data to the read path using CQRS. The read path reconstructs the state and the status of execution.
 
-The read path of partition one pushes the status back to the caller of this event sourcing framework which is the saga coordinated.
+6. The read path of partition 1 pushes the status back to the caller of this event sourcing framework which is the Saga coordinator.
 
-Saga coordinate and receives the success status from partition 1.
+7. Saga coordinator receives the success status from partition 1.
 
-The saga coordinator creates an order indicating the partition of partition 1 is successful in phase status stable.
+8. The Saga coordinator creates a record indicating the operation in partition 1 is successful in phase status stable.
 
-Because the first operation succeeded the Saga coordinator executes the second operation which is C $1. United Sensei $1 as Kamal to partition to which ventricular count sees information.
+9. Because the first operation succeeds, the Saga coordinator executes the second operation which is `C +$1`. The coordinator sends `C +$1` as a command to Partition 2 which contains account C's information.
 
-Partition two's raft leader receives the C $1 command and save it to the command list. Is valid it is converted into an even. Consensus algorithm is used to synchronise data across different notes. Event add $1 to account is executive representation is complete.
+10. Partition 2's raft leader receives the `C +$1` command and save it to the command list. Is valid it is converted into an even. Consensus algorithm is used to synchronise data across different nodes. Event (add `$1` to C's account) is executive after synchronization is complete.
 
-After Devanti Synchronise the event sourcing Prema Ka partition to synchronise the data to the read path using CQRS. Rare path reconstructs the state and the state of execution.
+11. After the event Synchronized the event sourcing framework of partition 2 synchronise the data to the read path using CQRS. The read path reconstructs the state and the state of execution.
 
-Read Pathak partition to pushes the status back to the caller of the event sourcing framework which is the saga coordinated.
+12. Read Path of partition 2 pushes the status back to the caller of the event sourcing framework which is the saga coordinated.
 
-The coordinator receives the success status from partition 2.
+13. The Saga coordinator receives the success status from partition 2.
 
-Creates a record indicating the operational partition to a successful in the phase status table.
+14. The Saga coordinator creates a record, indicating the operation in partition 2 is successful in the phase status table.
 
-At this time all operations succeed ed and the distributed transaction is completed. The saga coordinator responds to a scholar with the results.
+15. At this time, all operations succeed and the distributed transaction is completed. The saga coordinator responds to its caller with the result.
 
 ### Summary.
 
-The design is to support 1 million payment commands per second and in the estimation we understood that few 1000 nodes are required to support such load.
+Design support 1 million payment commands per second and need few 1000 nodes to support such load.
 
-In the first design a solution using in memory key store radius is proposed the design is that data is not durable.
+In the first design a solution using in memory key store Redis is proposed.  
+Problem - the data is not durable.
 
-In the second design the in memory cache is replaced by transaction and database to support multiple nodes different transaction protocols such as stupid CTCC and Sagar proposed. The main issue with transactional B story solution is that we cannot conduct a data audit easily.
+In the second design, the in-memory cache is replaced by transaction databases. To support multiple nodes, different transactional protocols such as 2PC, TC/C and Saga are proposed.  
+The main issue with transactional-based solution is that we cannot conduct a data audit easily.
 
 Next event sourcing is introduced we first implemented event sourcing using an external database and queue but it is not performant. Improved performance by storing command events and state in the local note.
 
-A single node means a single point of failure. The system reliability we use the raft consensus algorithm to replicate the event list on to multiple notes.
+A single node means a single point of failure. The system reliability we use the raft consensus algorithm to replicate the event list on to multiple nodes.
 
-The last enhancement we made was to adapt the secures features of event sourcing. Sports proxy to change the asynchronous event sourcing framework to asynchronous one for external users. The TCC or saga control is used to coordinate command executions across multiple node groups.
+The last enhancement we made was to adapt the CQRS features of event sourcing. We added a reverse proxy to change the asynchronous event sourcing framework to synchronous one for external users. The TCC or saga control is used to coordinate command executions across multiple node groups.
 
 {{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/Summary.png" alt="Subset" caption="Summary.">}}
