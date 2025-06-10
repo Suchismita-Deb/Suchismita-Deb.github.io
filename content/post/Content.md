@@ -57,14 +57,19 @@ Design promotional notification system.
 |Behavioral Interview| https://suchismita-deb.github.io/tags/behavoiral-interview/  |
 
 
-You can download the PDF file from [System Design Handbook](/files/SystemDesignHandbook.pdf).  
-You can download the PDF file from [OS_Full_Notes](/files/OS_Full_Notes.pdf).  
-You can download the PDF file from [Grokking-the-advanced-system-design-interview](/files/Grokking-the-advanced-system-design-interview.pdf).  
-You can download the PDF file from [Grokking-the-system-design-interview](/files/Grokking-the-system-design-interview.pdf).  
 
-You can download the PDF file from [System-design-interview-an-insiders-guide-volume2-1-100](/files/System-design-interview-an-insiders-guide-volume2_compressed-1-200-1-100.pdf).  
-You can download the PDF file from [System-design-interview-an-insiders-guide-volume2-100-200](/files/System-design-interview-an-insiders-guide-volume2_compressed-1-200-100-200.pdf).  
-You can download the PDF file from [System-design-interview-an-insiders-guide-volume2-201-427](/files/System-design-interview-an-insiders-guide-volume2_compressed-201-427.pdf).
+### **Collection of Books.**
+
+| Book Name                                           | Link.                                   
+|-----------------------------------------------------|-----------------------------------------|
+| System Design Handbook.                             | [Link](/files/SystemDesignHandbook.pdf) |
+| OS Notes                                            |[Link](/files/OS_Full_Notes.pdf).|
+| Grokking the advanced System Design Interview.      |[Link](/files/Grokking-the-advanced-system-design-interview.pdf).|
+| Grokking the system design interview.               |[Link](/files/Grokking-the-system-design-interview.pdf).|
+| System Design Insider Guide Alex Xu Book 1 - 100.   |[Link](/files/System-design-interview-an-insiders-guide-volume2_compressed-1-200-1-100.pdf).|
+| System Design Insider Guide Alex Xu Book 100 - 200. |[Link](/files/System-design-interview-an-insiders-guide-volume2_compressed-1-200-100-200.pdf).|
+| System Design Insider Guide Alex Xu Book 200 - 500. |[Link](/files/System-design-interview-an-insiders-guide-volume2_compressed-201-427.pdf).|
+
 
 You can download the PDF file from [Jonathan-Livingston-Seagull](/files/Jonathan-Livingston-Seagull.pdf).  
 You can download the PDF file from [Deep Work_ Rules for focused success in a distracted world](/files/Deep_Work_Rules.pdf).  
