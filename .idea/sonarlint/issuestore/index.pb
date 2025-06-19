@@ -12729,3 +12729,5 @@ b
 2content/post/Devops/Kubernetes/KubernetesBasics.md,6\b\6bfaae25915812f5ec013e53d7af09110385f5af
 x
 Hcontent/post/Spring/Kafka/KafkaInternalArchitecture/KafkaArchitecture.md,7\7\77b837a7d34a1d3fdee8f7c5956693295ffe4d4d
+k
+;static/images/Spring/Kafka/KafkaInternalArchitecture/A.java,b\8\b83ffe0a594ac8cf2dd994c11369e41ce661e513

@@ -274,6 +274,160 @@ producer-metrics:batch-size-avg"
 
 The batch size is close to the batch size limit. Still losing the throughput and latency.
 
-{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/4.png" alt="Events" caption="Events.">}}
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/4.png" alt="Events" caption="Kafka Internal Architecture.">}}
 
 The producer default for the lingering batch size are actually the best choice for an application where it produces 200 records for per second of 1000 bytes each.
+
+### Data Plane - Replication Protocol.
+
+How Kafka replicates the data in the data plane?
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/KafkaDataReplication.png" alt="Events" caption="Kafka Data Replication.">}}
+
+When create a topic we specify how many replication we need. Then all the partitions within the topic will be created with the number of replicas.
+
+The replication as N then we can tolerate N-1 failures.
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/LeaderFollowerISRList.png" alt="Events" caption="Leader Follower ISR List.">}}
+
+The producer will send the data to the leader. The followers will retrieve the data from the leader. The consumer reads the data from the leader. It can be configured to read the data from the followers.
+
+**In-sync Replicas ISR -** ISR is a set of data that captures all of the replicas that have fully caught up with the leader. Where all the replicas are healthy then all the replicas will be a part of the ISR.
+
+Each of the leader is also associated with the leader epoch. It is a unique number that is monotonically increasing and is used to capture the generation of the lifetime of a particular leader.
+
+Every time when a leader takes the data From the producer request To write to the local blog it needs to cheque all the records of dispatch with its leader epoch.
+
+Leader epoch is very important for doing log reconciliation among all the replicas.
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/LeaderEpoch.png" alt="Events" caption="Leader Follower ISR List.">}}
+
+When the leader has appointed the produced attendant to the local locks all the followers will be trying to retrieve the new data from the leader the follower does that by issuing a fetch request to the leader including the offset from which it needs to fetch data.
+
+After the leader receives the rental request the leader will be returning the new records from the particular offset to the follow.
+
+When the following receives the response it will be appending those new records into its own local log.
+
+{{<figure src="static/images/Spring/Kafka/KafkaInternalArchitecture/FollowerFetchResponse.png" alt="Events" caption="Leader Follower ISR List.">}}
+
+The follower is appending the data to its local log it keeps the same leader epoch included in those record batches.
+
+We need a way to commit the offsets, those records have been considered safe.
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/CommittingPartitionsOffset.png" alt="Events" caption="Committing Partitions Offset.">}}
+
+In Kafka, The way we commit those records is defined by once a particular record is included in all the in sync replicas then the record is considered committed and it can be safely written to the consumer.
+
+**How does the leader know weather a particular follower has received a particular order ?**
+
+It is actually piggybacked on the fetch request from the follower.
+
+By sending a fetch request from a particular offset say here offset three the leader knows that the follower has received all the records up to of set 3.
+
+The way we model committed records is through this concept called high watermark it was the opposite before which all the records are considered as committed in this case we will mark the high Watermark on the leader to offset three after the fetch request have gone through all the offset up to 3.
+
+Once the leader has advanced the high Watermark it will also need to propagate this information to the followers this is done by piggybacking in the fetch response.
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/AdvancingFollowerHighWatermark.png" alt="Events" caption="Advancing Follower High Watermark.">}}
+
+In the future response leader will also include the latest high Watermark to the follower. It is done asynchronously the lowers high watermark typically is a little behind the true high water mug of the leader.
+
+{{<figure src="static/images/Spring/Kafka/KafkaInternalArchitecture/HandlingLeaderFailure.png" alt="Events" caption="HandlingLeaderFailure">}}
+
+Let's say the leader broker one on one is failed we need a way to elect the new leader.
+
+The leader election in Kafka in the data plane is very simple because through the protocol we know all the replicas that are in the isr.
+
+All those instinct replicas have all the previously committed records.
+
+In this case both controller 102 and 103 can be a leader so we can pick 103 as a leader.
+
+This information will be propagated to the control plane once replica 103 notices that it's a new leader and it will start take the new request from the producer.
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/TemporaryDecreasedHighWaterMark.png" alt="Events" caption="Temporary Decreased High WaterMark.">}}
+
+Once the new leader is elected the high watermark the new leader is actually less than the true high watermark in the previous leader.
+
+What will happen if a consumer is issuing a fetch request in this time window asking for offset in the middle offset 1?
+
+In this case we dont want to give the consumer the wrong indication that its request is invalid because this is transient and temporary.. We will be issuing a retrial error back to the consumer client so that it can keep retrying until its high watermark catches up to the true high water mark.
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/PartitionReplicaReconciliation.png" alt="Events" caption="Partition Replica Reconciliation.">}}
+
+Once the new leader is elected some of the followers may need to reconcile their data with a new leader.
+
+The follower on the broker 102 actually has some data in offset 3 and 4. Those are the records that are never committed and They are actually quite different from the corresponding record in the new leader.
+
+We need a way to clean those records. This is done through the replica reconciliation logic. It is done through the detail in the fetch request. When the follower is issuing effect request in addition to the offset firm which it wants to fetch data it also includes the latest epoch it has seen in its local logs.
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/FetchResponseInformFollowerDivergence.png" alt="Events" caption="Fetch Response Inform Follower Divergence.">}}
+
+In this case it is epoch 1, Once the leader receives the fetch request it will use the epoch information to cheque the consistency with its local log In this case it realizes that within its local log epoch 1 really ends at offset 2 instead of offset 4 indicated by the follower.
+
+So the leader will send a response indicating to the followers to make the log consistent with respect to epoch 1. in this case epoch I really ends before offset 3. When the following receives this fetch response from the leader it will know that it needs to truncate the data at the after 3 and four at this point and at this point the data is consistent with the leader up to offset 2.
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/SubsequentFetch.png" alt="Events" caption="Subsequent Fetch updated offset and epoch.">}}
+
+Now the follower issue the next fetch request starting offset 3 and the last epoch 1.
+
+Once the leader receives it it notices that it is actually consistent with the local log s and this will causeway its local high watermark to be advanced to offset 3.
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/Follower102Reconciled.png" alt="Events" caption="Follower 102 Reconciled.">}}
+
+Now the leader will be returning new data back to the follower and the follower will take this data and append to its local log.
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/Follower102AcknowledgedNewRecord.png" alt="Events" caption="Follower102AcknowledgedNewRecord.">}}
+
+Follow will fetch again with the latest offset or offset 7 and this will cause the high watermark in the leader to be advanced to offset 7.
+
+There is complete reconciliation between the followers log and the leaders log.
+
+At this point we're still under the replicated mode Because not all the replicas are in ISR.
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/Follower102RejoinedCluster.png" alt="Events" caption="Follower 102 Rejoined Cluster.">}}
+
+At some point the failed replica or broken 101 Will come back and it will catch up from the leader and will go through the same reconciliation logic as replica 102 and eventually it will catch up all the way to the end of the logs and then it will be added back to the isr.
+
+Now we're into the fully replicated mode.
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/HandlingFailuresOrSlowFollower.png" alt="Events" caption="Leader Follower ISR List.">}}
+
+**How follower failures is handled?**
+
+Sometimes the father can fail or may be slow to catch up with the leader in that case we keep on waiting for the follower then we will never be able to advance the high watermark.
+
+The leader will keep monitoring the progress of the follower and it will measure what's the last time this particular follower has caught up all the way with the leader and if it is lagging by more than a configured amount of the time based on the property then this follower is considered as out of sync. It will be dropped out of ISR. At that point the leader can now advance the high Watermark based on the reduced in sync replica set.
+
+{{<figure src="/images/Spring/Kafka/KafkaInternalArchitecture/PartitionLeaderBalancing.png" alt="Events" caption="Leader Follower ISR List.">}}
+
+**Balancing the load of the leader.**
+
+The leader replica typically has a little bit more than the following because all of the followers are fetching data directly from the later so in a healthy cluster we want the load of the litter to be balanced this is a concept called preferred replica when you create a topic we designate the first replica of each partition as a preferred replica.
+
+When we assign the preferred replica we try to assign it such a way that the preferred replica will be distributed evenly among all of those brokers.
+
+When we do the leader in election we try to . Added to see if the preferred replica is healthy and if the current leader is on the preferred one if not we try to move the leader back to the preferred replica. So in the end all the leader to be moved into the preferred replica.
+
+Next slide this is a revenue distributed among all the brokers so we can achieve a balanced load among the leaders in the cluster.
+
+### Control Plane - Zookeeper vs Kraft.
+
+### Consumer and Consumer Group Protocol.
+
+### Hands on -  Consumer and Consumer Group Protocol.
+
+### Configuring Apache Kafka  Durability, Availability and Ordering.
+
+### Transaction message delivery Exactly-One.
+
+### Transaction message delivery and Processing.
+
+### Apache Kafka Topic Compaction.
+
+### Tiered Storage in Kafka.
+
+### Apache Kafka Cluster Scaling and Automation.
+
+### Geo-Replication with Apache Kafka And Confluent.
+
+### Cluster Linking.
