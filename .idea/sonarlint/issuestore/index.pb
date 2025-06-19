@@ -12723,3 +12723,7 @@ h
 8content/post/Spring/Kafka/KafkaInternalArchitecture/1.md,a\6\a62bea11db3b5504dc149fb440f6dbd197706e90
 r
 Bcontent/post/CodingInterview/Volkswagen/JavaInterviewExperience.md,b\6\b61c28ee82cc13c74332605e3c4b7b3ddb813156
+S
+#content/post/Devops/Introduction.md,7\d\7d0c6282d3a7776c95b048c2941e284d30d298cd
+b
+2content/post/Devops/Kubernetes/KubernetesBasics.md,6\b\6bfaae25915812f5ec013e53d7af09110385f5af

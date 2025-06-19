@@ -5,10 +5,6 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
     "Communication Behavoiral Interview", "ConflictResolution", "Customer Behavoiral Interview", "Decision Making Behavoiral Interview", "Experience Based Behavoiral Interview", "Grokking the Behavioral Interview", "Hypothetical Behavioral Interview", "Imaginary Behavoiral Interview", "STAR", "Team Work Behavoiral Interview", "Time Management Behavoiral Interview", "computer networks", 'interviewQuestion', 'java', 'functional interface', 'interface', 'lambda', 'work', 'MERN', "spring", "docker", "redis", 'Spring Security', "mongodb", "CRUD", "REST", 'database', 'jdbc', "springBootCourse", 'Stock', 'Stock Market', 'interview question', 'system design', "testing", 'git', 'blog',"vocabulary","gre", "observation"]
 +++
 
-# Content.
-
-
-
 ## Java
 
 |Topic|Link|
@@ -57,7 +53,7 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
 
 
 
-### **Collection of Books.**
+## Collection of Books. 
 
 | Book Name                                           | Link.                                   
 |-----------------------------------------------------|-----------------------------------------|
@@ -95,7 +91,7 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
 System Design.
 https://github.com/SweetCodey/system-design-masterclass/tree/main
 
-### Java Interview Question.
+## Java Interview Question.
 
 
 Grilled on OOPs  
@@ -154,6 +150,8 @@ How would you ensure data integrity in a multi-region database setup?
 Explain Leader Election. How would you implement it in a microservices-based system?   
 What are the trade-offs between CQRS and traditional CRUD-based systems?   
 How does a Distributed Message Queue (like Kafka) handle backpressure?   
+
+## System Design Chart.
 
 |Level| Topic HLD                                                     | Status |
 |---|---------------------------------------------------------------|-------|
