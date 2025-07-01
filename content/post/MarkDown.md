@@ -122,3 +122,10 @@ Another way to chnage the figure.html and add a bordered-img class.
   height: auto;
 }
 ```
+
+
+PaperMod Theme to get the fuzzy search details.
+
+https://github.com/adityatelange/hugo-PaperMod?tab=readme-ov-file
+
+https://adityatelange.github.io/hugo-PaperMod/
