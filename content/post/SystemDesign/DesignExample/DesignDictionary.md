@@ -47,9 +47,6 @@ Cache Layer - Hot words (most queried) cached in RAM.
 
 Batch Processor - Processes changelog every week.
 
-
-
-
 ### storage Option.
 
 Relational DB (e.g., PostgreSQL) - ACID, good for versioning, transactional batch updates. Might not scale well for
@@ -107,9 +104,8 @@ In-Memory Cache — Redis or local LRU for super-hot words.
 
 No traditional DB. RocksDB is an embedded, file-backed key-value store.
 
-
 | Component          | Role                                                              |
-| ------------------ | ----------------------------------------------------------------- |
+|--------------------|-------------------------------------------------------------------|
 | 🚪 API Nodes       | Stateless REST servers.                                           |
 | 🗂️ Local Index    | RocksDB or LMDB, local-only.                                      |
 | ☁️ Blob Store      | S3 (immutable).                                                   |
@@ -118,7 +114,6 @@ No traditional DB. RocksDB is an embedded, file-backed key-value store.
 | 📦 Changelog Job   | Validates, builds new blobs, new index, swaps pointer.            |
 | 🧩 Version Pointer | Tiny file in S3 or etcd.                                          |
 | 🔄 Config Sync     | Each node pulls version pointer on boot & refreshes every minute. |
-
 
 Aspect - Choice  
 Index - RocksDB on local disk (EBS/SSD)
@@ -196,11 +191,18 @@ Example:
 ```json
 
 [
-{"word": "serendipity", "meaning": "... new meaning ..."},
-{"word": "effervescent", "meaning": "... new word ..."}
+  {
+    "word": "serendipity",
+    "meaning": "... new meaning ..."
+  },
+  {
+    "word": "effervescent",
+    "meaning": "... new word ..."
+  }
 ]
 
 ```
+
 Validation Job:
 
 Runs in CI/CD or Airflow.
@@ -232,7 +234,7 @@ Clients read pointer on startup → pick new index.
 Old version is untouched → rollback = switch pointer back.
 
 | Failure               | Mitigation                                   |
-| --------------------- | -------------------------------------------- |
+|-----------------------|----------------------------------------------|
 | Blob read slow        | Use CDN + regional edge cache                |
 | Index corruption      | Keep previous version + RocksDB snapshot     |
 | Bad changelog         | Detect in validation, catch in shadow deploy |
@@ -250,7 +252,6 @@ Test with Locust / K6.
 
 Code Structure.
 
-
 index/build_index.py: Build RocksDB index.
 
 api/app.py: API server, load index, serve /word/{word}.
@@ -265,7 +266,7 @@ v3 - Add Redis layer for super-hot words. Add local SSD scratch disk for blobs.
 v4 - Fully stateless API fleet. Self-healing index sync - on deploy, node pulls latest version index.  
 v5 - Multi-region deploy. Version pointer via global config store.
 
-Read-heavy, immutable design - Immutable blobs → no corruption. Single pointer switch → atomic versioning.  
+Read-heavy, immutable design - Immutable blobs → no corruption. Single pointer switch → atomic versioning.
 
 No DB vendor lock-in - Pure file + object store + embedded index → simple infra.
 
@@ -347,7 +348,6 @@ Pull version.json → if changed, hot-swap index, discard old.
 
 Flip version.json back
 
-
 File-based index = cheap, fast, resilient.
 
 Object store = infinite capacity, high durability.
@@ -358,12 +358,10 @@ Changelog = versioned, safe, simple.
 
 Ops = push files, swap pointer.
 
-
-
-
 # Using Db.
+
 | With File/No DB                | With DB                                  |
-| ------------------------------ | ---------------------------------------- |
+|--------------------------------|------------------------------------------|
 | Immutable files, RocksDB index | Normal relational DB table               |
 | Pointer swap for versioning    | Schema versioning, transactional updates |
 | Read path must slice files     | DB handles read, cache holds hot words   |
@@ -372,15 +370,16 @@ Ops = push files, swap pointer.
 | CDN only for blob files        | CDN optional (or used for static docs)   |
 
 The data Model.
-A relational table - dictionary_word - 
+A relational table - dictionary_word -
 
 | Column       | Type         | Notes                   |
-| ------------ | ------------ | ----------------------- |
+|--------------|--------------|-------------------------|
 | `word`       | VARCHAR(128) | PK, indexed             |
 | `meaning`    | TEXT         | JSON blob or large text |
 | `version`    | INT          | Versioning if needed    |
 | `created_at` | TIMESTAMP    | For audit               |
 | `updated_at` | TIMESTAMP    | For audit               |
+
 word must be UNIQUE.
 
 B-Tree index on word → fast WHERE word = ? lookup.
@@ -461,7 +460,7 @@ Rollback = flag old rows active, new inactive.
 Failure Handing.
 
 | Failure        | Solution                                              |
-| -------------- | ----------------------------------------------------- |
+|----------------|-------------------------------------------------------|
 | Cache down     | Fall back to DB, hits higher latency                  |
 | DB write fails | Transaction rollback                                  |
 | DB read slow   | Add replicas, index tuning                            |
@@ -480,15 +479,1181 @@ Keep changelog small (< 1K rows) → writes complete in seconds.
 Cose Model.
 
 | Layer     | Cost Impact                                         |
-| --------- | --------------------------------------------------- |
+|-----------|-----------------------------------------------------|
 | DB        | More expensive than pure blob store but simpler ops |
 | Redis     | Adds infra, but worth it for hot reads              |
 | API nodes | Scale linearly                                      |
 | Changelog | Cheap batch job                                     |
 
 | Factor           | Plan                                         |
-| ---------------- | -------------------------------------------- |
+|------------------|----------------------------------------------|
 | DB IOPS          | Sized for 0.1% read misses → 1K–2K QPS to DB |
 | Redis RAM        | Sized for top \~50K words fully cached       |
 | Write throughput | 1K row upsert per week — trivial             |
 | Read replicas    | Add replicas if QPS > single node capacity   |
+
+Sample Code.
+
+```sql
+CREATE TABLE dictionary_word (
+  word VARCHAR(255) PRIMARY KEY,
+  meaning TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+Spring Boot Dependencies - `spring-boot-starter-web`, `spring-boot-starter-data-jpa`, `postgresql`,
+`spring-boot-starter-data-redis`
+
+```pom
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
+
+Entity and Repository.
+
+```java
+
+@Entity
+@Table(name = "dictionary_word")
+public class DictionaryWord {
+    @Id
+    private String word;
+
+    @Column(columnDefinition = "TEXT")
+    private String meaning;
+
+    @Column
+    private Timestamp createdAt;
+
+    @Column
+    private Timestamp updatedAt;
+
+    // getters and setters
+}
+
+@Repository
+public interface DictionaryWordRepository extends JpaRepository<DictionaryWord, String> {
+}
+
+```
+
+Redis Configuration.
+
+```java
+
+@Configuration
+public class RedisConfig {
+
+    @Bean
+    public RedisConnectionFactory redisConnectionFactory() {
+        return new LettuceConnectionFactory();
+    }
+
+    @Bean
+    public RedisTemplate<String, String> redisTemplate() {
+        RedisTemplate<String, String> template = new RedisTemplate<>();
+        template.setConnectionFactory(redisConnectionFactory());
+        return template;
+    }
+}
+```
+
+Service Layer.
+
+```java
+
+@Service
+public class DictionaryService {
+
+    @Autowired
+    private DictionaryWordRepository repository;
+
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
+
+    public String getMeaning(String word) {
+        String cachedMeaning = redisTemplate.opsForValue().get(word);
+        if (cachedMeaning != null) {
+            return cachedMeaning;
+        }
+
+        DictionaryWord wordEntity = repository.findById(word)
+                .orElseThrow(() -> new RuntimeException("Word not found"));
+
+        redisTemplate.opsForValue().set(word, wordEntity.getMeaning());
+        return wordEntity.getMeaning();
+    }
+
+    @Transactional
+    public void applyChangelog(List<DictionaryWord> newWords) {
+        for (DictionaryWord w : newWords) {
+            repository.save(w);
+            redisTemplate.delete(w.getWord()); // clear cache
+        }
+    }
+}
+```
+
+Controller.
+
+```java
+
+@RestController
+@RequestMapping("/api")
+public class DictionaryController {
+
+    @Autowired
+    private DictionaryService service;
+
+    @GetMapping("/word/{word}")
+    public ResponseEntity<String> getWord(@PathVariable String word) {
+        return ResponseEntity.ok(service.getMeaning(word));
+    }
+
+    @PostMapping("/changelog")
+    public ResponseEntity<String> uploadChangelog(@RequestBody List<DictionaryWord> changelog) {
+        service.applyChangelog(changelog);
+        return ResponseEntity.ok("Changelog applied");
+    }
+}
+```
+
+Application properties.
+
+```properties
+spring.datasource.url=jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/dictionarydb
+spring.datasource.username=${POSTGRES_USER:postgres}
+spring.datasource.password=${POSTGRES_PASSWORD:password}
+spring.redis.host=${REDIS_HOST:localhost}
+spring.redis.port=6379
+```
+
+Docker Compose.
+
+```yaml
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=example
+      - REDIS_HOST=redis
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: dictionarydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+```
+
+Kubernetes Deployment.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dictionary-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: dictionary-app
+  template:
+    metadata:
+      labels:
+        app: dictionary-app
+    spec:
+      containers:
+        - name: dictionary-container
+          image: gcr.io/YOUR_PROJECT_ID/dictionary-app:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: POSTGRES_HOST
+              value: "YOUR_PG_HOST"
+            - name: POSTGRES_USER
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pg-secret
+                  key: password
+            - name: REDIS_HOST
+              value: "YOUR_REDIS_HOST"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dictionary-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: dictionary-app
+  ports:
+    - port: 80
+      targetPort: 8080
+```
+
+Use Cloud SQL for managed PostgreSQL.
+
+Use Cloud Memorystore for Redis.
+
+Use GKE (Google Kubernetes Engine) for your pods.
+
+Use Container Registry (gcr.io) for your Docker images.
+
+Use Secrets Manager for DB credentials.
+
+docker build -t gcr.io/YOUR_PROJECT_ID/dictionary-app:latest .
+
+Docker push gcr.io/YOUR_PROJECT_ID/dictionary-app:latest
+3️⃣ kubectl apply -f k8s-deployment.yaml
+4️⃣ Setup Cloud SQL Proxy if needed.
+5️⃣ Redis can be Cloud Memorystore, with redis.host = private IP.
+
+5M requests/min → Redis covers hot reads, DB covers cold.
+✅ Transactional changelog → Strong consistency.
+✅ Stateless pods → scale horizontal in GKE.
+✅ Kubernetes health checks → rolling deploys.
+✅ Atomic upserts → no partial updates.
+✅ Rollback? Just reapply previous changelog.
+
+# LLD.
+
+| Core Flow          | Operations                                                                             |
+|--------------------|----------------------------------------------------------------------------------------|
+| `GET /word/{word}` | 1) Validate input 2) Check Redis 3) If miss → DB 4) Populate Redis 5) Return           |
+| `POST /changelog`  | 1) Validate file 2) Parse new words 3) Store in DB transactionally 4) Clear cache keys |
+
+| Object               | Responsibility                       |
+|----------------------|--------------------------------------|
+| `Word`               | Domain entity: word + meaning.       |
+| `DictionaryService`  | Business logic (lookups, changelog). |
+| `WordRepository`     | DB operations (CRUD).                |
+| `CacheService`       | Redis abstraction.                   |
+| `ChangelogProcessor` | Parses & validates changelog.        |
+| `WordValidator`      | Ensures valid input.                 |
+| `Controller`         | Exposes REST API.                    |
+
+| **SOLID** Principle           | Where Applied                                                                                           | Real Pattern Used                           | Why It Fits                                               |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------- | --------------------------------------------------------- |
+| **S** — Single Responsibility | `WordRepository` → DB only <br> `RedisCacheService` → Cache only <br> `WordValidator` → Validation only | **Repository**, **Proxy/Decorator**         | Each class does *one* clear job                           |
+| **O** — Open/Closed           | New file formats → plug `CSVProcessor`, `JSONProcessor`                                                 | **Factory**                                 | Add new processor without changing core logic             |
+| **L** — Liskov Substitution   | `IWordRepository` <br> `ICacheService`                                                                  | **Repository**, **Strategy**                | Replace `WordRepository` with any storage backend         |
+| **I** — Interface Segregation | `ICacheService`, `IWordRepository`, `IChangelogProcessor`                                               | **Repository**, **Factory**                 | Interfaces expose only needed ops                         |
+| **D** — Dependency Inversion  | `Controller` depends on `IDictionaryService` <br> `DictionaryService` depends on interfaces             | **Repository**, **Strategy**, **Decorator** | High-level modules use abstractions, not concrete classes |
+
+SOLID shapes the structure.
+
+Patterns implement the shape.
+
+| Pattern        | Where Used                                 | Why                                               |
+| -------------- | ------------------------------------------ | ------------------------------------------------- |
+| **Repository** | `WordRepository`                           | Abstract DB.                                      |
+| **Factory**    | `ChangelogProcessorFactory`                | Can create `JSONProcessor`, `CSVProcessor` later. |
+| **Strategy**   | Cache lookup strategy (`ReadThroughCache`) | Swappable cache policy.                           |
+| **Singleton**  | `RedisConnection`                          | One Redis pool.                                   |
+| **Builder**    | `Word` for complex JSON payloads.          | Future synonyms/examples.                         |
+
+```pgsql
++---------------------+
+|      Controller     |
++---------------------+
+| - IDictionaryService|
++---------------------+
+| + getWord()         |
+| + uploadChangelog() |
++---------------------+
+
+          |
+          v
+
++------------------------+
+|  IDictionaryService    |
++------------------------+
+| + getMeaning()         |
+| + applyChangelog()     |
++------------------------+
+
+          |
+          v
+
++------------------------+
+|  DictionaryService     |
++------------------------+
+| - WordRepository       |
+| - CacheService         |
+| - ChangelogProcessor   |
++------------------------+
+| + getMeaning()         |
+| + applyChangelog()     |
++------------------------+
+
+ +---------------+         +----------------+
+ | WordValidator |         | ChangelogProcessorFactory |
+ +---------------+         +----------------+
+ | + isValid()   |         | + getProcessor() |
+ +---------------+         +----------------+
+
+ +---------------------+
+ | IWordRepository     |
+ +---------------------+
+ | + findWord()        |
+ | + saveWord()        |
+ +---------------------+
+
+         |
+         v
+
+ +---------------------+
+ | WordRepository      |
+ +---------------------+
+ | - DB Connection     |
+ +---------------------+
+ | + findWord()        |
+ | + saveWord()        |
+ +---------------------+
+
+ +---------------------+
+ | ICacheService       |
+ +---------------------+
+ | + get()             |
+ | + set()             |
+ | + evict()           |
+ +---------------------+
+
+         |
+         v
+
+ +---------------------+
+ | RedisCacheService   |
+ +---------------------+
+ | - RedisConnection   |
+ +---------------------+
+ | + get()             |
+ | + set()             |
+ | + evict()           |
+ +---------------------+
+
+ +---------+
+ | Word    |
+ +---------+
+ | word    |
+ | meaning |
+ +---------+
+```
+
+Word — Builder Pattern.
+```java
+public class Word {
+    private final String word;
+    private final String meaning;
+
+    private Word(Builder builder) {
+        this.word = builder.word;
+        this.meaning = builder.meaning;
+    }
+
+    public String getWord() { return word; }
+    public String getMeaning() { return meaning; }
+
+    public static class Builder {
+        private String word;
+        private String meaning;
+
+        public Builder word(String word) {
+            this.word = word;
+            return this;
+        }
+
+        public Builder meaning(String meaning) {
+            this.meaning = meaning;
+            return this;
+        }
+
+        public Word build() {
+            return new Word(this);
+        }
+    }
+}
+
+```
+
+```java
+public interface IWordRepository {
+    Optional<Word> findWord(String word);
+    void saveWords(List<Word> words);
+}
+
+@Repository
+public class WordRepository implements IWordRepository {
+    // Spring Data JPA or JdbcTemplate
+    public Optional<Word> findWord(String word) {
+        // SELECT * FROM dictionary WHERE word = ?
+        return Optional.empty(); // example
+    }
+
+    public void saveWords(List<Word> words) {
+        // Transactional batch UPSERT
+    }
+}
+
+```
+Proxy/Decorator Pattern for Cache
+```java
+public interface ICacheService {
+    String get(String key);
+    void set(String key, String value);
+    void evict(String key);
+}
+
+@Service
+public class RedisCacheService implements ICacheService {
+    private final RedisTemplate<String, String> redis;
+
+    public RedisCacheService(RedisTemplate<String, String> redis) {
+        this.redis = redis;
+    }
+
+    public String get(String key) {
+        return redis.opsForValue().get(key);
+    }
+
+    public void set(String key, String value) {
+        redis.opsForValue().set(key, value);
+    }
+
+    public void evict(String key) {
+        redis.delete(key);
+    }
+}
+
+```
+Factory Pattern for Changelog Processor.
+```java
+public interface IChangelogProcessor {
+    List<Word> parseChangelog(File file);
+}
+
+public class JSONProcessor implements IChangelogProcessor {
+    public List<Word> parseChangelog(File file) {
+        // Parse JSON changelog
+        return List.of();
+    }
+}
+
+public class CSVProcessor implements IChangelogProcessor {
+    public List<Word> parseChangelog(File file) {
+        // Parse CSV changelog
+        return List.of();
+    }
+}
+
+public class ChangelogProcessorFactory {
+    public static IChangelogProcessor getProcessor(String fileType) {
+        switch(fileType) {
+            case "json": return new JSONProcessor();
+            case "csv": return new CSVProcessor();
+            default: throw new IllegalArgumentException("Unsupported file type");
+        }
+    }
+}
+```
+Strategy Pattern (Optional) for Cache Strategy.
+```java
+public interface CacheStrategy {
+    String get(String key);
+    void put(String key, String value);
+}
+
+public class ReadThroughCacheStrategy implements CacheStrategy {
+    private final ICacheService cache;
+    private final IWordRepository repository;
+
+    public ReadThroughCacheStrategy(ICacheService cache, IWordRepository repository) {
+        this.cache = cache;
+        this.repository = repository;
+    }
+
+    public String get(String key) {
+        String cached = cache.get(key);
+        if (cached != null) return cached;
+
+        Optional<Word> word = repository.findWord(key);
+        word.ifPresent(w -> cache.set(key, w.getMeaning()));
+        return word.map(Word::getMeaning).orElse(null);
+    }
+
+    public void put(String key, String value) {
+        cache.set(key, value);
+    }
+}
+```
+Dictionary Service with Dependency Inversion
+```java
+public interface IDictionaryService {
+    String getMeaning(String word);
+    void applyChangelog(File file, String fileType);
+}
+
+@Service
+public class DictionaryService implements IDictionaryService {
+    private final IWordRepository repo;
+    private final ICacheService cache;
+
+    public DictionaryService(IWordRepository repo, ICacheService cache) {
+        this.repo = repo;
+        this.cache = cache;
+    }
+
+    public String getMeaning(String word) {
+        String cached = cache.get(word);
+        if (cached != null) return cached;
+
+        Word w = repo.findWord(word)
+                     .orElseThrow(() -> new RuntimeException("Word not found"));
+        cache.set(word, w.getMeaning());
+        return w.getMeaning();
+    }
+
+    public void applyChangelog(File file, String fileType) {
+        IChangelogProcessor processor = ChangelogProcessorFactory.getProcessor(fileType);
+        List<Word> words = processor.parseChangelog(file);
+        repo.saveWords(words);
+        words.forEach(w -> cache.evict(w.getWord()));
+    }
+}
+```
+
+Controller.
+```java
+public interface IDictionaryService {
+    String getMeaning(String word);
+    void applyChangelog(File file, String fileType);
+}
+
+@Service
+public class DictionaryService implements IDictionaryService {
+    private final IWordRepository repo;
+    private final ICacheService cache;
+
+    public DictionaryService(IWordRepository repo, ICacheService cache) {
+        this.repo = repo;
+        this.cache = cache;
+    }
+
+    public String getMeaning(String word) {
+        String cached = cache.get(word);
+        if (cached != null) return cached;
+
+        Word w = repo.findWord(word)
+                     .orElseThrow(() -> new RuntimeException("Word not found"));
+        cache.set(word, w.getMeaning());
+        return w.getMeaning();
+    }
+
+    public void applyChangelog(File file, String fileType) {
+        IChangelogProcessor processor = ChangelogProcessorFactory.getProcessor(fileType);
+        List<Word> words = processor.parseChangelog(file);
+        repo.saveWords(words);
+        words.forEach(w -> cache.evict(w.getWord()));
+    }
+}
+```
+
+
+S: Repo, Cache, Processor each do one job
+O: Adding XMLProcessor? Zero changes to DictionaryService
+L: Any IWordRepository works — Postgres, DynamoDB
+I: Interfaces cleanly split responsibilities
+D: Controller depends on IDictionaryService only — low coupling
+
+✔️ Repository → DB
+✔️ Proxy → Redis Cache
+✔️ Factory → Changelog Processor
+✔️ Strategy → Pluggable cache logic
+✔️ Builder → Word object
+✔️ Singleton → Spring handles Redis pool
+✔️ Decorator → You can wrap IWordRepository for logging / metrics easily
+
+@Transactional in saveWords ensures atomic changelog.
+
+Rollback on exception.
+
+Cache evicts after commit to avoid stale reads.
+
+
+Sample test file will be like this.
+```java
+@ExtendWith(MockitoExtension.class)
+class DictionaryServiceTest {
+
+    @Mock
+    private IWordRepository repo;
+
+    @Mock
+    private ICacheService cache;
+
+    @InjectMocks
+    private DictionaryService service;
+
+    @Test
+    void testGetMeaning_CacheHit() {
+        when(cache.get("apple")).thenReturn("A fruit");
+
+        String result = service.getMeaning("apple");
+
+        assertEquals("A fruit", result);
+        verifyNoInteractions(repo);
+    }
+
+    @Test
+    void testGetMeaning_CacheMiss_DBHit() {
+        when(cache.get("banana")).thenReturn(null);
+        when(repo.findWord("banana")).thenReturn(Optional.of(
+            new Word.Builder().word("banana").meaning("Yellow fruit").build()
+        ));
+
+        String result = service.getMeaning("banana");
+
+        assertEquals("Yellow fruit", result);
+        verify(cache).set("banana", "Yellow fruit");
+    }
+
+    @Test
+    void testGetMeaning_NotFound() {
+        when(cache.get("kiwi")).thenReturn(null);
+        when(repo.findWord("kiwi")).thenReturn(Optional.empty());
+
+        assertThrows(RuntimeException.class, () -> service.getMeaning("kiwi"));
+    }
+
+    @Test
+    void testApplyChangelog_ProcessorAndRepo() {
+        // Mock changelog file and processor
+        File dummyFile = new File("dummy.json");
+        IChangelogProcessor mockProcessor = mock(IChangelogProcessor.class);
+        List<Word> mockWords = List.of(
+            new Word.Builder().word("pear").meaning("Juicy fruit").build()
+        );
+        when(mockProcessor.parseChangelog(dummyFile)).thenReturn(mockWords);
+
+        // Replace factory for test
+        try (MockedStatic<ChangelogProcessorFactory> mockedFactory = 
+                mockStatic(ChangelogProcessorFactory.class)) {
+            mockedFactory.when(() -> ChangelogProcessorFactory.getProcessor("json"))
+                    .thenReturn(mockProcessor);
+
+            service.applyChangelog(dummyFile, "json");
+
+            verify(repo).saveWords(mockWords);
+            verify(cache).evict("pear");
+        }
+    }
+}
+```
+Basic Docker Compose to run:
+
+Spring Boot App
+
+Redis
+
+PostgreSQL
+```yaml
+version: "3.8"
+
+services:
+  dictionary-app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/dictionary
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_REDIS_HOST=redis
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: dictionary
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    restart: always
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:
+```
+Here’s a starter GKE-ready deployment.yaml for the Spring Boot app.
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dictionary-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dictionary-service
+  template:
+    metadata:
+      labels:
+        app: dictionary-service
+    spec:
+      containers:
+      - name: dictionary-app
+        image: gcr.io/YOUR_PROJECT_ID/dictionary-app:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://POSTGRES_HOST:5432/dictionary
+        - name: SPRING_DATASOURCE_USERNAME
+          value: postgres
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: postgres
+        - name: SPRING_REDIS_HOST
+          value: REDIS_HOST
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dictionary-service
+spec:
+  selector:
+    app: dictionary-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+```
+
+A production-ready Dockerfile for your Spring Boot JAR
+✅ A Helm chart starter for GKE
+✅ A basic GitHub Actions workflow to build, push to Google Container Registry (GCR), and deploy to GKE automatically.
+
+This Dockerfile builds your Spring Boot JAR and runs it with OpenJDK 17.
+```dockerfile
+# Use a minimal builder image
+FROM eclipse-temurin:17-jdk as build
+
+WORKDIR /app
+
+# Copy Maven files and download dependencies first (layer caching)
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+RUN ./mvnw dependency:go-offline
+
+# Copy source and build
+COPY src src
+RUN ./mvnw package -DskipTests
+
+# ===========================
+# Use a slim base image
+FROM eclipse-temurin:17-jre-alpine
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+```
+Best Practice:
+
+Multi-stage build keeps image small.
+
+No Maven runtime in final image.
+
+Runs with minimal JVM footprint.
+
+Helm Chart Starter
+Helm makes it easy to template values for staging/prod.
+Here’s the folder structure and basic chart files.
+`helm/dictionary/Chart.yaml`
+```yaml
+apiVersion: v2
+name: dictionary
+description: A Helm chart for the Dictionary Service
+type: application
+version: 0.1.0
+appVersion: "1.0"
+```
+
+helm/dictionary/values.yaml
+```yaml
+replicaCount: 3
+
+image:
+  repository: gcr.io/YOUR_PROJECT_ID/dictionary-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+env:
+  SPRING_DATASOURCE_URL: jdbc:postgresql://<POSTGRES_HOST>:5432/dictionary
+  SPRING_DATASOURCE_USERNAME: postgres
+  SPRING_DATASOURCE_PASSWORD: postgres
+  SPRING_REDIS_HOST: <REDIS_HOST>
+
+```
+
+`helm/dictionary/templates/deployment.yaml`
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deployment
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: {{ .Release.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: "{{ .Values.env.SPRING_DATASOURCE_URL }}"
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "{{ .Values.env.SPRING_DATASOURCE_USERNAME }}"
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: "{{ .Values.env.SPRING_DATASOURCE_PASSWORD }}"
+        - name: SPRING_REDIS_HOST
+          value: "{{ .Values.env.SPRING_REDIS_HOST }}"
+
+```
+`helm/dictionary/templates/service.yaml`
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-service
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: {{ .Release.Name }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      targetPort: 8080
+
+```
+
+Now deploy `helm install dictionary ./helm/dictionary`
+
+GitHub Actions Workflow
+Here’s a simple `.github/workflows/deploy.yml` - 
+
+```yaml
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Build JAR
+      run: ./mvnw package -DskipTests
+
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v3
+
+    - name: Authenticate to GCP
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+    - name: Configure Docker to use gcloud
+      run: gcloud auth configure-docker
+
+    - name: Build & push Docker image
+      run: |
+        docker build -t gcr.io/$GCP_PROJECT_ID/dictionary-app:latest .
+        docker push gcr.io/$GCP_PROJECT_ID/dictionary-app:latest
+      env:
+        GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v3
+
+    - name: Set up Helm
+      uses: azure/setup-helm@v3
+
+    - name: Deploy with Helm
+      run: |
+        helm upgrade --install dictionary ./helm/dictionary \
+          --set image.repository=gcr.io/$GCP_PROJECT_ID/dictionary-app \
+          --set image.tag=latest
+      env:
+        GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+```
+
+Secrets needed:
+
+GCP_SA_KEY → Service Account JSON Key (base64 encoded).
+
+GCP_PROJECT_ID → Your GCP Project ID.
+
+What You Now Have
+✔️ Spring Boot LLD + SOLID + Design Patterns
+✔️ Real unit tests
+✔️ Docker build & Compose
+✔️ Helm chart starter
+✔️ GitHub Actions to auto build & deploy.
+
+
+✅ 1️⃣ Terraform setup to provision GCP infra:
+
+GKE cluster
+
+Cloud SQL instance (PostgreSQL)
+
+Memorystore (Redis)
+
+IAM service account for GitHub Actions
+
+✅ 2️⃣ Kubernetes Secrets for credentials (best practice)
+
+✅ 3️⃣ Prometheus + Grafana add-on for live monitoring.
+
+Below is a clean main.tf snippet.
+Organize into.
+```css
+infra/
+ ├── main.tf
+ ├── variables.tf
+ ├── outputs.tf
+ ├── versions.tf
+
+```
+
+version.tf
+```hcl
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 5.0"
+    }
+  }
+  required_version = ">= 1.3"
+}
+
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+
+```
+
+`main.tf`
+```hcl
+# GKE Cluster
+resource "google_container_cluster" "primary" {
+  name     = var.gke_cluster_name
+  location = var.region
+
+  remove_default_node_pool = true
+
+  initial_node_count = 1
+}
+
+resource "google_container_node_pool" "primary_nodes" {
+  name       = "primary-node-pool"
+  location   = var.region
+  cluster    = google_container_cluster.primary.name
+
+  node_config {
+    machine_type = "e2-medium"
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/cloud-platform",
+    ]
+  }
+
+  initial_node_count = 3
+}
+
+# Cloud SQL (Postgres)
+resource "google_sql_database_instance" "postgres" {
+  name             = var.db_instance_name
+  database_version = "POSTGRES_15"
+  region           = var.region
+
+  settings {
+    tier = "db-f1-micro"
+    backup_configuration {
+      enabled = true
+    }
+  }
+}
+
+resource "google_sql_user" "postgres_user" {
+  name     = "postgres"
+  instance = google_sql_database_instance.postgres.name
+  password = "change-me-strong"
+}
+
+# Memorystore (Redis)
+resource "google_redis_instance" "redis" {
+  name           = var.redis_instance_name
+  tier           = "STANDARD_HA"
+  memory_size_gb = 1
+  region         = var.region
+}
+```
+
+
+`output.tf`
+```hcl
+output "gke_endpoint" {
+  value = google_container_cluster.primary.endpoint
+}
+
+output "db_instance_connection_name" {
+  value = google_sql_database_instance.postgres.connection_name
+}
+
+output "redis_host" {
+  value = google_redis_instance.redis.host
+}
+
+output "redis_port" {
+  value = google_redis_instance.redis.port
+}
+
+```
+
+How to deploy.
+```
+cd infra
+terraform init
+terraform plan -out tfplan
+terraform apply tfplan
+```
+Save the output connection strings for your Helm chart’s values.yaml.
+
+Kubernetes Secrets
+Store DB credentials, Redis credentials, API keys — never plain env.
+
+secret.yaml
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dictionary-secrets
+type: Opaque
+data:
+  POSTGRES_USER: cG9zdGdyZXM= # base64(postgres)
+  POSTGRES_PASSWORD: Y2hhbmdlLW1lLXN0cm9uZw== # base64(change-me-strong)
+  REDIS_HOST: cmVkaXMuaG9zdA== # base64(your Redis host)
+
+```
+
+Reference them in Helm -
+```yaml
+
+env:
+  - name: SPRING_DATASOURCE_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: dictionary-secrets
+        key: POSTGRES_USER
+```
+
+Use `kubectl create secret` or manage via Helm.
+
+Prometheus + Grafana
+Add to Helm or use the community chart - 
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+
+helm install prometheus prometheus-community/prometheus
+helm install grafana grafana/grafana
+```
+
+Your Spring Boot app exposes /actuator/prometheus? Add spring-boot-starter-actuator + micrometer.
+
+```yaml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+```
+| Piece         | What You Have                               |
+| ------------- | ------------------------------------------- |
+| LLD           | SOLID + patterns                            |
+| Code          | Service + Repo + Cache + Factory + Strategy |
+| Tests         | JUnit + Mockito                             |
+| CI/CD         | GitHub Actions → GCR → GKE                  |
+| Infra         | Terraform → GKE, Cloud SQL, Redis           |
+| Secrets       | K8s Secret YAML                             |
+| Observability | Prometheus + Grafana                        |
+
+“This system is 12-Factor, microservices ready, observable, secrets-managed, and fully automatable through GitOps — a real-world design for high QPS, low-latency lookups and easy changelog updates.”
