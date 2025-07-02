@@ -6,8 +6,10 @@ tags = ['interview question', 'system design']
 categories = ['low level design', 'system design', 'high level design']
 +++
 
-The service exposes endpoints for getting the meaning given the word. The dictionary is weekly updated through a
-changelog which has the words and meanings that needs to be updated and this changelog will contain at max 1000 words.
+**Requirement**
+
+The service exposes endpoints for getting the meaning given the word.  
+The dictionary is weekly updated through a changelog which has the words and meanings that needs to be updated and this changelog will contain at max 1000 words.  
 The total size of the dictionary is 1TB and it holds 171476 words.
 
 No traditional db.
@@ -16,18 +18,22 @@ No traditional db.
 
 Weekly the data update at max 1000 word. Maintains strong consistency for lookups after each changelog.
 
-**Additional Requirement** -
-We look into the product vision as well.
-
+**Additional Requirement** - We look into the product vision as well.  
 Sub-ms lookups for common words.  
-99.999% read availability.  
+**99.999%** read availability.  
 Full rollback if a bad changelog is pushed.  
 Versioned storage for audit & compliance.  
-Stateless deploys with rolling updates.  
+**Stateless** deploys with rolling updates.  
 Easy to maintain, small operational footprint.
 
-**Large data size vs small word count -** 1TB for 171K words means each word + meaning is ~6MB on average — likely due
-to detailed meanings, usage examples, synonyms, antonyms, etc.
+Name|Number of Bytes|Power of 10|
+|---|---|---|
+Kilobytes (KB)|1000|10^3
+Megabytes (MB)|1,000,000|10^ 6
+Gigabytes (GB)|1,000,000,000|10^9
+Terabyte (TB)|1,000,000,000,000|10^12
+
+**Large data size vs small word count -** 1TB for 171K words. It means 10^12 / 10^5 = 10^7bytes. 1MB = 10^6 bytes. 10^7 bytes = 10 MB. It means each word + meaning is ~10MB on average — likely due to detailed meanings, usage examples, synonyms, antonyms, etc.
 
 **Low write frequency, high read performance -** Needs an architecture that favors read-optimized storage and caching.
 
