@@ -5,6 +5,7 @@ url = "/post/systemdesign/designexample/DesignDictionary"
 tags = ['interview question', 'system design']
 categories = ['low level design', 'system design', 'high level design']
 +++
+
 The service exposes endpoints for getting the meaning given the word. The dictionary is weekly updated through a
 changelog which has the words and meanings that needs to be updated and this changelog will contain at max 1000 words.
 The total size of the dictionary is 1TB and it holds 171476 words.
