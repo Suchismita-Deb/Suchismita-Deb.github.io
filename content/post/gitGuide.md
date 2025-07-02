@@ -191,3 +191,6 @@ The .gitmodule should look like this.
 
 
 ### In Blog when large file entered into the
+
+
+`git config --global user.email` - It will see the username in the github.

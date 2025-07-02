@@ -118,3 +118,18 @@ Step 3. in Key Binding right side window Past following Code.
 Step 4. Now press ctrl+alt+shift+l in your keyboard.
 
 
+
+### **Useful Gradle Command.**
+
+```yaml
+./gradlew clean build
+# Gradle wrapper clean build.
+
+./gradle build
+
+./gradlew --version
+
+./gradlew clean build --refresh-dependencies
+
+gradle build
+```
