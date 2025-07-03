@@ -1,6 +1,6 @@
 +++
 title = 'Build Learning.'
-date = 2024-12-23T23:55:51+05:30
+date = 2025-07-02T23:55:51+05:30
 
 url= "/post/spring/fundamental/build"
 tags = ['interviewQuestion', 'spring']
@@ -147,3 +147,11 @@ plugins.withType(JacocoPlugin).configureEach {
 
 
 It installs the dependencies from the link and build the project.
+
+### **Command to run in terminal.**
+
+`_./gradlew clean build --refresh-dependencies_` - Install the dependencies.
+
+`./gradle build` - Build the project.
+
+`./gradlew dependencies` - It will show the list of the dependencies and also the internal dependency that are coming through other dependencies.
