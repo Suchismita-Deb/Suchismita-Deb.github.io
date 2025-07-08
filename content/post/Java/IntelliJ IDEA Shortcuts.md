@@ -7,7 +7,8 @@ tags=['java']
 
 ### Format the code.
 **`Ctrl + Alt + Shift + L`**  - A Reformater box will appear then select the option like remove line break, smart import format the code and then apply.
-![img.png](/images/intellije/refactorImage.png)
+
+{{<figure src="/images/intellije/refactorImage.png" alt="Intellije Refactor Code." caption="Intellije Refactor Code.">}}
 
 Format only lines of code.
 **`Ctrl+Alt+L`** - Only line format.
