@@ -1,6 +1,6 @@
 +++
 title = 'Caching'
-date = 2023-11-29T09:48:54+05:30
+date = 2025-07-05T09:48:54+05:30
 url= "/post/systemDesign/Solid"
 tags = ['interview question', 'system design']
 +++
@@ -263,3 +263,50 @@ public class NotificationSender {
 
 ### Liskov Substitution Principle.
 
+According to this principle Derived or child classes must be substitutable for their base or parent classes. This principle ensures that any class that is the child of a parent class should be usable in place of its parent without any unexpected behavior.
+```java
+class Vehicle {
+ public
+  void startEngine() {
+    // Engine starting logic
+  }
+}
+
+class Car extends Vehicle {
+  @Override public void startEngine() {
+    // Car-specific engine starting logic
+  }
+}
+
+class Bicycle extends Vehicle {
+  @Override public void startEngine() {
+    // Problem: Bicycles don't have engines!
+    throw new UnsupportedOperationException("Bicycles don't have engines");
+  }
+}
+```
+
+Using the LSP principle the code modified to a abtract class.
+```java
+abstract class Vehicle {
+  // Common vehicle behaviors
+ public
+  void move() {
+    // Movement logic
+  }
+}
+
+abstract class EngineVehicle extends Vehicle {
+ public
+  void startEngine() {
+    // Engine starting logic
+  }
+}
+abstract class NonEngineVehicle extends Vehicle {
+  // No engine-related methods
+}
+```
+
+### Interface Segregation Principle
+
+Dont use general interface make more client focus interface.
