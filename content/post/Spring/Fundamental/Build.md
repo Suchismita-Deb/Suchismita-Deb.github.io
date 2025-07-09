@@ -22,11 +22,17 @@ buildscript {
 }
 
 plugins {
+//    id "com.gorylenko.gradle-git-properties" version "2.5.0"
+//    id "com.zoltu.application-agent" version "1.0.14" // QoL plugin for javaagent configuration
+    id 'eclipse'
+    id 'idea'
+    id 'io.freefair.lombok' version '8.14'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'jacoco'
-    id 'java'
+    id 'java-library'
     id 'maven-publish'
-    id 'org.springframework.boot' version '3.4.5'
+    id 'org.springframework.boot' version '3.4.5' //'3.5.3'
+    id 'pmd' // code quality tool
 }
 
 java {
@@ -155,3 +161,12 @@ It installs the dependencies from the link and build the project.
 `./gradle build` - Build the project.
 
 `./gradlew dependencies` - It will show the list of the dependencies and also the internal dependency that are coming through other dependencies.
+
+In the plugin{} block we can see multiple plugins and when the plugin not install then it gives plugin not found error we can use a fallback, you can use Lombok directly via dependencies. Similarly one fallback plugin is an option.
+
+```groovy
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+}
+```
