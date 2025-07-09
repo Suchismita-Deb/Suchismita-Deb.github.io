@@ -6,9 +6,9 @@ url= "/post/spring/fundamental/build"
 tags = ['interviewQuestion', 'spring']
 +++
 
-### Build Workflow.
+### **Build Workflow.**
 
-```bash
+```groovy
 buildscript {
     repositories {
         maven {
@@ -169,4 +169,36 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.32'
     annotationProcessor 'org.projectlombok:lombok:1.18.32'
 }
+```
+
+### Why the gradle Intellije build is working and not the `gradle clean build` command?
+
+It is a classic environment mismatch issue and the intellije is taking the project JDK set up in Project Structure → Project SDK or Gradle Settings → Gradle JVM and the command is taking the JAVA_HOME or system default version. The issue came when the Java Home is set to 17 and the project is set to 21 and the intellije set up done for 21 but the terminal taking the main version.
+
+Say majority project is in Java 17 and few in Java 21.
+Solution - Use Gradle Toolchains in Java 21 Projects. In the build.gradle use the command.
+```groovy
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+```
+It will set the Gradle: “Use Java 21 for this project—even if JAVA_HOME is set to Java 17.” Gradle will auto-locate Java 21 if it’s installed.
+
+### A build.gradle file.
+```
+IDE/CLI → Gradle → settings.gradle (pluginManagement)
+           ↓
+        build.gradle
+           ↓
+  Apply plugins → Configure toolchain → Load dependencies
+           ↓
+       Compile & Build artifacts (.jar/.war)
+           ↓
+  Spring Boot loads → application.yml
+           ↓
+  Inject environment values → Create ApplicationContext
+           ↓
+     Run app with correct port, DB, and environment settings
 ```
