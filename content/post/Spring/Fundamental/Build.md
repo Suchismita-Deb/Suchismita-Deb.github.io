@@ -6,9 +6,9 @@ url= "/post/spring/fundamental/build"
 tags = ['interviewQuestion', 'spring']
 +++
 
-### Build Workflow.
+### **Build Workflow.**
 
-```bash
+```groovy
 buildscript {
     repositories {
         maven {
@@ -22,11 +22,17 @@ buildscript {
 }
 
 plugins {
+//    id "com.gorylenko.gradle-git-properties" version "2.5.0"
+//    id "com.zoltu.application-agent" version "1.0.14" // QoL plugin for javaagent configuration
+    id 'eclipse'
+    id 'idea'
+    id 'io.freefair.lombok' version '8.14'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'jacoco'
-    id 'java'
+    id 'java-library'
     id 'maven-publish'
-    id 'org.springframework.boot' version '3.4.5'
+    id 'org.springframework.boot' version '3.4.5' //'3.5.3'
+    id 'pmd' // code quality tool
 }
 
 java {
@@ -155,3 +161,44 @@ It installs the dependencies from the link and build the project.
 `./gradle build` - Build the project.
 
 `./gradlew dependencies` - It will show the list of the dependencies and also the internal dependency that are coming through other dependencies.
+
+In the plugin{} block we can see multiple plugins and when the plugin not install then it gives plugin not found error we can use a fallback, you can use Lombok directly via dependencies. Similarly one fallback plugin is an option.
+
+```groovy
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+}
+```
+
+### Why the gradle Intellije build is working and not the `gradle clean build` command?
+
+It is a classic environment mismatch issue and the intellije is taking the project JDK set up in Project Structure → Project SDK or Gradle Settings → Gradle JVM and the command is taking the JAVA_HOME or system default version. The issue came when the Java Home is set to 17 and the project is set to 21 and the intellije set up done for 21 but the terminal taking the main version.
+
+Say majority project is in Java 17 and few in Java 21.
+Solution - Use Gradle Toolchains in Java 21 Projects. In the build.gradle use the command.
+```groovy
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+```
+It will set the Gradle: “Use Java 21 for this project—even if JAVA_HOME is set to Java 17.” Gradle will auto-locate Java 21 if it’s installed.
+
+### A build.gradle file.
+```
+IDE/CLI → Gradle → settings.gradle (pluginManagement)
+           ↓
+        build.gradle
+           ↓
+  Apply plugins → Configure toolchain → Load dependencies
+           ↓
+       Compile & Build artifacts (.jar/.war)
+           ↓
+  Spring Boot loads → application.yml
+           ↓
+  Inject environment values → Create ApplicationContext
+           ↓
+     Run app with correct port, DB, and environment settings
+```

@@ -1,6 +1,6 @@
 +++
 title = 'Content'
-date = 2025-06-08T00:29:31+05:30
+date = 2025-07-08T00:29:31+05:30
 tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Interview", "Communication Behavoiral Interview",
     "Communication Behavoiral Interview", "ConflictResolution", "Customer Behavoiral Interview", "Decision Making Behavoiral Interview", "Experience Based Behavoiral Interview", "Grokking the Behavioral Interview", "Hypothetical Behavioral Interview", "Imaginary Behavoiral Interview", "STAR", "Team Work Behavoiral Interview", "Time Management Behavoiral Interview", "computer networks", 'interviewQuestion', 'java', 'functional interface', 'interface', 'lambda', 'work', 'MERN', "spring", "docker", "redis", 'Spring Security', "mongodb", "CRUD", "REST", 'database', 'jdbc', "springBootCourse", 'Stock', 'Stock Market', 'interview question', 'system design', "testing", 'git', 'blog',"vocabulary","gre", "observation"]
 +++
@@ -64,6 +64,8 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
 | System Design Insider Guide Alex Xu Book 1 - 100.   |[Link](/files/System-design-interview-an-insiders-guide-volume2_compressed-1-200-1-100.pdf).|
 | System Design Insider Guide Alex Xu Book 100 - 200. |[Link](/files/System-design-interview-an-insiders-guide-volume2_compressed-1-200-100-200.pdf).|
 | System Design Insider Guide Alex Xu Book 200 - 500. |[Link](/files/System-design-interview-an-insiders-guide-volume2_compressed-201-427.pdf).|
+| CP Book.|[Link](/files/CP.pdf).|
+| Math Book. |[Link](/files/paul-zeitz-author-the-art-and-craft-of-problem-solving-2.pdf).|
 
 
 | Self Improvement Books.                                     | Link                                                                    |
