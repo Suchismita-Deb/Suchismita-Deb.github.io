@@ -26,7 +26,7 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
 | Spring Security    |https://suchismita-deb.github.io/tags/spring-security/|
 
 
-
+Lamport Clock, Vector Clock.
 ## System Design
 
 | Topic            |Link|
