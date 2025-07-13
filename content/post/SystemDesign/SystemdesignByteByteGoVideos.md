@@ -1,7 +1,7 @@
 +++
 title = 'System Design ByteByteGo Videos.'
 date = 2025-07-12T19:59:08+05:30
-url= "/post/systemDesign/capacityestimation"
+url= "/post/systemDesign/SystemdesignByteByteGoVideos"
 tags = ['interview question', 'system design']
 +++
 
@@ -276,7 +276,7 @@ We find the minimal geohash length that covers the whole circle. For example if 
 
 Another property Geohash is a string and searching all business within a geohash is very simple.
 
-{{<figure src="/images/SystemDesign/GeoHashPrefi.png" alt="GeoHashPrefix." caption="GeoHashPrefix.">}}
+{{<figure src="/images/SystemDesign/GeoHashPrefix.png" alt="GeoHashPrefix." caption="GeoHashPrefix.">}}
 
 There are some cases when did you hash might not work properly. These edge cases have to do with how the boundaries are handled. 
 
@@ -368,7 +368,7 @@ The cache will take most of the read load of the frequently accessed businesses 
 
 There are a lot of options for the business table and first one is to use single table and get the product grows and with the help monitoring we can react to the growth and usage pattern and decide later to either shard or add more read replicas or add cache in front of it.
 
-![image.png](attachment:17d296ee-648d-4768-b8bb-c70c3ce01485:image.png)
+{{<figure src="/images/SystemDesign/Storage.png" alt="Storage." caption="Storage.">}}
 
 Search workflow.
 
