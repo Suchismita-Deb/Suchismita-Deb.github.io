@@ -139,15 +139,9 @@ There were two broad api categories one to search the nearby businesses and one 
 GET /v1/search/nearby
 
 |Field|Description|Type|
-
 |—-|—-|—-|
-
-|Field|Description|Type|
-
 |latitude|Latitude of a given location.|double.|
-
 |longitude|Longitude of a given location.|double.|
-
 |radius|Optional. Default is 5000 meters (about 3 miles)|int|
 
 ```json
@@ -368,7 +362,7 @@ The cache will take most of the read load of the frequently accessed businesses 
 
 There are a lot of options for the business table and first one is to use single table and get the product grows and with the help monitoring we can react to the growth and usage pattern and decide later to either shard or add more read replicas or add cache in front of it.
 
-{{<figure src="/images/SystemDesign/Storage.png" alt="Storage." caption="Storage.">}}
+{{<figure src="/images/SystemDesign/YelpHighLevelDesign.png" alt="YelpHighLevelDesign." caption="Yelp High Level Design.">}}
 
 Search workflow.
 
@@ -446,7 +440,7 @@ Reddit is a very popular in memory database.
 
 Redis uses RAM and not disk.
 
-{{<figure src="/images/SystemDesign/Query.png" alt="Query." caption="Memory access is faster than Random disk IO.">}}
+{{<figure src="/images/SystemDesign/MemoryAccessFasterThanIO.png" alt="Query." caption="Memory access is faster than Random disk IO.">}}
 
 Memory access is faster than Random disk IO.
 
@@ -454,17 +448,17 @@ Pure memory gives the axis of high read and write throughput and low latency and
 
 Code wise in memory data structure is far more easy to implement than on disk.
 
-![image.png](attachment:08dc66e6-e1cf-4dcc-a62b-a67c5f98eb37:image.png)
+{{<figure src="/images/SystemDesign/InMemoryOnDisk.png" alt="InMemoryOnDisk." caption="InMemory On Disk.">}}
 
 Another reason Redis is fast because it is single threaded.
 
-![image.png](attachment:683f785b-dd42-4363-8e9b-aa726e701e97:image.png)
+{{<figure src="/images/SystemDesign/SingleThreadedMultithreaded.png" alt="SingleThreadedMultithreaded." caption="Single Threaded Multithreaded.">}}
 
 Multi threaded application requires locks and other synchronisation mechanism.
 
 **How does single threaded code base handle thousands of requests incoming and outgoing ? Won’t the thread gets block waiting for each request to get complete individually?**
 
-![image.png](attachment:7f028813-2fe7-4402-8b4d-db64aa531705:image.png)
+{{<figure src="/images/SystemDesign/IoMultiplexingSingleThreadedReadWrite.png" alt="Query." caption="IoMultiplexingSingleThreadedReadWrite.">}}
 
 It's the male function of the IO multiplexing. In multiplexing operating system allows a single thread to wait on many sockets.
 
@@ -474,7 +468,7 @@ One drawback of the single threaded design is that it does not leverage all the 
 
 Another reason of red is being fast is that it can use the low level data structure like linked list, HashTable and Skiplist without being thinking about how to persist them to the disk efficiently. 
 
-![image.png](attachment:a295e5e8-d6f5-4d3b-a281-dcddada2249a:image.png)
+{{<figure src="/images/SystemDesign/EffectiveDataStructure.png" alt="EffectiveDataStructure." caption="Effective Data Structure.">}}
 
 ### HTTP1 HTTP2 HTTP3.
 
