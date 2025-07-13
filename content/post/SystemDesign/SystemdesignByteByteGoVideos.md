@@ -27,7 +27,7 @@ Kafka move data from network to disk and it removes copy. It follows the zero co
 
 Kafka send data to the consumer - Data is loaded from disk to the OS cache. Data copied from OS cache into Kafka application. Data copied from Kafka to the socket buffer and from socket buffer to the Network Interface Card NIC buffer. The data is send over the network to the consumer.
 
-{{<figure src="/images/SystemDesign/ReadWithZeroCopy.png" alt="Kubernetes Workflow Architecture." caption="Kubernetes Workflow Architecture.">}}
+{{<figure src="/images/SystemDesign/ReadWithZeroCopy.png" alt="EventStreaming without zero copy." caption="EventStreaming without zero copy.">}}
 
 There are total of 4 copy of data and 2 system calls. Not efficient.
 
@@ -35,7 +35,8 @@ Kafka with zero copy.
 
 The data page id loaded from the disk to the OS cache. With zero copy Kafka uses the system call called `sendfile()` to tell the OS to copy the data from the OS cache to the NIC buffer.
 
-![image.png](attachment:f2d5fe4d-c1f0-4a81-a822-0e27b9fe88d0:image.png)
+
+{{<figure src="/images/SystemDesign/ReadWithZeroCopy.png" alt="EventStreaming without zero copy." caption="Kafka with zero copy.">}}
 
 In the process the only copy is from the OS cache to the NIC buffer. 
 
@@ -59,7 +60,7 @@ Password provided by the user and then added a randomly generated salt and then 
 
 ### Bare Metal, Virtual Machines and Container.
 
-![image.png](attachment:eba94806-01ad-48e8-bc4a-5aca1abdbf8d:image.png)
+{{<figure src="/images/SystemDesign/BareMetalVirtualizedContainerized.png" alt="EventStreaming without zero copy." caption="Bare Metal Virtualized Containerized.">}}
 
 Bare metal server is a computer that is a single tenant only. Bare metal gives all the hardware resources and the software to run. Bare metal server are physically isolated and the isolation helps in not getting impacted by one network bandwidth with the other high CPU use.
 
@@ -73,7 +74,7 @@ Bare Metal Hypervisor is different that Bare Metal Hardware.
 
 Bare metal hypervisor controls the hardware directly with relying on the host operating system. It gives the hypervisor full control over the hardware and provide high performance.
 
-![image.png](attachment:8f05660d-f692-4c1c-a385-c3e458ccce72:image.png)
+{{<figure src="/images/SystemDesign/Virtualized.png" alt="Virtualized" caption="Virtualized.">}}
 
 Hardware that supports Bare metal hypervisor are expensive.
 
@@ -89,7 +90,7 @@ Containers is scalable and portable and there are lightweight to run on the virt
 
 They share the same underlying operating system and the isolation are the operating system level. Containers are exposed to wider class of security vulnerability.
 
-![image.png](attachment:944a0247-8693-45b9-b567-9dc4e0b31ca4:image.png)
+{{<figure src="/images/SystemDesign/ContainerOnVirtualMachines.png" alt="ContainerOnVirtualMachines" caption="Container On Virtual Machines.">}}
 
 We can run containers inside the Virtual machine and it will increase the security.
 
@@ -168,7 +169,7 @@ PUT /v1/businesses/:id Update details of a business.
 
 DELETE /v1/businesses/:id Delete a business.
 
-![image.png](attachment:6c410318-25b4-41b4-9b77-5f5a33f8d789:image.png)
+{{<figure src="/images/SystemDesign/YelpDbDesign.png" alt="YelpDbDesign" caption="YelpDbDesign.">}}
 
 The store required for the business table - 
 
@@ -180,7 +181,7 @@ This database is very small so when the database is small then we can have wide 
 
 High Level Design.
 
-![image.png](attachment:17d296ee-648d-4768-b8bb-c70c3ce01485:image.png)
+{{<figure src="/images/SystemDesign/YelpHighLevelDesign.png" alt="YelpHighLevelDesign" caption="Yelp High Level Design.">}}
 
 The load balance distributes incoming traffic across two services based on the api routes.
 
@@ -237,7 +238,7 @@ One way to index the latitude and longitude. Data returned for each dimension is
 
 To fetch businesses within a search radius we need to find the intersection of those ranges. It is inefficient and each dataset contains a lot of data.
 
-![image.png](attachment:a94bc739-72b2-4ea3-9ddd-985758966629:image.png)
+{{<figure src="/images/SystemDesign/YelpGraphDesign.png" alt="YelpGraphDesign." caption="Yelp Graph Design.">}}
 
 The problem with this approach is the index can increase the search in one of the two dimensions.
 
@@ -245,27 +246,27 @@ The follow up is can we map two dimension data into one dimension so we can buil
 
 There are 2 approaches in Geospatial indexing - Hash.
 
-![image.png](attachment:d34af319-bd39-4f62-8dce-0d582357c22d:image.png)
+{{<figure src="/images/SystemDesign/Index.png" alt="Index." caption="Index.">}}
 
 One way - evenly divide the grid and get the business within the grid. The problem is in few area the return of the businesses will be high and in few areas the business are low.
 
-![image.png](attachment:320d999d-0943-4fc4-a7bb-fce6cbb4b9e4:image.png)
+{{<figure src="/images/SystemDesign/GeoHash.png" alt="GeoHash." caption="GeoHash.">}}
 
 Geohash helps as it stores the two dimensional data into an one-dimensional string of letters and digits. It divides in four quadrant along the prime meridian and equator. Four quadrants are represented by two bits.
 
-![image.png](attachment:eea5695e-bf88-48b2-8545-73f4a184b44e:image.png)
+{{<figure src="/images/SystemDesign/GeoHashQuadrant.png" alt="GeoHashQuadrant." caption="GeoHashQuadrant.">}}
 
 Each part is again divided into grids. The bits in the sub-grids are appended to the existing bits.
 
-![image.png](attachment:6e59e996-0d55-46fd-bd14-d697bf1bc77e:image.png)
+{{<figure src="/images/SystemDesign/GeoHashQuadrantPicture.png" alt="GeoHashQuadrantPicture." caption="Geo Hash Quadrant Picture.">}}
 
 It repeats the subdivision and keeps adding more bits to the Geohash. It stopped the subdividing when the sub grid reaches the specific size.
 
-![image.png](attachment:9f2084eb-502b-4419-a656-e91c55ffea23:image.png)
+{{<figure src="/images/SystemDesign/GeoHashBinary.png" alt="GeoHashBinary." caption="Geo Hash Binary.">}}
 
 The example of a grid that contains the Google headquarter Institute of a long one and zero to represent the Jio hash design coded in a base 32 string.
 
-![image.png](attachment:fd9e68fd-3b53-40b4-817a-53e138ebf73e:image.png)
+{{<figure src="/images/SystemDesign/GeoHashChart.png" alt="GeoHashChart." caption="Geo Hash Chart.">}}
 
 The base32 string shows the size of the grid the idle size should be 4 5 or 6. If the value is higher than 6 then the grid size is too small and if it is less than 4 then the grid size is too big.
 
@@ -275,7 +276,7 @@ We find the minimal geohash length that covers the whole circle. For example if 
 
 Another property Geohash is a string and searching all business within a geohash is very simple.
 
-![image.png](attachment:3910133c-01ec-422e-91ea-e9e45f448f4d:image.png)
+{{<figure src="/images/SystemDesign/GeoHashPrefi.png" alt="GeoHashPrefix." caption="GeoHashPrefix.">}}
 
 There are some cases when did you hash might not work properly. These edge cases have to do with how the boundaries are handled. 
 
@@ -287,7 +288,7 @@ Another boundary issue can be the two locations can have long shared prefix but 
 
 The common solution to bowl of these issues to fetch businesses is not only within the current date but also 8 grids surrounding it.
 
-![image.png](attachment:e4829b90-ef0e-4c32-919c-d7e27e9c22de:image.png)
+{{<figure src="/images/SystemDesign/CalculateGeoHash.png" alt="Calculate Geo Hash." caption="Calculate Geo Hash.">}}
 
 Calculating the neighboring geohash is easy and done in constant time using the library.
 
@@ -299,11 +300,11 @@ The common tree index is quadtree and googles2.
 
 A Quadtree data structure that partition a two dimensional space by recursively subdividing it into 4 quadrants.
 
-![image.png](attachment:5493c8e6-4560-4148-9099-68b4c20da325:image.png)
+{{<figure src="/images/SystemDesign/QuadTree.png" alt="QuadTree." caption="QuadTree.">}}
 
 The subdivision stops when the greet meets certain criteria.
 
-![image.png](attachment:3132a5ca-ebf2-4b07-9ca7-848f2bc30036:image.png)
+{{<figure src="/images/SystemDesign/QuadTreeLevel.png" alt="QuadTreeLevel" caption="QuadTreeLevel.">}}
 
 In out case the criteria can be keep dividing unto the number of businesses in a great his no more than similar say 100.
 
@@ -319,7 +320,7 @@ It should contains two columns - geohash and business Id. Any relational db can 
 
 Converting the latitude and longitude to the geohash is easy and libraries can do it.
 
-![image.png](attachment:d898bbce-86a6-4c54-9679-3b417d1a4be8:image.png)
+{{<figure src="/images/SystemDesign/GeoHashBusinessId.png" alt="GeoHashBusinessId" caption="GeoHashBusinessId.">}}
 
 Two things we should discuss with the table schema - Many business would share the same geohash. It means different business Ids within the same Geohash are stored in different database rows. The geohash and business id columns together form a compound key. 
 
@@ -329,7 +330,7 @@ In our application we are only interested in the geohash with precisions 4 to 6.
 
 The geohash column will all have the precision of 6. We use the LIKE operator in SQL to search for shorter prefix length.
 
-![image.png](attachment:ee4f1e0a-abf0-45f3-8e8b-dffacf1c683c:image.png)
+{{<figure src="/images/SystemDesign/Query.png" alt="Query." caption="Query.">}}
 
 Using the query we find everything that is within the geohash of ‘9q8zn’.
 
@@ -339,7 +340,7 @@ We do not need to scale more than one db table. The column geohash is 6 bit long
 
 200 million business the data is 6GB.
 
-![image.png](attachment:90da388c-2549-416f-aadd-7d581d84e42b:image.png)
+{{<figure src="/images/SystemDesign/Storage.png" alt="Storage." caption="Storage.">}}
 
 The database can be fit inside one server the read QPS is 5000 which is quite high.
 
@@ -403,7 +404,7 @@ Consistent Hashing main purpose is all object to stay assigned to the same serve
 
 There is an array of x0 to xN and it is a hash range and the end of the array are connected making a circle.
 
-![image.png](attachment:fcfcc110-2151-4c25-8c99-d049f6b5e453:image.png)
+{{<figure src="/images/SystemDesign/ConsistentHashing.png" alt="ConsistentHashing." caption="ConsistentHashing.">}}
 
 The hash is used to map the data into the ring. The modulo is not used.
 
@@ -413,7 +414,7 @@ k0 to s0, k1 to s1.
 
 Another server added then only k0 will be mapped to s4. The other key are in their place.
 
-![image.png](attachment:b07caaaa-cb04-4a97-8816-1a93c6daf2ca:image.png)
+{{<figure src="/images/SystemDesign/AddingServer.png" alt="AddingServer." caption="Adding Server.">}}
 
 With simple hashing when a new server is added almost all keys need to be remapped. With consistent hashing adding a new server only requires redistribution of a fraction of the key.
 
@@ -423,7 +424,7 @@ When one server removed then the entire load come to the next server.
 
 Virtual node helps in it and one server present multiple location in the ring. Each location represents the server in the ring. 
 
-![image.png](attachment:6a58af7d-f3f3-4cb5-b33d-baca0cec4247:image.png)
+{{<figure src="/images/SystemDesign/VirtualNode.png" alt="VirtualNode." caption="Virtual Node.">}}
 
 The virtual node will be managed by the s0 and s1.
 
@@ -441,11 +442,11 @@ Load Balancer like Google Load Balancer use Consistent hashing to distribute per
 
 Reddit is a very popular in memory database.
 
-![image.png](attachment:73fa1b78-2ffa-4caa-8b5d-d890583fec6c:image.png)
+{{<figure src="/images/SystemDesign/RedisUsesRAM.png" alt="RedisUsesRAM." caption="Redis Uses RAM.">}}
 
 Redis uses RAM and not disk.
 
-![Memory access is faster than Random disk IO.](attachment:7eebaca2-d302-4a82-9675-d2f3ca97f980:image.png)
+{{<figure src="/images/SystemDesign/Query.png" alt="Query." caption="Memory access is faster than Random disk IO.">}}
 
 Memory access is faster than Random disk IO.
 
