@@ -818,13 +818,18 @@ SSO integrated application say work day to work day server as in the previous ex
 
 ### What is a CDN.
 
-### What is RPC.
+### **What is RPC.**
 
 GRPC is an open source remote procedure called framework created by Google in 2016. It was a rewrite of their internal rpc infrastructure that they used for years.
 
 What is an **RPC** or a **Remote Procedure Call**?
 
-A local procedure call is a function call within a process to execute some code a remote procedure called enables one machine to invoke some code on another machine as if it is local function call from a user's perspective a gfc is a popular implementation of RPC many organisations have adopted GRPC as a preferred RPC mechanism to connect a large number of microservices running within and across data centres what makes your PC so popular let's dive a little deeper first GRPC has a thriving developer ecosystem it makes it very easy to develop production quality and type saving apis that scale well the core of this ecosystem is to use a protocol buffers as its data interchange format protocol buffers is a language agnostic that platform agnostic mechanism for encoding structured data gfc uses protocol buffers to encode and send data over the wires by default while GRPC could support other encoding formats like Json protocol buffers provide several advantages that makes it the encoding format of choice for GRPC protocol buffer support strongly typed schema definition the structure of the data over the wire is defined in a prototype protocol buffers provide broad tooling support to turn their schema defying the portal file into data access classes for all popular programming languages a gopc service is also defined in a profile by specifying all pc method parameters and return types the same tooling is used to generate grpc client and server code from the profile developers use these generator classes in the client to make rpc calls and in the server to fulfil the rpc request by supporting many programming languages the client and server can independent No he choose the programming language and ecosystem best suited for their own particular use cases this is traditionally not the case for most other C frameworks the second reason why GRPC is so popular is because it is high performance out of the box 2 factors contributes to his performance first is the protocol buffer is very efficient binary encoding format it is much faster than Jason 2nd GMPC is built on top of HGTP 2 to provide a high performance foundation at scale the use of HTTP2 brings many benefits we discussed HTTP2 in an earlier video cheque out the link in the description for more information gfc uses http 2 streams it allows multiple streams of messages over a single long leaf tcp connexion this allows the GRPC framework to handle many concurrent RPC calls over a small number of tcp connexions between clients and servers to understand how.
+A local procedure call is a function call within a process to execute some code a remote procedure called enables one machine to invoke some code on another machine as if it is local function call from a user's perspective.
+
+A GRPC is a popular implementation of RPC many organisations have adopted GRPC as a preferred RPC mechanism to connect a large number of microservices running within and across data centres.
+
+GRPC has a thriving developer ecosystem it makes it very easy to develop production quality and type saving apis that scale well the core of this ecosystem is to use a protocol buffers as its data interchange format.  
+Protocol buffers is a language agnostic that platform agnostic mechanism for encoding structured data gfc uses protocol buffers to encode and send data over the wires by default while GRPC could support other encoding formats like Json protocol buffers provide several advantages that makes it the encoding format of choice for GRPC protocol buffer support strongly typed schema definition the structure of the data over the wire is defined in a prototype protocol buffers provide broad tooling support to turn their schema defying the portal file into data access classes for all popular programming languages a gopc service is also defined in a profile by specifying all pc method parameters and return types the same tooling is used to generate grpc client and server code from the profile developers use these generator classes in the client to make rpc calls and in the server to fulfil the rpc request by supporting many programming languages the client and server can independent No he choose the programming language and ecosystem best suited for their own particular use cases this is traditionally not the case for most other C frameworks the second reason why GRPC is so popular is because it is high performance out of the box 2 factors contributes to his performance first is the protocol buffer is very efficient binary encoding format it is much faster than Jason 2nd GMPC is built on top of HGTP 2 to provide a high performance foundation at scale the use of HTTP2 brings many benefits we discussed HTTP2 in an earlier video cheque out the link in the description for more information gfc uses http 2 streams it allows multiple streams of messages over a single long leaf tcp connexion this allows the GRPC framework to handle many concurrent RPC calls over a small number of tcp connexions between clients and servers to understand how.
 
 Very small number of TCP connexions between clients and servers to understand how GRPC works let's walk through a typical flow from AGRPC client to AGRPC server in this example the order service is the grpc client and the payment service is the grpc server when order service makes a gopc call to the payment service it invokes the client code generated by GRPC tooling at build time it's generating client code is called a client stop GOPC encodes the data pass to the client's step in the protocol buffers and sends it to the low level transport layer share PC sends the data over the network as a stream of HTTP2 data freaks because of Binary Encoding and network optimization gfpc is said to be five times faster than Jason the payment service receives the packets from the network decodes them and invokes the server application the result return from the server application gets encoded into protocol buffers and sent to the transport layer the order service receives the packets decoder and sends the result to the client application as we see from the example above GRPC is very easy to implement it is so easy why do we not see widespread use of GRPC between web clients and web servers one reason is that gopc relies on lower level access to HTTP2 primitives no browsers currently provide the level of control require over web requests to support AGRPC client it is possible to make GRPC calls from the browser with the help of a proxy this technology is called GRPC Web however the feature set is not fully compatible with GRPC and its usage remains low compared to GLPC itself so where does G L P C shine UGRPC and his usage remains low compared to GRPC itself so where does GRPC shine and when should we use it GRPC is the inner service communication mechanism of choice between micro services in the data centres his broad support for many programming languages allows services to choose their own languages and developer ecosystems best suited for their own users we also see increasing use of GRPC in the native mobile clients his efficiency and performance makes a lot of sense in the energy and bandwidth constraint involvements that are mobile devices.
 
@@ -848,7 +853,7 @@ A thread is a unit of execution within a process. A process has at least one thr
 
 One misbehaving thread can bring down the entire process.
 
-![image.png](attachment:04a760d4-9fa2-4733-84a6-fd83f215aab2:image.png)
+{{<figure src="/images/SystemDesign/Process.png" alt="Process." caption="Process.">}}
 
 **How does the OS run a thread or process on a CPU?**
 
@@ -860,13 +865,13 @@ The operating system stores the state of the current running process so the proc
 
 Context switching is expansive it involves saving and loading of registers switching out memory pages and updating various kernel data structure.
 
-![image.png](attachment:f5bc3fe1-c78a-49f5-99ba-319623c7dc12:image.png)
+{{<figure src="/images/SystemDesign/ContextSwitching.png" alt="ContextSwitching." caption="ContextSwitching.">}}
 
 Switching execution between threads requires context switching but it is faster than switching between processes as it shares the same memory so there is no need to switch between virtual memory.
 
 Contact switching is costly and there are other mechanism to minimise it such as fibers and coroutines.
 
-![image.png](attachment:638cd2d3-18c9-4827-8b76-7f3af625415a:image.png)
+{{<figure src="/images/SystemDesign/ContextSwitchingStack.png" alt="ContextSwitchingStack." caption="ContextSwitchingStack.">}}
 
 In general they are cooperatively scheduled that is they must yield control for others to run.
 
@@ -884,13 +889,13 @@ He splits the network communication between two devices on a network into seven 
 
 ### CI CD.
 
-![image.png](attachment:fe8a21f6-84fe-401f-9f06-d481c1566a9b:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 The CICD takes care of the building, testing and deploying the code.
 
 CI - It is a practice to enable automation to enable team to merge code changes into the shared repository. Each commit triggers an automated workflow in a CI server and runs a series of task to make sure the commit is safe to merge.
 
-![image.png](attachment:a730bfce-7bf0-4c4b-b7c0-44c963b78e08:image.png)
+{{<figure src="/images/SystemDesign/Devops.png" alt="Devops." caption="Devops.">}}
 
 CD - Github Action, BuildKite and Jenkins are commonly used to handle the CD tasks.
 
@@ -914,7 +919,7 @@ In this video we discovered a versatility of wealth we talked about the top use 
 
 ### What is Cloud Native.
 
-![image.png](attachment:589afc09-744e-4e3c-8d49-893b619d2e89:image.png)
+{{<figure src="/images/SystemDesign/CloudNative.png" alt="CloudNative." caption="CloudNative.">}}
 
 Cloud Native was first introduced by Netflix in 2013 in an AWS event when Netflix discussed the web-scale architecture.
 
@@ -926,7 +931,7 @@ Confusion between cloud native and cloud computing?
 
 Cloud computing is running application on computing resources  managed by cloud providers without having to purchase and manage hardware separately.
 
-![image.png](attachment:d11c5c38-5083-4e7a-a1f9-acb6de8e56f8:image.png)
+{{<figure src="/images/SystemDesign/CloudComputing.png" alt="CloudComputing." caption="CloudComputing.">}}
 
 Migrate an application from monolith to on-prem is one way.
 
@@ -938,17 +943,12 @@ Application Architecture - Cloud Native architecture is made up of small interde
 
 Containers - Container orchestration - Application are within the containers and it contains everything to run the microservice. When the number of microservice grows the container orchestration helps to manage the containers. Example - Kubernetes - It controls where containers run, Detect and repair and Balance load between microservices.
 
-DevOps - Development and deployment process. 
-
-![image.png](attachment:9a1b2082-c653-4016-a1dd-165b0685f315:image.png)
-
+DevOps - Development and deployment process.  
 Cloud Native Open Standard - Following the components and standards.
 
 Example of some well known standards and application.
 
-![image.png](attachment:b1647c43-9b2c-421e-bcf8-dcf7ffefaa9c:image.png)
-
-![image.png](attachment:f322ba49-6a54-4dc8-a2f6-8661f9f5660f:image.png)
+{{<figure src="/images/SystemDesign/DevopsApplication.png" alt="DevopsApplication." caption="Devops Application.">}}
 
 Jaeger, Zipkin, OpenTelemetry.
 
@@ -956,11 +956,11 @@ Service Mesh is a core infrastructure layer for managing service to service comm
 
 Istio and Linkerd are some of the example.
 
-![image.png](attachment:f78717e9-d7ab-4bb3-b3fe-538880efadc5:image.png)
+{{<figure src="/images/SystemDesign/ControlPlane.png" alt="ControlPlane." caption="ControlPlane.">}}
 
 The principle and the standard architecture refers as a cloud native architecture.
 
-![image.png](attachment:60d67d08-7ff6-4006-81c3-d1c57ea11818:image.png)
+{{<figure src="/images/SystemDesign/CloudNativeArchitecture.png" alt="CloudNativeArchitecture." caption="CloudNativeArchitecture.">}}
 
 ### DNS.
 
@@ -978,7 +978,7 @@ The principle and the standard architecture refers as a cloud native architectur
 
 ### Popular API Architecture Styles.
 
-![image.png](attachment:79892656-17f1-4042-b3ff-148818778439:image.png)
+{{<figure src="/images/SystemDesign/PopularAPIArchitecturalStyle.png" alt="PopularAPIArchitecturalStyle." caption="PopularAPIArchitecturalStyle.">}}
 
 **SOAP** is used in financial services and payment gateway where the security and reliability are key.
 
@@ -994,7 +994,7 @@ The principle and the standard architecture refers as a cloud native architectur
 
 ### Most used Deployment Strategies.
 
-![image.png](attachment:3bd4f38e-1a99-480d-938b-1dc0af347287:image.png)
+{{<figure src="/images/SystemDesign/BigBangDeployment.png" alt="BigBangDeployment." caption="BigBangDeployment.">}}
 
 One of the earliest way to deploy into the production.
 
@@ -1002,7 +1002,7 @@ Push all the changes at once and it causes a bit of down time as we have to shut
 
 It is sometimes the only choice in case of a database upgrade
 
-![image.png](attachment:006da566-0b4d-4b7c-b04e-99d0832ee390:image.png)
+{{<figure src="/images/SystemDesign/RollingDeployment.png" alt="RollingDeployment." caption="RollingDeployment.">}}
 
 Rolling diplomat is more like a marathon than a sprint and this let us incrementally update different parts of the system over time. 
 
@@ -1030,7 +1030,7 @@ Feature toggle is an option where you are making the user choose to update to th
 
 API first need to see the bottleneck by load testing and profiling request. Optimization should only be done when the API has some performance issue.
 
-![image.png](attachment:daf3465d-c210-40bd-a3c8-34511b4140b3:image.png)
+{{<figure src="/images/SystemDesign/ImproveAPIPerformance.png" alt="ImproveAPIPerformance." caption="Improve API Performance.">}}
 
 **Connection Pooling** - This technique involves using a pool of open connections to manage database interaction, which reduces the overhead associated with opening and closing connections each time data needs to be loaded. The pool manages the lifecycle of connections for efficient resource use. Creating a connection uses a handshake protocol and slow down the API. The reuse of connection can greatly improve throughput.
 
@@ -1178,7 +1178,7 @@ It protects api from over use. There should be a validation in the source ip add
 
 ### Coding Principle.
 
-![image.png](attachment:c54ee427-4f5f-4b06-8fc0-e3bd85ba67ac:image.png)
+{{<figure src="/images/SystemDesign/CodingPrinciple.png" alt="CodingPrinciple." caption="Coding Principle.">}}
 
 Comment - Code tells you how and comments tell you why.
 
@@ -1186,17 +1186,17 @@ Robustness - Code should handle unexpected situations without breaking. The exce
 
 Testing - Good code is not about how it work it is about how easy to test. Design components by thinking testing in mind.
 
-![image.png](attachment:eb938e0e-56b8-4529-9e7b-130428a9540b:image.png)
+{{<figure src="/images/SystemDesign/CodingPrincipleTesting.png" alt="CodingPrincipleTesting." caption="CodingPrincipleTesting.">}}
 
 Refactor - It is the preventive maintenance for the code base. Solve the issue like duplicate code, improper naming.
 
 Security - It should be taken care of the SQL injection and cross site scripting. To prevent it validate and sanitize user input. Use parameterized queries and output encoding.
 
-![image.png](attachment:c763ca2b-2531-4edf-8d59-6baaa751906d:image.png)
+{{<figure src="/images/SystemDesign/CodingPrincipleSecurity.png" alt="CodingPrincipleSecurity." caption="CodingPrincipleSecurity.">}}
 
 ### Popular API Protocol.
 
-![image.png](attachment:a962941d-1679-4b99-b20c-4ee5d9cac7a1:image.png)
+{{<figure src="/images/SystemDesign/APILandscape.png" alt="APILandscape." caption="APILandscape.">}}
 
 REST simple, scalable and works well with web services. It uses standard HTTP method and is a resource based approach and it is easy to use. It is stateless and scaling up is straight forward.
 
@@ -1218,7 +1218,7 @@ Websocket is another protocol it establishes low latency bidirectional communica
 
 gRPC build on the foundation of HTTP2. It uses protocol buffer to define service methods and message formats which allows services to expose custom methods much like functions in a programming language.
 
-![image.png](attachment:1afa8b79-3244-4179-827d-c48c6058514f:image.png)
+{{<figure src="/images/SystemDesign/PopularAPIProtocol.png" alt="PopularAPIProtocol." caption="PopularAPIProtocol.">}}
 
 ### How Mobile apps are released.
 
@@ -1260,15 +1260,15 @@ Execute - allows the file to run as a program.
 
 Permissions are represented in three ways **binary**, **octal** and **string** representation.
 
-![image.png](attachment:7efcf266-2b1d-470b-aa77-dd548b9bd7d0:image.png)
+{{<figure src="/images/SystemDesign/Permission.png" alt="Permission." caption="Permission.">}}
 
-![image.png](attachment:54351c99-c00d-4ea8-bd2f-e9b8878ab118:image.png)
+{{<figure src="/images/SystemDesign/ReadWriteExecute.png" alt="ReadWriteExecute." caption="ReadWriteExecute.">}}
 
 Considering the permission rwx - 111 in binary. In octal 7(read 4, write 2 and execute 1).
 
 Using the `chmod 764 sample.txt` command we can set the permission of the file.
 
-![Special Permission Bit.](attachment:3e55623b-1a84-46d9-bdd4-2a155b28a4a1:image.png)
+{{<figure src="/images/SystemDesign/SpecialPermissionBit.png" alt="SpecialPermissionBit." caption="SpecialPermissionBit.">}}
 
 Special Permission Bit.
 
@@ -1314,7 +1314,7 @@ For sticky bit use +t or 1
 
 Example we want to set the setuid bit on an executable file named important_script 
 
-![image.png](attachment:1679f052-14d5-460d-8342-8640d3e01543:image.png)
+{{<figure src="/images/SystemDesign/Script.png" alt="Script." caption="Script.">}}
 
 In the command 4 set the setuid bit, 7 gives the owner read, write and execute, 5 gives group and others read and execute permissions.
 
@@ -1334,7 +1334,7 @@ The internet started with ARPANET in 1960s. The TCP IP is founded in 1970s. The 
 
 ### HTTP1 HTTP2 HTTP3.
 
-![image.png](attachment:d7a8d986-35a8-44d5-aff8-66cc8aa9547d:image.png)
+{{<figure src="/images/SystemDesign/Http1Connection.png" alt="Http1Connection." caption="Http1 Connection.">}}
 
 There is a TCP handshake security and all happens for every resource, image, file.
 
@@ -1379,7 +1379,7 @@ TCP connection is in place the client and server start version negotiation this 
 
 Next algorithm negotiation here the client is server decide which cryptographic algorithms there is used for key exchange encryption and integrity checking.
 
-![image.png](attachment:6c0af537-061d-4ca8-98c3-b25d87ed86d0:image.png)
+{{<figure src="/images/SystemDesign/SSH.png" alt="SSH." caption="SSH.">}}
 
 This negotiation allows ssh to adapt to different security requirements and computational capabilities
 
@@ -1387,11 +1387,11 @@ We reach a critical step in the SSH handshake Key Exchange.
 
 The client and server using elliptic curve Diffie Hellman method to generate a shared certificate in this process both sides generate ephemeral key pairs and exchange their public key to dynamically create shared secret for encryption. 
 
-![image.png](attachment:6cc8f090-a334-4cee-9820-d15061f742e1:image.png)
+{{<figure src="/images/SystemDesign/SSHHandshake.png" alt="SSHHandshake." caption="SSHHandshake.">}}
 
 The use of ephemeral keys provides perfect for secrecy meaning that even if the keys are compromised in the future pass session data were being secured.
 
-![image.png](attachment:a9859c7f-4fe3-4eb4-bd38-4be14a52c930:image.png)
+{{<figure src="/images/SystemDesign/KeyExchangeAlgorithm.png" alt="KeyExchangeAlgorithm." caption="KeyExchangeAlgorithm.">}}
 
 The shares secret key is then used for symmetric encryption which encrypts all the data transmitted during the ssh session.
 
@@ -1399,7 +1399,7 @@ Now their client initiates a login request to the server the server then perform
 
 This method known as public key authentication is the most common way to verify their clients is allowed to connect to the server. SSH also support password based authentication although it's less secure compared to public key authentication. 
 
-![image.png](attachment:41f61c91-5db3-4b9a-aec2-c0ede8227c33:image.png)
+{{<figure src="/images/SystemDesign/SSHClientServer.png" alt="SSHClientServer." caption="SSHClientServer.">}}
 
 If the server finds a matching key it encrypts a random number using the client's public key and sends it back to the client.
 
@@ -1415,15 +1415,15 @@ The server executes these commands and cribs the result using the same session k
 
 The client then decrypts this result using the session key this encrypted back and forth continues for the duration of the SST session.
 
-![image.png](attachment:6ba3c568-54e7-48a0-95ea-b2f9348f8bd4:image.png)
+{{<figure src="/images/SystemDesign/SSHClientServerCommunication.png" alt="SSHClientServerCommunication." caption="SSHClientServerCommunication.">}}
 
 SSH local forwarding which allows you to turn no other network services through the ssh connection this can be especially useful for accessing services that might otherwise be blocked by Firewalls or for adding a layer of security to an encrypted protocols.
 
 ### Big O Notation.
 
-![image.png](attachment:780d7db1-ee7e-4328-a5ff-a68cf882e54c:image.png)
+{{<figure src="/images/SystemDesign/BigO.png" alt="BigO." caption="BigO.">}}
 
-![image.png](attachment:530de74d-fa29-416d-8b3c-cadd34e52f5d:image.png)
+{{<figure src="/images/SystemDesign/BigO101.png" alt="BigO101." caption="BigO101.">}}
 
 The real world performance can differ due to caching, memory usage and hardware specifics.
 
@@ -1431,7 +1431,7 @@ With modern CPU maximizing the cash hit can sometimes be much more beneficial th
 
 In a traversal the row by row is often faster than column by column. Row access maximize the sequential access and is cache friendly.
 
-![image.png](attachment:a84239c6-a5ce-4dcf-b472-a175c0d4b06c:image.png)
+{{<figure src="/images/SystemDesign/Row-by-RowAndCol-by-Col.png" alt="Row-by-RowAndCol-by-Col." caption="Row-by-RowAndCol-by-Col.">}}
 
 ### API Paginations.
 
@@ -1439,7 +1439,7 @@ Pagination is a way to split the result into pieces and let client request them 
 
 Instead of sending thousands of records at a time we sent them in batches of 10 or 100. It helps in the server load and reduces traffic and keeps our application more responsive.
 
-![image.png](attachment:4faae458-7c93-43c3-9434-2993167daad1:image.png)
+{{<figure src="/images/SystemDesign/APIPagination.png" alt="APIPagination." caption="APIPagination.">}}
 
 There are two main ways to handle pagination **offset based** and **cursor based**. 
 
@@ -1451,7 +1451,7 @@ Offset based pagination has 2 forms - **Page based and direct offset based**.
 
 Offset based pagination is easy to build but it has problem with large datasets. 
 
-![image.png](attachment:33b09325-2bab-4715-ae24-96bad1b5b643:image.png)
+{{<figure src="/images/SystemDesign/OffsetBasedPagination.png" alt="OffsetBasedPagination." caption="OffsetBasedPagination.">}}
 
 The database has to process every row to the offset before it can return results.
 
@@ -1463,7 +1463,7 @@ First pick an index column like an id as cursor then hash the cursor value for s
 
 Client sends their last scene cursor value. We use this cursor to filter and fetch the next batch. Send the result and new cursor for the last item. Client uses the new cursor for the next request.
 
-![image.png](attachment:6adda55b-6bf0-43f6-b299-0d9abf6c4e14:image.png)
+{{<figure src="/images/SystemDesign/CursorBasedPagination.png" alt="CursorBasedPagination." caption="CursorBasedPagination.">}}
 
 Cursor based pagination works really well with large data set as it stays consistent even when new records are added or deleted in between request. It is perfect for some real time feeds or any data that changes often.
 
@@ -1479,7 +1479,7 @@ Cursor based methods for large and fast changing data set.
 
 Kafka is a distributed event store in real time streaming platform it was initially developed at LinkedIn and has become the foundation for data heavy applications.
 
-![image.png](attachment:6ece98c3-0a43-4e82-8b8d-9eec6f7498f3:image.png)
+{{<figure src="/images/SystemDesign/ApacheKafkaArchitecture.png" alt="ApacheKafkaArchitecture." caption="ApacheKafkaArchitecture.">}}
 
 Every piece of data Kafka handles is a **message**. 
 
@@ -1487,7 +1487,7 @@ Kafka messages three parts - headers which carry metadata, the key which helps t
 
 **Topic and Partition** - Kafka organizes the messages using the topic and partitions. The structure the data streams within each topic goes a step further by dividing it into partitions. These partitions are key to Kafka scalability because they allow messages to be processed in parallel across multiple consumers to achieve high throughput.
 
-![image.png](attachment:31363333-0a87-415e-8aac-c99f01dad428:image.png)
+{{<figure src="/images/SystemDesign/ApacheKafka.png" alt="ApacheKafka." caption="ApacheKafka.">}}
 
 Multiple consumers to achieve high pumping capital cross
 
@@ -1507,7 +1507,7 @@ On the receiving end we have consumers and consumer groups. Consumers within a g
 
 Consumers in a group divide up partitions among themselves through coordination by Kafka's group coordinator.
 
-![image.png](attachment:613de6fc-42b0-48bb-9ee5-4e9d204d5c1b:image.png)
+{{<figure src="/images/SystemDesign/ConsumerGroup.png" alt="ConsumerGroup." caption="Consumer Group.">}}
 
 When a consumer joins or leaves the group calculus triggers a rebalance to redistribute partitions among the remaining consumers.
 
@@ -1515,25 +1515,25 @@ The Kafka cluster itself is made up of multiple brokers. This server store and m
 
 If one broker fails another one steps in as new leader without losing any data.
 
-![image.png](attachment:f51fa3ff-3b56-498c-85a4-2cd045a883ea:image.png)
+{{<figure src="/images/SystemDesign/FaultTolerantMechanism.png" alt="FaultTolerantMechanism." caption="Broker Resilience at its Finest.">}}
 
 In earlier versions Kafka relies on zookeeper to manage broker metadata and leader election.
 
-![image.png](attachment:b63f27f1-19c3-44fb-8a09-56087772579f:image.png)
+{{<figure src="/images/SystemDesign/Zookeeper.png" alt="Zookeeper." caption="Zookeeper.">}}
 
 Newer versions are transitioning to craft a building consensus mechanism that simplifies operations by eliminating zookeeper as an external dependency while improving scalability.
 
-![image.png](attachment:fceedc19-1ef6-4846-a70b-8222288f597c:image.png)
+{{<figure src="/images/SystemDesign/Kraft.png" alt="Kraft." caption="Kraft.">}}
 
 **Kafka in real application.**
 
 It's widely used for log aggregation for thousands of servers.
 
-![image.png](attachment:b505a7de-d531-49d7-9906-fd77512b9b39:image.png)
+{{<figure src="/images/SystemDesign/LogAnalysis.png" alt="LogAnalysis." caption="LogAnalysis.">}}
 
 The most chosen for real time events streaming for various sources.
 
-![image.png](attachment:b59701d2-7595-45d9-8022-52bfc6fcc780:image.png)
+{{<figure src="/images/SystemDesign/RealTimeEventStreaming.png" alt="RealTimeEventStreaming." caption="RealTimeEventStreaming.">}}
 
 Change data capture it keeps database synchronize across systems.
 
@@ -1541,15 +1541,11 @@ It is invaluable for system monitoring by collecting metrics for dashboards and 
 
 ### Most important system design concepts.
 
-![image.png](attachment:6a270d2b-6d92-4753-92f8-8eb8922dab10:image.png)
+{{<figure src="/images/SystemDesign/MostImpSysDesignConcept.png" alt="MostImpSysDesignConcept." caption="Most Important System Design Concept.">}}
 
 Read Heavy System - Use cache. 
 
 Write Heavy - Logging System processing millions of events per second, social media handling users interactions.
-
-![image.png](attachment:429e4e86-c548-42c2-86e1-31e98a6d7ec7:image.png)
-
-![image.png](attachment:0425f0dd-938b-4fd4-a3fe-a06b31279528:image.png)
 
 Managed in two different ways - Asynchronous write with message queue, LSM Tree based database like Cassandra.
 
@@ -1583,21 +1579,21 @@ Most platform combines these user data goes into block storage and media files a
 
 Modern monitoring system like Prometheus collects the log and metrics and Grafana provides a visualization. 
 
-![image.png](attachment:6c29d6c1-e147-433c-b3be-38a2d636ed24:image.png)
+{{<figure src="/images/SystemDesign/MonitoringTool.png" alt="MonitoringTool." caption="MonitoringTool.">}}
 
 Distributed tracing tools like OpenTelemetry helps debug performance bottle neck across components.
 
-![image.png](attachment:3e472224-b947-408c-afea-46f49660af1b:image.png)
+{{<figure src="/images/SystemDesign/TracingTool.png" alt="TracingTool." caption="Tracing Tool.">}}
 
 At scale managing this flood update is challenging. 
 
 The key is to sample routine events keep detailed logs for critical operations and setup alerts that trigger only for real problems.
 
-![image.png](attachment:bc222b81-8c49-4e59-9972-6a3b999f253c:image.png)
+{{<figure src="/images/SystemDesign/Event-Log-Alert-Trigger.png" alt="Event-Log-Alert-Trigger." caption="Event-Log-Alert-Trigger.">}}
 
 The most common issue is monitoring reveals his slow database queries. 
 
-![image.png](attachment:de50f0c1-14be-4f48-83cc-d5620af2e8dc:image.png)
+{{<figure src="/images/SystemDesign/MonitoringExecutionTime.png" alt="MonitoringExecutionTime." caption="Monitoring Execution Time.">}}
 
 Indexing is the first line of defense.
 
@@ -1605,17 +1601,17 @@ Without indexes the database scans every record to find what it needs with index
 
 **Composite index** for multi column queries can further optimise performance. 
 
-![image.png](attachment:7103271d-d692-4fd1-9a21-862cbb15ea67:image.png)
+{{<figure src="/images/SystemDesign/CompositeIndex.png" alt="Composite Index." caption="Composite Index.">}}
 
 Every index slow down the write slightly since they need to update as data changes.
 
 **Sharding** splitting the data in to multiple machines using strategies like range based or hash based distribution.
 
-![image.png](attachment:96686ae9-9e8b-4d53-9498-8b871a35134e:image.png)
+{{<figure src="/images/SystemDesign/Sharding.png" alt="Sharding." caption="Sharding.">}}
 
 ### API vs SDK.
 
-![image.png](attachment:cb7db519-b305-4d18-9ca7-daf11a5ba673:image.png)
+{{<figure src="/images/SystemDesign/APIVsSDK.png" alt="APIVsSDK." caption="APIVsSDK.">}}
 
 API - Application programming interfaces are universal translators they let different software applications talk to each other instead of building everything from scratch
 
@@ -1623,15 +1619,13 @@ API use REST architecture in a way of communicating through http requests.
 
 SDK - Software Development Kits APIs are the raw connection points between services SDK are like prebuilt toolboxes that make those connection easier to use they handle the complex technical details so we can focus on building features.
 
-![image.png](attachment:972f33e6-7a30-49fb-b9d0-6d1ca4e33a99:image.png)
+{{<figure src="/images/SystemDesign/SDK.png" alt="SDK." caption="SDK.">}}
 
 SDK is a complete package it comes with tools, libraries and documentation everything we need to build apps with specific platforms Android or IOS.
 
 A well designed SDK takes all those platform complexities and simplifies them making sure our apps behave consistently across different devices many.
 
-![image.png](attachment:13ec68ca-4daf-4e6b-b7d0-99b24e082b72:image.png)
-
-SDK come with pre built api clients that make integration easy these clients handle all the technical heavy lifting they manage authentication, they format request properly, they try complicated responses into data that's easy to use in our code
+SDK come with pre built api clients that make integration easy these clients handle all the technical heavy lifting they manage authentication, they format request properly, they try complicated responses into data that's easy to use in our code.  
 
 Instagram's SDK instead of writing hundreds of lines of code to connect with Instagram's api the SDK lets us add a shared Instagram feature with minimal effort.
 
@@ -1657,17 +1651,15 @@ It reduce latency and improves response time.
 
 Distributing the request across multiple server enhances availability by providing redundancy and failover option.
 
-![Types of Load Balancer.](attachment:a806e3ab-9a1f-44a2-8d0e-1ab3b65f9d12:image.png)
+{{<figure src="/images/SystemDesign/TypesOfLoadBalancer.png" alt="TypesOfLoadBalancer." caption="Types of Load Balancer..">}}
 
-Types of Load Balancer.
-
-![image.png](attachment:39812f53-1bc7-47b9-a920-b59e013a9819:image.png)
+{{<figure src="/images/SystemDesign/APICommunicationToAppsSDKToolboxToBuildApp.png" alt="APICommunicationToAppsSDKToolboxToBuildApp." caption="API Communication To Apps SDK Tool Box to Build App.">}}
 
 Hardware Load Balancer - High demand enterprise environments in dedicated data centers.
 
 Load Balancer can also be classified by the network layer in which they operate.
 
-![image.png](attachment:82de5b89-a371-4daf-883c-958fe4dc9369:image.png)
+{{<figure src="/images/SystemDesign/LoadBalancerClassifiedByNetworkLayer.png" alt="LoadBalancerClassifiedByNetworkLayer." caption="Load Balancer Classified By Network Layer.">}}
 
 Layer 4 load balancer operate at the transport layer. It take the routing decision based on the IP addresses ports and TCP or UDP. They don’t consider the content of the request so it is faster. It is used for simplicity and efficiency.
 
@@ -1677,7 +1669,7 @@ Global Server Load Balancing operate at higher level enabling traffic distributi
 
 Load balance to distribute the traffic using any of this selected algorithms.
 
-![Load balance distribution algorithm.](attachment:023adf23-6274-4333-8d91-3bbaa4c6cf30:image.png)
+{{<figure src="/images/SystemDesign/LoadBalancerAlgorithm.png" alt="LoadBalancerAlgorithm." caption="Load Balancer Algorithm.">}}
 
 Load balance distribution algorithm.
 
@@ -1689,29 +1681,29 @@ IP URL Hash where it is a bit different from the session round Robin where it wi
 
 ### Why is Docker important.
 
-![image.png](attachment:50b4938b-94d4-446d-87f6-6725389a70a7:image.png)
+{{<figure src="/images/SystemDesign/DockerParts.png" alt="DockerParts." caption="Docker Parts.">}}
 
 **DockerFile** - Defines the environment the application needs. It specify the base image and selecting only what is needed.
 
 Get the light version and combine commands to reduce layers and remove build tools after compilations.
 
-![image.png](attachment:6f0e90b9-fd1a-4e30-b2b7-70534a1078e6:image.png)
+{{<figure src="/images/SystemDesign/DockerWorkflow.png" alt="DockerWorkflow." caption="Docker Workflow.">}}
 
 ### How Garbage collector works - Java, Python, Go.
 
 The garbage collection mainly use the simple question like which object in the memory the program still use. It is answered through the concept of Reachability.
 
-![image.png](attachment:ed8195d4-bb17-4d26-bd95-0ab2442d6e63:image.png)
+{{<figure src="/images/SystemDesign/GarbageCollectorReachability.png" alt="GarbageCollectorReachability." caption="Garbage Collector Reachability.">}}
 
 Every program has GC roots and these are the starting points like Global variables `public int var` and stack references `int sum(int a, int b)`.
 
 Any object that can be reached by following references from these roots is considered alive. Anything other than these are garbage.
 
-![image.png](attachment:7a9a051a-1bd4-418d-9ec0-f7437c56c82b:image.png)
+{{<figure src="/images/SystemDesign/JVMMemoryGeneration.png" alt="JVMMemoryGeneration." caption="JVM Memory Generation.">}}
 
 To efficiently manage the memory garbage collector Typically implement a generational hierarchy.
 
-![image.png](attachment:80c3bba5-a9aa-404e-9105-1c1d6791cde0:image.png)
+{{<figure src="/images/SystemDesign/ESO.png" alt="ESO." caption="ESO.">}}
 
 This design is based on empirical observation. 
 
@@ -1721,11 +1713,11 @@ New objects start the life of the young generation Eden space If they survive mu
 
 The rare objects that persist even longer on the promotion to the old generation where collection happens less frequently but more thoroughly. The metaspace Java specific use class metadata to help reduce memory footprint in large application.
 
-![image.png](attachment:0ca76d22-d8aa-40a1-9f34-d4914c8a1fac:image.png)
+{{<figure src="/images/SystemDesign/YoungGenerationSurvivorSpace.png" alt="YoungGenerationSurvivorSpace." caption="Young Generation Survivor Space.">}}
 
 Other languages uses each generational collection differently. V8 users for two generation system and .NET Garbage collector typically uses three generation system.
 
-![image.png](attachment:921ed083-b4cf-4661-9a66-75b382c17dd1:image.png)
+{{<figure src="/images/SystemDesign/YoungGenerationOldGeneration.png" alt="YoungGenerationOldGeneration." caption="Young Generation Old Generation.">}}
 
 The most fundamental garbage collector strategy is the Mark and Sweep algorithm.
 
@@ -1735,7 +1727,7 @@ While effective this basic approach requires the application to completely pause
 
 The boss became more problematic when the heap size grows and application demands better responsiveness.
 
-![image.png](attachment:60a9a4ed-aee3-4c96-8eb6-3a480113158b:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 An advanced version is the Tri Color Mark and Sweep algorithm reduces the process by categorizing objects into three sets.
 
@@ -1745,31 +1737,31 @@ Grey object are known to be reachable but have not been fully explored.
 
 Black object are both reachable and fully processed.
 
-![image.png](attachment:194ae698-d828-4e59-92cb-d500cf95b33b:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 By maintaining these 3 distinct state the garbage collector can pause briefly to do initial marking then continuing examining grey object and their references while the application runs.
 
-![image.png](attachment:1731d6a7-22f7-4046-a861-05df7a434942:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 This incremental approach avoids the long pause required by traditional mark and sweep where the entire object graph must be traced at once.
 
 Java offers several GC algorithms - Serial, Parallel, CMS, G1 Heap Allocation.
 
-![image.png](attachment:716d4244-20ec-4518-8aa2-cefa50221c54:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 Python uses a combination of reference counting and a cyclic garbage collector. 
 
 The reference counting handles most cases By automatically de allocating objects when their reference drops to 0.
 
-![image.png](attachment:6aa1876a-95be-4d1b-adb0-11426c42b784:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 The cyclic collector cleans up circular references which the reference counting can manage.
 
-![image.png](attachment:3f6c5103-b0f9-48c0-b255-19fa03cdf07e:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 Go uses a concurrent mark and sweep collector which Operates alongside the application to minimise pause times.
 
-![image.png](attachment:7a741690-1942-4660-8ca9-1377a248346a:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 It uses the tricolor algorithm to handle the reachability.
 
@@ -1781,13 +1773,13 @@ Some collectors leave gap in memory making allocation slower over time.
 
 Memory management also involves balancing used pool and free pools to ensure efficient allocation and deallocation without fragmentation.
 
-![image.png](attachment:b1631462-fd5c-4a6a-80ab-9f142f7e9d86:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 With garbage collection we usually lose fine grain controller over when clean up happens and it can lead to long pause.
 
 ### Tips for designing fault tolerant systems.
 
-![image.png](attachment:a449cada-60dc-4dc8-a9dd-e1b7bc6e2db1:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 Fault Tolerant meaning system continues to function even when some component fails.
 
@@ -1801,13 +1793,13 @@ Load Balancer to distribute the request to multiple server to avoid the crash of
 
 Even with the strategies there will some failure or the recover takes longer than expected this is where the graceful degradation comes in. Instead of making the entire system stop graceful degradation ensures the most critical feature keeps still functioning.
 
-![image.png](attachment:50fee101-5155-44c0-92d9-fa6f89793f8a:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 PagerDuty send the alerts any monitoring change.
 
 ### Most popular open source AI stack.
 
-![image.png](attachment:330b5940-9c5a-4867-afc2-58c137e02f1e:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 RAG - Retrieval-Augmented Generation.
 
@@ -1819,7 +1811,7 @@ Text protocol on MCP 1 of the most significant investments in LLM integration re
 
 ### System Design Tradeoffs - Part 1, 2.
 
-![image.png](attachment:3743ce0b-b33c-4e52-8ba3-c7c9dd2a4fa8:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 The application needs to prioritize and pick the correct trade offs.
 
@@ -1839,7 +1831,7 @@ Stream processing handles the data in real time as it arrives providing immediat
 
 The tradeoff here is the efficiency and simplicity vs the immediate and responsiveness.
 
-![image.png](attachment:773b9ab6-d25a-44cf-9de6-4239f8dd05e6:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 Vertical scaling increasing the power of the server. Horizontal scaling meaning increasing the number of server.
 
@@ -1849,13 +1841,13 @@ Modern architecture make stateless service for general application and stateful 
 
 **Cache -** Read-through and write-through.
 
-![Read-through cache.](attachment:944f8ab8-0111-4669-a501-9b89ffadb705:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 Read-through cache.
 
 Read-through cache when the read is good. When there is new data then the write through cache needed.
 
-![Write-through cache.](attachment:04ba8bd3-2489-4c34-92c6-2b6cfb8701d6:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="Write-Through Cache.">}}
 
 Write-through cache.
 
@@ -1865,7 +1857,7 @@ Write through cache update it by using both the db and cache.
 
 ### API explained - 19th May 2025 completed.
 
-![image.png](attachment:e5c64200-edc4-46f5-ac6d-d2eb38eb2815:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 Application Programming Interface is a set of rules that allows system to communicate with each other.
 
@@ -1877,11 +1869,11 @@ Private APIs are connected internally within organization to connect with their 
 
 Partner APIs are shared only with specific person who have the credentials.
 
-![image.png](attachment:93bae184-871f-4a5d-8b73-559032f835ec:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 Video - API Protocol.
 
-![image.png](attachment:4c0233f6-1e23-4c24-a458-df82d2c5bd89:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 Http Status.
 
@@ -1907,7 +1899,7 @@ Session Based Authentication - It is used in traditional web application by main
 
 API Documentation Tools.
 
-![image.png](attachment:1d722e43-efd4-409b-ba85-7bad4acf957b:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 Swagger and OpenAPI Specs are the online tool to make the documentation.
 
@@ -1915,7 +1907,7 @@ API Features involves - Pagination, Idempotency, URL Query Path Parameters, API 
 
 API Performance.
 
-![image.png](attachment:8980623e-47f6-4786-8e8d-8052ab05c596:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 Caching to reduce server load and improves response time. 
 
@@ -1925,11 +1917,11 @@ Database index improves query performance for accessed data.
 
 API Gateway services is the centralized entry point for managing all API traffic.
 
-![image.png](attachment:e2c80f39-3159-4807-8bd6-4f45cb5258a4:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 They handle request routing, authentication, rate limiting and monitoring. 
 
-![Popular options of API Gateway.](attachment:0081e008-6aa6-43c5-965d-10b614eb9911:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="Popular Options Of API Gateways.">}}
 
 Popular options of API Gateway.
 
@@ -1939,7 +1931,7 @@ Kong - Open source flexibility.
 
 Apigee - Enterprise grade API management.
 
-![API Integrations.](attachment:00cc9901-3480-4314-8d07-efa348bfcfdd:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 API Integrations.
 
@@ -1953,19 +1945,19 @@ Message queue - Ensure delivery between system.
 
 Patterns that enable high scale systems to handle massive data volumes efficiently.
 
-![image.png](attachment:5bef3b3a-02f6-4fa2-8139-a28ffd361c36:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 **Data partitioning** - Data partitioning divides data set into smaller more manageable segments. There are mainly 2 approaches for data partitioning - **Vertical partitioning and Horizontal Partitioning**.
 
 **Vertical Partitioning** splits table by column based on access pattern and data characteristics. Most access hot data to be stored separately from rarely accessed cold data. Large text fields and binary objects can be segregated from structured data to optimize storage IO pattern.
 
-![image.png](attachment:3cf83e52-4b0d-4073-940f-bf922794d502:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 For example user table can store basic information in one partition and large biography text in another partition.
 
 **Horizontal partitioning -** Horizontal Partitioning divides table by lose typically using a partition key to determine which row belong in which partition. Works well when data can be cleanly divided based on specific attributes such as price range or geographic regions.
 
-![image.png](attachment:0003dd12-0a59-4360-8d71-a127db865bcb:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
 For example transaction table can be partitioned by month allowing queries for specific time period to access only relevant partitions.
 
@@ -2025,4 +2017,4 @@ Modern system implement several key caching strategies. Cache aside also called 
 
 **Coherence** penalties occurs when the overhead of keeping data consistent across multiple locations. 
 
-![image.png](attachment:346ebde6-423c-4b6c-8508-ce006521226a:image.png)
+{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
