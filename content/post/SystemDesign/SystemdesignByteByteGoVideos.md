@@ -44,7 +44,7 @@ In the modern network card it is done by DMA - Direct Memory Access. DMA used an
 
 Sequential IO and DMA and zero copy principle are the corner stone of the Kafka high performance.
 
-### How to store password in the database.
+### **How to store password in the database.**
 
 Password is not stored in plain text anyone having the database access can easily read the password. 
 
@@ -58,7 +58,7 @@ Another way - SALT the password meaning add a unique random generated string in 
 
 Password provided by the user and then added a randomly generated salt and then you make a hash function and value of this entire thing. The hash is stored in the database along with the salt.
 
-### Bare Metal, Virtual Machines and Container.
+### **Bare Metal, Virtual Machines and Container.**
 
 {{<figure src="/images/SystemDesign/BareMetalVirtualizedContainerized.png" alt="EventStreaming without zero copy." caption="Bare Metal Virtualized Containerized.">}}
 
@@ -96,7 +96,7 @@ We can run containers inside the Virtual machine and it will increase the securi
 
 After container there is the serverless and edge computing. The server less architecture using the GCP AWS.
 
-### Design a location Based System - Yelp.
+### **Design a location Based System - Yelp.**
 
 Designing a proximity service meaning designing the best restaurant nearby or mapping to the closest gas station.
 
@@ -382,7 +382,7 @@ The service uses the latitude and longitude pair to calculate the distance betwe
 
 ### UPI scan and pay.
 
-### Consistent Hashing.
+### **Consistent Hashing.**
 
 Data distributed across multiple server and it is horizontal scaling. 
 
@@ -432,7 +432,7 @@ CDN uses Consistent Hashing to distribute the web content evenly among the serve
 
 Load Balancer like Google Load Balancer use Consistent hashing to distribute persistent connections evenly.
 
-### Why Redis fast?
+### **Why Redis fast?**
 
 Reddit is a very popular in memory database.
 
@@ -470,7 +470,7 @@ Another reason of red is being fast is that it can use the low level data struct
 
 {{<figure src="/images/SystemDesign/EffectiveDataStructure.png" alt="EffectiveDataStructure." caption="Effective Data Structure.">}}
 
-### HTTP1 HTTP2 HTTP3.
+### **HTTP1 HTTP2 HTTP3.**
 
 HTTP1.
 
@@ -512,7 +512,7 @@ The QUIC uses the Connection Id and the connection to move from the IP address a
 
 ### What is REST API.
 
-### NOSQL LSM Tree.
+### **NOSQL LSM Tree.**
 
 NoSQL Database like Cassandra became very popular. The secret sauce for the NoSQL Db is the Log Structure Merge Tree.
 
@@ -584,7 +584,7 @@ Another issue to look up a key that does not exists. It looks all the eligible b
 
 A bloom filter is a space efficient data structure that returns a firm no if the key does not exist. It help the system not to look at each level and it improves the IO system.
 
-### Bloom Filters.
+### **Bloom Filters.**
 
 Bloom Filter is a space efficient probabilistic data structure.
 
@@ -628,13 +628,13 @@ The hash function should be good and the size of the array should be proper to a
 
 ### Back Of Envelope Estimation.
 
-### Choose right DB.
+### **Choose right DB.**
 
 {{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/DBName.png" alt="DBName." caption="DBName.">}}
 
 ### How does live streaming platform work.
 
-### Latency Numbers.
+### **Latency Numbers.**
 
 {{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/MemoryPyramid.png" alt="MemoryPyramid." caption="MemoryPyramid.">}}
 
@@ -680,7 +680,7 @@ It takes 200 ns to MD5 hash a 64 bit number.
 
 ### How Apple pay works.
 
-### Proxy vs Reverse Proxy.
+### **Proxy vs Reverse Proxy.**
 
 Nginx is called a reverse proxy.
 
@@ -732,7 +732,7 @@ The second layer could be an api gateway or load balancer at the hosting provide
 
 The user will enter the cloud network at the edge closer to the user and from the edge the reverse proxy connects over a fast fibre network to the load balancer where the request is even a distributed over a cluster of web servers.
 
-### What is API Gateway.
+### **What is API Gateway.**
 
 {{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/APIGateway.png" alt="APIGateway." caption="APIGateway.">}}
 
@@ -740,7 +740,7 @@ API Gateway uses - Authentication and security policy enforcement, load balancin
 
 {{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/APIGateWayParts.png" alt="APIGateWayParts." caption="APIGateWayParts.">}}
 
-### What is GraphQL. REST vs GraphQL.
+### **What is GraphQL. REST vs GraphQL.**
 
 GraphQL is a query language for API developer by Meta.
 
@@ -790,7 +790,7 @@ It is more difficult to cache REST users http get for fetching resources and htt
 
 While GraphQL allows client to query for just the data they need this also poses a great danger. Example where mobile applications shipped a new feature that causes an unexpected table scan of a critical database table of a backend service. This could bring the database down as soon as the new application goes live. It can be solved but it is complex. It should be monitored before choosing GraphQL.
 
-### What is Single Sign On.
+### **What is Single Sign On.**
 
 SSO is an authentication scheme enables a user to securely access multiple applications and services using a single id.
 
@@ -837,7 +837,7 @@ Very small number of TCP connexions between clients and servers to understand ho
 
 What is so important about these days most websites require it how does https work will answer this question in this video let's type right in without https the communication between the browser and the server is in plain text this means that the password you enter or the credit card number you sent over Internet can be read by anyone who has the ability to intercept it https is designed to solve this problem to make the data sent over Internet unreadable by anyone other than the sender and the receiver https is an extension of the http protocol we discussed http in an earlier video cheque the description you would like to learn more about we've https data is sending an encrypted form using something called tls tls stands for transport layer security if the encrypted data gets intercepted by a hacker all they can see is jumbo data let's take a look at how the tls can shape works there are several steps step one just like in the case for http the browser establishes a tcp connexion with the server step 2 this is where the tls handshake begins the process sends a client hollow to the server in this hello message the browser tells the server the following things one what tls version it can support it could be tls 1.2 tls 1.3 etc 2 what cyber suites it supports the cyber suite is a set of encryption algorithms to use encrypt data after receiving the client hello the server gets to choose the server suite and the tails version to use based on the options it got from the client it sends those in the server halo message back to the client the server then sends the certificate to the client the certificate includes a lot of different things one of the key things is the public key for the server the client uses the public key in something called asymmetric encryption in a symmetric encryption a piece of data is encrypted by public key can only be decrypted by the private key we'll discuss how this is used in it this concludes that too the halo phase of the TLS handshake at this point the client has a service certificate and the client and server have agreed on the TLS version and the cyber suite to use now the step 3 this is a step where the client and the server come up with a share encryption key to use the encrypted data and this is where the symmetric encryption coming to the picture again with a symmetric encryption the data encrypted on the client side using the public key from the server can only be encrypted by the server this is how the client sends an encryption key safely to the server over the wide open internet all this is done in the client key exchange message the exact detail varies depending on the cyber suite used here we use rsa as an example since it is the easiest to understand with rsa the client generates an encryption key also call a session key encrypts it with the server public key and sends the encrypted session key to a server over the Internet the server receives the encrypted session key and decrypts it with this private key now both sides hold the session key and this is where they enter step 4 of the TLS handshake where they use the session key and agree upon cyber suite to send encrypted data back and forth in a secure bidirectional channel now you may ask why don't we just use asymmetric encryption for everything why switch to symmetric encryption at all the main reason is that asymmetric encryption is computationally expensive it is not really suitable for bulk data transmission before we close there are two finite points I would like to discuss first the hashing we talked about applied to tls 1.2 while the latest version is tls 1.3 and tls 1.3 is supported on all major browsers as we can see in our illustration TR is 1.2 takes two network graph trips to complete this is one of the major improvements of tls 1.3 it optimises the handshake to reduce the number of network round trips to one we decided to talk about tls 1.2 because we reviewed tls 1.3 as an optimization as with most optimizations it is a bit harder to explain this is why we chose TRS1.2 instead the core concepts in TLS 1.2 still applies to TLS 1.3 the second final point would like to discuss is that in the explanation about we use RSA for asymmetric encryption to securely exchange the asymmetric session key again we chose the rsa because it is easy to understand however asymmetric encryption is not the only way to share the session key between the client and the server in fact the tls 1.3 rsa is no longer supported and it's the a method for key exchange diffie Hellman is a more common way nowadays for exchanging session keys diffie Hellman is complicated but in a nutshell it uses some advanced math involving large prime numbers to derive a share session key without ever transmitting a public key over the network this is it for https.
 
-### Process vs Thread.
+### **Process vs Thread.**
 
 A program is an executable file. It contains the code or a set up processor instructions that is stored as a file on disk. 
 
@@ -877,7 +877,7 @@ In general they are cooperatively scheduled that is they must yield control for 
 
 In other words the application itself handles task scheduling.
 
-### What is OSI Model.
+### **What is OSI Model.**
 
 What does it have to do with the osi model how does tcp ip fit into this let's take a look the osi model or the open systems interconnect model is a theoretical framework that provides one way of thinking about networking.
 
@@ -887,7 +887,7 @@ He splits the network communication between two devices on a network into seven 
 
 ### Kubernetes.
 
-### CI CD.
+### **CI CD.**
 
 {{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
 
@@ -917,7 +917,7 @@ In this video we discovered a versatility of wealth we talked about the top use 
 
 ### Debugging.
 
-### What is Cloud Native.
+### **What is Cloud Native.**
 
 {{<figure src="/images/SystemDesign/CloudNative.png" alt="CloudNative." caption="CloudNative.">}}
 
@@ -976,7 +976,7 @@ The principle and the standard architecture refers as a cloud native architectur
 
 ### Optimize SQL queries.
 
-### Popular API Architecture Styles.
+### **Popular API Architecture Styles.**
 
 {{<figure src="/images/SystemDesign/PopularAPIArchitecturalStyle.png" alt="PopularAPIArchitecturalStyle." caption="PopularAPIArchitecturalStyle.">}}
 
@@ -992,7 +992,7 @@ The principle and the standard architecture refers as a cloud native architectur
 
 **Webhook** is all about event driven, HTTP callbacks and asynchronous operation. Github uses webhooks to notify other systems whenever a new commit is pushed.
 
-### Most used Deployment Strategies.
+### **Most used Deployment Strategies.**
 
 {{<figure src="/images/SystemDesign/BigBangDeployment.png" alt="BigBangDeployment." caption="BigBangDeployment.">}}
 
@@ -1026,7 +1026,7 @@ Feature toggle is an option where you are making the user choose to update to th
 
 ### DevOps SRE Platform Engineering.
 
-### Improve API performance.
+### **Improve API performance.**
 
 API first need to see the bottleneck by load testing and profiling request. Optimization should only be done when the API has some performance issue.
 
@@ -1110,7 +1110,7 @@ Enabling compression on large API response payload can reduce the amount of data
 
 ### How Disney captures 1B emojis.
 
-### Tips for API design.
+### **Tips for API design.**
 
 **Use Clear Naming.**
 
@@ -1176,7 +1176,7 @@ It protects api from over use. There should be a validation in the source ip add
 
 ### Blogs for Engineers.
 
-### Coding Principle.
+### **Coding Principle.**
 
 {{<figure src="/images/SystemDesign/CodingPrinciple.png" alt="CodingPrinciple." caption="Coding Principle.">}}
 
@@ -1194,7 +1194,7 @@ Security - It should be taken care of the SQL injection and cross site scripting
 
 {{<figure src="/images/SystemDesign/CodingPrincipleSecurity.png" alt="CodingPrincipleSecurity." caption="CodingPrincipleSecurity.">}}
 
-### Popular API Protocol.
+### **Popular API Protocol.**
 
 {{<figure src="/images/SystemDesign/APILandscape.png" alt="APILandscape." caption="APILandscape.">}}
 
