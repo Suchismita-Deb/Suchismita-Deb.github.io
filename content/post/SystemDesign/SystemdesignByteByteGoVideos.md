@@ -1727,7 +1727,7 @@ While effective this basic approach requires the application to completely pause
 
 The boss became more problematic when the heap size grows and application demands better responsiveness.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/MarkSweepAlgorithm.png" alt="MarkSweepAlgorithm." caption="MarkSweepAlgorithm.">}}
 
 An advanced version is the Tri Color Mark and Sweep algorithm reduces the process by categorizing objects into three sets.
 
@@ -1737,31 +1737,31 @@ Grey object are known to be reachable but have not been fully explored.
 
 Black object are both reachable and fully processed.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/TriColorMarkSweepAlgoritm.png" alt="TriColorMarkSweepAlgoritm." caption="TriColorMarkSweepAlgoritm.">}}
 
 By maintaining these 3 distinct state the garbage collector can pause briefly to do initial marking then continuing examining grey object and their references while the application runs.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/ShortPause.png" alt="ShortPause." caption="ShortPause.">}}
 
 This incremental approach avoids the long pause required by traditional mark and sweep where the entire object graph must be traced at once.
 
 Java offers several GC algorithms - Serial, Parallel, CMS, G1 Heap Allocation.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/GCAlgorithm.png" alt="GCAlgorithm." caption="GCAlgorithm.">}}
 
 Python uses a combination of reference counting and a cyclic garbage collector. 
 
 The reference counting handles most cases By automatically de allocating objects when their reference drops to 0.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/CircularReference.png" alt="CircularReference." caption="Circular Reference.">}}
 
 The cyclic collector cleans up circular references which the reference counting can manage.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/Deallocate.png" alt="Deallocate." caption="Deallocate.">}}
 
 Go uses a concurrent mark and sweep collector which Operates alongside the application to minimise pause times.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/Go.png" alt="Go." caption="Go.">}}
 
 It uses the tricolor algorithm to handle the reachability.
 
@@ -1773,7 +1773,7 @@ Some collectors leave gap in memory making allocation slower over time.
 
 Memory management also involves balancing used pool and free pools to ensure efficient allocation and deallocation without fragmentation.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/UsedPoolFreePool.png" alt="UsedPoolFreePool." caption="UsedPoolFreePool.">}}
 
 With garbage collection we usually lose fine grain controller over when clean up happens and it can lead to long pause.
 
