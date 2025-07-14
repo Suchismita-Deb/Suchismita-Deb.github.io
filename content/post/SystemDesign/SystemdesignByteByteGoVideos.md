@@ -476,7 +476,7 @@ HTTP1.
 
 Every request to the same server requires a separate tcp connection.
 
-{{<figure src="/images/SystemDesign/Http1.png" alt="Http1." caption="Http1.">}}
+{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/Http1.png" alt="Http1." caption="Http1.">}}
 
 HTTP 1.1
 
