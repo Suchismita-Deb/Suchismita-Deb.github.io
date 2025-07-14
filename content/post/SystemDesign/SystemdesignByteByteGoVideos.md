@@ -7,7 +7,7 @@ tags = ['interview question', 'system design']
 
 ### What happens when you type a URL into a browser?
 
-### Why Kafka is fast?
+### **Why Kafka is fast?**
 
 Kafka is designed for high throughput and it is designed to process large amount of message in a short amount of time.
 
