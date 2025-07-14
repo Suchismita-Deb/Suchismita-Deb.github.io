@@ -1777,9 +1777,9 @@ Memory management also involves balancing used pool and free pools to ensure eff
 
 With garbage collection we usually lose fine grain controller over when clean up happens and it can lead to long pause.
 
-### Tips for designing fault tolerant systems.
+### **Tips for designing fault tolerant systems.**
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+**Tips for designing Fault Tolerant System - Replication, Redundant, Fail Over, Load Balancing, Graceful degradation, Monitoring.**
 
 Fault Tolerant meaning system continues to function even when some component fails.
 
@@ -1793,13 +1793,13 @@ Load Balancer to distribute the request to multiple server to avoid the crash of
 
 Even with the strategies there will some failure or the recover takes longer than expected this is where the graceful degradation comes in. Instead of making the entire system stop graceful degradation ensures the most critical feature keeps still functioning.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/PagerDuty.png" alt="PagerDuty." caption="Pager Duty.">}}
 
 PagerDuty send the alerts any monitoring change.
 
 ### Most popular open source AI stack.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/AIStack.png" alt="AIStack." caption="AIStack.">}}
 
 RAG - Retrieval-Augmented Generation.
 
@@ -1811,7 +1811,7 @@ Text protocol on MCP 1 of the most significant investments in LLM integration re
 
 ### System Design Tradeoffs - Part 1, 2.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/SystemDesignTopic.png" alt="SystemDesignTopic." caption="System Design Topic.">}}
 
 The application needs to prioritize and pick the correct trade offs.
 
@@ -1831,7 +1831,7 @@ Stream processing handles the data in real time as it arrives providing immediat
 
 The tradeoff here is the efficiency and simplicity vs the immediate and responsiveness.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/SystemDesignTradeOff.png" alt="SystemDesignTradeOff." caption="System Design Trade Off.">}}
 
 Vertical scaling increasing the power of the server. Horizontal scaling meaning increasing the number of server.
 
@@ -1841,13 +1841,13 @@ Modern architecture make stateless service for general application and stateful 
 
 **Cache -** Read-through and write-through.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/ReadThroughCache.png" alt="ReadThroughCache." caption="Read Through Cache.">}}
 
 Read-through cache.
 
 Read-through cache when the read is good. When there is new data then the write through cache needed.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="Write-Through Cache.">}}
+{{<figure src="/images/SystemDesign/WriteThroughCache.png" alt="WriteThroughCache." caption="Write-Through Cache.">}}
 
 Write-through cache.
 
@@ -1857,7 +1857,7 @@ Write through cache update it by using both the db and cache.
 
 ### API explained - 19th May 2025 completed.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/APILearningRoadmap.png" alt="APILearningRoadmap." caption="API Learning Roadmap.">}}
 
 Application Programming Interface is a set of rules that allows system to communicate with each other.
 
@@ -1869,11 +1869,11 @@ Private APIs are connected internally within organization to connect with their 
 
 Partner APIs are shared only with specific person who have the credentials.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/APIProtocol.png" alt="APIProtocol." caption="API Protocol.">}}
 
 Video - API Protocol.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/HTTPStatus.png" alt="HTTPStatus." caption="HTTP Status.">}}
 
 Http Status.
 
@@ -1899,7 +1899,7 @@ Session Based Authentication - It is used in traditional web application by main
 
 API Documentation Tools.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/APIDocumentationTool.png" alt="APIDocumentationTool." caption="API Documentation Tool.">}}
 
 Swagger and OpenAPI Specs are the online tool to make the documentation.
 
@@ -1907,7 +1907,7 @@ API Features involves - Pagination, Idempotency, URL Query Path Parameters, API 
 
 API Performance.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/APIPerformance.png" alt="APIPerformance." caption="API Performance.">}}
 
 Caching to reduce server load and improves response time. 
 
@@ -1917,11 +1917,11 @@ Database index improves query performance for accessed data.
 
 API Gateway services is the centralized entry point for managing all API traffic.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/APIGatewayService.png" alt="APIGatewayService." caption="API Gateway Service.">}}
 
 They handle request routing, authentication, rate limiting and monitoring. 
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="Popular Options Of API Gateways.">}}
+{{<figure src="/images/SystemDesign/PopularOptionOfAPIGateway.png" alt="PopularOptionOfAPIGateway." caption="Popular Options Of API Gateways.">}}
 
 Popular options of API Gateway.
 
@@ -1931,7 +1931,7 @@ Kong - Open source flexibility.
 
 Apigee - Enterprise grade API management.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/APIIntegration.png" alt="APIIntegration." caption="API Integration.">}}
 
 API Integrations.
 
@@ -1945,19 +1945,19 @@ Message queue - Ensure delivery between system.
 
 Patterns that enable high scale systems to handle massive data volumes efficiently.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/GoogleStorePage.png" alt="GoogleStorePage." caption="Google Store Page.">}}
 
 **Data partitioning** - Data partitioning divides data set into smaller more manageable segments. There are mainly 2 approaches for data partitioning - **Vertical partitioning and Horizontal Partitioning**.
 
 **Vertical Partitioning** splits table by column based on access pattern and data characteristics. Most access hot data to be stored separately from rarely accessed cold data. Large text fields and binary objects can be segregated from structured data to optimize storage IO pattern.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/VerticalPartitioning.png" alt="VerticalPartitioning." caption="Vertical Partitioning.">}}
 
 For example user table can store basic information in one partition and large biography text in another partition.
 
 **Horizontal partitioning -** Horizontal Partitioning divides table by lose typically using a partition key to determine which row belong in which partition. Works well when data can be cleanly divided based on specific attributes such as price range or geographic regions.
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/HorizontalPartitioning.png" alt="HorizontalPartitioning." caption="Horizontal Partitioning.">}}
 
 For example transaction table can be partitioned by month allowing queries for specific time period to access only relevant partitions.
 
