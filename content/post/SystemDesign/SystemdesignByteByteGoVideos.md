@@ -476,27 +476,27 @@ HTTP1.
 
 Every request to the same server requires a separate tcp connection.
 
-![image.png](attachment:0bae66f9-437d-491d-a744-53b81854428c:image.png)
+{{<figure src="/images/SystemDesign/Http1.png" alt="Http1." caption="Http1.">}}
 
 HTTP 1.1
 
 Followed the same TCP connection. It follows the “keep-alive”  mechanism and reuse the same tcp connection so that the connection can be used for more than a single request.
 
-![image.png](attachment:01750f08-97f2-432e-835d-8c7bb628b1d2:image.png)
+{{<figure src="/images/SystemDesign/Http1.1.png" alt="Http1.1." caption="Http1.1.">}}
 
 HTTP 1 .1 allowed the HTTP pipelining. It allows client to send multiple request before waiting for each response.
 
 The response must be received in same order as it is send. It was tricky to maintain and the support removed from many servers.
 
-![image.png](attachment:2ec5881d-9fcd-4ece-8eb2-0c9545f3700e:image.png)
+{{<figure src="/images/SystemDesign/NoPipeliningPipelining.png" alt="NoPipeliningPipelining." caption="NoPipeliningPipelining.">}}
 
 When one packet lost all subsequent request are impacted.
 
-![image.png](attachment:676dc419-3808-4116-88a0-2233a5882258:image.png)
+{{<figure src="/images/SystemDesign/Pipelining.png" alt="Pipelining." caption="Pipelining.">}}
 
 HTTP 2 each comes in stream. It solves the Head of line issue in the application layer but the issue still exists in the Transport layer.
 
-![image.png](attachment:6cab5dad-21fa-4d4e-8c6e-cd827b31491c:image.png)
+{{<figure src="/images/SystemDesign/Http2.png" alt="Http2." caption="Http2.">}}
 
 HTTP 2 introduces the PUSH capability to the server when the client new data is available without the client to poll.
 
@@ -504,11 +504,11 @@ HTTP 3 uses QUIC protocol in the transport and not the TCP. It is based on UDP a
 
 QUIC stream shares the same quic connection so no handshake required. It delivers independently and packet loss will not effect others.
 
-![image.png](attachment:2870f847-a0a0-4a6f-a774-3a82d60a04e3:image.png)
+{{<figure src="/images/SystemDesign/Http.png" alt="Http." caption="Http.">}}
 
 The QUIC uses the Connection Id and the connection to move from the IP address and network quickly.
 
-![image.png](attachment:31a5e09e-2b44-4274-bbf9-5b03185eb6bb:image.png)
+{{<figure src="/images/SystemDesign/ClientServer.png" alt="ClientServer." caption="ClientServer.">}}
 
 ### What is REST API.
 
@@ -532,7 +532,7 @@ An SSTable store the key value pair in a sorted sequence. The write are all sequ
 
 The new SSTable becomes the most recent segment of the LSM tree as more data comes in more and more of this immutable SSTable are created and added to the LSM tree. Each one representing a small chronological subset of the incoming changes.
 
-![image.png](attachment:03878ceb-8b73-4491-be9c-d871482b8502:image.png)
+{{<figure src="/images/SystemDesign/SSTable.png" alt="SSTable." caption="SSTable.">}}
 
 Since SSTable is immutable and update to an existing object key does not overwrite an existing SSTable.
 
@@ -540,7 +540,7 @@ Instead a new entry is added to the most recent SSTable which supersede any entr
 
 Deleting an object in SSTable we cannot mark anything in the sustainable as deleted. To perform a delete it adds a marker called a tombstone to the most recent SSTable for the object key.
 
-![image.png](attachment:5deacb74-b6bc-42ab-8d47-884e679dd5c5:image.png)
+{{<figure src="/images/SystemDesign/DeletingSSTable.png" alt="DeletingSSTable." caption="DeletingSSTable.">}}
 
 When we get the tombstone on read we known that the object has been deleted. It is a bit unintuitive that a delete takes up extra space.
 
@@ -552,7 +552,7 @@ The number of SSTable grows it would take an increasingly long time to look up a
 
 To fix the issues there is a periodic merging and compaction process running in the background to merge SSTable and discard outdated or deleted values.
 
-![image.png](attachment:a67ec62a-e7c9-424a-af7a-71ebea542508:image.png)
+{{<figure src="/images/SystemDesign/LSMTree.png" alt="LSMTree." caption="LSMTree.">}}
 
 SSTable is sorted so the merging and compaction process is simple and uses mergesort algorithm.
 
@@ -618,11 +618,11 @@ Ask bloom filter about ribeye since the same input always hashes to the same out
 
 Asking about chop the value of the hash say 1, 5, 8 and the value 5 is not 1 in the array so the answer is no and it is correct.
 
-![image.png](attachment:e2cf51ea-938f-42a6-af31-8c8746ebc257:image.png)
+{{<figure src="/images/SystemDesign/Becket.png" alt="Becket." caption="Bucket.">}}
 
 Asking lemon and the hash return 1, 4, 8 and the value are 1 in array and then search happen and lemon not present. It say yes but the value not present. It is a false positive case. 
 
-![image.png](attachment:20713d90-bdd5-4e82-ae46-02bbf3b3271e:image.png)
+{{<figure src="/images/SystemDesign/Bucket.png" alt="Bucket." caption="Bucket.">}}
 
 The hash function should be good and the size of the array should be proper to avoid less false positive.
 
@@ -630,25 +630,25 @@ The hash function should be good and the size of the array should be proper to a
 
 ### Choose right DB.
 
-![image.png](attachment:5afd64ef-1b3f-4dd5-b889-ef3f01cbc24d:image.png)
+{{<figure src="/images/SystemDesign/DBName.png" alt="DBName." caption="DBName.">}}
 
 ### How does live streaming platform work.
 
 ### Latency Numbers.
 
-![image.png](attachment:db629e48-0a37-4383-937c-b5026c2a7264:image.png)
+{{<figure src="/images/SystemDesign/MemoryPyramid.png" alt="MemoryPyramid." caption="MemoryPyramid.">}}
 
 Disk access latency has improved HHD to SSD. 
 
 The network latency between countries has not improved as it covers the country and obeys the law of physics.
 
-![image.png](attachment:637facb5-43d9-42a0-a930-5402e1d47cf9:image.png)
+{{<figure src="/images/SystemDesign/TimeUnits.png" alt="TimeUnits." caption="TimeUnits.">}}
 
-![image.png](attachment:c4bc0f2f-d172-4c1e-af1f-2fcfab4b6d5e:image.png)
+{{<figure src="/images/SystemDesign/CPURegister.png" alt="CPURegister." caption="CPURegister.">}}
 
 1 ns - Accessing CPU Register is sub-nanosecond range.
 
-![image.png](attachment:9aa77ba3-02ad-4f01-82c9-ff8ff44b85c1:image.png)
+{{<figure src="/images/SystemDesign/CPUClockCycle.png" alt="CPUClockCycle." caption="CPUClockCycle.">}}
 
 A clock cycle of a modern CPU is in sub-nanosecond range.
 
@@ -704,7 +704,7 @@ Transparent proxy works with layer 4 switches to redirect certain types of traff
 
 It is difficult to bypass a transparent proxy when the client is on the institution's network.
 
-![image.png](attachment:82aa1319-d844-43fc-a948-7f46fdcaafd3:image.png)
+{{<figure src="/images/SystemDesign/ForwardProxy.png" alt="ForwardProxy." caption="ForwardProxy.">}}
 
 Reverse proxy sits between the Internet and the Web servers. It intercepts the reuqets from clients and talk to the server on behalf of the client. 
 
@@ -722,7 +722,7 @@ A reverse proxy caches static content a piece of content could be cached on the 
 
 The reverse proxy can handle ssl encryption ssl handshake is computationally expensive the reverse proxy can free up the origin servers from those expensive operations instead of handling ssl for all clients a website only needs to handle ssl handshake from a small number of reverse proxies.
 
-![image.png](attachment:24881493-f752-4f0b-bf6a-0931dcb1bcb8:image.png)
+{{<figure src="/images/SystemDesign/ReverseProxy.png" alt="ReverseProxy." caption="ReverseProxy.">}}
 
 Layers of Reverse Proc.
 
@@ -734,11 +734,11 @@ The user will enter the cloud network at the edge closer to the user and from th
 
 ### What is API Gateway.
 
-![image.png](attachment:2e68a73c-6c59-4498-ac37-2aeb47145c3c:image.png)
+{{<figure src="/images/SystemDesign/APIGateway.png" alt="APIGateway." caption="APIGateway.">}}
 
 API Gateway uses - Authentication and security policy enforcement, load balancing and circuit breaking, protocol translation and service discovery, monitoring, logging, analytics and billing, caching.
 
-![image.png](attachment:18caf7a2-b4fe-47a2-b102-3166d9e2636f:image.png)
+{{<figure src="/images/SystemDesign/APIGateWayParts.png" alt="APIGateWayParts." caption="APIGateWayParts.">}}
 
 ### What is GraphQL. REST vs GraphQL.
 
@@ -750,7 +750,7 @@ GraphQL sits between the clients and the backend services. It could aggregate mu
 
 Mutations are GraphQL way of applying data modifications to resources.
 
-![image.png](attachment:197e2138-7348-4fd8-9dab-797bebf33e4a:image.png)
+{{<figure src="/images/SystemDesign/GraphQl.png" alt="GraphQl." caption="GraphQl.">}}
 
 Subscriptions are GraphQL way for clients to receive notification on data modifications.
 
@@ -758,13 +758,13 @@ GraphQL and REST both send HTTP request and receive HTTP response.
 
 REST centers around resources each resource is identified by a url. It uses `v3/books/123` to fetch a book from the bookstore api.
 
-![image.png](attachment:90c1c34a-22ef-4d3d-b833-4d083268f8ed:image.png)
+{{<figure src="/images/SystemDesign/GraphQlGetCall.png" alt="GraphQlGetCall." caption="GraphQlGetCall.">}}
 
 The authors field is implementation specific some rest api implementations by break them into separate REST call like `/authors/3` or `authors/5`
 
 In GraphQL it looks different we first define the types in this example we have the book and author types.
 
-![image.png](attachment:3a445943-5dd2-401b-ae25-81ba5ad1bff4:image.png)
+{{<figure src="/images/SystemDesign/GraphQlClient.png" alt="GraphQlClient." caption="GraphQlClient.">}}
 
 The types describe the kinds of data available. They don't specify how the data is retrieved via GraphQL.
 
