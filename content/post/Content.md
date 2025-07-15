@@ -5,6 +5,15 @@ tags = ['Behavoiral Interview', 'Leadership Interview', "Client Behavoiral Inter
     "Communication Behavoiral Interview", "ConflictResolution", "Customer Behavoiral Interview", "Decision Making Behavoiral Interview", "Experience Based Behavoiral Interview", "Grokking the Behavioral Interview", "Hypothetical Behavioral Interview", "Imaginary Behavoiral Interview", "STAR", "Team Work Behavoiral Interview", "Time Management Behavoiral Interview", "computer networks", 'interviewQuestion', 'java', 'functional interface', 'interface', 'lambda', 'work', 'MERN', "spring", "docker", "redis", 'Spring Security', "mongodb", "CRUD", "REST", 'database', 'jdbc', "springBootCourse", 'Stock', 'Stock Market', 'interview question', 'system design', "testing", 'git', 'blog',"vocabulary","gre", "observation"]
 +++
 
+### **TODO.**
+
+Kubernetes Hands On - https://www.coursera.org/programs/capgemini-learning-program-71mtd/learn/kubernetes-for-absolute-beginners?authProvider=capgemini&source=search - 15 hours.
+
+Mastering Devops Specialization - https://www.coursera.org/programs/capgemini-learning-program-71mtd/specializations/master-devops-ci-cd-automation-monitoring?authProvider=capgemini - 50 hrs.
+
+Cloud Devops Engineer - https://www.coursera.org/programs/capgemini-learning-program-71mtd/professional-certificates/sre-devops-engineer-google-cloud?authProvider=capgemini - 50 hours.
+
+
 ## Java
 
 |Topic|Link|
