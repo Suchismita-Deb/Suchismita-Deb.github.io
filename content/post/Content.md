@@ -13,6 +13,13 @@ Mastering Devops Specialization - https://www.coursera.org/programs/capgemini-le
 
 Cloud Devops Engineer - https://www.coursera.org/programs/capgemini-learning-program-71mtd/professional-certificates/sre-devops-engineer-google-cloud?authProvider=capgemini - 50 hours.
 
+https://systemdesignschool.io/problems/url-shortener/solution
+
+https://www.hellointerview.com/learn/system-design/problem-breakdowns/fb-news-feed
+
+https://www.lldcoding.com/
+
+Kafka Book and Confluent Book - daily 20 pages.
 
 ## Java
 
