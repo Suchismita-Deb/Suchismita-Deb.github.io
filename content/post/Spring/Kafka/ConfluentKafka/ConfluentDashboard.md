@@ -28,6 +28,12 @@ The ingress connection is showing the GCP Private Service Connect.
 
 ### **Egress Connections.**
 
+
+
+In any topic there will be an option called Action and there we can send one new message to the topic. One new message in the topic. Get thepayload of the topic from any one of the existing data in the confluent.
+
+Set the HTTP header in the confluent to make a managed connector - Content-Type: application/json
+
 {{< figure src="/images/Spring/Kafka/ConfluentKafka/EgressConnection.png" alt="Egress Connection." caption="Egress Connection" >}}
 
 **The DNS Record in the connection.**
