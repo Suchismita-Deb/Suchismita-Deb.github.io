@@ -19,3 +19,13 @@ Control plane - It is responsible for the managing the state of the cluster.
 In production environment the control plane runs on multiple nodes that span across several data center zones.
 
 {{<figure src="/images/Devops/Kubernetes/KubernetesWorkflow.png" alt="Kubernetes Workflow Architecture." caption="Kubernetes Workflow Architecture.">}}
+
+### **Kubernetes Egress.**
+
+Egress in Kubernetes means traffic that exists the cluster. The communication that goes out of the cster from the pod to an external endpoint.
+
+Pod inside the cluster need to talk to the database or another api endpoint that egress traffic. By default, pods in the kuernetes cluster are isolated from the xternal network and cannot initiate outbound connections.
+
+There is specific rules to configure the egress traffic. **Egress Network Policies** define which external endpoints pods can access. These policies function similarly to a firewall controlling outbound traffic. 
+
+The other way using **Egress Gateway** network component that route all outbound connection through a pecific service proxy before they reach the destination. Tools like **Istio** provide an egress Gateway for managing egress traffic.
