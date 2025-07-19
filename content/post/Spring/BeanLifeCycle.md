@@ -165,15 +165,16 @@ Some beans are created lazily means when they actually needed.
 Example - Beans with Prototype Scope or bean with @Lazy annotation.
 
 ### LifeCycle of Bean.
-![img38.png](/images/img38.png)
+
+{{<figure src="/images/SystemDesign/LifeCycleBean.png" alt="LifeCycleBean." caption="LifeCycle Bean.">}}
 When the application starts it will start the IOC. IOC scans for the beans with `@Component` and `@Lazy` annotation.
 
+{{<figure src="/images/SystemDesign/InvokingIOCContainer.png" alt="Invoking IOC Container." caption="Invoking IOC Container.">}}
 
-![img39.png](/images/img39.png)
 `Initializing Spring Embedded WebApplicationContext` meaning invoking the IOC container.
 
 When we make any singleton bean it will create the Bean. In this case the User bean will be created.
-![img40.png](/images/img40.png)
+{{<figure src="/images/SystemDesign/InitializeSpring.png" alt="Initialize Spring." caption="Initialize Spring.">}}
 
 **Inject the dependency** - Say one Bean is User and another is Order. User is single ton so created in the beginning and the Order is lazy. When will cteate the User it will craete teh Order.
 ```java
@@ -196,7 +197,7 @@ public class Order{
     }
 }
 ```
-![img41.png](/images/img41.png)
+{{<figure src="/images/SystemDesign/InitializingUser.png" alt="Initializing User." caption="Initializing User">}}
 `@Autowired` first looks for the bean of the required type.
 
 If Bean found spring will inject it. Different was of the injection - **Constructor, Setter and Field Injection.**

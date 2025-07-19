@@ -1651,7 +1651,7 @@ It reduce latency and improves response time.
 
 Distributing the request across multiple server enhances availability by providing redundancy and failover option.
 
-{{<figure src="/images/SystemDesign/TypesOfLoadBalancer.png" alt="TypesOfLoadBalancer." caption="Types of Load Balancer..">}}
+{{<figure src="/images/SystemDesign/TypesOfLoadBalancer.png" alt="TypesOfLoadBalancer." caption="Types of Load Balancer.">}}
 
 {{<figure src="/images/SystemDesign/APICommunicationToAppsSDKToolboxToBuildApp.png" alt="APICommunicationToAppsSDKToolboxToBuildApp." caption="API Communication To Apps SDK Tool Box to Build App.">}}
 

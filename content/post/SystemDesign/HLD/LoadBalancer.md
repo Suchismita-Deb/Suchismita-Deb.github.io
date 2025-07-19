@@ -86,5 +86,3 @@ Server 2 - TTFB - 1, Active Connection - 4, Server - 2.
 Server 3 - TTFB - 2, Active Connection - 0, Server - 3.
 
 Server 1 has the value 6, Server 2 has the value 4, Server 3 has value 0. The least one meaning Server 3 will get the request.
-### Top 6 types of Load Balancer
-![img.png](/images/img8.png)

@@ -45,6 +45,7 @@ public class ExceptionHandling {
     }
 }
 ```
+
 The output should look like
 ```java
 Exception in thread "main" java.lang.ArithmeticException: / by zero
@@ -61,11 +62,7 @@ The first line in the output shows the exception and the next lines shows the st
 
 When exception happened in one method say 3 then it see the method declaring the method 3 say method 2 if it can handle then good else it will go to the method that declared method 2 say method 1.
 
-
-
-![Alt Text](/images/img.png)
-*Exception Hierarchy*
-
+{{<figure src="/images/SystemDesign/ExceptionHierarchy.png" alt=" Exception Hierarchy." caption="Exception Hierarchy">}}
 
 ### Error and Exception
 Object is parent of all and its child class is Throwable and it has Error and Exception
