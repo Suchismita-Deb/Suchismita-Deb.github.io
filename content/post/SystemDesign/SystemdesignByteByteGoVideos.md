@@ -630,7 +630,7 @@ The hash function should be good and the size of the array should be proper to a
 
 ### **Choose right DB.**
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/DBName.png" alt="DBName." caption="DBName.">}}
+{{<figure src="/images/SystemDesign/DBName.png" alt="DBName." caption="DBName.">}}
 
 ### How does live streaming platform work.
 

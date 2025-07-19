@@ -138,7 +138,7 @@ Checkout the main and rebase the main teh feature `git checkout main` then `git 
 ### CherryPick.
 
 Get the commit from there the branch and use it.
-![img.png](/images/git/img.png)
+![img.png](/images/Git/img.png)
 `git log` - Show all the commit and the code. 
 
 `git log branchName --oneline` - Show all the commit in the branch.
