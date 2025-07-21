@@ -1491,11 +1491,17 @@ Kafka supports consumer groups for coordinated reading from the same topic by mu
 
 {{<figure src="/images/SystemDesign/ApacheKafka.png" alt="MessageQueue." caption="Apache Kafka.">}}
 
-Apache Pulsar developer Yahoo has advanced message cues for posters combine character scalability and performance with the flexibility and rich features of traditional message schemes discard native architecture multi tenancy support and tsorias work well in modern distributed computing environments.
+Apache Pulsar developer Yahoo combine character scalability and performance with the flexibility with rich features of traditional message queues. Its cloud native architecture, multi tenancy support and tiered storage works well in modern distributed computing environment.
 
 {{<figure src="/images/SystemDesign/Pulsar.png" alt="MessageQueue." caption="Pulsar.">}}
 
-poser is designed for multi tenants allowing multiple tenants to share the same customer maintaining isolation and security this of course geo replication enabling data replication across multiple data centres for disaster recovery and data locality poster's tier storage allow older data to be offloaded to cheaper sources at Henderson S3 reducing costs while maintaining access to historical data provide lightweight computer capabilities for stream processing the posterio connectors facilitate ec integration with external systems and then evolution of message queue architecture do you like a videos you might like a system design newsletter as well it covers topics in transit.
+Pulsar is designed for multi tenancy allowing multiple tenants to share the same cluster while maintaining isolation and security.
+
+It supports geo-replication, enabling data replication across multiple data centres for disaster recovery and data locality.
+
+Pulsar's tier storage allow older data to be offloaded to cheaper storage solitions like Amazon S3 reducing costs while maintaining access to historical data.
+{{<figure src="/images/SystemDesign/PulsarSourceSinkStream.png" alt="PulsarSourceSinkStream." caption="Pulsar Source Sink Stream.">}}
+Pulsar functions provide lightweight computer capabilities for stream processing and Pulsar IO connectors facilitate easy integration with external systems.
 
 ### Strategies to scale the application.
 
