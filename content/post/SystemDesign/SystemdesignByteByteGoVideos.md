@@ -1,4 +1,4 @@
-<img width="748" height="376" alt="image" src="https://github.com/user-attachments/assets/10ec61c3-72e2-44e4-beda-b9145f251266" />+++
++++
 title = 'System Design ByteByteGo Videos.'
 date = 2025-07-12T19:59:08+05:30
 url= "/post/systemDesign/SystemdesignByteByteGoVideos"
