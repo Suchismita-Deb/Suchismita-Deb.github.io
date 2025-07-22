@@ -1131,19 +1131,34 @@ Query to find top 10 customer with the least of 1000 spend on order since Jan 20
 
 Database system creates those plans to optimize queries and minimize resource usage.
 
-FROM and JOIN clauses - This is where we choose the table we will work with and specify how to join them. 
+`FROM` and `JOIN` clauses - This is where we choose the table we will work with and specify how to join them. 
 
 Using index in join increase speed. Good index is the key. Index type like BitMap and B-Tree indexing can impact performance based on data distribution and query type.
 
-WHERE - Conditions. Make the SARGABLE (Search Argument Able) query it indicate the faster execution.  
+`WHERE` - Conditions. Make the SARGABLE (Search Argument Able) query it indicate the faster execution.  
 When the query is SARGABLE then the query can be used to increase the speed of the index. 
 
 {{<figure src="/images/SystemDesign/SARGABLEQuery.png" alt="SARGABLE Query." caption="SARGABLE Query.">}}
 
-Sargable Query - `WHERE order_date >= '2023-01-01'  
+Sargable Query - `WHERE order_date >= '2023-01-01'`  
 Non-Sargable Query - `WHERE YEAR(order_date) >= 2023`
 
+In Sargable query we directly compare order dtae column to a specific date. It allows db engine to use the index on the order_date column.
 
+In Non query uses the YEAR function on the ORDER_DATE column and it prevent to use index in order date as teh function must be applied to every row in the table.
+
+**To write sargable queries -**  
+Avoid using functions or calculations on indexed columns in the WHERE clause.  
+Use direct comparisons when possible instead of wrapping the column in a function.  
+If we need to use a function on a column, consider cresting a computed column or a function-based index, if the database system supports it.
+
+`GROUPBY` and `HAVING` clauses. 
+
+To optimize `SELECT` clause consider using the index like SELECT, WHERE, JOIN. It enables teh db to retrieve data from the index.
+
+`ORDER_BY` and `LIMIT` - To optimize use filtering and pagination. In large data set avoid sorting to large dataset as it reduce the response time.
+
+**The order is - FROM, JOIN, WHERE, GROUPBY, HAVING, SELECT, ORDER_BY, LIMIT.**
 
 ### **Popular API Architecture Styles.**
 
@@ -2334,13 +2349,13 @@ AI Agent is a helpful software assistance that can monitor what is happening aro
 
 {{<figure src="/images/SystemDesign/AIAgent.png" alt="AIAgent." caption="AI Agent.">}}
 
-{{<figure src="/images/SystemDesign/AIAgentUse.png" alt="AIAgentUse." caption="AI Agent Use.">}}
+{{<figure src="/images/SystemDesign/AiAgentUse.png" alt="AIAgentUse." caption="AI Agent Use.">}}
 
 **Different from traditional software.** - Traditional system follows predetermined execution tasks.  
 Agents actively monitor their environment through inputs and sensors.  
 Process information through reasoning engines make decisions based on goals and available actions.  
 Take actions that modify their envirment and learn from feedback to improve performance.
-{{<figure src="/images/SystemDesign/AIAgentSystem.png" alt="AIAgentSystem." caption="AI Agent System.">}}
+{{<figure src="/images/SystemDesign/AiAgentSystem.png" alt="AIAgentSystem." caption="AI Agent System.">}}
 This represents a paradigm shift from imperative programming where we tell software exactly what to do to declarative goal setting where we Define objectives and let the agent determine how to achieve them. 
 
 ### MCP - Model Context Protocol.
