@@ -1030,29 +1030,160 @@ The principle and the standard architecture refers as a cloud native architectur
 
 {{<figure src="/images/SystemDesign/CloudNativeArchitecture.png" alt="CloudNativeArchitecture." caption="CloudNativeArchitecture.">}}
 
-### DNS.
+### **DNS.**
 
-https://youtu.be/27r4Bzuj5NQ?si=TS5BHFVYaRir7_v3
+DNS, or Domain Name System, is the backbone of the internet. DNS is the internet’s directory. It translates human-readable domain names, such as google.com to machine-readable IP addresses. 
 
-DNS, or Domain Name System, is the backbone of the internet, but few know exactly how it works. In this video, we will learn all about the system design of DNS. Let’s dive right in. DNS is the internet’s directory. It translates human-readable domain names, such as google.com to machine-readable IP addresses. DNS is a little confusing because there are different types of DNS servers in the DNS hierarchy, each serving a different purpose. When a browser makes a DNS query, it’s asking a DNS resolver. This DNS resolver could be from our ISP, or from popular DNS providers like Cloudflare’s 1.1.1.1, or Google’s 8.8.8.8. If the DNS resolver does not have the answer in its cache, it finds the right authoritative nameserver and asks it. The authoritative nameserver is the one that holds the answer. When we update a domain’s DNS records, we are updating its authoritative nameserver. How does the DNS resolver find the authoritative name server? This is where the system of DNS gets interesting. There are three main levels of authoritative DNS servers. They are the root name servers, the top level domain (or TLD) name servers, and the authoritative nameservers for the domains. The root name servers store the IP addresses of the TLD name servers. There are 13 logical root name servers. Each root name server has a single IP address assigned to it. There are actually many physical servers behind each IP address. Through the magic of anycast, we get routed to the one closest to us. The TLD name servers store the IP addresses of the authoritative name servers for all the domains under them. There are many types of TLD names. We are all familiar with .com, .org and .edu. There are also country code TLDs like .de and .uk. There are many others. The authoritative name servers for a domain provide, well, authoritative, answers to DNS queries. When we register a domain, the registrar runs the authoritative nameservers by default, but we can change them to others. Cloud providers like AWS and Cloudflare run robust authoritative nameservers. This hierarchical design makes DNS highly decentralized and robust. Let’s walk through the life of a typical DNS query. The user types google.com into the browser. The browser first checks its cache. If it has no answer, it makes an operating system call to try to get the answer. The operating system call would most likely have its own cache. If the answer isn’t there, it reaches out to the DNS resolver. The DNS resolver first checks its cache. If it’s not there or if the answer has expired, it asks the root name server. The root name server responds with the list of the .com TLD name servers. Note that since .com is such a common TLD, the resolver most likely already caches the IP addresses for those .com TLD nameservers. The DNS resolver then reaches out to the .com TLD nameserver, and the .com TLD nameserver returns the authoritative nameservers to google.com. And finally, the DNS resolver reaches out to google.com’s authoritative nameserver, and it returns the IP address of google.com The DNS resolver then returns the IP address to the operating system, the operating system returns it to the browser. Finally, let’s go over some gotchas when updating DNS records for a live, high-traffic production system. DNS propagation is slow because there is a TTL on each DNS record. And some of the default TTLs are pretty long. Also, not every DNS resolver is a good citizen. There are some out there that don’t honor the TTL. To mitigate the risk, there are two practical steps to take. First, reduce the TTL for the record that we want to change to something very short, say 60 seconds, well in advance before the update actually happens. This gives ample time for all the DNS servers to receive the shortened TTL which would allow the actual record update to take effect based on the new shortened TTL. Second, leave the server running on the old IP address for a while. Only decommission the server when traffic dies down to an acceptable level. Because some DNS resolvers don’t honor the TTL, this could take a bit of time and patience. This concludes our video on DNS. We hope you have a better understanding of how its hierarchical design makes it decentralized and robust. Remember, DNS is what translates domain names to IP addresses, making it a critical component of the internet backbone. If you like our videos, you may like our system design newsletter as well. It covers topics and trends in large-scale system design. Trusted by 250,000 readers. Subscribe at blog.bytebytego.com
+{{<figure src="/images/SystemDesign/DNSRootNameServers.png" alt="Git Versioning." caption="DNS Root Name Servers.">}}
 
-### Backend Architecture.
+When a browser makes a DNS query, it’s asking a DNS resolver. This DNS resolver could be from our ISP, or from popular DNS providers like Cloudflare’s 1.1.1.1, or Google’s 8.8.8.8. 
 
-https://youtu.be/7swoLEqABhQ?si=7xiH-eTG2cnZeMpL
+If the DNS resolver does not have the answer in its cache, it finds the right authoritative nameserver and asks it. The authoritative nameserver is the one that holds the answer. 
 
-Everyone loves burgers, whether it's a full stack burger, a frontend burger, or a backend burger. While the origin of this innovative burger is unknown, a comparable full stack burger was shared on Reddit four years ago, and a similar backend burger was posted on dev.to in 2021. We'd like to give a special shout-out to the original creators. In this video, we will share our favorite choices for each of the ingredients in our version of the Backend Burger. Our choices are different for different stages of a company. For this particular exercise, we will focus on an early-stage startup, where there are limited resources, and product/market fit is not yet certain. In this scenario, maximum flexibility is preferred. Starting from the top. For containerization, we choose nothing. To maintain maximum flexibility, we will probably go serverless functions. Serverless functions have a very strict request/response programming model, but under the hood, most serverless functions are packaged as a container. For architectural patterns, Serverless is our first choice. With serverless computing, we only pay for the resources we use, and we don't have to worry about provisioning, scaling, or maintaining servers. This frees up time and resources to focus on product features. For CI/CD, we will use Github Actions. There is no need to set up our own CI/CD at such an early stage. For API, yes, we use REST. REST is the standard between client and server. For version control systems, or VCS, Github is fine. For caching, browser cache and CDN are by far the most important to improve user experience. CDN comes for free with most hosting providers like Vercel and Netlify. If not, just use Cloudflare. For Frameworks, we will use something like NextJS and host both front and backend on something like Vercel. This means the backend is going to be in express, with Typescript on the backend. This is great. One language for both front and backend. For testing, this is gonna be controversial. We don’t need testing for early-stage startups other than very simple unit testing. When we’ve found product/market fit and start to scale the company, we will invest in more testing. We promise. *wink* As we already discussed, our language would be Typescript for both frontend and backend. Finally, database. If we are storing very simple data, we would use something hosted like Firebase or Firestore. If our data model is more complicated, we would use a serverless relational database like Aurora Serverless. Well, this is a fun little exercise. I hope you agree with most of our choices. Feel free to comment and share your opinions. If you like our videos, you may like our system design newsletter as well. It covers topics and trends in large-scale system design. Trusted by 250,000 readers. Subscribe at blog.bytebytego.com
+When we update a domain’s DNS records, we are updating its authoritative nameserver. 
 
-### Types of Memory and Storage.
+**How does the DNS resolver find the authoritative name server?**
 
-https://youtu.be/lX4CrbXMsNQ?si=yvJGQ8TJ8lXRZpWU
+There are three main levels of authoritative DNS servers. They are the **Root Name Servers**, the **Top Level Domain** (or TLD) name servers, and the **Authoritative Nameservers** for the domains. 
 
-Today, we're diving into the world of computer memory and storage. Let's get started! First up, we have the fundamental duo: RAM and ROM. RAM, or Random Access Memory, is a type of memory that stores data temporarily while your computer is running. It's fast and flexible, juggling all the programs we're running at any given moment. However, RAM is volatile, meaning it loses its stored data when the power is turned off. ROM, or Read-Only Memory, is a type of memory that retains data even when the power is off. It's non-volatile and used to store essential information, like firmware and the BIOS, that your computer needs to boot up. Let's explore the different types of RAM, including SRAM, DRAM, and everything in between. SRAM, or Static Random Access Memory, is a fast and expensive type of RAM used in high-speed applications like CPU caches, where quick access time is crucial. DRAM, or Dynamic Random Access Memory, is slower and cheaper than SRAM. It needs to be constantly refreshed to retain data, making it more high-maintenance. There are many types of DRAM, including FPM DRAM, EDO DRAM, SDRAM, and DDR SDRAM, with each generation bringing faster speeds and increased efficiency. Many are obsolete, and the common types of DRAM in the market today are DDR variants, like DDR4, DDR4. GDDR is also worth mentioning. It is a specialized type of DRAM optimized for faster data transfer rate, which the GPU needs for its massive parallel processing. GDDR6 is the most widely used today. Let's dive into some essential roles of ROM: Firmware and BIOS! Firmware is a type of software stored in ROM that controls how hardware devices communicate with each other. BIOS, or Basic Input/Output System, is the first software your computer runs when you power it up. It's responsible for starting your computer, initializing hardware components, and handing control over to the operating system. Now, let's explore Hard Disk Drives and Solid State Drives! Hard Disk Drives, or HDDs, have been around for a long time. They store data on spinning magnetic disks and are known for their large storage capacities at a low price. Solid State Drives, or SSDs, use NAND-based flash memory, providing faster data access, reduced power consumption, and increased durability compared to HDDs, but come at a higher price. NVMe, or Non-Volatile Memory Express, is a high-performance interface for SSDs that connects directly to the CPU via PCIe lanes. This allows for lower latency and significantly faster data transfer rates compared to SATA-based SSDs. Need to take your data on the go? Let's talk about Flash Drives and SD Cards! Flash Drives, also known as USB drives or thumb drives, are small, plug-and-play devices you can use with any USB port. They're easy to use and perfect for transferring files between computers. SD Cards are commonly found in cameras and smartphones. They're smaller than a postage stamp but can store thousands of files. SD cards come in three main physical sizes: SD, microSD, and miniSD. And there you have it. Our quick journey through the world of computer memory and storage. If you like our videos, you may like our system design newsletter as well. It covers topics and trends in large-scale system design. Trusted by 300,000 readers. Subscribe at blog.bytebytego.com
+{{<figure src="/images/SystemDesign/HowDNSWorks.png" alt="Git Versioning." caption="How DNS Works.">}}
 
-### Cache system.
+The **root name servers** store the IP addresses of the TLD name servers.  
+There are 13 logical root name servers. Each root name server has a single IP address assigned to it. There are actually many physical servers behind each IP address. Through the magic of anycast, we get routed to the one closest to us. 
 
-https://youtu.be/dGAgxozNWFE?si=FlEg745StBq2bpTR
+{{<figure src="/images/SystemDesign/LogicalRootNameServers.png" alt="Git Versioning." caption="Logical Root Name Servers.">}}
 
-Caching is a common technique in modern computing to enhance system performance and reduce response time. From the front end to the back end, caching plays a crucial role in improving the efficiency of various applications and systems. A typical system architecture involves several layers of caching. At each layer, there are multiple strategies and mechanisms for caching data, depending on the requirements and constraints of the specific application. Before diving into a typical system architecture, let’s zoom in and look at how prevalent caching is within each computer itself. Let’s first look at computer hardware. The most common hardware cache are L1, L2, and L3 caches. L1 cache is the smallest and fastest cache, typically integrated into the CPU itself. It stores frequently accessed data and instructions, allowing the CPU to quickly access them without having to fetch them from slower memory. L2 cache is larger but slower than L1 cache, and is typically located on the CPU die or on a separate chip. L3 cache is even larger and slower than L2 cache, and is often shared between multiple CPU cores. Another common hardware cache is the translation lookaside buffer (TLB). It stores recently used virtual-to-physical address translations. It is used by the CPU to quickly translate virtual memory addresses to physical memory addresses, reducing the time needed to access data from memory. At the operating system level, there are page cache and other file system caches. Page cache is managed by the operating system and resides in main memory. It is used to store recently used disk blocks in memory. When a program requests data from the disk, the operating system can quickly retrieve the data from memory instead of reading it from disk. There are other caches managed by the operating system, such as the inode cache. These caches are used to speed up file system operations by reducing the number of disk accesses required to access files and directories. Now let’s zoom out and look at how caching is used in a typical application system architecture. On the application front end, web browsers can cache HTTP responses to enable faster retrieval of data. When we request data over HTTP for the first time, and it is returned with an expiration policy in the HTTP header; we request the same data again, and the browser returns the data from its cache if available. Content Delivery Networks (CDNs) are widely used to improve the delivery of static content, such as images, videos, and other web assets. One of the ways that CDNs speeds up content delivery is through caching. When a user requests content from a CDN, the CDN network looks for the requested content in its cache. If the content is not already in the cache, the CDN fetches it from the origin server and caches it on its edge servers. When another user requests the same content, the CDN can deliver the content directly from its cache, eliminating the need to fetch it from the origin server again. Some load balancers can cache resources to reduce the load on back-end servers. When a user requests content from a server behind a load balancer, the load balancer can cache the response and serve it directly to future users who request the same content. This can improve response times and reduce the load on back-end servers. Caching does not always have to be in memory. In the messaging infrastructure, message brokers such as Kafka can cache a massive amount of messages on disk. This allows consumers to retrieve the messages at their own pace. The messages can be cached for a long period of time based on the retention policy. Distributed caches such as Redis can store key-value pairs in memory, providing high read/write performance compared to traditional databases Full-text search engines like Elastic Search can index data for document search and log search, providing quick and efficient access to specific data. Even within the database, there are multiple levels of caching available. Data is typically written to a write-ahead log (WAL) before being indexed in a B-tree. The buffer pool is a memory area used to cache query results, while materialized views can precompute query results for faster performance. The transaction log records all transactions and updates to the database, while the replication log tracks the replication state in a database cluster. Overall, caching data is an essential technique for optimizing system performance and reducing response time. From the front end to the back end, there are many layers of caching to improve the efficiency of various applications and systems.
+The TLD name servers store the IP addresses of the authoritative name servers for all the domains under them. There are many types of TLD names. We are all familiar with .com, .org and .edu. There are also country code TLDs like .de and .uk. 
+
+The authoritative name servers for a domain provide, well, authoritative, answers to DNS queries. 
+
+{{<figure src="/images/SystemDesign/NameserverSettings.png" alt="Git Versioning." caption="Nameserver Settings.">}}
+
+When we register a domain, the registrar runs the authoritative nameservers by default, but we can change them to others. Cloud providers like AWS and Cloudflare run robust authoritative nameservers. 
+
+This hierarchical design makes DNS highly decentralized and robust. 
+
+**The life of a typical DNS query.**
+
+The user types google.com into the browser. The browser first checks its cache. If it has no answer, it makes an operating system call to try to get the answer. The operating system call would most likely have its own cache. If the answer isn’t there, it reaches out to the DNS resolver. 
+
+The DNS resolver first checks its cache. If it’s not there or if the answer has expired, it asks the root name server. The root name server responds with the list of the .com TLD name servers. Note that since .com is such a common TLD, the resolver most likely already caches the IP addresses for those .com TLD nameservers. 
+
+The DNS resolver then reaches out to the .com TLD nameserver, and the .com TLD nameserver returns the authoritative nameservers to google.com. 
+
+And finally, the DNS resolver reaches out to google.com’s authoritative nameserver, and it returns the IP address of google.com.
+
+The DNS resolver then returns the IP address to the operating system, the operating system returns it to the browser. 
+
+{{<figure src="/images/SystemDesign/DNSQuery.png" alt="Git Versioning." caption="DNS Query.">}}
+
+Finally, let’s go over some gotchas when updating DNS records for a live, high-traffic production system. 
+
+DNS propagation is slow because there is a TTL on each DNS record. And some of the default TTLs are pretty long. Also, not every DNS resolver is a good citizen. There are some buggy out there that don’t honor the TTL. To mitigate the risk, there are two practical steps to take. 
+
+First, reduce the TTL for the record that we want to change to something very short, say 60 seconds, well in advance before the update actually happens. This gives ample time for all the DNS servers to receive the shortened TTL which would allow the actual record update to take effect based on the new shortened TTL. 
+
+Second, leave the server running on the old IP address for a while. Only decommission the server when traffic dies down to an acceptable level. Because some DNS resolvers don’t honor the TTL, this could take a bit of time and patience. 
+
+### **Backend Architecture.**
+
+{{<figure src="/images/SystemDesign/BackendTools.png" alt="Git Versioning." caption="Backend Tools.">}}
+
+For this particular exercise, we will focus on an early-stage startup, where there are limited resources, and product/market fit is not yet certain. In this scenario, maximum flexibility is preferred. 
+
+To maintain maximum flexibility, we will probably go serverless functions. 
+
+{{<figure src="/images/SystemDesign/ServerlessFunction.png" alt="Git Versioning." caption="Serverless Function.">}}
+
+Serverless functions have a very strict request/response programming model, but under the hood, most serverless functions are packaged as a container. 
+
+CDN comes for free with most hosting providers like Vercel and Netlify. If not, just use Cloudflare. 
+
+If we are storing very simple data, we would use something hosted like Firebase or Firestore. If our data model is more complicated, we would use a serverless relational database like Aurora Serverless. 
+
+### **Types of Memory and Storage.**
+
+The fundamental duo: RAM and ROM. 
+
+RAM, or Random Access Memory, is a type of memory that stores data temporarily while your computer is running. It's fast and flexible, juggling all the programs we're running at any given moment. However, RAM is volatile, meaning it loses its stored data when the power is turned off. 
+
+ROM, or Read-Only Memory, is a type of memory that retains data even when the power is off. It's non-volatile and used to store essential information, like firmware and the BIOS, that your computer needs to boot up. 
+
+The different types of RAM, including SRAM, DRAM, and everything in between. 
+
+SRAM, or Static Random Access Memory, is a fast and expensive type of RAM used in high-speed applications like CPU caches, where quick access time is crucial. 
+
+DRAM, or Dynamic Random Access Memory, is slower and cheaper than SRAM. It needs to be constantly refreshed to retain data, making it more high-maintenance. 
+
+There are many types of DRAM, including FPM DRAM, EDO DRAM, SDRAM, and DDR SDRAM many are obsolete.
+
+The common types of DRAM in the market today are DDR4, DDR5. 
+
+GDDR is also worth mentioning. It is a specialized type of DRAM optimized for faster data transfer rate, which the GPU needs for its massive parallel processing. GDDR6 is the most widely used today. 
+
+Roles of ROM: Firmware and BIOS.
+
+Firmware is a type of software stored in ROM that controls how hardware devices communicate with each other. BIOS, or Basic Input/Output System, is the first software your computer runs when you power it up. It's responsible for starting your computer, initializing hardware components, and handing control over to the operating system.
+
+Hard Disk Drives, or HDDs, have been around for a long time. They store data on spinning magnetic disks and are known for their large storage capacities at a low price. 
+
+Solid State Drives, or SSDs, use NAND-based flash memory, providing faster data access, reduced power consumption, and increased durability compared to HDDs, but come at a higher price. 
+
+NVMe, or Non-Volatile Memory Express, is a high-performance interface for SSDs that connects directly to the CPU via PCIe lanes. This allows for lower latency and significantly faster data transfer rates compared to SATA-based SSDs. 
+
+{{<figure src="/images/SystemDesign/NVMe.png" alt="Git Versioning." caption="NVMe.">}}
+
+Need to take your data on the go - Flash Drives and SD Cards.
+
+Flash Drives, also known as USB drives or thumb drives, are small, plug-and-play devices you can use with any USB port. They're easy to use and perfect for transferring files between computers. 
+
+SD Cards are commonly found in cameras and smartphones. They're smaller than a postage stamp but can store thousands of files. SD cards come in three main physical sizes: SD, microSD, and miniSD. 
+
+{{<figure src="/images/SystemDesign/TypesOfMemoryStorage.png" alt="TypesOfMemoryStorage." caption="Types Of Memory Storage.">}}
+
+### **Cache system.**
+
+Caching is a technique to enhance system performance and reduce response time. 
+ 
+A typical system architecture involves several layers of caching, depending on the requirements and constraints of the specific application. 
+
+{{<figure src="/images/SystemDesign/SystemArchitectureUsingCache.png" alt="Git Versioning." caption="System Architecture Using Cache.">}}
+
+The most common hardware cache are L1, L2, and L3 caches.  
+
+L1 cache is the smallest and fastest cache, typically integrated into the CPU itself.  
+It stores frequently accessed data and instructions, allowing the CPU to quickly access them without having to fetch them from slower memory. 
+
+L2 cache is larger but slower than L1 cache, and is typically located on the CPU die or on a separate chip. 
+
+L3 cache is even larger and slower than L2 cache, and is often shared between multiple CPU cores. 
+
+Another common hardware cache is the Translation Lookaside Buffer (TLB). It stores recently used virtual-to-physical address translations. It is used by the CPU to quickly translate virtual memory addresses to physical memory addresses, reducing the time needed to access data from memory. 
+
+At the operating system level, there are page cache and other file system caches. 
+
+Page cache is managed by the operating system and resides in main memory. It is used to store recently used disk blocks in memory. When a program requests data from the disk, the operating system can quickly retrieve the data from memory instead of reading it from disk. 
+
+There are other caches managed by the operating system, such as the **inode** cache. 
+These caches are used to speed up file system operations by reducing the number of disk accesses required to access files and directories.
+
+Content Delivery Networks (CDNs) are widely used to improve the delivery of static content, such as images, videos, and other web assets. One of the ways that CDNs speeds up content delivery is through caching. 
+
+When a user requests content from a CDN, the CDN network looks for the requested content in its cache. If the content is not already in the cache, the CDN fetches it from the origin server and caches it on its edge servers. When another user requests the same content, the CDN can deliver the content directly from its cache, eliminating the need to fetch it from the origin server again. 
+
+Some load balancers can cache resources to reduce the load on back-end servers. When a user requests content from a server behind a load balancer, the load balancer can cache the response and serve it directly to future users who request the same content. 
+
+Caching does not always have to be in memory. In the messaging infrastructure, message brokers such as Kafka can cache a massive amount of messages on disk. This allows consumers to retrieve the messages at their own pace. The messages can be cached for a long period of time based on the retention policy. 
+
+Distributed caches such as Redis can store key-value pairs in memory, providing high read/write performance compared to traditional databases 
+
+Full-text search engines like Elastic Search can index data for document search and log search, providing quick and efficient access to specific data. 
+
+Even within the database, there are multiple levels of caching available. Data is typically written to a write-ahead log (WAL) before being indexed in a B-tree. 
+
+The buffer pool is a memory area used to cache query results, while materialized views can precompute query results for faster performance. 
+
+The **transaction log** records all transactions and updates to the database, while the **replication log** tracks the replication state in a database cluster. 
 
 ### GPT.
 
