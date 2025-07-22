@@ -935,9 +935,59 @@ In other words the application itself handles task scheduling.
 
 ### **What is OSI Model.**
 
-What does it have to do with the osi model how does tcp ip fit into this let's take a look the osi model or the open systems interconnect model is a theoretical framework that provides one way of thinking about networking.
+The osi model or the open systems interconnect model is a theoretical framework that provides one way of thinking about networking.
 
-He splits the network communication between two devices on a network into seven abstraction layers the physical layer is the bottom most layer it is responsible for transmitting raw bits of data across a physical connexion the data link layer is the second layer it takes the raw bits from the physical layer and organises them into frames it ensures that the frames are delivered to the correct destination the Ethernet primarily lives in this layer the network layer is the 3rd layer this is responsible for routing data frames across different networks the ip part of tcp ip is a well known example of this layer the transport layer is the 4th layer it handles end to end communication between 2 nodes this is the layer where tcp and udp live tcp provides reliable end to end communication between devices it does this by dividing the data into small manageable segments and sending each segment individually each segment has a sequence number attached to it the receiving end uses the secret numbers to reassemble the data in the correct order pcp also provides error checking to make sure that the data was not corrupted during transmission udp is another popular protocol in the transport layer it is similar to tcp but it is simpler and faster unlike tcp utp does not provide the same level of error checking or reliability it simply sends packets of data from one device to another the receiving end is responsible for determining whether the packets will receive correctly if an error is detected the receiving end simply discards the packet the remaining layers are session presentation and application layers this is where the osi model loses its usefulness in practise there are two fine grain and do not really reflect reality in general this sufficient to collapse them into a single layer and consider application protocols like http and simply layer 7 protocols now let's go through an example and examine how data moves through the layers when transmitting over the network when a user sends a http request to a Web server over the network the http header is added to the data at the application layer then the tcp header is added to the data it is encapsulated into tcp segments at the transport layer the header contains the source port destination port and sequence number the segments are then encapsulated with an ip header and the network layer the ip header contains the source and destination ip addresses a Mac header is added to the data link layer with the source and destination mac addresses it is worth noting that in the real world this is a bit nuanced the Mac addresses are usually not the Mac address of the sending and the receiving ends the Mac addresses of the routing devices in the next hop of a usually long journey across the Internet the encapsulated frames are sent over the network in raw bits in the physical layer when the Web Server receives the raw bits from the network it reverses the process the headers are removed layer by layer eventually the web server processes the http request to conclude the osi mod is one way of thinking about networks his primary purpose is educational even though the layers don't fit the real world use cases perfectly they are still widely used by networking vendors and cloud providers as a shorthand to describe where the networking products sit in the osi model for example cloud load balances are broadly divided into two categories L4 and L7 and L7 load balancer is a shorthand to mean that the load balancer operates at the application protocol layer like http or https and therefore load balancer on the other hand operates at the tcp level.
+Application Layer.  
+Presentation Layer.  
+Session Layer.  
+Transport Layer.  
+Network Layer.  
+Data Link Layer.  
+Physical Layer.
+
+
+The physical layer is the bottom most layer it is responsible for transmitting raw bits of data across a physical connection.
+
+The data link layer is the second layer it takes the raw bits from the physical layer and organises them into frames. It ensures that the frames are delivered to the correct destination. The Ethernet primarily lives in this layer.
+
+The network layer is the 3rd layer this is responsible for routing data frames across different networks. The ip part of tcp ip is a well known example of this layer.
+
+The transport layer is the 4th layer it handles end to end communication between 2 nodes this is the layer where tcp and udp live.
+
+TCP provides reliable end to end communication between devices it does this by dividing the data into small manageable segments and sending each segment individually. Each segment has a sequence number attached to it the receiving end uses the secret numbers to reassemble the data in the correct order.
+
+TCP also provides error checking to make sure that the data was not corrupted during transmission udp is another popular protocol in the transport layer it is similar to tcp but it is simpler and faster unlike tcp utp does not provide the same level of error checking or reliability. 
+
+It simply sends packets of data from one device to another the receiving end is responsible for determining whether the packets will receive correctly if an error is detected the receiving end simply discards the packet.
+
+The remaining layers are session presentation and application layers this is where the osi model loses its usefulness in practise there are two fine grain and do not really reflect reality.
+In general this sufficient to collapse them into a single layer and consider application protocols like http and simply layer 7 protocols.
+
+An example to examine how data moves through the layers when transmitting over the network.
+
+When a user sends a http request to a Web server over the network the http header is added to the data at the application layer then the tcp header is added to the data.
+
+It is encapsulated into tcp segments at the transport layer.
+
+The header contains the source port destination port and sequence number.
+
+{{<figure src="/images/SystemDesign/Header.png" alt="ConsistentHashing." caption="Header.">}}
+
+The segments are then encapsulated with an ip header and the network layer.
+
+The ip header contains the source and destination ip addresses a Mac header is added to the data link layer with the source and destination mac addresses.
+
+It is worth noting that in the real world this is a bit nuanced the Mac addresses are usually not the Mac address of the sending and the receiving ends the Mac addresses of the routing devices in the next hop of a usually long journey across the Internet.
+
+The encapsulated frames are sent over the network in raw bits in the physical layer when the Web Server receives the raw bits from the network it reverses the process the headers are removed layer by layer eventually the web server processes the http request.
+
+They are still widely used by networking vendors and cloud providers as a shorthand to describe where the networking products sit in the osi model for example cloud load balances are broadly divided into two categories L4 and L7.
+
+L7 load balancer is a shorthand to mean that the load balancer operates at the application protocol layer like http or https.
+
+L4 load balancer on the other hand operates at the tcp level.
+
+{{<figure src="/images/SystemDesign/OSIModel.png" alt="OSIModel." caption="OSIModel.">}}
 
 ### CAP Theorem.
 
@@ -945,11 +995,78 @@ https://youtu.be/BHqjEjzAicA?si=WaJqJOx6YmCBzL5N
 
 What is the CAP theorem? How useful is it to system design? Let’s take a look. The CAP theorem is a concept in computer science that explains the trade-offs between consistency, availability, and partition tolerance in distributed systems. Consistency refers to the property of a system where all nodes have a consistent view of the data. It means all clients see the same data at the same time no matter which node they connect to. Availability refers to the ability of a system to respond to requests from users at all times. Partition tolerance refers to the ability of a system to continue operating even if there is a network partition. But what is a network partition? A network partition happens when nodes in a distributed system are unable to communicate with each other due to network failures. When there is a network partition, a system must choose between consistency and availability. If the system prioritizes consistency, it may become unavailable until the partition is resolved. If the system prioritizes availability, it may allow updates to the data. This could result in data inconsistencies until the partition is resolved. Let’s go through a concrete example. Let's say we have a tiny bank with two ATMs connected over a network. The ATMs support three operations: deposit, withdraw, and check balance. No matter what happens, the balance should never go below zero. There is no central database to keep the account balance. It is stored on both ATMs. When a customer uses an ATM, the balance is updated on both ATMs over the network. This ensures that the ATMs have a consistent view of the account balance. If there is a network partition and the ATMs are unable to communicate with each other, the system must choose between consistency and availability. If the bank prioritizes consistency, the ATM may refuse to process deposits or withdrawals until the partition is resolved. This ensures that the balance remains consistent, but the system is unavailable to customers. If the bank prioritizes availability, the ATM may allow deposits and withdrawals to occur, but the balance may become inconsistent until the partition is resolved. This allows the system to remain available to users, but at the cost of data consistency. The preference for availability could be costly to the bank. When there is a network partition, the customer could withdraw the entire balance from both ATMs. When the network comes back online, the inconsistency is resolved and now the balance is negative. That is not good. Let’s go through another example and see how a social media platform could apply the CAP theorem. During a network partition, if two users are commenting on the same post at the same time, one user's comment may not be visible to the other user until the partition is resolved. Alternatively, if the platform prioritizes consistency, the commenting feature may be unavailable to users until the partition is resolved. For a social network, it is often acceptable to prioritize availability at the cost of users seeing slightly different views some of the time. The CAP theorem may sound very simple, but the real world is messy. As with many things in software engineering, it is all about tradeoffs, and the choices are not always so black and white. The CAP theorem assumes 100% availability or 100% consistency. In the real world, there are degrees of consistency and availability that distributed system designers must carefully consider. This is where the simplistic model of the CAP theorem could be misleading. Back to the bank example, during a network partition, the ATM could allow only balance inquiries to be processed, while deposits or withdrawals are blocked. Alternatively, the bank could implement a hybrid approach. For example, the ATM could allow balance inquiries and small withdrawals to be processed during a partition, but block large withdrawals or deposits until the partition is resolved. It is worth noting that in the real world, reconciliation after a network partition could get very messy. The bank example above is simple to reconcile. In real life, the data structures involved could be complex and challenging to reconcile. A good example of a complex data structure is Google Docs. Resolving conflicting updates could be tricky. So is the CAP theorem useful? Yes, it is a useful tool to help us think through the high-level trade-offs to consider when there is a network partition. This is a good starting point, but it does not provide a complete picture of the trade-offs to consider when designing a well-rounded distributed system. Specifically, when the system is operating normally without any network failure, which is most of the time, there is an entire set of interesting trade-offs to consider between latency and consistency. This is covered by the PACELC theorem, which we should cover in another video. If you'd like to learn more about system design, check out our book and weekly newsletter.
 
-### Kubernetes.
+### **Kubernetes.**
 
-https://youtu.be/TlHvYWVUZyc?si=lUTpKnXlgnNLN_Br
+Kubernetes is an open-source container orchestration platform. It automates the deployment, scaling, and management of containerized applications. 
 
-What is Kubernetes? Why is it called k8s? What makes it so popular? Let’s take a look. Kubernetes is an open-source container orchestration platform. It automates the deployment, scaling, and management of containerized applications. Kubernetes can be traced back to Google's internal container orchestration system, Borg, which managed the deployment of thousands of applications within Google. In 2014, Google open-sourced a version of Borg. That is Kubernetes. Why is it called k8s? This is a somewhat nerdy way of abbreviating long words. The number 8 in k8s refers to the 8 letters between the first letter “k” and the last letter “s” in the word Kubernetes. Other examples are i18n for internationalization, and l10n for localization. A Kubernetes cluster is a set of machines, called nodes, that are used to run containerized applications. There are two core pieces in a Kubernetes cluster. The first is the control plane. It is responsible for managing the state of the cluster. In production environments, the control plane usually runs on multiple nodes that span across several data center zones. The second is a set of worker nodes. These nodes run the containerized application workloads. The containerized applications run in a Pod. Pods are the smallest deployable units in Kubernetes. A pod hosts one or more containers and provides shared storage and networking for those containers. Pods are created and managed by the Kubernetes control plane. They are the basic building blocks of Kubernetes applications. Now let’s dive a bit deeper into the control plane. It consists of a number of core components. They are the API server, etcd, scheduler, and the controller manager. The API server is the primary interface between the control plane and the rest of the cluster. It exposes a RESTful API that allows clients to interact with the control plane and submit requests to manage the cluster. etcd is a distributed key-value store. It stores the cluster's persistent state. It is used by the API server and other components of the control plane to store and retrieve information about the cluster. The scheduler is responsible for scheduling pods onto the worker nodes in the cluster. It uses information about the resources required by the pods and the available resources on the worker nodes to make placement decisions. The controller manager is responsible for running controllers that manage the state of the cluster. Some examples include the replication controller, which ensures that the desired number of replicas of a pod are running, and the deployment controller, which manages the rolling update and rollback of deployments. Next, let’s dive deeper into the worker nodes. The core components of Kubernetes that run on the worker nodes include kubelet, container runtime, and kube proxy. The kubelet is a daemon that runs on each worker node. It is responsible for communicating with the control plane. It receives instructions from the control plane about which pods to run on the node, and ensures that the desired state of the pods is maintained. The container runtime runs the containers on the worker nodes. It is responsible for pulling the container images from a registry, starting and stopping the containers, and managing the containers' resources. The kube-proxy is a network proxy that runs on each worker node. It is responsible for routing traffic to the correct pods. It also provides load balancing for the pods and ensures that traffic is distributed evenly across the pods. So when should we use Kubernetes? As with many things in software engineering, this is all about tradeoffs. Let’s look at the upsides first. Kubernetes is scalable and highly available. It provides features like self-healing, automatic rollbacks, and horizontal scaling. It makes it easy to scale our applications up and down as needed, allowing us to respond to changes in demand quickly. Kubernetes is portable. It helps us deploy and manage applications in a consistent and reliable way regardless of the underlying infrastructure. It runs on-premise, in a public cloud, or in a hybrid environment. It provides a uniform way to package, deploy, and manage applications. Now how about the downsides? The number one drawback is complexity. Kubernetes is complex to set up and operate. The upfront cost is high, especially for organizations new to container orchestration. It requires a high level of expertise and resources to set up and manage a production Kubernetes environment. The second drawback is cost. Kubernetes requires a certain minimum level of resources to run in order to support all the features we mentioned above. It is likely an overkill for many smaller organizations. One popular option that strikes a reasonable balance is to offload the management of the control plane to a managed Kubernetes service. Managed Kubernetes services are provided by cloud providers. Some popular ones are Amazon EKS, GKE on Google Cloud, and AKS on Azure. These services allow organizations to run the Kubernetes applications without having to worry about the underlying infrastructure. They take care of tasks that require deep expertise, like setting up and configuring the control plane, scaling the cluster, and providing ongoing maintenance and support. This is a reasonable option for a mid-size organization to test out Kubernetes. For a small organization, YAGNI - You ain’t gonna need it - is our recommendation. If you would like to learn more about system design, check out our books and weekly newsletter. Please subscribe if you learn something new. Thank you and we'll see you next time.
+Kubernetes can be traced back to Google's internal container orchestration system Borg, which managed the deployment of thousands of applications within Google. 
+
+{{<figure src="/images/SystemDesign/Borg.png" alt="ConsistentHashing." caption="Borg.">}}
+In 2014, Google open-sourced a version of Borg. That is Kubernetes. 
+
+A **Kubernetes cluster** is a set of machines, called nodes, that are used to run containerized applications. 
+
+{{<figure src="/images/SystemDesign/KubernetesCluster.png" alt="GeoHash." caption="Kubernetes Cluster.">}}
+
+There are two core pieces in a Kubernetes cluster - Control Plane and set of Worker Nodes. 
+
+Control plane. It is responsible for managing the state of the cluster. In production environments, the control plane usually runs on multiple nodes that span across several data center zones. 
+
+The second is a set of worker nodes. These nodes run the containerized application workloads. 
+
+The containerized applications run in a Pod. Pods are the smallest deployable units in Kubernetes. A pod hosts one or more containers and provides shared storage and networking for those containers.  
+Pods are created and managed by the Kubernetes control plane. They are the basic building blocks of Kubernetes applications. 
+
+Control plane. It consists of a number of core components. They are the **API server, etcd, scheduler, and the controller manager**.  
+
+The **API server** is the primary interface between the control plane and the rest of the cluster. It exposes a RESTful API that allows clients to interact with the control plane and submit requests to manage the cluster. 
+
+{{<figure src="/images/SystemDesign/APIServer.png" alt="ConsistentHashing." caption="API Server.">}}
+**etcd** is a distributed key-value store. It stores the cluster's persistent state. It stores the details like what states of the cluster are changed, What resources are available, is the cluster healthy? 
+
+It is used by the API server and other components of the control plane to store and retrieve information about the cluster. 
+
+The **scheduler** is responsible for scheduling pods onto the worker nodes in the cluster. It uses information about the resources required by the pods and the available resources on the worker nodes to make placement decisions. 
+
+The **controller manager** is responsible for running controllers that manage the state of the cluster. 
+
+Some examples include the *replication controller*, which ensures that the desired number of replicas of a pod are running.
+
+```yaml
+apiVersion: v1
+kind: ReplicationController
+metadata:
+ name: nginx
+spec:
+ replicas: 4
+```
+
+The _deployment controller_, which manages the rolling update and rollback of deployments. 
+The **worker nodes** - Core components of Kubernetes that run on the worker nodes include kubelet, container runtime, and kube proxy. 
+
+{{<figure src="/images/SystemDesign/WorkerNode.png" alt="Worker Node." caption="Worker Node.">}}
+
+The kubelet is a daemon that runs on each worker node. It is responsible for communicating with the control plane. It receives instructions from the control plane about which pods to run on the node, and ensures that the desired state of the pods is maintained. 
+
+The container runtime runs the containers on the worker nodes. It is responsible for pulling the container images from a registry, starting and stopping the containers, and managing the containers' resources. 
+
+The kube-proxy is a network proxy that runs on each worker node. It is responsible for routing traffic to the correct pods. It also provides load balancing for the pods and ensures that traffic is distributed evenly across the pods. 
+
+Kubernetes is scalable and highly available. It provides features like self-healing, automatic rollbacks, and horizontal scaling. It makes it easy to scale our applications up and down as needed, allowing us to respond to changes in demand quickly. Kubernetes is portable. It helps us deploy and manage applications in a consistent and reliable way regardless of the underlying infrastructure. It runs on-premise, in a public cloud, or in a hybrid environment. It provides a uniform way to package, deploy, and manage applications. 
+
+The number one drawback is complexity. Kubernetes is complex to set up and operate. The upfront cost is high, especially for organizations new to container orchestration. It requires a high level of expertise and resources to set up and manage a production Kubernetes environment. 
+
+The second drawback is cost. Kubernetes requires a certain minimum level of resources to run in order to support all the features we mentioned above. It is likely an overkill for many smaller organizations. 
+
+One popular option that strikes a reasonable balance is to offload the management of the control plane to a managed Kubernetes service. Managed Kubernetes services are provided by cloud providers. 
+
+Some popular ones are Amazon EKS, GKE on Google Cloud, and AKS on Azure. 
+
+These services allow organizations to run the Kubernetes applications without having to worry about the underlying infrastructure. 
+
+They take care of tasks that require deep expertise, like setting up and configuring the control plane, scaling the cluster, and providing ongoing maintenance and support. This is a reasonable option for a mid-size organization to test out Kubernetes. 
+
+For a small organization, YAGNI - You ain’t gonna need it - is our recommendation. 
 
 ### **CI CD.**
 
