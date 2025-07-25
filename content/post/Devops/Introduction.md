@@ -31,7 +31,7 @@ Example - A good SLI might be saying - "Is the 99% tile latency of requests rece
 Make SLA more lenient than SLO so you get early warning before you have to break user experience.  
 SLI drive SLO which informs SLA.
 
-{{<figure src="/images/Devops/slislosla.png" alt="SLI SLO SLA.">}}
+{{<figure src="/images/Devops/slislosla.png" alt="TechStack.">}}
 
 
 |SLI| SLO                                                                 |SLA|
