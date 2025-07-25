@@ -197,7 +197,7 @@ public class Order{
     }
 }
 ```
-{{<figure src="/images/SystemDesign/InitializingUser.png" alt="Initializing User." caption="Initializing User">}}
+{{<figure src="/images/InitializingUser.png" alt="Initializing User." caption="Initializing User">}}
 `@Autowired` first looks for the bean of the required type.
 
 If Bean found spring will inject it. Different was of the injection - **Constructor, Setter and Field Injection.**
