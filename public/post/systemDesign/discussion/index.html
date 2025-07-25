@@ -1,0 +1,513 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+        class="not-ready lg:text-base"
+        style="--bg: #faf8f1"
+        lang="en-us"
+        dir="ltr"
+>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Discussion - Technical Blog</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Patterns and Style. Requirements. Get the specific requirement - It not the entire system get the one that is most difficult or the interviewer wants to know.
+Design video streaming platform - then its like video upload and video see and not entire.
+Back of the envelope calculation. When the interviewer wants to know about it.
+Get the estimate of number of read and number of write. The system is read optimize or write optimize." />
+  <meta name="author" content="SUCHISMITA DEB" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://suchismita-deb.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/theme.svg" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/6fd8df4abe41f17fd8e2dd7d97b5cc8c?s=160&amp;d=identicon" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link
+    rel="icon"
+    href="https://suchismita-deb.github.io/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://suchismita-deb.github.io/apple-touch-icon.png"
+  />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+
+
+
+  
+  <meta name="generator" content="Hugo 0.120.4">
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Discussion">
+<meta itemprop="description" content="Patterns and Style. Requirements. Get the specific requirement - It not the entire system get the one that is most difficult or the interviewer wants to know.
+Design video streaming platform - then its like video upload and video see and not entire.
+Back of the envelope calculation. When the interviewer wants to know about it.
+Get the estimate of number of read and number of write. The system is read optimize or write optimize."><meta itemprop="datePublished" content="2025-01-04T21:57:50+05:30" />
+<meta itemprop="dateModified" content="2025-01-04T21:57:50+05:30" />
+<meta itemprop="wordCount" content="785">
+<meta itemprop="keywords" content="interview question,system design," />
+  
+  <meta property="og:title" content="Discussion" />
+<meta property="og:description" content="Patterns and Style. Requirements. Get the specific requirement - It not the entire system get the one that is most difficult or the interviewer wants to know.
+Design video streaming platform - then its like video upload and video see and not entire.
+Back of the envelope calculation. When the interviewer wants to know about it.
+Get the estimate of number of read and number of write. The system is read optimize or write optimize." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suchismita-deb.github.io/post/systemdesign/discussion/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2025-01-04T21:57:50+05:30" />
+<meta property="article:modified_time" content="2025-01-04T21:57:50+05:30" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Discussion"/>
+<meta name="twitter:description" content="Patterns and Style. Requirements. Get the specific requirement - It not the entire system get the one that is most difficult or the interviewer wants to know.
+Design video streaming platform - then its like video upload and video see and not entire.
+Back of the envelope calculation. When the interviewer wants to know about it.
+Get the estimate of number of read and number of write. The system is read optimize or write optimize."/>
+
+  
+  
+
+  
+  <link rel="canonical" href="https://suchismita-deb.github.io/post/systemdesign/discussion/" />
+  
+  
+</head>
+
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-[--w] px-8 lg:justify-center">
+  <div class="relative z-50 ltr:mr-auto rtl:ml-auto flex items-center">
+    <a class="-translate-y-[1px] text-2xl font-medium" href="https://suchismita-deb.github.io/"
+      >Technical Blog</a
+    >
+    <div
+      class="btn-dark text-[0] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 ltr:-mr-8 rtl:-ml-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Search..." />
+  </div>
+  <div id="search-results"></div>
+
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse">
+      
+      <a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/post/about/"
+        >About</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 rtl:space-x-reverse dark:invert ltr:lg:ml-14 rtl:lg:mr-14 lg:mt-0 lg:items-center"
+    >
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Suchismita-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/debsuchismita"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100vh-9rem)] max-w-[--w] px-8 pb-16 pt-14 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">Discussion</h1>
+
+    
+    <div class="text-xs antialiased opacity-60">
+      
+      <time>Jan 4, 2025</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h2 id="patterns-and-style">Patterns and Style.</h2>
+<h3 id="requirements">Requirements.</h3>
+<p>Get the specific requirement - It not the entire system get the one that is most difficult or the interviewer wants to know.<br>
+Design video streaming platform - then its like video upload and video see and not entire.</p>
+<h3 id="back-of-the-envelope-calculation">Back of the envelope calculation.</h3>
+<p>When the interviewer wants to know about it.<br>
+Get the estimate of number of read and number of write. The system is read optimize or write optimize.<br>
+The storage is more then need to use partitioning and replication.</p>
+<h3 id="api-design">API Design.</h3>
+<p>The main functions.</p>
+<h3 id="architectural-design">Architectural Design.</h3>
+<p>The design of the component.</p>
+<h2 id="table-of-content">Table of Content.</h2>
+<p>Database fundamentals.<br>
+Data SerializationFrameworks.<br>
+Replication.<br>
+Sharding.<br>
+Batch Processing.<br>
+Stream Processing.<br>
+Types of Storage.<br>
+Caching.<br>
+Load Balancing.<br>
+Contending Updates.<br>
+Change Data Capture.<br>
+Fan Out/PreComputation.<br>
+Location Based Search.<br>
+Job Scheduling.<br>
+Idempotence.<br>
+Durable Data.</p>
+<p>Majority system design falls under the bucket.</p>
+<h2 id="database-fundamentals">Database Fundamentals.</h2>
+<h3 id="how-the-database-works">How the database works.</h3>
+<p>Database is a system that store the application state. Data is typically stored on hard disk so it is persistent.</p>
+<p>Sequential read and write are always cheaper than random read and write.<br>
+Keep the data that are frequently read together.<br>
+Keep the data that are frequently written together.</p>
+<p>Data stored in sorted manner will be easier to read - Database Index.</p>
+<p>Index are feature supported by many database that allow us to speed up certain read queries and often at the expense of slowing down write queries.<br>
+If we did not have an index, each database write could just be done sequentially in a &ldquo;write ahead log&rdquo;. We would have to do a sequential scan over the entire table to find our row. x=5,y=10,z=15, x=20 . It continue the x=20 in a sequential manner and did not change the first one. When read it will see from the latest value. The read is O(N).</p>
+<p>Index improves the read.
+3 type of Index - Hash Index and B+ Trees and LSMTree and SSTable.</p>
+<h3 id="hash-index">Hash Index.</h3>
+<p>Keep all keys in memory in a hashmap with their corresponding address on disk.</p>
+<p>Memory
+x - 0x0345 y - 0xa23d</p>
+<p>Disk
+0x0345 - &ldquo;Hello&rdquo; 0xa23d - &ldquo;World&rdquo;</p>
+<p>Pros - O(1) for read and write.</p>
+<p>Cons - Keyset need to fit in memory. Poor support for range queries. Data in disk is not ordered by its indexed key.</p>
+<h3 id="b-trees">B+ Trees.</h3>
+<p>Organize a tree of keys on disk. Follow tree structure to get to your key and its corresponsing data on disk.</p>
+<p>Pros - O(log N) read and write. Data from adjacent keys is stored adjacently on disk allowing for easier range queries. (Meaning reading data from 1 to 5 then here it is present in all adjacent place.)</p>
+<p>Cons - Slower single jey read than the hash index.</p>
+<h3 id="lsm-trees--sstable">LSM Trees + SSTable.</h3>
+<p>Writes goes to the in memory binary search tree and it flushed to immutable sorted tables on disk when it gets too big. Reads for a key and first performed from the tree, and if not present we see each SSTable file from the newest to oldest.</p>
+<p>It can be made faster by merging theSSTable th eprocess is Compaction. Need data structure like sparse index, bloom filter to make it faster.</p>
+<p>BST are sorted so are SSTable - this index supports range queries.</p>
+<p>O(log N) for writes and reads. Fast write to in memory.</p>
+<p>Cons - Fairly slow reads due to having to see multiple different places for the value for a given key.</p>
+<h3 id="transaction">Transaction.</h3>
+<p>Its an abstration supported by some databases - ACID.</p>
+<ul>
+<li><strong>Atomic</strong> - Put all writes in a &ldquo;write ahead logs&rdquo; before writing them to their actual location on disk, mark them as committed in the write ahead log is complete (so if a write is uncommitted and the database fails we can replay the log entry).</li>
+<li><strong>Serializable</strong> - It appears to the writer as if all transactions ran ona single thread, no need to worry about the race condition.</li>
+</ul>
+<p>There are multiple ways of ensuring serializability in a database.</p>
+<p><strong>Actually running on a single thread.</strong></p>
+<p><strong>Pessimistic concurrency control</strong>.<br>
+Hold locks on all read-from and written-to database rows to prevent concurrent updates for the duration of the transaction, others must wait</p>
+<p><strong>Optimistic concurrency control</strong>.<br>
+Allow transactions to proceed with no locks and abort any transactions that see that the data that they&rsquo;ve read or written to has been modified.<br>
+Since aborting is expensive, this tends to be better only in situations where there is very little contention across transactions</p>
+<p>Row and Col data.
+Image.
+Column - Not taking the data in a row and put in disk, we take come column data and store it in disk.</p>
+<p>Data serialization.
+Image.</p>
+<p>There is couple of data and we need to store in disk with 0 and 1. We can use protocol buffer.</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/interview-question"
+      >interview question</a
+    >
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/system-design"
+      >system design</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  >
+    
+    <a class="ltr:pr-3 rtl:pl-3" href="https://suchismita-deb.github.io/post/systemDesign/interviewStructure/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>Interview Structure in System Design.</span></a
+    >
+    
+    
+    <a class="ltr:ml-auto rtl:mr-auto justify-end pl-3" href="https://suchismita-deb.github.io/post/systemDesign/designexample/designdistributedmessagequeue/"
+      ><span>Design Distributed Message Queue</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+<footer
+  class="mx-auto flex h-[4.5rem] max-w-[--w] items-center px-8 text-xs uppercase tracking-wider opacity-60"
+>
+  <div class="mr-auto">
+  
+    &copy; 2025
+    <a class="link" href="https://suchismita-deb.github.io/">Technical Blog</a>
+  
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+  <script src="/search.js"></script>
+
+</footer>
+
+</body>
+
+
+</html>

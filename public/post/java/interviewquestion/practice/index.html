@@ -1,0 +1,951 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+        class="not-ready lg:text-base"
+        style="--bg: #faf8f1"
+        lang="en-us"
+        dir="ltr"
+>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Practice Java - Technical Blog</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Design Pattern. Behavoiral, Creational and Structural.
+Creational Behavioral Structural Singleton Template Adapter Builder Mediator Composite Factory Chain of Responsibility Proxy Abstract Factory Observer Flyweight Prototype Strategy Facade Command Bridge State Decorator Visitor Interpreter Iterator Memento Creational Design Pattern. Singleton Design Pattern - A design pattern that allows you to ensure that a class has only one instance while providing a global access point to the instance.
+Builder Design Pattern - It simplifies the creation of complex objects by breaking the creation process into steps." />
+  <meta name="author" content="SUCHISMITA DEB" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://suchismita-deb.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/theme.svg" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/6fd8df4abe41f17fd8e2dd7d97b5cc8c?s=160&amp;d=identicon" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link
+    rel="icon"
+    href="https://suchismita-deb.github.io/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://suchismita-deb.github.io/apple-touch-icon.png"
+  />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+
+
+
+  
+  <meta name="generator" content="Hugo 0.120.4">
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Practice Java">
+<meta itemprop="description" content="Design Pattern. Behavoiral, Creational and Structural.
+Creational Behavioral Structural Singleton Template Adapter Builder Mediator Composite Factory Chain of Responsibility Proxy Abstract Factory Observer Flyweight Prototype Strategy Facade Command Bridge State Decorator Visitor Interpreter Iterator Memento Creational Design Pattern. Singleton Design Pattern - A design pattern that allows you to ensure that a class has only one instance while providing a global access point to the instance.
+Builder Design Pattern - It simplifies the creation of complex objects by breaking the creation process into steps."><meta itemprop="datePublished" content="2024-10-29T13:51:06+05:30" />
+<meta itemprop="dateModified" content="2024-10-29T13:51:06+05:30" />
+<meta itemprop="wordCount" content="5182">
+<meta itemprop="keywords" content="interviewQuestion," />
+  
+  <meta property="og:title" content="Practice Java" />
+<meta property="og:description" content="Design Pattern. Behavoiral, Creational and Structural.
+Creational Behavioral Structural Singleton Template Adapter Builder Mediator Composite Factory Chain of Responsibility Proxy Abstract Factory Observer Flyweight Prototype Strategy Facade Command Bridge State Decorator Visitor Interpreter Iterator Memento Creational Design Pattern. Singleton Design Pattern - A design pattern that allows you to ensure that a class has only one instance while providing a global access point to the instance.
+Builder Design Pattern - It simplifies the creation of complex objects by breaking the creation process into steps." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suchismita-deb.github.io/post/java/interviewquestion/practice/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-10-29T13:51:06+05:30" />
+<meta property="article:modified_time" content="2024-10-29T13:51:06+05:30" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Practice Java"/>
+<meta name="twitter:description" content="Design Pattern. Behavoiral, Creational and Structural.
+Creational Behavioral Structural Singleton Template Adapter Builder Mediator Composite Factory Chain of Responsibility Proxy Abstract Factory Observer Flyweight Prototype Strategy Facade Command Bridge State Decorator Visitor Interpreter Iterator Memento Creational Design Pattern. Singleton Design Pattern - A design pattern that allows you to ensure that a class has only one instance while providing a global access point to the instance.
+Builder Design Pattern - It simplifies the creation of complex objects by breaking the creation process into steps."/>
+
+  
+  
+
+  
+  <link rel="canonical" href="https://suchismita-deb.github.io/post/java/interviewquestion/practice/" />
+  
+  
+</head>
+
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-[--w] px-8 lg:justify-center">
+  <div class="relative z-50 ltr:mr-auto rtl:ml-auto flex items-center">
+    <a class="-translate-y-[1px] text-2xl font-medium" href="https://suchismita-deb.github.io/"
+      >Technical Blog</a
+    >
+    <div
+      class="btn-dark text-[0] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 ltr:-mr-8 rtl:-ml-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Search..." />
+  </div>
+  <div id="search-results"></div>
+
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse">
+      
+      <a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/post/about/"
+        >About</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 rtl:space-x-reverse dark:invert ltr:lg:ml-14 rtl:lg:mr-14 lg:mt-0 lg:items-center"
+    >
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Suchismita-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/debsuchismita"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100vh-9rem)] max-w-[--w] px-8 pb-16 pt-14 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">Practice Java</h1>
+
+    
+    <div class="text-xs antialiased opacity-60">
+      
+      <time>Oct 29, 2024</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h3 id="design-pattern">Design Pattern.</h3>
+<p>Behavoiral, Creational and Structural.</p>
+<table>
+<thead>
+<tr>
+<th>Creational</th>
+<th>Behavioral</th>
+<th>Structural</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Singleton</td>
+<td>Template</td>
+<td>Adapter</td>
+</tr>
+<tr>
+<td>Builder</td>
+<td>Mediator</td>
+<td>Composite</td>
+</tr>
+<tr>
+<td>Factory</td>
+<td>Chain of Responsibility</td>
+<td>Proxy</td>
+</tr>
+<tr>
+<td>Abstract Factory</td>
+<td>Observer</td>
+<td>Flyweight</td>
+</tr>
+<tr>
+<td>Prototype</td>
+<td>Strategy</td>
+<td>Facade</td>
+</tr>
+<tr>
+<td></td>
+<td>Command</td>
+<td>Bridge</td>
+</tr>
+<tr>
+<td></td>
+<td>State</td>
+<td>Decorator</td>
+</tr>
+<tr>
+<td></td>
+<td>Visitor</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Interpreter</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Iterator</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Memento</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="creational-design-pattern">Creational Design Pattern.</h3>
+<p><strong>Singleton Design Pattern</strong> - A design pattern that allows you to ensure that a class has only one instance while
+providing a global access point to the instance.</p>
+<p><strong>Builder Design Pattern</strong> - It simplifies the creation of complex objects by breaking the creation process into steps.
+It is useful when the constructor has many parameters instead of creating many constructor the builder encapsulated the
+construction logic within itself.</p>
+<p><strong>Factory Design Pattern</strong> - It creates an object without exposing the creation logic to the client and the created
+object is referred to using a common interface. It provides an interface to create and object in a superclass and allows
+the subclass to alter the type of object. It hides the instantiation process and returns the instance of the class as an
+interface which represents the newly created object.</p>
+<p><strong>Abstract Factory Design Pattern</strong> - It provides an interface for creating families of related or dependent objects
+without specifying their concrete class. It provides a way to encapsulate a group of individual factories that have a
+common theme without specifying their concrete class.</p>
+<p><strong>Prototype Design Pattern</strong> - It create a clone of an existing object rather than creating a new one, for performance
+reasons.</p>
+<h3 id="behavioral-design-pattern">Behavioral Design Pattern.</h3>
+<p><strong>Template Design Pattern</strong> - It provides the skeleton of an algorithm in the superclass and then allows the subclass to
+override the steps in the algorithm without changing its structure.</p>
+<p><strong>Mediator Design Pattern</strong> - It is used to reduce communication complexity between multiple objects or classes. The
+pattern provides a mediator class that handles all the communications between different classes.</p>
+<p><strong>Chain of Responsibility</strong> - It allows the request to pass through a chain of handlers where they process it or pass to
+the next handlers.</p>
+<p><strong>Observer Design Pattern</strong> - It defines a one to many dependency between objects so that when one object changes state
+all its dependents are notified and updated automatically.</p>
+<p><strong>Strategy Design Pattern</strong> - It uses a group of algorithm and encapsulates each one and makes them interchangeable. It
+let the algorithm vary independently of client that use it. It allows to select an algorithm at runtime. It helps in
+eliminating or avoiding complex conditional statements.</p>
+<p><strong>Command Design Pattern</strong> - It allows to encapsulate the request as an object there by letting users parameterize
+clients with queues, requests and operations.</p>
+<p><strong>State Design Pattern</strong> - It allows an object to change the behaviour when its internal state changes. The object will
+appear to change its class.</p>
+<p><strong>Visitor Design Pattern</strong> - It represents and operation to be performed on the elements of an object structure without
+changing the classes on which it operates.</p>
+<p><strong>Interpreter Design Pattern</strong> - It defines a grammar for a language and uses an interpreter to interpret the sentence
+on that language making it useful for designing simple language processors or evaluators.</p>
+<p><strong>Iterator Design Pattern</strong> - It provides the way to access the elements of an aggregate objects sequentially without
+exposing its underlying representation.</p>
+<p><strong>Memento Design Pattern</strong> - It captures and stores an objects internal state allowing it to restored later without
+exposing its implementation details which is useful for undo or rollback functionality.</p>
+<h3 id="structural-design-pattern">Structural Design Pattern.</h3>
+<p><strong>Adapter Design Pattern</strong> - It allows classes with incompatible interfaces to work together by wrapping its own
+interface around that of an already existing class. It involves a single class adapter which is responsible for
+communication between two independent or incompatible interfaces.</p>
+<p><strong>Composite Design Pattern</strong> - It let use to create an object in tree structure and work with the structure as if they
+are individual objects. It is useful for representing a part-whole hierarchies.</p>
+<p><strong>Proxy Design Pattern</strong> - It provides a surrogate or placeholder for another object to control access to it.</p>
+<p><strong>Flyweight Design Pattern</strong> - It minimise memory usage by sharing common parts of state between multiple objects thus
+reducing the overhead of creating large number of similar objects.</p>
+<p><strong>Facade Design Pattern</strong> - It provides a simplifies interface to a complex subsystem, making it easier to interact with
+that subsystem by hiding its complexities and providing a higher level interface.</p>
+<p><strong>Bridge Design Pattern</strong> - It decouples an abstraction form its implementation so that the two can vary independently.</p>
+<p><strong>Decorator Design Pattern</strong> - It is also called wrapper. It wraps an object and add new behaviour to it. It provides an
+enhanced interface to the original objects.</p>
+<h3 id="practice">Practice.</h3>
+<p>XML - Extensible MarkUp Language.</p>
+<p>In XML the tag <!-- raw HTML omitted --> is used to define a bean. it specifies the class or the interface to be instantiated as bean and
+provides additional configuration options.</p>
+<p>In XML <code>&lt;component-scan base-package=&quot;com.example&quot;/&gt;</code> is used to create component scanning. The attribute base-package
+is used to specify the package to scan for annotated components.</p>
+<p>In XML defining the property placeholder.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;context:</span> <span style="color:#960050;background-color:#1e0010">property-placeholder</span><span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>It allows to specify properties fro external files or system properties.</p>
+<p>How can you register an event listener in Spring XML configuration?
+Using the <code>&lt;listener&gt;</code> tag.
+Using the <code>&lt;event-listener&gt;</code> tag.
+Using the <code>&lt;application-listener&gt;</code> tag.
+Using the <code>&lt;bean&gt;</code> tag with the ApplicationListener interface.</p>
+<p>Answer - We can register an event listener in XML configuration by using the <!-- raw HTML omitted --> tag with the ApplicationListener interface.</p>
+<p>XML configuration for spring bean compared to annotation based configuration - XML offers better maintainability, flexibilty but can become bulky for larger project. Annotation offers consise code but it is less readable for complex configuration.</p>
+<p>Spring supports both XML and annotation based configurations for defining beans and wiring dependencies.</p>
+<p>Spring depends on third party Maven and Gradle for the dependency management. These tools handle the dependenciesand build configuration for Spring boot applications.</p>
+<p>Microservice is a software architectural style in which a large application is build as a collection of small ,
+independent and scalable services.</p>
+<p>Spring Boot simplifies the configuration process and scans the class path and autoconfigure the beans and dependencies following convention over configuration principles. It simplifies the development of Spring application. Its primary
+goal is to create a stand-alone production grade application with minimal configuration. Spring Boot simplifies the
+configuration and deployment of microservices by providing a set of preconfigured templated and reducing the amount of
+boilerplate code.</p>
+<p>Spring Boot application can be packages in JAR, WAR and ZIP file for the deployment.</p>
+<p>Spring is a framework for Java application where Spring Boot is an extension that simplifies the process by providing
+sensible defaults, autoconfigure and embedded servers.</p>
+<p>Spring Core is a submodule of Spring Framework. Important feature of spring core are DI and IOC. Dependency Injection is
+used to loosely couple making them easier to test and maintain and better code reusability.</p>
+<p>Default logging implementation in Spring Boot - Logback it is an implementation of SLF4J.</p>
+<p><strong>Service Registry</strong> - It facilitates communication by providing a central directory where the services can register and
+discover each other dynamically. It enables services to find and interact with each other without the need of hardcoded
+address. It ensures high availability through health checks enables load balancing.
+<strong>Service Discovery</strong> - Neiflix Eureka, Consul. Eureka is a REST-based service registry for Java applications developed by Netflix. Consul provides both service discovery and key-value storage capabilities. Eureka and Consul both support health checks to monitor service availability.</p>
+<p>Prometheus is responsible for collecting and storing metrics from various sources, while Grafana is used to create dashboards and visualize these metrics.</p>
+<p>Handling distributed tan in microservice application - Two-Phase Commit (2PC) coordinates distributed transactions to ensure atomicity, though it may be less fault-tolerant. Sagas decompose transactions into smaller, compensatable steps, making them more resilient to failures.</p>
+<p><strong>Polyglot persistence</strong> - Using different database technologies for different servcie based on their specific
+requirements and characteristics.</p>
+<p>REST APi are a common way to handle inter servcie communication in microservices providing a standardized, stateless
+interface for services to interact.</p>
+<p><strong>Prometheus</strong> - It is a tool used for monitoring and managing microservices, providing metrics collection, querying and
+alerting capabilities.</p>
+<p><strong>Resilience4j</strong> - It is used to provide resilience and fault-tolerant mechanism. It helps to handle failure gracefully and improve the stability and reliability of the system. It provides resilience features like Circuit breaker, rate limiter , time limiter, bulkhead, retry.</p>
+<p>HTTP and HTTPS are the common used protocol. Another commonly used protocol is gRPC for high performance and low latency
+scenarios, it uses HTTP/2 for transport, supports multiple languages and provodes efficient binary serialization. gRPC is a lightweight protocol as it is efficient with large scale system.</p>
+<p><strong>Event driven architecture</strong> - It refers to using the events to trigger changes in the system, promoting decoupling and
+asynchronous communication between services.</p>
+<p><strong>Spring Cloud Config</strong> - It provides centralized configuration management, allowing for external configuration of
+microservices across different environments. It enables you to manage configurations across multiple servers. It enhances the deployment process by enabling centralized and version controlled configuration updates. This allows manage and update configurations across all services seamlessly, improving
+deployment efficiently and reducing the risk of inconsistencies.</p>
+<p><strong>Hystrix</strong> - It is used to implement the Circuit breaker pattern in the Spring boot microservies application helping to
+manage failures and provide fallback mechanisms.</p>
+<p><strong>Orchestration Pattern</strong> - It is sommonly used to manage the lifecycle of microservices, coordinating the execution of
+different servcies to achieve a business goal.</p>
+<p><strong>SAGA Pattern</strong> - It is commonly used for handling data consistency in microservcies, coordinating distributed
+transaction by breaking them into smaller manageable steps.</p>
+<p><strong>Sidecar Pattern</strong> - It offloads common funtionality like logging, monitoring and configuration from the main servcie
+to a separate sidecar container, promoting separation of concerns.</p>
+<p><strong>Spring Cloud Sleuth and Zipkin</strong> - It provides distributed tracing and logging helping to track requests across
+multiple microservices for debugging and monitoring purposes.</p>
+<p><strong>Spring Boot Actuator</strong> - It provides production-ready features such as monitoring, metrics, health-checks, helping to
+manage and monitor microservices in a production environment.</p>
+<p>Spring Boot 3 needs Java version 17.</p>
+<p>PUT completely updates an existing resource, while PATCH modifies only the fields specified in the request.</p>
+<p><strong>Spring Cloud Gateway</strong> - It is used in dynamic routing and load balancing. It can route the requests to the
+microservice based on various criteria and balance the load among multiple instances of a service improving reliability
+and performance. It provides a single entry point for client requests, routing them to the appropriate microservices and
+handling cross-cutting concerns like security and rate limiting.</p>
+<p><strong>Kubernetes</strong> - It is a tool used for container orchestration managing the deployment, scaling and operation of
+containerized applications in a microservices architecture.</p>
+<p>Doubts in docker and docker compose.</p>
+<p><strong>DispatcherServlet</strong> - It handles the incoming requests and delegated them to controllers.</p>
+<p>Bean definition is the blueprint specifies how to create a bean (class, properties, dependencies) and a bean instance is the actual object created from it.</p>
+<p>Spring IOC container is responsible for instantiating, configuring, managiing the lifecycle of bean.</p>
+<p>Spring AOP - uses aspects(containing advices) that applies to specific jointpoints(method call, fiel access) with target objects.</p>
+<p>Ways to create a bean lifecycle - Using annotation, by implementing interfaces provided by spring, by xml configurtion. Bean is singleton by default.</p>
+<p>Interface to perform destruction of a bean DisposableBean. Spring allows bean to perform destroy callback method by implementing DisposableBean interface.</p>
+<p>A BeanFactory interface is capable of maintaing the registry of differet beans and their dependencies. It holds bean definition and inistantiate beans whenevr asked by the application. It is capable of creating associations between dependent objects while instantiating them. It does not support the annotation based DI whereas the Applicationcontext a superset of BeanFactory does.</p>
+<p>In the application.properties the use of the code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>spring.<span style="color:#a6e22e">application</span>.<span style="color:#a6e22e">name</span><span style="color:#f92672">=</span>service<span style="color:#f92672">-</span>a
+</span></span><span style="display:flex;"><span>eureka.<span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">service</span><span style="color:#f92672">-</span>url.<span style="color:#a6e22e">defaultZone</span><span style="color:#f92672">=</span>http:<span style="color:#75715e">//localhost:8761/eureka/</span>
+</span></span></code></pre></div><p>It will enable the application to register with the Eureka serevr for service discovery. It sets the application name and
+url provides the URL of the Eureka server where the application registers itself and can discover other services.</p>
+<p>Understand the code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@FeignClient</span>(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;service-b&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ServiceBClient</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/serviceB&#34;</span>)
+</span></span><span style="display:flex;"><span>    String <span style="color:#a6e22e">getServiceBResponse</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>It defines a REST client for interacting with Service B using the Feign to simplify the HTTP communication. Load balancing starategies implemented by Ribbon and OpenFeign are - Round robin - distributes evenly across available instance, least Connextion routes the requests to the instance with the fewr active Connection, random - Select a random instace to handle each requests.</p>
+<p>Stateless and Stateful services in Microservices - Stateless services donot store session informtion ans stateful services use external storage or databases to persist session state.</p>
+<p>Understand the code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#ae81ff">ADD target/myapp.jar myapp.jar</span>
+</span></span></code></pre></div><p>It adds the application JAR file from the target directory on te host to the Docker container and renames it to the
+myapp.jar
+Understand the code. It the code written using SpEL(Spring Expression Language).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Value</span>(<span style="color:#e6db74">&#34;#{myBean.myProperty != null ? myBean.myProperty : &#39;default&#39;}&#34;</span>)
+</span></span></code></pre></div><p>What is the shorter representation using the Elvis operator.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Value</span>(<span style="color:#960050;background-color:#1e0010">“#</span>{someBean.<span style="color:#a6e22e">someProperty</span> <span style="color:#f92672">?</span>: <span style="color:#960050;background-color:#1e0010">‘</span><span style="color:#66d9ef">default</span><span style="color:#960050;background-color:#1e0010">’</span>}<span style="color:#960050;background-color:#1e0010">”</span>)
+</span></span></code></pre></div><p>To access the bean property using the SpEL expression - <code>#{beanName.propertyName}</code>. SpEL uses the <code>#{}</code> syntax to access the bean properties.</p>
+<p>Retrieve a bean from the Spring ApplicationContext - Using the ApplicationSontext.getBean() method. It takes the bean name or its class as a parameter.</p>
+<p>Which scope in spring ensures that object exis between every request in HTTP Session - Session.</p>
+<p>In order to enable SpEL in spring bean which annotation is used - <code>@ExpressionLanguage</code>, <code>@EnableSpEL</code>, <code>@SpEL</code>, <code>@Value</code> - Answer - <code>@Value</code>.</p>
+<p>To be eligible for the Spring Even Handling mechanism which interface should a class implement - <code>EventListener</code>, <code>ApplicationListener</code>, <code>EventHandler</code>, <code>EventSubscriber</code>.</p>
+<p>Answer - <code>ApplicationListener</code> interface. A class should implement the ineterface. It permits the class to receive and handle application events.</p>
+<p>In Spring JDBC, which method we use to execute the SQL query that can map the result to a java object.
+<code>executeQueryForObject()</code>, <code>fetchObject()</code>, <code>executeForObject()</code>, <code>queryForObject()</code>.</p>
+<p>Answer - <code>queryForObject()</code> method is used to execute a SQL query and map the result to a java object in JDBC. It is used to retrieve a single result.</p>
+<p>Spring project helps in building Microservices - Spring MVC, Spring Batch, Spring Cloud, Spring JDBC.</p>
+<p>Answer - Spring Cloud. It provides a suite of tools for building and working with microservices.</p>
+<p>Which spring cloud component helps in managing and handling application sensitive information in microservice setup.
+Spring Cloud Security.
+Spring Cloud Vault.
+Spring Cloud config.
+Spring CLoud stream.</p>
+<p>Answer - Spring Cloud Vault. It is designed for managing and handling sensitive application data liek passwords, API keys and other secrets. It ensures these details are securely stored, retrieved and managed.</p>
+<p>How does Spring support creating JMS(Java Message Service) application?
+By using the spring-boot-starter-jms dependency.
+Through manual configuration of JMS providers.
+By requiring a separate messaging server.
+Through XML configuration.</p>
+<p>Answer - By using the spring-boot-starter-jms dependency. It somplifies the integration with JMS prociders like ActiveMQ or Artemis.</p>
+<p>How is internalization (i18n) typically implemented in spring.
+By using a dedicated internationalization service.
+Through properties files for different locales.
+By harcoding strings in the Java code.
+Using an external translation API.</p>
+<p>Answer - Through properties file for different locales example - messages_en.properties, messages_fr.properties. This allow for easy translation and localization of application messages.</p>
+<p>Which embedded servlet container is not supported by default in spring boot.
+Tomcat, Jetty, Undertow, Apache HTTP Server.</p>
+<p>Answer - Apache HTTP Server. The default is the Tomcat embedded servlet container.</p>
+<p>How does Spring Boot simplify maven configuration.
+By providing a parent POM for dependency management.
+By eliminating the need for the pom.xml file.
+By automatically generating the Maven build script.
+By replacing Maven with its iwn build system.</p>
+<p>Answer - By providing a parent POM for dependency management. It simplifies Maven configuraion by offerent a parent POM (spring-boor-started-parent) which privides dependency management and sensible defaults.</p>
+<p>Which pattern helps in avoiding network calls by using the latest known state?
+Sage. Circuir Breaker. API Gateway. CQRS.</p>
+<p>Answer - CQRS - avoid the network calles by using the most recent known state. The read side often uses cached or replicated data, enabling retrieval of the latest known state without making additional network calls to the primary database.</p>
+<p>How are the static resource serves in a Spring Boot Web application?
+Through a dedicated controller.
+By placing them in the /static or /public directory.
+Using a specialized static server.
+By manual configuration in the application.properties file.</p>
+<p>Answer - By placing them in the /static or /public directory. Static resource llike the CSS or image can be served in the /static or .public sirectory. Spring boot configures these as static resource location.</p>
+<p>Which component is responsible for handling view resolution in spring?
+JDBC Template.
+ViewResolver.
+DataSource.
+WebMvcConfigurer.</p>
+<p>Answer - ViewResolver. The component resolves views by name and determines which view technology to use for rendering the UI.</p>
+<p>how can you enable transaction management in a Spring Boot application.
+By using the @Transactional annotation.
+Through XML configuration.
+By manually managing transactions in the service layer.
+By using a specialized transaction management server.</p>
+<p>Answer - By using the @Transactional annotation.</p>
+<p>How does spring boot supports database migration?
+Using the @Entity annotation.
+Through the Spring data JPA.
+By integrating with tools like Flyway or Liquibase.
+By providing its own database migration tool.</p>
+<p>Answer - By integrating with tools like Flyway or Liquibase.</p>
+<p>Which component in Spring boot auto configues a datasource based on the classpath settings.
+Datasource Config.
+DataSourceAutoConfiguration.
+JdbcTemplate.
+HibernateTemplate.</p>
+<p>Answer - DataSourceAutoConfiguration. It is used to auto-configues a datasource bean based on the classpath settings and the properties defined in the application.properties file.</p>
+<p>How to enable automatic schema generation for the JPA entities?
+By using the @AutoSchemaGeneration annotation.
+By setting spring.hibernate.ddl-auto property.
+Through XML configuration.
+By manual schema creation in the database.</p>
+<p>Answer - By setting spring.hibernate.ddl-auto property.</p>
+<p>How can you define custom query methods in a Spring Data repository?
+By using the @QueryMethod annotation.
+Through XML configuration.
+By declaring methods in the repository interface.
+By manually implementing the repository methods.</p>
+<p>Answer - By declaring methods in the repository interface. Custom query methods in a Spring Data repository can be defined by declaring methods in the repository interface. Spring Data derives the query from the method name or uses the provided <code>@Query</code> annotation.</p>
+<p>How can you customise the banner in a spring boot application?
+Modifying the application.properties file.
+Adding a banner.txt file in the classpath.
+Writing custom Java code.
+Using the Spring Boot CLI.</p>
+<p>Answer -Adding the banner.txt file in the classpath.</p>
+<p>What is class serves as the default implementation of the JpaRepository interface.
+SimpleJpaRepository, JpaRepositoryImpl, CustomJpaRepository, DefaultJpaRepository.</p>
+<p>Answer - SimpleJpaRepository.</p>
+<p>Spring is compatible with Grdle 7.x (7.5 or later).</p>
+<p>In JDBC, the <code>NamedParameterJdbcTemplate</code> class supports for executing SQL statements with named parameters. It allows to specify parameters by name instead of their positional index.</p>
+<p>Which is helpful in passing the data from a controller method to view in Spring MVC.
+HttpRequest object.
+HttpServletResponse object.
+HttpSession object.
+ModelAttributes to the Model object.</p>
+<p>Answer - ModelAttributes to the Model object.</p>
+<p>Which of the following is used to hold the model data and view information in Spring Mvc.
+ViewResolver.
+ModelModelAttribute.
+ModelAndView.</p>
+<p>Answer - ModelAndView.</p>
+<p>In Spring Security 5.6 we have the <code>@EnableMethodSecurity</code> in place of <code>@EnableGlobalMethodSecurity</code>.
+In order to use <code>@Secured</code> we need to provide additional attribute <code>@EnableMethodSecurity(securedEnabled=true)</code></p>
+<p><strong>After Advice</strong> - It is executed regardless of the method execution outcome, irrespective of the method is eecuted normally or any exception occurs.</p>
+<p>How does Spring Boot supports reactive data access?
+By using the R2DBC API.
+Through the JdbcTemplate class.
+By manual reactive programming.
+Through XML-based configuration.</p>
+<p>Answer - By using the R2DBC(Reactive Relational Database Connectivity) API. It provides a non blocking and reactive programming support for the relational databases.</p>
+<p>Which pointcut expression is correct - “Any method with zero or more parameters inside EmpDao class”</p>
+<p><code>public * com.dev.dao.EmpDao.*( )</code>, <code>public * com.dev.dao.*.*(..)</code>, <code>public * com.dev.dao.EmpDao.*(..)</code>, <code>public Integer com.dev.dao.EmpDao.*( )</code></p>
+<p>Answer - <code>public * com.dev.dao.EmpDao.*(..)</code>.</p>
+<p>In pointcut expression - <code>()=&gt;</code> indicate zero paramter or without paramter. <code>(..) =&gt;</code> indicate any number or type of paramters.</p>
+<p><code>@Secured(“ROLE_MANAGER”,”ROLE_ADMIN”)</code> - It can be also written as - <code>@PreAuthorize(“hasRole(‘ROLE_MANAGER’) or hasRole(‘ROLE_ADMIN’)”)</code></p>
+<p>Cron expression in Spring Scheduling that executes a task every year on Feb 14th 9:00:00 PM, if given day(14th) is Sunday or Tuesday only.</p>
+<p>Answer - <code>0 0 21 14 2 SUN,TUE</code></p>
+<p>In Spring 5.3 the improves cron expression of <code>0 0 0 * * 0</code> can be also <code>@weekly</code>.</p>
+<p>Cron expression in Spring Scheduling that executes a task every year to wish Happy Birthday on 24th March - <code>0 0 0 24 3 *</code></p>
+<h3 id="annotation">Annotation.</h3>
+<p><code>@SpringBootApplication</code> - It indicates a configuration class that declares one or more <code>@Bean</code>methods and trigger
+autoconfiguration and component scanning. It is a convenient annotation equivalent to declaring <code>@Configuration</code> (it indicate s that the class can be used by the IOC container as a Spring configuration class for bean definitions, <code>@SpringBootConfiguration</code> is an alternate of the annotation),
+<code>@EnableAutoConfiguration</code> (it is used to automatically configure spring application context. It does not directly manage dependencies it enables the application to include necessary dependencies based on the classpath contents) and <code>@ComponentScan</code> (it enables component scanning so that spring can find and regiter veans within the specified package).</p>
+<p><code>@ConfigurationProperties</code> - It is used to bind external configuration properties to a Java object.</p>
+<p><code>@SpringBootTest</code> - It is used for thr integration testing. It loads the application context and makes it ideal for
+testing the entire application.</p>
+<p><code>@WebMvcTest</code> - It is used to unit test the Spring MVC controllers in isolation without loading the entire application
+context.</p>
+<p><code>@RequestBody</code> - It is used to bind a method parameter to a web request body. It is used with post and put http method.</p>
+<p><code>@RequestParam</code> - It is used to bind a method parameter to a web request parameter. It is used with GET request.</p>
+<p><code>@RequestMapping</code> - It is used to map web requests to handler methods in controller classes.</p>
+<p><code>@ResponseBody</code> - It is used to send the returned object as the response body.</p>
+<p><code>@GeneratedValue</code> - It is used to automatically generate primary key values. It is typically used in conjunction with the @Id annotation.</p>
+<p><code>@DataJpaTest</code> - It is used to test the repository layer in Spring Boot, providing the necessary components like an in memory database and initializing Spring Data Jpa for repository testing.</p>
+<p><code>@Version</code> - It is used to enable optimistic locking by marking a field as a version column.</p>
+<p><code>@Lob</code> - It is used in a JPA entity to define a large object LOB field in the database like the BLOB(Binary Large Object) or CLOB(Character Large Object).</p>
+<p><code>@ControllerAdvice</code>, <code>@ExceptionHandler</code>, <code>@ResponseStatus</code> - It is used for the exception handling. <code>@ControllerAdvice</code>
+for the global exception handling, it offer to define global exception handling method throughout multiple controllers, <code>@ExceptionHandler</code> for handling specific exceptions and <code>@ResponseStatus</code> for
+sending appropriate HTTP response codes.</p>
+<p><code>@PathVariable</code> - It is used to bind the values from the URL path to method parameter.</p>
+<p><code>@MethodAttribute</code> - It is used to bind the method parameter to named model attributes.</p>
+<p><code>@JsonInclude</code> - It is used to include specific fields in JSON serialization. It allows specifying which filed should be included in the JSon output.</p>
+<p><code>@JsonIgnore</code> - It is used to ignore the fileds during JSON serialization and deserialization preventing them to include in the JSOn output.</p>
+<p><code>@JsonView</code> - It is used to define a different views of a JSON serialized object. It allows specifying which properties of an object are included in the JSON output for different scenarios.</p>
+<p><code>@Profile</code> - It is used to conditionally load beans based on the active profile. It can be configured for different
+environments like development, testing, production.</p>
+<p><code>@Async</code> - It is used to make the method asynchronous allowing it to run in a separate thread without blocking the main
+execution flow.</p>
+<p>Doubt.</p>
+<p><code>@EnableAsync</code>- It is used to enable asyncronous method execution in Spring.</p>
+<p><code>@Transactional</code> - It is used to manage the database transactions automatically. When applied to a method or class it
+ensures that all database operations within the method are executed within a single transaction. If any exception
+occurs, the transaction is rolled back ensuring data consistency. It simplifies transaction management in application.</p>
+<p><code>@EnableTransactionManagement</code> - Spring Transaction support is not enables by default. It is used in a <code>@Configuration</code> annotated class to enable transaction related support in Spring. It activates the infrastructure for declarative transaction management in Spring.</p>
+<p><code>@Autowired</code> - It marks the field, constructor, setter method for the automatic dependency injection. It allows spring
+to automatic associate the dependencies without the need for explicit configuration.</p>
+<p><code>@EnableAspectJAutoProxy</code> - It is used to enable spring AOP support. t activates the proxy based AOP infrastructure,
+allowing the use if aspect oriented programming.</p>
+<p><code>@Bean</code> - It is used to declare a method that returns an instance bean. It is invoked by spring to create the bean and
+manage its lifecycle.</p>
+<p><code>@Query</code> - It is used to define a JPA query for a repository method. It allows custom query definitions directly on repository interface methods.</p>
+<p><code>@Valid</code> - It is used in controller methods to ensure that data passed to the method is valid, often used in combination with Java Bean Validation API.</p>
+<p><code>@ModelAttribute</code> - It is used to bind method parameters to named model attributes.</p>
+<p><code>@JsonBackReference</code> - It is used to handle recursive relationships in JSON serialization and deserialization. <code>@JsonManagedReference</code> - It is also used for the same purpose.</p>
+<p><code>@Value</code> - It supports spring expression language. It is generally used for injecting values into configuration variables. It is used to default values to variables and method arguments. It supports the SpEL. It offers to evaluate the SpEL expressions and inject the result into a bean property.</p>
+<p><code>@EnableEurekaClient</code> - It is used to enable Eureka client functionality in a spring Boot application allowing it to register with a Eureka server.</p>
+<p><code>@EnableConfigServer</code> - It used to enable Spring Cloud Config Server functionality allowing the application to serve configuration properties to other microservices.</p>
+<p><code>@EnableZuulProxy</code> - It is a configuration class enables the Zuul proxy functionality setting up an API gateway that can route the requests to various microservices.</p>
+<p><code>@FeignClient</code> - It declare a REST client that uses Feign which simplifies HTTP communication between microservices by providing a declarative approach.</p>
+<p><code>@LoadBalanced</code> - It is used to configure the REST template bean forclient side load balancing, distributing requests across multiple instances of a service.</p>
+<p>Annotation can be used to inject dependencies in spring bean - <code>@Inject</code>, <code>@Autowired</code>, <code>@Resource</code>. <code>@Autowired</code> and <code>@Inject</code> can be sued interchangebly.</p>
+<p>Annotation used to specify a class as a Bean - <code>@Service</code>, <code>@Component</code>, <code>@Controller</code>.</p>
+<p><code>@Qualifier</code> - It is used with the <code>@Autowired</code> in the context of autowiring. It resolves the ambiguity when multiple beans of the same type are present.</p>
+<p><code>@Lazy</code> - It is used to configyre the bean for lazy initialization. It enables the bean is created only when it is first requested.</p>
+<p><code>@EnableCaching</code> - It is used to enable method-level caching in Spring.</p>
+<p><code>@Order</code> - It is used to define the order of bean initialization. It allows to assign a value to indicate the desired order of bean creation.</p>
+<p><code>@EnableWebMvc</code> - It is used to support the Spring Mvc.</p>
+<p><code>@EnableScheduling</code> - It is used to enable Spring scheduling support.</p>
+<p><code>@FixedRate</code> - It is used to schedule a method to execute at fixed intervals. It defines the interval between method invocations in milliseconds.</p>
+<p><code>@CrossOrigin</code> - It is used to enable cross-origin resource sharing CORS in spring Mvc. It enables a cross-origin requests on specific haandler classes or handler methods allowing resources to be accessed from a domain other than the domain where the resource originated.</p>
+<p><code>@Scope(&quot;prototype&quot;)</code> - It is used to define a bean scope as prototype, a new instance will be reated wach time the bean is requested.</p>
+<p><code>@Controller</code> handles both request and response datawhile te <code>@RestController</code> assume Json or serialize data for the response and removes tge need to explicit <code>@ResponseBody</code> annotation on method.</p>
+<p><code>@EmbeddedId</code> - In hibernate the annotation is used for the column to represent that an entity has a composite key. <code>@Embedded</code> is not allowed at class level and <code>@Embeddable</code> is not allowed at field level.</p>
+<p><code>@Temporal</code> - It converts the date and time values from Java object to compatible database type abd retrieves back to the application.</p>
+<p><code>@PreDestroy</code> - It is used to mark a method that should be invoked before destroying the bean.</p>
+<h3 id="todo">TODO</h3>
+<p>Implement Zuul, FeignClient, Spring Cloud Server, Spring Cloud config, Spring Cloud Gateway, Service discovery, microservcie distributed tracing - zipkin, jaeger. Spring AOP, Hibernate and table, Spring transaction.</p>
+<p>Annotation for the caching @Cachebale, @EnableCaching.
+Annotation @Priority, @Retry, @Retryable.
+Understand SpEL - Spring Epression Language, one docker file, pointcut expression, Entity relation and orm.</p>
+<p>Asynchronous, cache, cloud.</p>
+<p>Bean creation and initialization. Bean type like prototype</p>
+<hr>
+<hr>
+<p>Key principles of Microservices
+Monolithic vs Microservices
+gRPC for efficient binary communication
+API Gateway pattern
+Asynchronous communication (Message Queues like Kafka, RabbitMQ)
+OpenFeign for REST clients
+Load balancing strategies (Ribbon, OpenFeign Load Balancer)
+Database per service pattern
+Event sourcing and CQRS patterns
+Handling distributed transactions (Sagas, Two-Phase Commit)
+Data consistency (eventual consistency, strong consistency)
+Caching mechanisms (Redis, Memcached)
+Circuit Breaker Pattern (e.g., using Resilience4j)
+Retry mechanisms
+Bulkhead pattern
+Timeout handling
+Distributed tracing (Zipkin, Sleuth)
+Docker for containerization of microservices
+Service discovery with Eureka or Consul
+Load balancing strategies (Client-side, Server-side)
+API Gateway patterns (Netflix Zuul, Spring Cloud Gateway)
+JWT (JSON Web Token)
+Role-Based Access Control (RBAC)
+Security practices for inter-service communication
+Distributed logging (ELK Stack: Elasticsearch, Logstash, Kibana)
+Monitoring (Prometheus, Grafana)
+Distributed tracing (Zipkin, Jaeger)
+Health checks (Spring Boot Actuator)
+Jenkins or GitLab for Continuous Integration
+Horizontal vs vertical scaling
+Stateless vs stateful services
+Autoscaling in Kubernetes
+Load testing and tuning (Apache JMeter)
+Event streaming with Kafka
+Event Sourcing and Command Query Responsibility Segregation (CQRS)
+Async messaging patterns</p>
+<h3 id="practice-based-on-code-snippet">Practice based on code snippet.</h3>
+<p>Which is wrong Get mapping.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(value<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/&#34;</span>, produces <span style="color:#f92672">=</span> MediaType.<span style="color:#a6e22e">TEXT_PLAIN_VALUE</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span>(value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/emp/{id}&#34;</span>, method <span style="color:#f92672">=</span> GET)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(consumes <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;text/plain&#34;</span>, <span style="color:#e6db74">&#34;application/*&#34;</span>})
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/&#34;</span>)
+</span></span></code></pre></div><p>Answer -</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(consumes <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;text/plain&#34;</span>, <span style="color:#e6db74">&#34;application/*&#34;</span>})
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">```</span> is wrong as it does not specify the path.
+</span></span></code></pre></div><p>Prototype scope in a bean named &lsquo;Person&rsquo; - <code>&lt;bean id=&quot;person&quot; class=&quot;com.test.Person&quot; scope =&quot;prototype&quot;/&gt;</code> scope and prototype should be in small case.</p>
+<p>Define a request scope of a bean.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@RequestScope</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// some properties &amp; methods</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>bean id<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;product&#34;</span> <span style="color:#66d9ef">class</span><span style="color:#960050;background-color:#1e0010">=&#34;</span><span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">Product</span><span style="color:#e6db74">&#34; Scope=&#34;</span>request<span style="color:#e6db74">&#34;/&gt;
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Scope</span>(<span style="color:#e6db74">&#34;request&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// some properties &amp; methods</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ways to create session scope.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Component</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Scope</span>(<span style="color:#e6db74">&#34;session&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span> {
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">//some methods and properties</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Component</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@SessionScope</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Product</span> {
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">//some methods and properties</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>In hibernate there are 2 classes Employee and Name.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> id;
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">private</span> Name name;
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> salary;
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// getters &amp; setters</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Name</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">private</span> String firstName;
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">private</span> String lastName;
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">//getters &amp; setters</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Create a table employee into the database with 4 columns - id, firstName, lastName, salary using the ORM.
+Answer -</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Entity</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Employee</span> {
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">@Id</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> id;
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">@Embedded</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">private</span> Name name;
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> salary;
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">// getters &amp; setters</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Entity</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Name</span> {
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">private</span> String firstName;
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">private</span> String lastName;
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">// getters &amp; setters</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Define a REST client using OpenFeign in the application.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@FeignClient</span>(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;example-service&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ExampleClient</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/endpoint&#34;</span>)
+</span></span><span style="display:flex;"><span>    String <span style="color:#a6e22e">getEndpointData</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The application has 2 entity - Student and Address. One student can have multiple addresses and one address can accomodate multiple students in a bidirectional relationship - Here @OneToMany or @ManyToOne can be used. MappedBy can be used with @OneToMany</p>
+<h3 id="cron-job">Cron Job</h3>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/interviewquestion"
+      >interviewQuestion</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  >
+    
+    <a class="ltr:pr-3 rtl:pl-3" href="https://suchismita-deb.github.io/post/stock/learningstockmarket/fundamental/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>Fundamental</span></a
+    >
+    
+    
+    <a class="ltr:ml-auto rtl:mr-auto justify-end pl-3" href="https://suchismita-deb.github.io/post/spring/interview/topic1/"
+      ><span>Practice Spring 1</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+<footer
+  class="mx-auto flex h-[4.5rem] max-w-[--w] items-center px-8 text-xs uppercase tracking-wider opacity-60"
+>
+  <div class="mr-auto">
+  
+    &copy; 2025
+    <a class="link" href="https://suchismita-deb.github.io/">Technical Blog</a>
+  
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+  <script src="/search.js"></script>
+
+</footer>
+
+</body>
+
+
+</html>

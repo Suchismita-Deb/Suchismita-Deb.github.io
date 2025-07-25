@@ -1,0 +1,534 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+        class="not-ready lg:text-base"
+        style="--bg: #faf8f1"
+        lang="en-us"
+        dir="ltr"
+>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Date Time Util - Technical Blog</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Different Types of TimeStamp in Java. Java provides different types of timestamp. Important date time representation involves LocalTime, UTC Time, TimeZone Information.
+LocalDate. LocalDate today = LocalDate.now(); System.out.println(&#34;LocalDate &#34; &#43; today); // LocalDate 2024-02-08 LocalTime. LocalTime now = LocalTime.now(); System.out.println(&#34;LocalTime: &#34; &#43; now); // LocalTime: 14:45:30.123456 LocalDateTime. LocalDateTime now = LocalDateTime.now(); System.out.println(&#34;LocalDateTime: &#34; &#43; now); // LocalDateTime: 2024-02-08T14:45:30.123456 ZoneDateTime. ZonedDateTime zonedNow = ZonedDateTime.now(ZoneId.of(&#34;Asia/Kolkata&#34;)); System.out.println(&#34;ZonedDateTime: &#34; &#43; zonedNow); // ZonedDateTime: 2024-02-08T20:15:30.123456&#43;05:30[Asia/Kolkata] Instant, EpochBased." />
+  <meta name="author" content="SUCHISMITA DEB" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://suchismita-deb.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/theme.svg" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/6fd8df4abe41f17fd8e2dd7d97b5cc8c?s=160&amp;d=identicon" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link
+    rel="icon"
+    href="https://suchismita-deb.github.io/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://suchismita-deb.github.io/apple-touch-icon.png"
+  />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+
+
+
+  
+  <meta name="generator" content="Hugo 0.120.4">
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Date Time Util">
+<meta itemprop="description" content="Different Types of TimeStamp in Java. Java provides different types of timestamp. Important date time representation involves LocalTime, UTC Time, TimeZone Information.
+LocalDate. LocalDate today = LocalDate.now(); System.out.println(&#34;LocalDate &#34; &#43; today); // LocalDate 2024-02-08 LocalTime. LocalTime now = LocalTime.now(); System.out.println(&#34;LocalTime: &#34; &#43; now); // LocalTime: 14:45:30.123456 LocalDateTime. LocalDateTime now = LocalDateTime.now(); System.out.println(&#34;LocalDateTime: &#34; &#43; now); // LocalDateTime: 2024-02-08T14:45:30.123456 ZoneDateTime. ZonedDateTime zonedNow = ZonedDateTime.now(ZoneId.of(&#34;Asia/Kolkata&#34;)); System.out.println(&#34;ZonedDateTime: &#34; &#43; zonedNow); // ZonedDateTime: 2024-02-08T20:15:30.123456&#43;05:30[Asia/Kolkata] Instant, EpochBased."><meta itemprop="datePublished" content="2025-02-08T13:18:51+05:30" />
+<meta itemprop="dateModified" content="2025-02-08T13:18:51+05:30" />
+<meta itemprop="wordCount" content="204">
+<meta itemprop="keywords" content="interviewQuestion,java," />
+  
+  <meta property="og:title" content="Date Time Util" />
+<meta property="og:description" content="Different Types of TimeStamp in Java. Java provides different types of timestamp. Important date time representation involves LocalTime, UTC Time, TimeZone Information.
+LocalDate. LocalDate today = LocalDate.now(); System.out.println(&#34;LocalDate &#34; &#43; today); // LocalDate 2024-02-08 LocalTime. LocalTime now = LocalTime.now(); System.out.println(&#34;LocalTime: &#34; &#43; now); // LocalTime: 14:45:30.123456 LocalDateTime. LocalDateTime now = LocalDateTime.now(); System.out.println(&#34;LocalDateTime: &#34; &#43; now); // LocalDateTime: 2024-02-08T14:45:30.123456 ZoneDateTime. ZonedDateTime zonedNow = ZonedDateTime.now(ZoneId.of(&#34;Asia/Kolkata&#34;)); System.out.println(&#34;ZonedDateTime: &#34; &#43; zonedNow); // ZonedDateTime: 2024-02-08T20:15:30.123456&#43;05:30[Asia/Kolkata] Instant, EpochBased." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suchismita-deb.github.io/post/java/project/DateTimeUtil/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2025-02-08T13:18:51+05:30" />
+<meta property="article:modified_time" content="2025-02-08T13:18:51+05:30" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Date Time Util"/>
+<meta name="twitter:description" content="Different Types of TimeStamp in Java. Java provides different types of timestamp. Important date time representation involves LocalTime, UTC Time, TimeZone Information.
+LocalDate. LocalDate today = LocalDate.now(); System.out.println(&#34;LocalDate &#34; &#43; today); // LocalDate 2024-02-08 LocalTime. LocalTime now = LocalTime.now(); System.out.println(&#34;LocalTime: &#34; &#43; now); // LocalTime: 14:45:30.123456 LocalDateTime. LocalDateTime now = LocalDateTime.now(); System.out.println(&#34;LocalDateTime: &#34; &#43; now); // LocalDateTime: 2024-02-08T14:45:30.123456 ZoneDateTime. ZonedDateTime zonedNow = ZonedDateTime.now(ZoneId.of(&#34;Asia/Kolkata&#34;)); System.out.println(&#34;ZonedDateTime: &#34; &#43; zonedNow); // ZonedDateTime: 2024-02-08T20:15:30.123456&#43;05:30[Asia/Kolkata] Instant, EpochBased."/>
+
+  
+  
+
+  
+  <link rel="canonical" href="https://suchismita-deb.github.io/post/java/project/DateTimeUtil/" />
+  
+  
+</head>
+
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-[--w] px-8 lg:justify-center">
+  <div class="relative z-50 ltr:mr-auto rtl:ml-auto flex items-center">
+    <a class="-translate-y-[1px] text-2xl font-medium" href="https://suchismita-deb.github.io/"
+      >Technical Blog</a
+    >
+    <div
+      class="btn-dark text-[0] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 ltr:-mr-8 rtl:-ml-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Search..." />
+  </div>
+  <div id="search-results"></div>
+
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse">
+      
+      <a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/post/about/"
+        >About</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 rtl:space-x-reverse dark:invert ltr:lg:ml-14 rtl:lg:mr-14 lg:mt-0 lg:items-center"
+    >
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Suchismita-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/debsuchismita"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100vh-9rem)] max-w-[--w] px-8 pb-16 pt-14 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">Date Time Util</h1>
+
+    
+    <div class="text-xs antialiased opacity-60">
+      
+      <time>Feb 8, 2025</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h1 id="different-types-of-timestamp-in-java">Different Types of TimeStamp in Java.</h1>
+<p>Java provides different types of timestamp. Important date time representation involves LocalTime, UTC Time, TimeZone Information.</p>
+<h3 id="localdate">LocalDate.</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>LocalDate today <span style="color:#f92672">=</span> LocalDate.<span style="color:#a6e22e">now</span>();
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;LocalDate &#34;</span> <span style="color:#f92672">+</span> today);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// LocalDate 2024-02-08</span>
+</span></span></code></pre></div><h3 id="localtime">LocalTime.</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>LocalTime now <span style="color:#f92672">=</span> LocalTime.<span style="color:#a6e22e">now</span>();
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;LocalTime: &#34;</span> <span style="color:#f92672">+</span> now);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// LocalTime: 14:45:30.123456</span>
+</span></span></code></pre></div><h3 id="localdatetime">LocalDateTime.</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>LocalDateTime now <span style="color:#f92672">=</span> LocalDateTime.<span style="color:#a6e22e">now</span>();
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;LocalDateTime: &#34;</span> <span style="color:#f92672">+</span> now);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// LocalDateTime: 2024-02-08T14:45:30.123456</span>
+</span></span></code></pre></div><h3 id="zonedatetime">ZoneDateTime.</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>ZonedDateTime zonedNow <span style="color:#f92672">=</span> ZonedDateTime.<span style="color:#a6e22e">now</span>(ZoneId.<span style="color:#a6e22e">of</span>(<span style="color:#e6db74">&#34;Asia/Kolkata&#34;</span>));
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;ZonedDateTime: &#34;</span> <span style="color:#f92672">+</span> zonedNow);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ZonedDateTime: 2024-02-08T20:15:30.123456+05:30[Asia/Kolkata]</span>
+</span></span></code></pre></div><h3 id="instant-epochbased">Instant, EpochBased.</h3>
+<p>It is always in UTC.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Instant now <span style="color:#f92672">=</span> Instant.<span style="color:#a6e22e">now</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Instant (Epoch Time UTC): &#34;</span> <span style="color:#f92672">+</span> now);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Instant (Epoch Time UTC): 2024-02-08T14:45:30.123456Z</span>
+</span></span></code></pre></div><h3 id="epoch-time">Epoch Time.</h3>
+<p>Seconds &amp; Milliseconds Since 1970-01-01 00:00:00 UTC.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">long</span> epochSeconds <span style="color:#f92672">=</span> Instant.<span style="color:#a6e22e">now</span>().<span style="color:#a6e22e">getEpochSecond</span>(); <span style="color:#75715e">// Epoch in seconds</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">long</span> epochMillis <span style="color:#f92672">=</span> Instant.<span style="color:#a6e22e">now</span>().<span style="color:#a6e22e">toEpochMilli</span>(); <span style="color:#75715e">// Epoch in milliseconds</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Epoch Seconds: &#34;</span> <span style="color:#f92672">+</span> epochSeconds);
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Epoch Milliseconds: &#34;</span> <span style="color:#f92672">+</span> epochMillis);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Epoch Seconds: 1707382200</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Epoch Milliseconds: 1707382200123</span>
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Contains</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LocalDate</td>
+<td>Date (YYYY-MM-DD)</td>
+<td>2024-02-08</td>
+</tr>
+<tr>
+<td>LocalTime</td>
+<td>Time (HH:MM:SS)</td>
+<td>14:45:30.123456</td>
+</tr>
+<tr>
+<td>LocalDateTime</td>
+<td>Date + Time</td>
+<td>2024-02-08T14:45:30.123456</td>
+</tr>
+<tr>
+<td>ZonedDateTime</td>
+<td>Date + Time + Zone</td>
+<td>2024-02-08T20:15:30.123456+05:30[Asia/Kolkata]</td>
+</tr>
+<tr>
+<td>Instant</td>
+<td>Epoch-Based UTC Time</td>
+<td>2024-02-08T14:45:30.123456Z</td>
+</tr>
+<tr>
+<td>Epoch Time</td>
+<td>Seconds/Milliseconds since 1970</td>
+<td>1707382200 (seconds), 1707382200123 (milliseconds)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conversion">Conversion.</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LocalDate to LocalDateTime</td>
+<td>date.atTime(LocalTime.now())</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Example Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inline Code</td>
+<td><code>System.out.println(&quot;Hello, World!&quot;);</code></td>
+</tr>
+<tr>
+<td>Block Code</td>
+<td><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span> { <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) { System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Hello, World!&#34;</span>); } } </span></span></code></pre></div></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/interviewquestion"
+      >interviewQuestion</a
+    >
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/java"
+      >java</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  >
+    
+    <a class="ltr:pr-3 rtl:pl-3" href="https://suchismita-deb.github.io/post/Cloud/GCP/InterviewQuestion/Topic1/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>Topic 1</span></a
+    >
+    
+    
+    <a class="ltr:ml-auto rtl:mr-auto justify-end pl-3" href="https://suchismita-deb.github.io/post/systemdesign/designexample/DesignAmazonRetailSystem/"
+      ><span>Design Amazon Retail System</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+<footer
+  class="mx-auto flex h-[4.5rem] max-w-[--w] items-center px-8 text-xs uppercase tracking-wider opacity-60"
+>
+  <div class="mr-auto">
+  
+    &copy; 2025
+    <a class="link" href="https://suchismita-deb.github.io/">Technical Blog</a>
+  
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+  <script src="/search.js"></script>
+
+</footer>
+
+</body>
+
+
+</html>

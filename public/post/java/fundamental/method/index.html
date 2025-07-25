@@ -1,0 +1,520 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+        class="not-ready lg:text-base"
+        style="--bg: #faf8f1"
+        lang="en-us"
+        dir="ltr"
+>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Method and Constructor - Technical Blog</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Method in Java Access Modifiers - Defines the accessibility of the method, who can use the method. There are 4 types of access specifiers in Java Methods.
+Public - It can be accessed through any class in any package.
+Private - It can be accessed by method only in the same class.
+Protected - It can be accessed by other classes in same package or other sub classes in different package." />
+  <meta name="author" content="SUCHISMITA DEB" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://suchismita-deb.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/theme.svg" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/6fd8df4abe41f17fd8e2dd7d97b5cc8c?s=160&amp;d=identicon" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link
+    rel="icon"
+    href="https://suchismita-deb.github.io/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://suchismita-deb.github.io/apple-touch-icon.png"
+  />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+
+
+
+  
+  <meta name="generator" content="Hugo 0.120.4">
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Method and Constructor">
+<meta itemprop="description" content="Method in Java Access Modifiers - Defines the accessibility of the method, who can use the method. There are 4 types of access specifiers in Java Methods.
+Public - It can be accessed through any class in any package.
+Private - It can be accessed by method only in the same class.
+Protected - It can be accessed by other classes in same package or other sub classes in different package."><meta itemprop="datePublished" content="2024-12-22T09:33:14+05:30" />
+<meta itemprop="dateModified" content="2024-12-22T09:33:14+05:30" />
+<meta itemprop="wordCount" content="962">
+<meta itemprop="keywords" content="interviewQuestion,java," />
+  
+  <meta property="og:title" content="Method and Constructor" />
+<meta property="og:description" content="Method in Java Access Modifiers - Defines the accessibility of the method, who can use the method. There are 4 types of access specifiers in Java Methods.
+Public - It can be accessed through any class in any package.
+Private - It can be accessed by method only in the same class.
+Protected - It can be accessed by other classes in same package or other sub classes in different package." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suchismita-deb.github.io/post/java/fundamental/method/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-12-22T09:33:14+05:30" />
+<meta property="article:modified_time" content="2024-12-22T09:33:14+05:30" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Method and Constructor"/>
+<meta name="twitter:description" content="Method in Java Access Modifiers - Defines the accessibility of the method, who can use the method. There are 4 types of access specifiers in Java Methods.
+Public - It can be accessed through any class in any package.
+Private - It can be accessed by method only in the same class.
+Protected - It can be accessed by other classes in same package or other sub classes in different package."/>
+
+  
+  
+
+  
+  <link rel="canonical" href="https://suchismita-deb.github.io/post/java/fundamental/method/" />
+  
+  
+</head>
+
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-[--w] px-8 lg:justify-center">
+  <div class="relative z-50 ltr:mr-auto rtl:ml-auto flex items-center">
+    <a class="-translate-y-[1px] text-2xl font-medium" href="https://suchismita-deb.github.io/"
+      >Technical Blog</a
+    >
+    <div
+      class="btn-dark text-[0] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 ltr:-mr-8 rtl:-ml-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Search..." />
+  </div>
+  <div id="search-results"></div>
+
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse">
+      
+      <a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/post/about/"
+        >About</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 rtl:space-x-reverse dark:invert ltr:lg:ml-14 rtl:lg:mr-14 lg:mt-0 lg:items-center"
+    >
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Suchismita-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/debsuchismita"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100vh-9rem)] max-w-[--w] px-8 pb-16 pt-14 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">Method and Constructor</h1>
+
+    
+    <div class="text-xs antialiased opacity-60">
+      
+      <time>Dec 22, 2024</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h3 id="method-in-java">Method in Java</h3>
+<p><strong>Access Modifiers</strong> - Defines the accessibility of the method, who can use the method.
+There are 4 types of access specifiers in Java Methods.</p>
+<p><strong>Public</strong> - It can be accessed through any class in any package.<br>
+<strong>Private</strong> - It can be accessed by method only in the same class.<br>
+<strong>Protected</strong> - It can be accessed by other classes in same package or other sub classes in different package.<br>
+<strong>Default</strong> - It can be only be accessed by classes in same package. If we donot mention anything then default access specifier is used by Java.</p>
+<h3 id="types-of-method">Types of Method.</h3>
+<p><strong>System Defined Methods</strong> - Methods which are already defined and ready to use in Java like Math.sqrt().</p>
+<p><strong>User Defined Methods</strong> - Method which the programmer create based upon the program necessity.</p>
+<p><strong>Overloaded Method</strong> - More than one method with same name is created in same class. Overloaded method only gets differentiated by arguments and return type is not considered.</p>
+<p><strong>Overridden Method</strong> - Subclass or child class has the same method as the parent class.</p>
+<p><strong>Final Method</strong> - Final method cannot be overridden in Java. It is so because final method means its implementation cannot be changed. If child class cannot change its implementation then no use of overridden.</p>
+<p><strong>Abstract Method</strong> - It is defined only in abstract class. Only method declaration is done. Its implementation is done in child class.</p>
+<p><strong>Static Method</strong> - These methods are associated with the class. Can be called wth class name. Static method cannot access non static instance variable and methods. Static methods cannot be overridden.
+When to declare a method static - Method which donot modify the state if the object. - Utility method which donot use any instance variable and compute inly on arguments.</p>
+<p>Example - Factory design pattern.</p>
+<h3 id="variable-arguments-varargs">Variable Arguments Varargs.</h3>
+<p>Variable number of inputs in the parameter.
+Only one variale argument can be present in the method.
+It should be the last argument in the list.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Calculation</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">sum</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> ... variable){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> 1;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="constructor">Constructor.</h3>
+<p>It is used to create an instance or initialize the instance variable.</p>
+<p>Constructor canot be static or final or abstract, synchronized.</p>
+<p>new keyword tells java to call the constructor.</p>
+<p>Why constructor name is same as of class name?</p>
+<p>It is easy to identify there is no return type because implicitly java adds class as return type.</p>
+<p>Why constructor has no return type.</p>
+<p>There can be methods with same name and even class as return type but they cannot be called constructor as they donot obey the rules of constructor that is same name without return type.</p>
+<p>Why constructor cannot be final.
+It is different from different method and cannot be inherited. So it does not make any sense to make them final as final is used to prevent overriding. When it cannot be inherited then there is no need to make it final.</p>
+<p>Why constructor cannot be abstract?</p>
+<p>In abstract method the clild class should ipleent the method. Consturctor cannot be inherited so no point of making it abstract.</p>
+<p>Why constructor cannot be static?
+Static method can only access static variable and other static methods so it would not be able to initualize teh instance variable. We also woud not be able to use the conctructor chaining called super().</p>
+<p>Can we define constructor in interface.
+No as we cannot create object so no point of constructor.</p>
+<h3 id="types-of-constructor">Types of constructor.</h3>
+<p><strong>Default Constructor</strong> - When we donot define a constructor, java internally provides a cnstructr which is known as default constructor. Default constructor also set default values for all the insatnce variable. It is added only when we donot define a contructor.</p>
+<p><strong>No argument Constructor</strong> - Contructor with no argument. It is very similar to default constructor but we are defining it instead of java.</p>
+<p><strong>Parameterized Constructor</strong> - It takes argument and assign the instance variable with those parameters. We can initalize one or multiple instance variable using a parameterised constructor.For the variables where we donot provide any argument, they will be instantiated with default values.</p>
+<p><strong>Constructor Overload</strong> - We can create multiple constructor with different parameters.</p>
+<p><strong>Private Constructor</strong> - We can create private constructor and no one outside the class will be able to call the constructor. It is used in singleton design pattern. To crete an object of the class having private constructor we can create another static method to create the object and then call the method using class name.</p>
+<p><strong>Constructor Chaining</strong> - We can cal one constructor in other constructor. This is done using this() and super(). To chain a constructor within the same class this() is used.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Calculation</span>{
+</span></span><span style="display:flex;"><span>    String name;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> empId;
+</span></span><span style="display:flex;"><span>    Calculation(){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>(10);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    Calculation(<span style="color:#66d9ef">int</span> empId){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>(<span style="color:#e6db74">&#34;sj&#34;</span>,empId);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    Calculation(String name, <span style="color:#66d9ef">int</span> empId){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">empId</span> <span style="color:#f92672">=</span> empId;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Here we called other constructor within a constructor using this().</p>
+<p>Using super() - The contructor of the child class always invokes the constructor of parent class first and then invokes its own constructor. This is done using super() so if we explicitely dont add super() in child constructor then java adds it internally.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Person</span>{
+</span></span><span style="display:flex;"><span>    Person(){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">printn</span>(<span style="color:#e6db74">&#34;Inside the person constructor.&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Manager</span> <span style="color:#66d9ef">extends</span> Person{
+</span></span><span style="display:flex;"><span>    Manager(){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Inside the manager class.&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>        Manager obj <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Manager();
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// It will create the object and call the person constructor.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Output - Inside the person constructor. Inside the manager class.</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>super() - call default constructor of the class. When there is a parameter then we need to pass parameter inside super().
+this() and super() is used for constructor chaining.</p>
+<p>If the parent class has a parameterised then we will have to mandatorily pass an argument to super() to call the paret class parameterised constructor.</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/interviewquestion"
+      >interviewQuestion</a
+    >
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/java"
+      >java</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  >
+    
+    <a class="ltr:pr-3 rtl:pl-3" href="https://suchismita-deb.github.io/post/java/fundamental/memoryManagement/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>Memory Management in Java</span></a
+    >
+    
+    
+    <a class="ltr:ml-auto rtl:mr-auto justify-end pl-3" href="https://suchismita-deb.github.io/post/dsa/bitManipulation/"
+      ><span>Bit Manipulation</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+<footer
+  class="mx-auto flex h-[4.5rem] max-w-[--w] items-center px-8 text-xs uppercase tracking-wider opacity-60"
+>
+  <div class="mr-auto">
+  
+    &copy; 2025
+    <a class="link" href="https://suchismita-deb.github.io/">Technical Blog</a>
+  
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+  <script src="/search.js"></script>
+
+</footer>
+
+</body>
+
+
+</html>

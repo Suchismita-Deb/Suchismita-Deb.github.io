@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gre on Technical Blog</title>
+    <link>https://suchismita-deb.github.io/tags/gre/</link>
+    <description>Recent content in gre on Technical Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Jun 2025 00:29:31 +0530</lastBuildDate>
+    <atom:link href="https://suchismita-deb.github.io/tags/gre/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Content</title>
+      <link>https://suchismita-deb.github.io/post/content/</link>
+      <pubDate>Sun, 08 Jun 2025 00:29:31 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/content/</guid>
+      <description>Java Topic Link Interview https://suchismita-deb.github.io/tags/interviewquestion/ Java https://suchismita-deb.github.io/tags/java/ Git https://suchismita-deb.github.io/tags/git/ Spring Topic Link Spring https://suchismita-deb.github.io/tags/spring/ Redis https://suchismita-deb.github.io/tags/redis/ Crud https://suchismita-deb.github.io/tags/crud/ Rest https://suchismita-deb.github.io/tags/rest/ JDBC https://suchismita-deb.github.io/tags/jdbc/ Spring Boot Course https://suchismita-deb.github.io/tags/springbootcourse/ Spring Security https://suchismita-deb.github.io/tags/spring-security/ System Design Topic Link Computer Network https://suchismita-deb.github.io/tags/computer-networks/ Design Pattern Topic Link DSA Topic Link Bit Manipulation https://suchismita-deb.github.io/tags/dsa/ Behavioral Interview Topic Link Behavioral Interview https://suchismita-deb.github.io/tags/behavoiral-interview/ Collection of Books. Book Name Link. System Design Handbook. Link OS Notes Link. Grokking the advanced System Design Interview.</description>
+    </item>
+  </channel>
+</rss>

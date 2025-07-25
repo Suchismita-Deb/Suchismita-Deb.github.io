@@ -1,0 +1,460 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+        class="not-ready lg:text-base"
+        style="--bg: #faf8f1"
+        lang="en-us"
+        dir="ltr"
+>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Memory And Storage System - Technical Blog</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="RAM. Stores data temporarily while your computer is running. It&rsquo;s fast and flexible, juggling all the programs we&rsquo;re running at any given moment. RAM is volatile, meaning it loses its stored data when the power is turned off. ROM. Retains data even when the power is off. It&rsquo;s non-volatile and used to store essential information, like firmware and the BIOS, that your computer needs to boot up. Different types of RAM SRAM or Static Random Access Memory - Fast and expensive type of RAM used in high-speed applications like CPU caches, where quick access time is crucial." />
+  <meta name="author" content="SUCHISMITA DEB" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://suchismita-deb.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/theme.svg" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/6fd8df4abe41f17fd8e2dd7d97b5cc8c?s=160&amp;d=identicon" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link
+    rel="icon"
+    href="https://suchismita-deb.github.io/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://suchismita-deb.github.io/apple-touch-icon.png"
+  />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+
+
+
+  
+  <meta name="generator" content="Hugo 0.120.4">
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Memory And Storage System">
+<meta itemprop="description" content="RAM. Stores data temporarily while your computer is running. It&rsquo;s fast and flexible, juggling all the programs we&rsquo;re running at any given moment. RAM is volatile, meaning it loses its stored data when the power is turned off. ROM. Retains data even when the power is off. It&rsquo;s non-volatile and used to store essential information, like firmware and the BIOS, that your computer needs to boot up. Different types of RAM SRAM or Static Random Access Memory - Fast and expensive type of RAM used in high-speed applications like CPU caches, where quick access time is crucial."><meta itemprop="datePublished" content="2023-11-15T19:08:53+05:30" />
+<meta itemprop="dateModified" content="2023-11-15T19:08:53+05:30" />
+<meta itemprop="wordCount" content="410">
+<meta itemprop="keywords" content="interview question,system design," />
+  
+  <meta property="og:title" content="Memory And Storage System" />
+<meta property="og:description" content="RAM. Stores data temporarily while your computer is running. It&rsquo;s fast and flexible, juggling all the programs we&rsquo;re running at any given moment. RAM is volatile, meaning it loses its stored data when the power is turned off. ROM. Retains data even when the power is off. It&rsquo;s non-volatile and used to store essential information, like firmware and the BIOS, that your computer needs to boot up. Different types of RAM SRAM or Static Random Access Memory - Fast and expensive type of RAM used in high-speed applications like CPU caches, where quick access time is crucial." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suchismita-deb.github.io/post/systemDesign/memorystoragesystem/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-11-15T19:08:53+05:30" />
+<meta property="article:modified_time" content="2023-11-15T19:08:53+05:30" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Memory And Storage System"/>
+<meta name="twitter:description" content="RAM. Stores data temporarily while your computer is running. It&rsquo;s fast and flexible, juggling all the programs we&rsquo;re running at any given moment. RAM is volatile, meaning it loses its stored data when the power is turned off. ROM. Retains data even when the power is off. It&rsquo;s non-volatile and used to store essential information, like firmware and the BIOS, that your computer needs to boot up. Different types of RAM SRAM or Static Random Access Memory - Fast and expensive type of RAM used in high-speed applications like CPU caches, where quick access time is crucial."/>
+
+  
+  
+
+  
+  <link rel="canonical" href="https://suchismita-deb.github.io/post/systemDesign/memorystoragesystem/" />
+  
+  
+</head>
+
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-[--w] px-8 lg:justify-center">
+  <div class="relative z-50 ltr:mr-auto rtl:ml-auto flex items-center">
+    <a class="-translate-y-[1px] text-2xl font-medium" href="https://suchismita-deb.github.io/"
+      >Technical Blog</a
+    >
+    <div
+      class="btn-dark text-[0] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 ltr:-mr-8 rtl:-ml-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Search..." />
+  </div>
+  <div id="search-results"></div>
+
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse">
+      
+      <a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/post/about/"
+        >About</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 rtl:space-x-reverse dark:invert ltr:lg:ml-14 rtl:lg:mr-14 lg:mt-0 lg:items-center"
+    >
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Suchismita-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/debsuchismita"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100vh-9rem)] max-w-[--w] px-8 pb-16 pt-14 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">Memory And Storage System</h1>
+
+    
+    <div class="text-xs antialiased opacity-60">
+      
+      <time>Nov 15, 2023</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h3 id="ram">RAM.</h3>
+<ul>
+<li>Stores data temporarily while your computer is running.</li>
+<li>It&rsquo;s fast and flexible, juggling all the  programs we&rsquo;re running at any given moment.</li>
+<li>RAM is volatile, meaning it loses  its stored data when the power is turned off.</li>
+</ul>
+<h3 id="rom">ROM.</h3>
+<ul>
+<li>Retains data even when the power is off.</li>
+<li>It&rsquo;s non-volatile and used to  store essential information, like firmware and the BIOS, that  your computer needs to boot up.</li>
+</ul>
+<p><img src="/images/img7.png" alt="img.png"></p>
+<h3 id="different-types-of-ram">Different types of RAM</h3>
+<p><strong>SRAM or Static Random Access Memory</strong> - Fast and expensive type of RAM used in high-speed applications like CPU  caches, where quick access time is crucial.</p>
+<p><strong>DRAM or Dynamic Random Access Memory</strong> - Slower and cheaper than SRAM. It needs to be constantly refreshed to  retain data, making it more high-maintenance.</p>
+<p>There are many types of DRAM, including <strong>FPM DRAM</strong>, <strong>EDO DRAM</strong>, <strong>SDRAM</strong>, and <strong>DDR SDRAM</strong>  with each generation bringing faster  speeds and increased efficiency.</p>
+<p>Many are obsolete, and the common types of <strong>DRAM</strong><br>
+in the market today are DDR  variants, like <strong>DDR4</strong>, <strong>DDR5</strong>.</p>
+<p><strong>GDDR</strong> - It is a specialized type of DRAM optimized for faster data transfer rate, which the GPU needs for its  massive parallel processing.</p>
+<p><strong>GDDR6</strong> is the most widely used today.</p>
+<h3 id="essential--roles-of-rom-firmware-and-bios">Essential  roles of ROM: Firmware and BIOS!</h3>
+<p><strong>Firmware</strong> - Type of software stored in ROM that<br>
+controls how hardware devices  communicate with each other.</p>
+<p><strong>BIOS, or Basic Input/Output System</strong> - The first  software your computer runs when you power it up.</p>
+<p>It&rsquo;s responsible for starting your  computer, initializing hardware components, and handing control over to the operating system.</p>
+<h3 id="hard-disk--drives-and-solid-state-drives">Hard Disk  Drives and Solid State Drives.</h3>
+<p><strong>Hard Disk Drives or HDDs.</strong></p>
+<p>They store data on spinning  magnetic disks and are known<br>
+for their large storage capacities at a low price.</p>
+<p><strong>Solid State Drives or SSDs.</strong></p>
+<p>It uses NAND-based flash  memory, providing faster data access, reduced power consumption, and increased durability  compared to HDDs, but come at a higher price.</p>
+<h3 id="nvme-or-non-volatile-memory-express">NVMe or Non-Volatile Memory Express.</h3>
+<p>A high-performance interface for SSDs that connects directly to the  CPU via PCIe lanes.</p>
+<p>This allows for lower latency and significantly faster data  transfer rates compared to SATA-based SSDs.</p>
+<h3 id="flash-drives-and-sd-cards">Flash Drives and SD Cards!</h3>
+<p><strong>Flash Drives</strong> or <strong>USB drives</strong> or <strong>thumb  drives</strong> - Small, plug-and-play devices you can use with any USB port. They&rsquo;re easy to use and  perfect for transferring files between computers.</p>
+<p><strong>SD Cards</strong> - Commonly found in cameras and smartphones. They can store thousands of files. SD cards come in three main physical  sizes: SD, microSD, and miniSD.</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/interview-question"
+      >interview question</a
+    >
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/system-design"
+      >system design</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  >
+    
+    <a class="ltr:pr-3 rtl:pl-3" href="https://suchismita-deb.github.io/post/spring/dependencyinjectionandinversionofcontrol/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>Dependency Injection and Inversion Of Control.</span></a
+    >
+    
+    
+    <a class="ltr:ml-auto rtl:mr-auto justify-end pl-3" href="https://suchismita-deb.github.io/post/systemdesign/mapreducesystemdesign/"
+      ><span>Map Reduce System Design</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+<footer
+  class="mx-auto flex h-[4.5rem] max-w-[--w] items-center px-8 text-xs uppercase tracking-wider opacity-60"
+>
+  <div class="mr-auto">
+  
+    &copy; 2025
+    <a class="link" href="https://suchismita-deb.github.io/">Technical Blog</a>
+  
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+  <script src="/search.js"></script>
+
+</footer>
+
+</body>
+
+
+</html>

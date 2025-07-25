@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dynatrace on Technical Blog</title>
+    <link>https://suchismita-deb.github.io/tags/dynatrace/</link>
+    <description>Recent content in dynatrace on Technical Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 06 May 2025 09:52:40 +0530</lastBuildDate>
+    <atom:link href="https://suchismita-deb.github.io/tags/dynatrace/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DataExplorerExample</title>
+      <link>https://suchismita-deb.github.io/post/spring/dynatrace/dataExplorerExample/</link>
+      <pubDate>Tue, 06 May 2025 09:52:40 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/spring/dynatrace/dataExplorerExample/</guid>
+      <description>(confluent_kafka_server_received_records :filter( and( or( in(&amp;#34;dt.entity.prometheus:confluent_kafka_topic&amp;#34;, entitySelector(&amp;#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&amp;#34;dlq~\&amp;#34;)&amp;#34;) ), in(&amp;#34;dt.entity.prometheus:confluent_kafka_topic&amp;#34;, entitySelector(&amp;#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&amp;#34;dlt~\&amp;#34;)&amp;#34;) ), in(&amp;#34;dt.entity.prometheus:confluent_kafka_topic&amp;#34;, entitySelector(&amp;#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&amp;#34;error~\&amp;#34;)&amp;#34;) ) ) ) ) :splitBy(&amp;#34;dt.entity.prometheus:confluent_kafka_topic&amp;#34;) :sort(value(auto,descending)) ) :filter( eq(&amp;#34;dt.entity.prometheus:confluent_kafka_topic&amp;#34;, CUSTOM_DEVICE-CF707F1B308F5901) ) confluent_kafka_server_received_records -	Metric showing the number of records received by a Confluent Kafka server.
+filter(...) - Applies filtering logic to narrow down entities.
+in(..., entitySelector(...)) - Used to filter Kafka topics matching name patterns (like dlq, dlt, or error).
+entityName.contains(~&amp;quot;dlq~&amp;quot;) - Filters topics whose names contain &amp;ldquo;dlq&amp;rdquo; (likely Dead Letter Queue).</description>
+    </item>
+    <item>
+      <title>Introduction</title>
+      <link>https://suchismita-deb.github.io/post/spring/dynatrace/introduction/</link>
+      <pubDate>Sun, 04 May 2025 11:55:12 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/spring/dynatrace/introduction/</guid>
+      <description>Classic View. Deploy one agent into the infrastructure. Then look into the option available in the Infrastructure Observability.
+Learn to use the Dynatrace Query Language. Create own metrics and dashboard.
+Deploy Dynatrace one Agent. Deploy the dynatrace and the host is the environment where collect the information. Deploy Dynatrace and then we need to install Dynatrace OneAgent. OneAgent is the software that will send the data to the dynatrace. The host can be window or kubernetes.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>database on Technical Blog</title>
+    <link>https://suchismita-deb.github.io/tags/database/</link>
+    <description>Recent content in database on Technical Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Jun 2025 00:29:31 +0530</lastBuildDate>
+    <atom:link href="https://suchismita-deb.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Content</title>
+      <link>https://suchismita-deb.github.io/post/content/</link>
+      <pubDate>Sun, 08 Jun 2025 00:29:31 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/content/</guid>
+      <description>Java Topic Link Interview https://suchismita-deb.github.io/tags/interviewquestion/ Java https://suchismita-deb.github.io/tags/java/ Git https://suchismita-deb.github.io/tags/git/ Spring Topic Link Spring https://suchismita-deb.github.io/tags/spring/ Redis https://suchismita-deb.github.io/tags/redis/ Crud https://suchismita-deb.github.io/tags/crud/ Rest https://suchismita-deb.github.io/tags/rest/ JDBC https://suchismita-deb.github.io/tags/jdbc/ Spring Boot Course https://suchismita-deb.github.io/tags/springbootcourse/ Spring Security https://suchismita-deb.github.io/tags/spring-security/ System Design Topic Link Computer Network https://suchismita-deb.github.io/tags/computer-networks/ Design Pattern Topic Link DSA Topic Link Bit Manipulation https://suchismita-deb.github.io/tags/dsa/ Behavioral Interview Topic Link Behavioral Interview https://suchismita-deb.github.io/tags/behavoiral-interview/ Collection of Books. Book Name Link. System Design Handbook. Link OS Notes Link. Grokking the advanced System Design Interview.</description>
+    </item>
+    <item>
+      <title>Topic 1 SQL Practice</title>
+      <link>https://suchismita-deb.github.io/post/systemdesign/database/interview/topic/</link>
+      <pubDate>Mon, 30 Dec 2024 14:10:44 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/systemdesign/database/interview/topic/</guid>
+      <description>SQL Interview.
+Order of execution in SQL. FROM - WHERE - GROUP BY - HAVING - SELECT - ORDER BY - LIMIT.
+Clause Function FROM Choose ad join table to get the base data. WHERE Filter the base data. GROUP BY Aggregate the base data. HAVING Filters the aggregated data. SELECT Returns the final data. ORDER BY Sort the final data. LIMIT Limit the returned data to a row count. SELECT category, AVG(sales) AS avg_sales FROM SalesData WHERE year&amp;gt;2020 GROUP BY category HAVING COUNT(*)&amp;gt;10 ORDER BY avg_sales DESC LIMIT 3;</description>
+    </item>
+    <item>
+      <title>Important Topic Project</title>
+      <link>https://suchismita-deb.github.io/post/spring/importanttopic/</link>
+      <pubDate>Thu, 22 Feb 2024 22:26:11 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/spring/importanttopic/</guid>
+      <description>PUT is idempotent: calling it once or several times successively has the same effect (that is no side effect), whereas successive identical POST requests may have additional effects.
+PUT is restricted to create or update operations, while a POST operation may perform any type of processing.
+PUT request creates a resource the server will respond with a 201 ( Created )
+In the application.yml file we need to add the username and password and the db name and schema.</description>
+    </item>
+    <item>
+      <title>Sping Database Connection JDBC</title>
+      <link>https://suchismita-deb.github.io/post/spring/spingdatabaseconnectionjdbc/</link>
+      <pubDate>Tue, 20 Feb 2024 10:50:09 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/spring/spingdatabaseconnectionjdbc/</guid>
+      <description>For connecting to the database we need to follow the 6 steps.
+Import the package </description>
+    </item>
+  </channel>
+</rss>

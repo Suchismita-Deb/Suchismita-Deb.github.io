@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Interview Question on Technical Blog</title>
+    <link>https://suchismita-deb.github.io/categories/interview-question/</link>
+    <description>Recent content in Interview Question on Technical Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Mar 2025 17:27:52 +0530</lastBuildDate>
+    <atom:link href="https://suchismita-deb.github.io/categories/interview-question/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Messaging Queue1</title>
+      <link>https://suchismita-deb.github.io/post/Java/InterviewQuestion/Kafka1/</link>
+      <pubDate>Thu, 20 Mar 2025 17:27:52 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/Java/InterviewQuestion/Kafka1/</guid>
+      <description>Partitions and offset.
+Topic is divided into partitions. Each partition can be located on different broker which will help to horizontally scale upward. Each topic can be made up of hundreds of partitions, more partitions you have more parallelism and high throughput can achieve.
+The message posted is going to be stored into each of the partitions, say partition 1 will store all the messages within user id, starting from 0 to increment by one.</description>
+    </item>
+  </channel>
+</rss>

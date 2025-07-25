@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DTO on Technical Blog</title>
+    <link>https://suchismita-deb.github.io/categories/dto/</link>
+    <description>Recent content in DTO on Technical Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Jun 2024 05:47:56 +0530</lastBuildDate>
+    <atom:link href="https://suchismita-deb.github.io/categories/dto/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MappingJsonDto</title>
+      <link>https://suchismita-deb.github.io/post/leanings/mappingjsondto/</link>
+      <pubDate>Sat, 22 Jun 2024 05:47:56 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/leanings/mappingjsondto/</guid>
+      <description>Say I am getting the response like array of object.
+&amp;#34;resultsComment&amp;#34;: [ { &amp;#34;text&amp;#34;:null, &amp;#34;detail&amp;#34;:&amp;#34;&amp;#34; } ] In the DTO we are mapping like @JsonProperty(Ignore.NON_NULL) and we are not getting any value and an empty object.
+&amp;#34;resultsComment&amp;#34;: [ {} ] In the case we had to make a new DTO as we cannot change the existing code and then in the DTO we put @JsonProperty(Ignore.NON_EMPTY)
+Either we should give empty array or value with null and empty string.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog on Technical Blog</title>
+    <link>https://suchismita-deb.github.io/tags/blog/</link>
+    <description>Recent content in blog on Technical Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Jun 2025 00:29:31 +0530</lastBuildDate>
+    <atom:link href="https://suchismita-deb.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Content</title>
+      <link>https://suchismita-deb.github.io/post/content/</link>
+      <pubDate>Sun, 08 Jun 2025 00:29:31 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/content/</guid>
+      <description>Java Topic Link Interview https://suchismita-deb.github.io/tags/interviewquestion/ Java https://suchismita-deb.github.io/tags/java/ Git https://suchismita-deb.github.io/tags/git/ Spring Topic Link Spring https://suchismita-deb.github.io/tags/spring/ Redis https://suchismita-deb.github.io/tags/redis/ Crud https://suchismita-deb.github.io/tags/crud/ Rest https://suchismita-deb.github.io/tags/rest/ JDBC https://suchismita-deb.github.io/tags/jdbc/ Spring Boot Course https://suchismita-deb.github.io/tags/springbootcourse/ Spring Security https://suchismita-deb.github.io/tags/spring-security/ System Design Topic Link Computer Network https://suchismita-deb.github.io/tags/computer-networks/ Design Pattern Topic Link DSA Topic Link Bit Manipulation https://suchismita-deb.github.io/tags/dsa/ Behavioral Interview Topic Link Behavioral Interview https://suchismita-deb.github.io/tags/behavoiral-interview/ Collection of Books. Book Name Link. System Design Handbook. Link OS Notes Link. Grokking the advanced System Design Interview.</description>
+    </item>
+    <item>
+      <title>MarkDown</title>
+      <link>https://suchismita-deb.github.io/post/markdown/</link>
+      <pubDate>Tue, 13 Feb 2024 20:01:13 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/markdown/</guid>
+      <description>Some important markdown formulas. |Table Content|Value| |:---|:---| |Title 1|1| |Title 2|2| Table Content Value Title 1 1 Title 2 2 :&amp;ndash; means the column is left aligned.
+&amp;ndash;: means the column is right aligned.
+:-: means the column is center aligned.
+${\sqrt{3x-1}+(1+x)^2}$
+Equation is written in this form ${\sqrt{3x-1}+(1+x)^2}$
+$\frac{(3+4)}{(2*{10^8})}$
+$\frac{(3+4)}{(2*{10^8})}$
+${10^8}$
+${10^8}$
+${10^12}$
+${10^12}$
+$10^{12}$ $10^{12}$
+Making new posts in blog hugo new post/SystemDesign/HLD/Kafka/MessagingQueue.md Adding image in the file !</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,469 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+        class="not-ready lg:text-base"
+        style="--bg: #faf8f1"
+        lang="en-us"
+        dir="ltr"
+>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>DataExplorerExample - Technical Blog</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="(confluent_kafka_server_received_records :filter( and( or( in(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, entitySelector(&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;dlq~\&#34;)&#34;) ), in(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, entitySelector(&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;dlt~\&#34;)&#34;) ), in(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, entitySelector(&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;error~\&#34;)&#34;) ) ) ) ) :splitBy(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;) :sort(value(auto,descending)) ) :filter( eq(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, CUSTOM_DEVICE-CF707F1B308F5901) ) confluent_kafka_server_received_records -	Metric showing the number of records received by a Confluent Kafka server.
+filter(...) - Applies filtering logic to narrow down entities.
+in(..., entitySelector(...)) - Used to filter Kafka topics matching name patterns (like dlq, dlt, or error).
+entityName.contains(~&quot;dlq~&quot;) - Filters topics whose names contain &ldquo;dlq&rdquo; (likely Dead Letter Queue)." />
+  <meta name="author" content="SUCHISMITA DEB" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://suchismita-deb.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/theme.svg" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/6fd8df4abe41f17fd8e2dd7d97b5cc8c?s=160&amp;d=identicon" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link
+    rel="icon"
+    href="https://suchismita-deb.github.io/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://suchismita-deb.github.io/apple-touch-icon.png"
+  />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+
+
+
+  
+  <meta name="generator" content="Hugo 0.120.4">
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="DataExplorerExample">
+<meta itemprop="description" content="(confluent_kafka_server_received_records :filter( and( or( in(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, entitySelector(&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;dlq~\&#34;)&#34;) ), in(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, entitySelector(&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;dlt~\&#34;)&#34;) ), in(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, entitySelector(&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;error~\&#34;)&#34;) ) ) ) ) :splitBy(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;) :sort(value(auto,descending)) ) :filter( eq(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, CUSTOM_DEVICE-CF707F1B308F5901) ) confluent_kafka_server_received_records -	Metric showing the number of records received by a Confluent Kafka server.
+filter(...) - Applies filtering logic to narrow down entities.
+in(..., entitySelector(...)) - Used to filter Kafka topics matching name patterns (like dlq, dlt, or error).
+entityName.contains(~&quot;dlq~&quot;) - Filters topics whose names contain &ldquo;dlq&rdquo; (likely Dead Letter Queue)."><meta itemprop="datePublished" content="2025-05-06T09:52:40+05:30" />
+<meta itemprop="dateModified" content="2025-05-06T09:52:40+05:30" />
+<meta itemprop="wordCount" content="184">
+<meta itemprop="keywords" content="dynatrace,spring,kafka-confluent," />
+  
+  <meta property="og:title" content="DataExplorerExample" />
+<meta property="og:description" content="(confluent_kafka_server_received_records :filter( and( or( in(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, entitySelector(&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;dlq~\&#34;)&#34;) ), in(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, entitySelector(&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;dlt~\&#34;)&#34;) ), in(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, entitySelector(&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;error~\&#34;)&#34;) ) ) ) ) :splitBy(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;) :sort(value(auto,descending)) ) :filter( eq(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, CUSTOM_DEVICE-CF707F1B308F5901) ) confluent_kafka_server_received_records -	Metric showing the number of records received by a Confluent Kafka server.
+filter(...) - Applies filtering logic to narrow down entities.
+in(..., entitySelector(...)) - Used to filter Kafka topics matching name patterns (like dlq, dlt, or error).
+entityName.contains(~&quot;dlq~&quot;) - Filters topics whose names contain &ldquo;dlq&rdquo; (likely Dead Letter Queue)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suchismita-deb.github.io/post/spring/dynatrace/dataExplorerExample/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2025-05-06T09:52:40+05:30" />
+<meta property="article:modified_time" content="2025-05-06T09:52:40+05:30" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DataExplorerExample"/>
+<meta name="twitter:description" content="(confluent_kafka_server_received_records :filter( and( or( in(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, entitySelector(&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;dlq~\&#34;)&#34;) ), in(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, entitySelector(&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;dlt~\&#34;)&#34;) ), in(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, entitySelector(&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;error~\&#34;)&#34;) ) ) ) ) :splitBy(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;) :sort(value(auto,descending)) ) :filter( eq(&#34;dt.entity.prometheus:confluent_kafka_topic&#34;, CUSTOM_DEVICE-CF707F1B308F5901) ) confluent_kafka_server_received_records -	Metric showing the number of records received by a Confluent Kafka server.
+filter(...) - Applies filtering logic to narrow down entities.
+in(..., entitySelector(...)) - Used to filter Kafka topics matching name patterns (like dlq, dlt, or error).
+entityName.contains(~&quot;dlq~&quot;) - Filters topics whose names contain &ldquo;dlq&rdquo; (likely Dead Letter Queue)."/>
+
+  
+  
+
+  
+  <link rel="canonical" href="https://suchismita-deb.github.io/post/spring/dynatrace/dataExplorerExample/" />
+  
+  
+</head>
+
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-[--w] px-8 lg:justify-center">
+  <div class="relative z-50 ltr:mr-auto rtl:ml-auto flex items-center">
+    <a class="-translate-y-[1px] text-2xl font-medium" href="https://suchismita-deb.github.io/"
+      >Technical Blog</a
+    >
+    <div
+      class="btn-dark text-[0] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 ltr:-mr-8 rtl:-ml-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Search..." />
+  </div>
+  <div id="search-results"></div>
+
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse">
+      
+      <a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/post/about/"
+        >About</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 rtl:space-x-reverse dark:invert ltr:lg:ml-14 rtl:lg:mr-14 lg:mt-0 lg:items-center"
+    >
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Suchismita-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/debsuchismita"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100vh-9rem)] max-w-[--w] px-8 pb-16 pt-14 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">DataExplorerExample</h1>
+
+    
+    <div class="text-xs antialiased opacity-60">
+      
+      <time>May 6, 2025</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>(confluent_kafka_server_received_records
+</span></span><span style="display:flex;"><span>  :filter(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">and</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">or</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">in</span>(<span style="color:#e6db74">&#34;dt.entity.prometheus:confluent_kafka_topic&#34;</span>, entitySelector(<span style="color:#e6db74">&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;</span>dlq<span style="color:#f92672">~</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34;)&#34;</span>)
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">in</span>(<span style="color:#e6db74">&#34;dt.entity.prometheus:confluent_kafka_topic&#34;</span>, entitySelector(<span style="color:#e6db74">&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;</span>dlt<span style="color:#f92672">~</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34;)&#34;</span>)
+</span></span><span style="display:flex;"><span>        ),
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">in</span>(<span style="color:#e6db74">&#34;dt.entity.prometheus:confluent_kafka_topic&#34;</span>, entitySelector(<span style="color:#e6db74">&#34;type(prometheus:confluent_kafka_topic),entityName.contains(~\&#34;</span>error<span style="color:#f92672">~</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#e6db74">&#34;)&#34;</span>)
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>      )
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>  :splitBy(<span style="color:#e6db74">&#34;dt.entity.prometheus:confluent_kafka_topic&#34;</span>)
+</span></span><span style="display:flex;"><span>  :sort(value(auto,descending))
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>:filter(
+</span></span><span style="display:flex;"><span>  eq(<span style="color:#e6db74">&#34;dt.entity.prometheus:confluent_kafka_topic&#34;</span>, CUSTOM_DEVICE<span style="color:#f92672">-</span>CF707F1B308F5901)
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><code>confluent_kafka_server_received_records</code> -	Metric showing the number of records received by a Confluent Kafka server.<br>
+<code>filter(...)</code> - Applies filtering logic to narrow down entities.<br>
+<code>in(..., entitySelector(...))</code> - Used to filter Kafka topics matching name patterns (like dlq, dlt, or error).<br>
+<code>entityName.contains(~&quot;dlq~&quot;)</code> - Filters topics whose names contain &ldquo;dlq&rdquo; (likely Dead Letter Queue).<br>
+<code>splitBy(&quot;dt.entity.prometheus:confluent_kafka_topic&quot;)</code> - Group the results per Kafka topic (dimensions).<br>
+<code>sort(value(auto, descending))</code> - Sort the results by record count, in descending order.<br>
+<code>Final filter(...)</code> - Further narrows down the result to only one specific Kafka topic, identified by ID CUSTOM_DEVICE-CF707F1B308F5901.</p>
+<p>The drop to 0 might suggest that the selected topic (<code>CF707F1B308F5901</code>) stopped receiving messages — possibly the reason for the problem alert shown above (<code>P-250466249</code>).</p>
+<p>This Dynatrace chart shows Kafka topics (error, dlq, dlt) and monitors how many messages they received. You&rsquo;re specifically monitoring one Kafka topic (<code>CUSTOM_DEVICE-CF707F1B308F5901</code>). A sudden drop in records could indicate a misconfiguration, consumer failure, or a message production halt — possibly triggering a Dynatrace problem alert.</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/dynatrace"
+      >dynatrace</a
+    >
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/spring"
+      >spring</a
+    >
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/kafka-confluent"
+      >kafka-confluent</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  >
+    
+    <a class="ltr:pr-3 rtl:pl-3" href="https://suchismita-deb.github.io/post/systemDesign/ArchitecturePattern/DomainDrivenDesign/Introduction/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>Introduction To Domain Driven Design.</span></a
+    >
+    
+    
+    <a class="ltr:ml-auto rtl:mr-auto justify-end pl-3" href="https://suchismita-deb.github.io/post/spring/dynatrace/introduction/"
+      ><span>Introduction</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+<footer
+  class="mx-auto flex h-[4.5rem] max-w-[--w] items-center px-8 text-xs uppercase tracking-wider opacity-60"
+>
+  <div class="mr-auto">
+  
+    &copy; 2025
+    <a class="link" href="https://suchismita-deb.github.io/">Technical Blog</a>
+  
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+  <script src="/search.js"></script>
+
+</footer>
+
+</body>
+
+
+</html>

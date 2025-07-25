@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>testing on Technical Blog</title>
+    <link>https://suchismita-deb.github.io/tags/testing/</link>
+    <description>Recent content in testing on Technical Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Jun 2025 00:29:31 +0530</lastBuildDate>
+    <atom:link href="https://suchismita-deb.github.io/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Content</title>
+      <link>https://suchismita-deb.github.io/post/content/</link>
+      <pubDate>Sun, 08 Jun 2025 00:29:31 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/content/</guid>
+      <description>Java Topic Link Interview https://suchismita-deb.github.io/tags/interviewquestion/ Java https://suchismita-deb.github.io/tags/java/ Git https://suchismita-deb.github.io/tags/git/ Spring Topic Link Spring https://suchismita-deb.github.io/tags/spring/ Redis https://suchismita-deb.github.io/tags/redis/ Crud https://suchismita-deb.github.io/tags/crud/ Rest https://suchismita-deb.github.io/tags/rest/ JDBC https://suchismita-deb.github.io/tags/jdbc/ Spring Boot Course https://suchismita-deb.github.io/tags/springbootcourse/ Spring Security https://suchismita-deb.github.io/tags/spring-security/ System Design Topic Link Computer Network https://suchismita-deb.github.io/tags/computer-networks/ Design Pattern Topic Link DSA Topic Link Bit Manipulation https://suchismita-deb.github.io/tags/dsa/ Behavioral Interview Topic Link Behavioral Interview https://suchismita-deb.github.io/tags/behavoiral-interview/ Collection of Books. Book Name Link. System Design Handbook. Link OS Notes Link. Grokking the advanced System Design Interview.</description>
+    </item>
+    <item>
+      <title>Spring Boot Testing using Mockito and JUnit.</title>
+      <link>https://suchismita-deb.github.io/post/unittesting/mockitojunit/</link>
+      <pubDate>Sat, 23 Dec 2023 20:49:24 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/unittesting/mockitojunit/</guid>
+      <description>When we write test cases without using Mockito then the control flows from Controller, Service, Repository. It will call the db for the testing. We donot need to call db for testing.
+With Mockito we can mock the data. We donot need to hit the db.
+Argument Matchers We mock the data by any value if the data return string we need to put some string like &amp;quot;string123&amp;quot;. In this case we can use Argument Matchers.</description>
+    </item>
+    <item>
+      <title>JUnit Testing using Mockito and PowerMock API.</title>
+      <link>https://suchismita-deb.github.io/post/unittesting/powermockapi/</link>
+      <pubDate>Wed, 22 Nov 2023 19:47:48 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/unittesting/powermockapi/</guid>
+      <description>Use of PowerMock API even after we have Mockito Framework. Using PowerMock API we can mock any of our static, final and private method which we cannot do using Mockito framework.
+We can </description>
+    </item>
+  </channel>
+</rss>

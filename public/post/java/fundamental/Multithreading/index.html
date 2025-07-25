@@ -1,0 +1,1367 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+        class="not-ready lg:text-base"
+        style="--bg: #faf8f1"
+        lang="en-us"
+        dir="ltr"
+>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Multithreading and Concurrency - Thread Process and Memory Model - Thread Creation, Thread Lifecycle and Inter Thread Communication.  - Technical Blog</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Multithreading and Concurrency. Multithreading is a technique that allows for concurrent (simultaneous) execution of two or more parts of a program for maximum utilization of a CPU. As a really basic example, multithreading allows you to write code in one program and listen to music in another.
+Programs are made up of process and thread.
+Concurrency is the ability of your program to deal (not doing) with many things at once and is achieved through multithreading." />
+  <meta name="author" content="SUCHISMITA DEB" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://suchismita-deb.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/theme.svg" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/6fd8df4abe41f17fd8e2dd7d97b5cc8c?s=160&amp;d=identicon" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link
+    rel="icon"
+    href="https://suchismita-deb.github.io/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://suchismita-deb.github.io/apple-touch-icon.png"
+  />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+
+
+
+  
+  <meta name="generator" content="Hugo 0.120.4">
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Multithreading and Concurrency - Thread Process and Memory Model - Thread Creation, Thread Lifecycle and Inter Thread Communication. ">
+<meta itemprop="description" content="Multithreading and Concurrency. Multithreading is a technique that allows for concurrent (simultaneous) execution of two or more parts of a program for maximum utilization of a CPU. As a really basic example, multithreading allows you to write code in one program and listen to music in another.
+Programs are made up of process and thread.
+Concurrency is the ability of your program to deal (not doing) with many things at once and is achieved through multithreading."><meta itemprop="datePublished" content="2024-12-19T09:47:59+05:30" />
+<meta itemprop="dateModified" content="2024-12-19T09:47:59+05:30" />
+<meta itemprop="wordCount" content="5637">
+<meta itemprop="keywords" content="interviewQuestion,java," />
+  
+  <meta property="og:title" content="Multithreading and Concurrency - Thread Process and Memory Model - Thread Creation, Thread Lifecycle and Inter Thread Communication. " />
+<meta property="og:description" content="Multithreading and Concurrency. Multithreading is a technique that allows for concurrent (simultaneous) execution of two or more parts of a program for maximum utilization of a CPU. As a really basic example, multithreading allows you to write code in one program and listen to music in another.
+Programs are made up of process and thread.
+Concurrency is the ability of your program to deal (not doing) with many things at once and is achieved through multithreading." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suchismita-deb.github.io/post/java/fundamental/Multithreading/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-12-19T09:47:59+05:30" />
+<meta property="article:modified_time" content="2024-12-19T09:47:59+05:30" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Multithreading and Concurrency - Thread Process and Memory Model - Thread Creation, Thread Lifecycle and Inter Thread Communication. "/>
+<meta name="twitter:description" content="Multithreading and Concurrency. Multithreading is a technique that allows for concurrent (simultaneous) execution of two or more parts of a program for maximum utilization of a CPU. As a really basic example, multithreading allows you to write code in one program and listen to music in another.
+Programs are made up of process and thread.
+Concurrency is the ability of your program to deal (not doing) with many things at once and is achieved through multithreading."/>
+
+  
+  
+
+  
+  <link rel="canonical" href="https://suchismita-deb.github.io/post/java/fundamental/Multithreading/" />
+  
+  
+</head>
+
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-[--w] px-8 lg:justify-center">
+  <div class="relative z-50 ltr:mr-auto rtl:ml-auto flex items-center">
+    <a class="-translate-y-[1px] text-2xl font-medium" href="https://suchismita-deb.github.io/"
+      >Technical Blog</a
+    >
+    <div
+      class="btn-dark text-[0] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 ltr:-mr-8 rtl:-ml-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Search..." />
+  </div>
+  <div id="search-results"></div>
+
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse">
+      
+      <a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/post/about/"
+        >About</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 rtl:space-x-reverse dark:invert ltr:lg:ml-14 rtl:lg:mr-14 lg:mt-0 lg:items-center"
+    >
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Suchismita-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/debsuchismita"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100vh-9rem)] max-w-[--w] px-8 pb-16 pt-14 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">Multithreading and Concurrency - Thread Process and Memory Model - Thread Creation, Thread Lifecycle and Inter Thread Communication. </h1>
+
+    
+    <div class="text-xs antialiased opacity-60">
+      
+      <time>Dec 19, 2024</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h3 id="multithreading-and-concurrency">Multithreading and Concurrency.</h3>
+<p>Multithreading is a technique that allows for concurrent (simultaneous) execution of two or more parts of a program for maximum utilization of a CPU. As a really basic example, multithreading allows you to write code in one program and listen to music in another.</p>
+<p>Programs are made up of process and thread.</p>
+<p>Concurrency is the ability of your program to deal (not doing) with many things at once and is achieved through multithreading. Concurrency is different from parallelism which is about doing many things at once.</p>
+<p><a href="https://www.educative.io/blog/multithreading-and-concurrency-fundamentals">https://www.educative.io/blog/multithreading-and-concurrency-fundamentals</a></p>
+<p><a href="https://medium.com/@lakshyachampion/a-comprehensive-guide-to-multithreading-and-concurrency-in-java-9bf8a0a0bb82">https://medium.com/@lakshyachampion/a-comprehensive-guide-to-multithreading-and-concurrency-in-java-9bf8a0a0bb82</a></p>
+<p><a href="https://www.educative.io/blog/top-five-concurrency-interview-questions-for-software-engineers">https://www.educative.io/blog/top-five-concurrency-interview-questions-for-software-engineers</a></p>
+<h3 id="what-is-thread-and-process">What is Thread and Process.</h3>
+<p>Process is an instance of a program that is getting executed. In process we have thread.</p>
+<p>There is one program.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Test</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Hello&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Compile the class <code>javac Test.java</code> - It will generate the bytecode that can be executed by JVM.</p>
+<p>Execution <code>java Test</code> - The bytecode needs to be executed. JVM starts the new Process, here the Test is the class that has the main method.</p>
+<p><strong>Process says it is an instance of a program that is getting executed.</strong></p>
+<p>It has its own resource like memory, thread. OS allocates these resources to process when its created. When one process is created it creates its own heap memory.</p>
+<p>When we execute a program a process is created and own heap memory is created and two process donot connect with each other.</p>
+<p>Thread is known as <strong>lightweight process</strong>. It is called as the smallest sequence of instruction that are executed by CPU independently.</p>
+<p>One process can have multiple thread. When a process is created it starts with one thread and that initial thread known as &ldquo;main thread&rdquo; and from that we can create multiple threads to perform task concurrently.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Multithreading</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thread name - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Output - <code>Thread name - main</code>.</p>
+<p>JVM has - heap, stack, core segment, data segment, register, program counter.</p>
+<p>Heap and stack are the only part were we need the garbage collector.</p>
+<h3 id="how-java-execute-the-program">How Java execute the program.</h3>
+<p>When a new program execute a new JVM instance is created.<br>
+New JVM has its own heap memory and how much memory allocated to the process can be adjusted by the command.
+<code>java -Xms256m -Xmx2g MainClassName</code></p>
+<ul>
+<li>
+<p><strong>Xms(size)</strong> - It will set the initial heap size here it is set to 256MB.</p>
+</li>
+<li>
+<p><strong>Xmx(size)</strong> - It is max heap size process can get, it is set to 2GB, if tries to allocate more memory then &ldquo;OutOfMemoryError&rdquo; will occur.</p>
+</li>
+</ul>
+<p>There can be multiple process using the heap memory the total is set to 2Gb.</p>
+<p><img src="image-7.png" alt="alt text"></p>
+<p>Image - Register, Stack, Counter - The thread does not share any resource. Thread share the code segment and data segment.</p>
+<h3 id="code-segment">Code Segment.</h3>
+<p>Contains the compiled BYTECODE of the Java program.<br>
+It is read only.<br>
+All threads within the same process shares the same code segment.</p>
+<h3 id="how-the-process-execute">How the process execute?</h3>
+<p><code>java Main</code> - It creates the process is created, JVM instance is created and it is used to interpret or JIT compiler to machine code.
+It create the thread assign the stack, register and counter are assigned. It will save the machine code in the code segment.</p>
+<p>The counter points to the address in the code segment where the thread start the execution.
+CPU will execute the machine code.</p>
+<p>Thread 1 will use the register store the data and send to the CPU to execute. OS schedule the JVM scheduler and it sechdule and manage the assignment of the thread to the CPU. The CPU will get the code part from the code segment and then run the thread. There are limit say 1 sec for a thread when it is done the result say done half is stored into the register of the thread the intermediate data is stored in the register and it is called <strong>Context Switching</strong> and CPU solve the next thread.</p>
+<p>Again when the thread comes it will come with the data and continue the execution.</p>
+<p>When there are 2 CPU (2 core or 8 core) then threads run parallely.</p>
+<h3 id="data-segment">Data Segment.</h3>
+<p>Contains the GLOBAL and STATIC variable.
+All treads within the same process, share the same data segment.
+Threads can read and modify the same data.
+Synchronization is requires between multiple treads.</p>
+<h3 id="heap">Heap.</h3>
+<p>Objects created at runtime using the new keyword are allocated in the heap. Process are not sharing the same heap. The thread inside the process share the same heap.
+Heap is shared among all teh threads of the same process but not within process.
+Treads can read and odify the heap data.
+Synchronization is required between multiple threds.</p>
+<h3 id="stack">Stack.</h3>
+<p>It manages method calls and local variable.</p>
+<h3 id="register">Register.</h3>
+<p>When JIT(Just-in time) compiles converts the bytecode into native machine code its uses register to optimized the generated machine code.
+Also helps in context switching.</p>
+<h3 id="counter">Counter.</h3>
+<p>It is program counter and it points to the instruction which is getting executed.
+Increments its counter after successfully execution of the instruction.
+Code segment has the machine code. Each thread are running a part of the code the counter point the address of the section.</p>
+<h2 id="multithreading">Multithreading.</h2>
+<p>Allows a program to perform multiple task at the same time. Multiple threads share the same resource such as memory space but still can perform task independently.<br>
+It improves performance by task parallelism.
+It does resource sharing.<br>
+It has concurrency issues like deadlock, data inconsistency.
+Needs synchronization and lock.
+Testing and debugging is difficult.</p>
+<h3 id="difference-between-multitasking-and-multithreading">Difference between multitasking and multithreading.</h3>
+<p>Multiple process running is Multitasking and multiple thread running inside the process is Multithreading.</p>
+<h3 id="ways-to-create-a-thread">Ways to create a thread.</h3>
+<ul>
+<li>
+<p>Implementing Runnable interface.</p>
+</li>
+<li>
+<p>Extending Thread class.</p>
+</li>
+</ul>
+<p>Interface - we can implement multiple interface.</p>
+<p>Runnable is a functional interface. The thread class implements runnable and it has all teh methods like creation of thread, run(), sleep(), start(), stop(), interrupt().</p>
+<h3 id="implementing-runnable">Implementing runnable.</h3>
+<p>Implement the Runnable Interface.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span> <span style="color:#66d9ef">implements</span> Runnable{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>(){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;The code executed by thread: &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span> <span style="color:#66d9ef">implements</span> Runnable{
+</span></span><span style="display:flex;"><span>    Thread t1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;The code executed by thread - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Functional interface is using the lambda.</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>It is not a thread. It is a class implementing Runnable. Now we have to invoke a thread to call the run method.</p>
+<p>Create an instance of the class that implements Runnable -&gt; Pass the runnable object to the thread constructor -&gt; Start the thread.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Going inside the main method - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        MyClass runnableObj <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyClass();
+</span></span><span style="display:flex;"><span>        Thread thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(runnableObj); <span style="color:#75715e">// Thread is created.</span>
+</span></span><span style="display:flex;"><span>        thread.<span style="color:#a6e22e">start</span>(); <span style="color:#75715e">// It will call the run method inside the Thread class. Inside the run() method there is target.run and the target is the runnable object. The run() of the runnable object will start.</span>
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Completed the main method - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentthread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The output.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>Going inside the main method - main.
+</span></span><span style="display:flex;"><span>Completed the main method - main.
+</span></span><span style="display:flex;"><span>The code is executed by thread - Thread-0
+</span></span></code></pre></div><p>The main thread is going and one new thread is created.</p>
+<p>One class can extend one class and implement multiple interface and the class is not the thread. It can do other work and also create thread.</p>
+<h3 id="extending-the-thread-class">Extending the Thread class.</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> classMyClass <span style="color:#66d9ef">extends</span> Thread{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>(){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Code is executed by thread - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Initiate and start the thread.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Going inside the main method - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        MyClass thread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyClass(); <span style="color:#75715e">// No need to create the thread class.</span>
+</span></span><span style="display:flex;"><span>        thread.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Finish main method - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="thread-lifecycle">Thread Lifecycle.</h3>
+<p>Image.
+<img src="image-8.png" alt="alt text"></p>
+<p>Runnable and running comes under same state and running state meaning waiting for the CPU and when got the CPU it is in running and when there is context switch then again it is in runnable state.</p>
+<table>
+<thead>
+<tr>
+<th>Lifecycle State</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>New</strong></td>
+<td>Thread has been created but not started. Its just an object in memory.</td>
+</tr>
+<tr>
+<td><strong>Runnable</strong></td>
+<td>Thread is ready to run. Waiting for CPU time.</td>
+</tr>
+<tr>
+<td><strong>Running</strong></td>
+<td>When thread start executing its code.</td>
+</tr>
+<tr>
+<td><strong>Blocked</strong></td>
+<td>Different scenarios where runnale thread goes into the Blocking state - I/O blocking like readinf from a file or databse. -Lok acquired - If thread want to lock on a resource which is locked by other thread,it has to wait. Releases all the MONITOR LOCKS.</td>
+</tr>
+<tr>
+<td><strong>Waiting</strong></td>
+<td>Thread goes into this state when we cal the wait() method, makes it non runnable. It goes back to runnable, once we call notify() or notifyAll() method. Releases all the MONITOR LOCKS.</td>
+</tr>
+<tr>
+<td><strong>Timed Waiting</strong></td>
+<td>Thread waits for specific period of time and comes back to runnable state, after specific conditions met like sleep(), join(). Do not release any MONITOR LOCKS.</td>
+</tr>
+<tr>
+<td><strong>Terminate</strong></td>
+<td>Life of the thread is completed, it cannot be started back again.</td>
+</tr>
+</tbody>
+</table>
+<p>In the runnable time it put the MONITOR LOCK.</p>
+<h3 id="monitor-lock">Monitor Lock.</h3>
+<p>It helps to make sure that only 1 thread goes inside the particular section of code(a synchronous block or method).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">method1</span>(){
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// It is a lock and only one thread will go at a time.</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>One object calls the method the synchronized will put a lock on object and when the task is finished then other lock will come and perform the task.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MonitorLockExample</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">task1</span>(){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Inside Task1.&#34;</span>);
+</span></span><span style="display:flex;"><span>            Thread.<span style="color:#a6e22e">sleep</span>(10000);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span>(Exception ex){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">task2</span>(){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Task2, before synchronized.&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span>(<span style="color:#66d9ef">this</span>){
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Task2, inside synchronized.&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">task3</span>(){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Task3&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>    MonitorLockExample obj <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MonitorLockExample();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    MonitorLockRunnable runnableObj <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MonitorLockRunnable(obj);
+</span></span><span style="display:flex;"><span>    Thread t1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(runnableObj);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Thread t2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(()<span style="color:#f92672">-&gt;</span>obj.<span style="color:#a6e22e">task2</span>());
+</span></span><span style="display:flex;"><span>    Thread t3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(()<span style="color:#f92672">-&gt;</span>obj.<span style="color:#a6e22e">task3</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    t1.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>    t2.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>    t3.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MonitorLockRunnable</span> <span style="color:#66d9ef">implements</span> Runnable{
+</span></span><span style="display:flex;"><span>    MonitorLockExample obj;
+</span></span><span style="display:flex;"><span>    MonitorLockRunnable(MonitorLockExample obj){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> obj;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>(){
+</span></span><span style="display:flex;"><span>        obj.<span style="color:#a6e22e">task1</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>t1 will start and task1 is synchronized and it will put a monitor lock by t1 on obj.</p>
+<p>Now t2 print the first line and now waiting the obj is in sleep for 10 sec. It is the same obj so waiting. Monitor lock will make sure only one thread works.</p>
+<p>T3 will work and print.</p>
+<p>When t1 is complete the task then it will go to t2 and print the line.</p>
+<p>The output.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>inside task1
+</span></span><span style="display:flex;"><span>task3
+</span></span><span style="display:flex;"><span>task before synchronized
+</span></span><span style="display:flex;"><span>task1 completed. // Waited for 10 sec to complete the task.
+</span></span><span style="display:flex;"><span>task2 inside synchronized
+</span></span></code></pre></div><p>When two thread works in the same object then only we put the lock inside the object.</p>
+<h3 id="example-of-the-thread-lifecycle">Example of the Thread lifecycle.</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InventoryProduct</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">boolean</span> itemAvailable <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// synchronized put the monitor lock.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addItem</span>(){
+</span></span><span style="display:flex;"><span>        itemAvailable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Iteam added by - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; add invoke all thread&#34;</span>);
+</span></span><span style="display:flex;"><span>        notifyAll(); <span style="color:#75715e">// All the thread waiting for the object will invoke.</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">consumeItem</span>(){
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// It will make the item available false and if not available then it should wait.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Consume method invoked by - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span>(<span style="color:#f92672">!</span>itemAvailable){
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thread &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>                wait(); <span style="color:#75715e">// It releases the monitor lock.</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">catch</span>(Exception ex){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Item consumed by &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        itemAvailable <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The ProductTask and ConsumeTask is using the Runnable. We can use Lambda.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProduceTask</span> <span style="color:#66d9ef">implements</span> Runnable{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Adding the task and sleep for 5 sec.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    SharedResource sharedResource;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ProduceTask(SharedResource resource){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sharedResource</span> <span style="color:#f92672">=</span> resource;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>(){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Producer thread - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span>            Thread.<span style="color:#a6e22e">sleep</span>(5000);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span>(Exception ex){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        sharedResource.<span style="color:#a6e22e">addItem</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ConsumerTask</span> <span style="color:#66d9ef">implements</span> Runnable{
+</span></span><span style="display:flex;"><span>    SharedResource sharedResource;
+</span></span><span style="display:flex;"><span>    ConsumerTask(sharedResource){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sharedResource</span> <span style="color:#f92672">=</span> sharedResource;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">run</span>(){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Consumer Thread - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>()getName());
+</span></span><span style="display:flex;"><span>        sharedResource.<span style="color:#a6e22e">consumeItem</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Main method started.&#34;</span>);
+</span></span><span style="display:flex;"><span>        SharedResource sharedResource <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SharedResource();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Producer thread.</span>
+</span></span><span style="display:flex;"><span>        Thread producerThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">new</span> ProducerTask(sharedResource));
+</span></span><span style="display:flex;"><span>        Thread consumerThread <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(<span style="color:#66d9ef">new</span> ConsumerTask(sharedResource));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Using Lambda.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Thread consumerThread = new Thread(()-&gt; {</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// System.out.println(&#34;ConsumerThread - &#34; + Thread.currentThread(0.getName()));</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//sharedResource.consumeItem(); });</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// In both the thread there are same object.</span>
+</span></span><span style="display:flex;"><span>        producerThread.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        consumerThread.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Main method end.&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Practice.</p>
+<p>Two thread, producer and consumer share a common fixed size buffer as a queue. The producers job is to generate the data and put it into the buffer while the consumers job is to get the data from the buffer.</p>
+<p>The problem is to make sure the priducer wont product data if the buffer is full, an wont consume the data if the buffer is empty.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ProducerConsumerExample</span>{
+</span></span><span style="display:flex;"><span>    Queue<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> q ;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> size ;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ProducerConsumerExample</span>(<span style="color:#66d9ef">int</span> size){
+</span></span><span style="display:flex;"><span>        q <span style="color:#f92672">=</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> size;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addData</span>(<span style="color:#66d9ef">int</span> data){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(q.<span style="color:#a6e22e">size</span>()<span style="color:#f92672">==</span>size){
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Queue is full wait for the consumer to consume the item.</span>
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Buffer is full, wait for the consumer to consume item.&#34;</span>);
+</span></span><span style="display:flex;"><span>            wait();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        q.<span style="color:#a6e22e">add</span>(data);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Produced &#34;</span> <span style="color:#f92672">+</span> data);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        notify();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">synchronized</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getData</span>(){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(q.<span style="color:#a6e22e">size</span>().<span style="color:#a6e22e">isEmpty</span>()){
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">printn</span>(<span style="color:#e6db74">&#34;Buffer is empty, Consumer is waiting for producer.&#34;</span>);
+</span></span><span style="display:flex;"><span>            wait();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> top <span style="color:#f92672">=</span> q.<span style="color:#a6e22e">poll</span>();
+</span></span><span style="display:flex;"><span>        notify();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> top;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The Producer will add the data in the queue.</p>
+<p>The Consumer will not get the when it is empty.</p>
+<p>The main class.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>        ProducerConsumer p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ProducerConsumer(5);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Thread t1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;The Producer Thread - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0;i<span style="color:#f92672">&lt;=</span>6;i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>            p.<span style="color:#a6e22e">addData</span>(19);
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        t1.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Thread t2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;The Consumer Thread - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0;i<span style="color:#f92672">&lt;=</span>6;i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>            p.<span style="color:#a6e22e">getData</span>();
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        t2.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="thread-joining-daemon-thread-thread-priority">Thread Joining, Daemon Thread, Thread Priority.</h3>
+<p>Why Stop, Resume, Suspended method is deprecated.</p>
+<p>wait - it releases the lock and make the thread free so that other can acquired the lock.</p>
+<p>Stop.
+Terminates the thread abruptly, no lock release no resource clean up happens.</p>
+<p>Suspend - Put the thread on hold (suspend) for temporarily. No lock us release too.</p>
+<p>Resume - Used to resume the execution of suspended thread.</p>
+<p>The operations can led yto issue like deadlock.</p>
+<p>Wait make the thread in wait state and it comes to active state when notify(). In wait() it releases the monitor lock and other thread can use.</p>
+<p>Suspend and resume is like wait and notify. In wait it will realise the lock.</p>
+<p>When use suspend and no resume then there is an issue and no lock release.
+When one thread is dependent on other and it goes to suspend and the lock is not released the thread will not able to continue.</p>
+<h3 id="thread-join">Thread join.</h3>
+<p>When join method is invoked on a thread object, Current thread will be blocked and waits for the specific thread to finish.</p>
+<p>It is helpful when we want to coordinate between threads or to ensure we complete certain task before moving ahead.</p>
+<p>Say main thread started thread1 and main thread end and thread 1 continue, when we use thread1 join then main thread will not stop and thread 1 will complete.</p>
+<h2 id="thread-priority">Thread Priority.</h2>
+<p>1 - low priority.
+10 - high priority.</p>
+<p>Even we set the thread priority while creation, it is not guaranteed to follow any specific order it is just a hint to thread scheduler which to execute next it is not a strict rule.</p>
+<p>When new thread is created, it inherit the priority of its parent thread.</p>
+<p>We can set custom priority using the <code>setPriority(int priority)</code> method.</p>
+<h2 id="daemon-thread">Daemon Thread.</h2>
+<p>Something running in async manner.</p>
+<p>There is user thread. Daemon thread is alive when the user thread is alive and when it is not alive the daemon thread will stop.</p>
+<h3 id="locks-and-semaphores">Locks and Semaphores.</h3>
+<p>synchronized is on object.
+When object 1 is using the method lock then monitor lock is on object1 and when object 2 is using the lock method then monitor lock is assigned to method 2.</p>
+<p>Any number of object can come to the method only one object can go inside the method. When all object are of same type then monitor lock can be used.</p>
+<p>There are 4 types of custom locks.</p>
+<h2 id="reentrantlock">ReentrantLock.</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SharedResource</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">boolean</span> isAvailable <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">producer</span>(ReentrantLock lock){
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Only the lock is there no need to see for same object or different object.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span>            lock.<span style="color:#a6e22e">lock</span>(); <span style="color:#75715e">// start the lock</span>
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lock acquired by - &#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>            isAvailable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>            Thread.<span style="color:#a6e22e">sleep</span>(4000);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">catch</span>(exception ex){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">finally</span>{
+</span></span><span style="display:flex;"><span>            lock.<span style="color:#a6e22e">unlock</span>(); <span style="color:#75715e">// release the lock.</span>
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lock release by - &#34;</span><span style="color:#f92672">+</span>Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>    ReentrantLock lock <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ReentrantLock();
+</span></span><span style="display:flex;"><span>    SharedResource resource1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SharedResource();
+</span></span><span style="display:flex;"><span>    Thread th1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>        resource1.<span style="color:#a6e22e">producer</span>(lock);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    SharedResource resource2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SharedResource();
+</span></span><span style="display:flex;"><span>    Thread th2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>        resource2.<span style="color:#a6e22e">producer</span>(lock);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Different object depends on the same lock.</span>
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    th1.<span style="color:#a6e22e">start</span>(); <span style="color:#75715e">// Passing different object.</span>
+</span></span><span style="display:flex;"><span>    th2.<span style="color:#a6e22e">start</span>(); <span style="color:#75715e">// In synchronized we can pass same object. Here we pass different object.</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The output.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>Lock by thread 1.
+</span></span><span style="display:flex;"><span>Release by Thread 1.
+</span></span><span style="display:flex;"><span>Lock by Thread 2.
+</span></span><span style="display:flex;"><span>Release by Thread 2.
+</span></span></code></pre></div><p>Shared Lock and Exclusive Lock.</p>
+<p>More than one thread can put shared lock in one resource. When one thread put shared lcok in one resource then another one cannot put exclusive lock.
+Exclusive lock is only taken when no lock is on the resource.</p>
+<p>In shared lock we can only read the resource and with exclusive lock we can also write on the resource.</p>
+<h3 id="readwritelock">ReadWriteLock.</h3>
+<p>ReadLock - More than 1 thread can acquire the read lock.
+WriteLock - Only 1 thread can acquire the write lock.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SharedResource</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">boolean</span> isAvailable <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">producer</span>(ReadWriteLock lock){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span>            lock.<span style="color:#a6e22e">readLock</span>().<span style="color:#a6e22e">lock</span>();
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Read lock acquired by - &#34;</span><span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>            isAvailable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>            Thread.<span style="color:#a6e22e">sleep</span>(8000);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">catch</span>(Exception ex){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">finally</span>{
+</span></span><span style="display:flex;"><span>            lock.<span style="color:#a6e22e">raedLock</span>().<span style="color:#a6e22e">unlock</span>();
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Read lock is release by - &#34;</span><span style="color:#f92672">+</span>Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">consume</span>(ReadWriteLock lock){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span>            lock.<span style="color:#a6e22e">writeLock</span>().<span style="color:#a6e22e">lock</span>();
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Write lock acquired by - &#34;</span><span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>            isAvailable <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">catch</span>(Exception ex){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">finally</span>{
+</span></span><span style="display:flex;"><span>            lock.<span style="color:#a6e22e">writeLock</span>().<span style="color:#a6e22e">unlock</span>();
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Write lock release by - &#34;</span><span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>.<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>        SharedResource resource <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SharedResource();
+</span></span><span style="display:flex;"><span>        ReadWriteLock lock <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ReentrantReadWriteLock();
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ReadWriteLock is an interface.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// ReentrantReadWriteLock is an implementation.</span>
+</span></span><span style="display:flex;"><span>        Thread t1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>            resource.<span style="color:#a6e22e">producer</span>(lock);
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        Thread t2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>            resource.<span style="color:#a6e22e">producer</span>(lock);
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// t1 is shared lock and t2 is shared lock.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Shared lock can be start with more than one thread.</span>
+</span></span><span style="display:flex;"><span>        SharedResource resource1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SharedResource();
+</span></span><span style="display:flex;"><span>        Thread t3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>            resource.<span style="color:#a6e22e">consume</span>(lock);
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Shared lock by t1 and t2 and t3 is exclusive lock. It is not allowed.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        t1.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        t2.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        t3.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The output.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>Read lock acquired by Thread 0.
+</span></span><span style="display:flex;"><span>Read lock acquired by Thread 1.
+</span></span><span style="display:flex;"><span>Read lock released by Thread 0.
+</span></span><span style="display:flex;"><span>Read lock released by Thread 1.
+</span></span><span style="display:flex;"><span>Write lock acquired by Thread 2.
+</span></span><span style="display:flex;"><span>Write lock released by Thread 2.
+</span></span></code></pre></div><p>When the read is much higher than write then we have to use ReadWriteLock.</p>
+<h3 id="stamped-lock">Stamped Lock.</h3>
+<p>Locks of two type - Optimistic and Pessimistic.</p>
+<p>Pessimistic is like the shared lock and all.</p>
+<p>Optimistic it does not put any locks and say in the tablethere is id, name and version when two thread come and read the id and say the vrsion is 123 then they update the name and version. In the time another thread working together coe an dsee the id and version is not 1 so it donot proceed again start the reading. In optimistic lock we have to share the state or version.</p>
+<p>// Code</p>
+<p>OPtimistic lock.</p>
+<p>There we read the stamp value and validate that when we read and when we will write the row number or version number is same.</p>
+<p>// Code.</p>
+<h3 id="semaphore">Semaphore.</h3>
+<p>Thread can go and work and it put lock. There is a permit say when it is permit 2 meaning 2 thread can go and work on the method.</p>
+<p>It will fix the value say at a time only 5 thread can come.</p>
+<p>// Code.</p>
+<p>When we are using the lock and not synchronized then there is inter thread communication.</p>
+<p>In synchronization there is monitor lock and wait and notify is used.</p>
+<p>In custom lock we have await and signal same as wait and notify.</p>
+<p>// Code.</p>
+<h3 id="lock-free-concurrency-atomic-and-volatile-variable">Lock Free Concurrency. Atomic and volatile variable.</h3>
+<p>Concurrency can be achieved using 2 ways - Lock Based Mechanism and Lock Free Mechanism.</p>
+<h3 id="lock-based-mechanism">Lock Based Mechanism.</h3>
+<p>Synchronized.<br>
+Reentrant.<br>
+Stamped.<br>
+ReadWrite.<br>
+Semaphores.</p>
+<h3 id="lock-free-mechanism">Lock Free Mechanism.</h3>
+<p>CAS Operation (Compare and Swap)</p>
+<p>AtomicInteger.<br>
+AtomicBoolean.<br>
+AtomicLong.<br>
+AtomicReference.</p>
+<h3 id="lock-free-mechanism-1">Lock Free Mechanism.</h3>
+<p>It uses CAS technique.</p>
+<p>It is a low level operation. It is atomic.<br>
+All modern processor supports it.</p>
+<p>It involves 3 main part.</p>
+<p>Memory location - Location where variable is stored.<br>
+Expected Value - Value which should be preseny at the memory. ABA problem is solved using version or timestamp.<br>
+New Value - Value to be written to memory. The current value matches the expected value.</p>
+<p>OPtimistic lock is for db and CAS is for CPU.</p>
+<h3 id="atomic">Atomic.</h3>
+<p>It means all or nothing.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>        SharedResource resource <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SharedResource();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0;i<span style="color:#f92672">&lt;</span>10;i<span style="color:#f92672">++</span>){
+</span></span><span style="display:flex;"><span>            resource.<span style="color:#a6e22e">increment</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(resource.<span style="color:#a6e22e">get</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SharedResource</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> counter;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">increment</span>(){
+</span></span><span style="display:flex;"><span>        counter<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get</span>(){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> counter;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>        SharedResource resource <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SharedResource();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Thread t1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0;i<span style="color:#f92672">&lt;</span>100;i<span style="color:#f92672">++</span>){
+</span></span><span style="display:flex;"><span>                resource.<span style="color:#a6e22e">increment</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        Thread t2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0;i<span style="color:#f92672">&lt;</span>100;i<span style="color:#f92672">++</span>){
+</span></span><span style="display:flex;"><span>                resource.<span style="color:#a6e22e">increment</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        t1.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        t2.<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span>            t1.<span style="color:#a6e22e">join</span>();
+</span></span><span style="display:flex;"><span>            t2.<span style="color:#a6e22e">join</span>();
+</span></span><span style="display:flex;"><span>        }<span style="color:#66d9ef">catch</span>(Exception ex){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(resource.<span style="color:#a6e22e">get</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The counter is not atomic so thread will read the same value and the counter value is not correct. In the counter there are 3 steps happening like read the counter value, modify and then update the counter value.</p>
+<p>There are two ways to make it synchronous.</p>
+<p>Using lock like synchronized.<br>
+Using lock free operation like AtomicInteger.</p>
+<p>In synchronized we can put lock in the method synchronized.<br>
+In AtomicInteger.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SharedResource</span>{
+</span></span><span style="display:flex;"><span>    AtomicInteger counter <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AtomicInteger(0);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">increment</span>(){
+</span></span><span style="display:flex;"><span>        counter.<span style="color:#a6e22e">incrementAndGet</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get</span>(){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> counter.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>CPU store the value in L1 cache and every CPU has L1 cache and all L1 cache has combined to store the data in L2 cache and it store in memory.</p>
+<p>Say one int x=10, now thread in l1 read x=10 and did x++ and put in L1 cache and now thread t2 from another CPU will read from memory and in memory the value of x is 10.<br>
+The value is not correct.</p>
+<p>The solution is to use volatile x=10. It read and write the data in memory. It will not store anything in cache and it will store in memory and read the data memory.</p>
+<p>Volatile will show any chnage done by one thread visible to other thread.</p>
+<p>Atomic is thread safe. Volatile is not related with thread.</p>
+<h3 id="thread-pool">Thread Pool.</h3>
+<p>Thread pool is a collection of thread (workers) which are available to perform the submitted tasks.<br>
+Once task completed, orker thread get back to Thread Pool and wait for new task to assigned.<br>
+Means threads can be reused.</p>
+<h3 id="what-is-the-advantage-of-thread-pool">What is the advantage of Thread Pool.</h3>
+<p>Thread Creation can be saved.<br>
+When each thread created, space is allocated to it (stack, heap, program counter) and this takes time.<br>
+With thread, this can be avoided by reusing the thread.</p>
+<p>Overhead of managing thethread lifecycle can be removed.<br>
+Thread has different state like running, witing, terminating and managing thread state includes complexity.<br>
+Thread pool abstract away this management.</p>
+<p>Inceased the performance.<br>
+More threads means more Context Switching time, using control over thread creation excess context switching can be avoided.</p>
+<p>There are 2 CPU and there are multiple thread, it not separate when there are more thread working it is mainly the context switching.</p>
+<p>The framework is in java.util.concurrent package.</p>
+<p>Image.
+The interface Executor has the method execute()<br>
+ExecutorService has more method like manage(), shutDown().</p>
+<h3 id="threadpoolexecutor">ThreadPoolExecutor.</h3>
+<p>It helps to create a customizable ThreadPool.</p>
+<p>Process and Flow of the ThreadPoolExecutor.</p>
+<p>Total of 5 task came to the thread pool executor and There are 3 thread inside the pool amoung the 5 task, 3 of the task is assigned to the thread in the thread pool. Task 1 - thread 1, Task 2 - thread 2, Task 3 - thread 3.<br>
+The next 2 task are inside the queue a total of say 5 queue size is given and inside the queue there is task 4 and task 5.</p>
+<p>Now another 5 task came to the executor. Queue size 5, task 4 and task 5 is in the queue. Queue will take 3 task from the new task slot.<br>
+Now all the thread are working and queue is full. Now say another 3 task came to the executor.</p>
+<p>The task will not be rejected it will first see the max thread size. The min thread size was 3 and the max thread size is 5. There are 2 thread that can work. The task 9 and task 10 are assigned to the thread 4 and thread 5.
+The pool is filled and the queue is filled and the max thread is also working.<br>
+Any other task will be rejected.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ThreadPoolExecutor</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> corePoolSize,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> maximumPoolSize,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">long</span> keepAliveTime,
+</span></span><span style="display:flex;"><span>    TimeUnit unit,
+</span></span><span style="display:flex;"><span>    BlockingQueue<span style="color:#f92672">&lt;</span>Runnable<span style="color:#f92672">&gt;</span> workQueue,
+</span></span><span style="display:flex;"><span>    ThreadFactory threadFactory,
+</span></span><span style="display:flex;"><span>    RejectedExecutionHandler handler
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><strong>corePoolSize</strong> - Number of threads are initially created and keep in the pool, even if they are idle.<br>
+<strong>allowCoreThreadTimeOut</strong> - If it is set to TRUE(default is FALSE) idle thread kept alive till time specific by KeepAliveTime.<br>
+<strong>keepAliveTime</strong> - Thread which are idle get terminated after this time.<br>
+<strong>maxPoolSize</strong> - Maximum number of thread allowed in a pool. If number of thread are equal to the corePoolSize and queue is also full then new threads are created till its less than maxPoolSize. Excess thread will remain in pool, this pool is not shutdown or if <code>allowCoreThreadTimeOut</code> set to true then excess thread get terminated after remain idle for <code>KeepAliveTime</code>.<br>
+<strong>TimeUnit</strong> - TimeUnit for the KeepAliveTime millisecond, second, hour.<br>
+<strong>BlockingQueue</strong> - Queue used to hold task, before they got picked by the worker thread.<br>
+|&ndash;<strong>BoundedQueue</strong> - Queue with FIXED capacity. <code>ArrayBlockingQueue</code>.<br>
+|&ndash;<strong>UnboundedQueue</strong> - Queue with No Fixed capacity. <code>LinkedBlockingQueue</code>.<br>
+<strong>ThreadFactory</strong> - Factory for creating new thread. <code>ThreadPoolExecutor</code> use this to create new thread the factory provide the interface to give custom thread name, thread priority.<br>
+<strong>RejectedExecutionHandler</strong> - Handler for tasks that cannot be accepted by thread pool.<br>
+Generally logging logic can be put for debugging purpose.<br>
+There are few type of hanlders.<br>
+new ThreadPoolExecutor.AbortPolicy - throws RejectedExecutionException<br>
+new ThreadPoolExecutor.CallerRunsPolicy - Executed the rejected task in the caller thread (thread that attempted to sunmit the task)<br>
+new ThreadPoolExecutor.DiscardPolicy - Silently discard the Rejected task without throwing any exception.<br>
+new ThreadPoolExecutor.DiscardOldestPolicy - discard the oldest task in the queue to accomodate new task.</p>
+<p>Lifecycle Of ThreadPoolExecutor.</p>
+<p>Running - Executor i in running state and submit() method will be used to add new task.</p>
+<p>Shutdown - Executor do not accept new tasks, but continue to process existing tasks, once existing taks finished, executor moves to terminate state. Method used shutdown().</p>
+<p>Stop (force shutdown) - Executor do not accept new tasks.<br>
+Executor forcefully stops all the tasks which are currently executing.<br>
+And once fully shutdown moves to terminate state.<br>
+Method used shutdownNow()</p>
+<p>Terminated - End of life for particular ThreadPoolExecutor.<br>
+isTerminated() method can be used to see if particular thread pool executor is terminated or not.</p>
+<p>Example.</p>
+<p>MinSize = 2, MaxSize = 4, Queue size = 2, Tasks = 4.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(string args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>        ThreadPoolExecutor executor <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadPoolexecutor(2,4,10,TimeUnit.<span style="color:#a6e22e">MINUTES</span>, <span style="color:#66d9ef">new</span> ArrayBlockingQueue<span style="color:#f92672">&lt;&gt;</span>(2), <span style="color:#66d9ef">new</span> CustomThreadFactory(), <span style="color:#66d9ef">new</span> CustomRejectHandler());
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// In the threadFactory we can use the Executors.defaultThreadFactory().</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// In the RejectHandler we can put new ThreadPoolExecutor.DiscardOldestPolicy().</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Task count 4.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0;i<span style="color:#f92672">&lt;=</span>4;i<span style="color:#f92672">++</span>){
+</span></span><span style="display:flex;"><span>            executor.<span style="color:#a6e22e">submit</span>(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span>                    Thread.<span style="color:#a6e22e">sleep</span>(5000);
+</span></span><span style="display:flex;"><span>                }<span style="color:#66d9ef">catch</span>(Exception ex){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Task processed by - &#34;</span><span style="color:#f92672">+</span>Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>            });
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// The submit takes the runnable an dwe have to use lambda.</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        executor.<span style="color:#a6e22e">shutdown</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomThreadFactory</span> <span style="color:#66d9ef">implements</span> ThreadFactory{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Thread <span style="color:#a6e22e">newThread</span>(Runnable r){
+</span></span><span style="display:flex;"><span>        Thread th <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Thread(r);
+</span></span><span style="display:flex;"><span>        th.<span style="color:#a6e22e">setPriority</span>(Thread.<span style="color:#a6e22e">NORM_PRIORITY</span>);
+</span></span><span style="display:flex;"><span>        th.<span style="color:#a6e22e">setDaemon</span>(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> th;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomRejectHandler</span> <span style="color:#66d9ef">implements</span> RejectedExecutionHandler{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rejectedExecution</span>(Runnable r, ThreadPoolExecutor executor){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Task Rejected - &#34;</span> <span style="color:#f92672">+</span> r.<span style="color:#a6e22e">toString</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The output.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>Task processed by - Thread 1.
+</span></span><span style="display:flex;"><span>Task processed by - Thread 0.
+</span></span><span style="display:flex;"><span>Task processed by - Thread 1.
+</span></span><span style="display:flex;"><span>Task processed by - Thread 0.
+</span></span></code></pre></div><p>Task 5 and Task 6 will be assigned to new thread.
+Task 7 will be rejected.</p>
+<h3 id="why-the-core-pool-size-is-2">Why the core pool size is 2.</h3>
+<p>It depends on various factor - CPU size (CPU core is 2 and there are total of 100 thread then more context switch will be happening and it is not useful.)<br>
+JVM memory.<br>
+Task Nature - CPU intensive(less thread and cpu is busy in doing the task) or IO intensive (more thread can be assigned).<br>
+Conurrency requirement (want high, medium or low concurrency)<br>
+Memory required to process a request.<br>
+Throughput.</p>
+<p>Its better to do and test which value is more efficient.<br>
+Formula for number of thread.<br>
+Max number of thread = Number of CPU core * (1+(request waiting time/procesing time))</p>
+<p>Number of CPU core - 64.<br>
+Request waiting time (IO task)= 50ms.<br>
+Processing time (CPU task)= 100ms.</p>
+<p>64 + (1*50/100) = ~64 approx.</p>
+<p>It is only focussing on the task nature, CPU core and throughput.</p>
+<p>It does not consider the Memory and the JVM total memory.</p>
+<p>JVM = 2GB.<br>
+Heap Space = 1 GB. Code cache space = 128 MB. perThreadSpace = 5MB*Number of threads(include ThreadStack space) JVM Overhead = 256MB.</p>
+<p>Total = 128+1000+256+x = 2000
+x = 500mb of thread space.</p>
+<p>1 thread say takes 5 MB.
+Total thread count = 500/5 = 100 thread.</p>
+<p>Per Request requires 10 MB space to fulfill the request.</p>
+<p>When there is 100 thread then total memory space = 100*10 Mb = 1000Mb.</p>
+<p>Heap space = 1Gb. entire 1 Gb cannot be used say 600Mb can be used. 60% of heap memory can be used in thread.</p>
+<p>So thread count = 60*10Mb = 600Mb.</p>
+<p>So thread can be 60 to 64 (based on request and CPU).</p>
+<h3 id="future-callable-and-completablefuture">Future, Callable and CompletableFuture.</h3>
+<p>In the threadpool executor if the main method wants to know the status of the thread. It is completed or failed.</p>
+<p>In the code there is no way to get the status. Main thread will call the thread in async mode and continue.</p>
+<p>The submit methos returns future. When calling the submit method we can store in future and get the detials in the future.</p>
+<h3 id="future">Future.</h3>
+<p>Interface which represents the result of the async task.</p>
+<p>Means it allows to see if computation is complete. Get the result. Take care of exception if any.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>    ThreadPoolExecutor poolExecutor <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadPoolExecutor(1,1,1,TimeUnit.<span style="color:#a6e22e">HOURS</span>,<span style="color:#66d9ef">new</span> ArrayBlockingQueue<span style="color:#f92672">&lt;&gt;</span>(10),Executors.<span style="color:#a6e22e">defaultThreadFactory</span>(),<span style="color:#66d9ef">new</span> ThraedPoolExecutor.<span style="color:#a6e22e">AbortPolicy</span>());
+</span></span><span style="display:flex;"><span>    Future<span style="color:#f92672">&lt;?&gt;</span> futureObj <span style="color:#f92672">=</span> poolExecutor.<span style="color:#a6e22e">submit</span>(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;The task is executed by thread.&#34;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Caller can see the status of the thread it is created.</span>
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(FutureObj.<span style="color:#a6e22e">isDone</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In Future there are 5 methods.</p>
+<table>
+<thead>
+<tr>
+<th>Methods in Future Interface</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>boolean cancel(boolean mayInterruptIfRunning)</strong></td>
+<td>Attempts to cancel the execution of the task. Returns false, if task can not be cancelled(as task already completed) returns true otherwise.</td>
+</tr>
+<tr>
+<td><strong>boolean isCancelled()</strong></td>
+<td>Returns true is the task was cancelled before it gets completed.</td>
+</tr>
+<tr>
+<td><strong>boolean isDone()</strong></td>
+<td>Returns true if this task completed. Completion may be due to normal termination an exception or cancellation all of these cases, this method will return true.</td>
+</tr>
+<tr>
+<td><strong>V get()</strong></td>
+<td>Wait of required, for the completion of task. The main thread will wait the task will complete then it will continue. After task is completed retrieve the result when available.</td>
+</tr>
+<tr>
+<td><strong>V get(long timeout, TimeUnit unit)</strong></td>
+<td>Wait if requiered for at most the given timeout period. Throws <code>TimeOutException</code> if timeout period finished and task is not yet completed.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>    ThreadPoolExecutor poolExecutor <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadPoolExecutor(1,1,1,TimeUnit.<span style="color:#a6e22e">HOURS</span>, <span style="color:#66d9ef">new</span> ArrayBlockingQueue<span style="color:#f92672">&lt;&gt;</span>(10), Executors.<span style="color:#a6e22e">defaultThreadFactory</span>(), <span style="color:#66d9ef">new</span> ThreadPoolExecutor.<span style="color:#a6e22e">AbortPolicy</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Future<span style="color:#f92672">&lt;?&gt;</span> futureObj <span style="color:#f92672">=</span> poolExecutor.<span style="color:#a6e22e">submit</span>(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span>            Thread.<span style="color:#a6e22e">sleep</span>(7000);
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Task is executed by thread.&#34;</span>);
+</span></span><span style="display:flex;"><span>        }<span style="color:#66d9ef">catch</span>(Exception ex){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;is done&#34;</span> <span style="color:#f92672">+</span> futureObj.<span style="color:#a6e22e">isDone</span>());
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span>        futureObj.<span style="color:#a6e22e">get</span>(2,TimeUnit.<span style="color:#a6e22e">SECONDS</span>);
+</span></span><span style="display:flex;"><span>    }<span style="color:#66d9ef">catch</span>(Exception ex){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;TimeOutException.&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">catch</span>(Exception ex){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span>        futureObj.<span style="color:#a6e22e">get</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">catch</span>(Exception ex){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>futureObj.get(2,TimeUnit.SECONDS) it will wait for 2 sec and see the task is not completed and then it will throw the exception.</p>
+<p>futureObj.get() will wait till the task is completed.</p>
+<p>submit() can be submit(Runnable), submit(Runnable, T), submit(Callable<!-- raw HTML omitted -->)</p>
+<h3 id="callable">Callable</h3>
+<p>Callable represents the task which need to be executed just like
+runnable. Difference is Runnable donot have any return type. Callable has the capability to return a value.</p>
+<h3 id="completablefuture">CompletableFuture.</h3>
+<p>Introduced in Java 8.
+Advanced version of Future providing additional capability like chaining.
+<strong>CompletableFuture.supplyAsync</strong> - <code>public static&lt;T&gt; CompletableFuture&lt;T&gt; supplyAsync(Supplier&lt;T&gt; supplier)</code><br>
+<code>public static&lt;T&gt; CompletableFuture&lt;T&gt; applyAsync(Supplier&lt;T&gt; supplier, Executor executor)</code></p>
+<p>supplyAsync method initiates an Async operation.<br>
+&lsquo;supplier&rsquo; is executed asynchronously in a separate thread.<br>
+If we want more control on Threads we can pass Executor in the method.
+By default it uses shared Fork-Join Pool executor. It dynamically adjust its pool size based on the processors.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String args<span style="color:#f92672">[]</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        ThreadPoolExecutor poolExecutor <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ThreadPoolExecutor(1,1,1,TimeUnit.<span style="color:#a6e22e">HOURS</span>, <span style="color:#66d9ef">new</span> ArrayBlockingQueue<span style="color:#f92672">&lt;&gt;</span>(10), Executors.<span style="color:#a6e22e">defaultThreadFactory</span>(), <span style="color:#66d9ef">new</span> ThreadPoolExecutor.<span style="color:#a6e22e">AbortPolicy</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        CompletableFuture<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> asyncTask1 <span style="color:#f92672">=</span> CompletableFuture.<span style="color:#a6e22e">supplyAsyc</span>(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Task completed&#34;</span>;
+</span></span><span style="display:flex;"><span>        }, poolExecutor);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(asyncTask1.<span style="color:#a6e22e">get</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">catch</span>(Exception ex){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong>thenApply and thenApplyAsync</strong></p>
+<p>Apply a function to the result of previous Async computation.<br>
+Return new CompletableFuture object.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CompletableFuture<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> asyncTask1 <span style="color:#f92672">=</span> CompletableFuture.<span style="color:#a6e22e">supplyAsync</span>(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Java and &#34;</span>;
+</span></span><span style="display:flex;"><span>}, poolExecutor).<span style="color:#a6e22e">thenApply</span>((String val) <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> val<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;DSA&#34;</span>;
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>thenApply will execute after teh supplyAsync.</p>
+<p>thenApply is a synchronous execution and it uses same thread which completed the previous async task.</p>
+<p>thenApplyAsync method is a asynchronous execution. It uses different thread (from &lsquo;fork-join&rsquo; pool, if we donot provide the executor in the method) to complete the function.</p>
+<p>If multiple thenApplyAsync is used ordering cannot be guarantee, then will run concurrently.</p>
+<p><strong>thenCompose and thenComposeAsync</strong> - chain together dependent Async operations.</p>
+<p>Means when next async operation deends on the result of the previous we can tied them together.
+For async tasks, we can bring some ordering using it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>CompletableFuture<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> asyncTask1 <span style="color:#f92672">=</span> CompletableFuture
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">supplyAsync</span>(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thread name which run &#39;supplyAsync&#39;&#34;</span> <span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>.<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Java and &#34;</span>;
+</span></span><span style="display:flex;"><span>}, poolExecutor)
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">thenCompose</span>((String val)<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> CompletableFuture.<span style="color:#a6e22e">supplyAsync</span>(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thread Name which run thenCompose&#34;</span><span style="color:#f92672">+</span> Thread.<span style="color:#a6e22e">currentThread</span>.<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> val<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;DSA&#34;</span>;
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>thenCompose - same thread will work. theComposeAsync - new thread.</p>
+<p>When there are multiple thenComposeAsync then also the order will be maintained.</p>
+<p><strong>thenAccept and thenAcceptAsync</strong> - Last part in the async operation. It does not return anything.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>CompletableFuture<span style="color:#f92672">&lt;</span>Void<span style="color:#f92672">&gt;</span> asyncTask1 <span style="color:#f92672">=</span> CompletableFuture.<span style="color:#a6e22e">supplyAsync</span>(()<span style="color:#f92672">-&gt;</span>{
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(Thread.<span style="color:#a6e22e">currentThread</span>.<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Java and &#34;</span>;
+</span></span><span style="display:flex;"><span>},poolExecutor)
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">thenAccept</span>((String val)<span style="color:#f92672">-&gt;</span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;All steps completed.&#34;</span>));
+</span></span></code></pre></div><p><strong>thenCombine and thenCombineAsync</strong> - Used to combine the result of 2 completable future.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>CompletableFuture<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> asyncTask1 <span style="color:#f92672">=</span> CompletableFuture.<span style="color:#a6e22e">supplyAsunc</span>(()<span style="color:#f92672">-&gt;</span>{<span style="color:#66d9ef">return</span> 12},poolExecutor);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CompletableFuture<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> asyncTask2 <span style="color:#f92672">=</span> CompletableFuture.<span style="color:#a6e22e">supplyAsync</span>(()<span style="color:#f92672">-&gt;</span>{<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Java&#34;</span>},poolExecutor);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CompletableFuture<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> combinedFutureObj <span style="color:#f92672">=</span> asyncTask1.<span style="color:#a6e22e">thenCombine</span>(asyncTask2, (Integer val1, String val2) <span style="color:#f92672">-&gt;</span> val1<span style="color:#f92672">+</span>val2);
+</span></span></code></pre></div><h3 id="difference-between-future-and-completablefuture">Difference between Future and CompletableFuture.</h3>
+<table>
+<thead>
+<tr>
+<th>Future</th>
+<th>CompletableFuture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/interviewquestion"
+      >interviewQuestion</a
+    >
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/java"
+      >java</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  >
+    
+    <a class="ltr:pr-3 rtl:pl-3" href="https://suchismita-deb.github.io/post/dsa/bitManipulation/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>Bit Manipulation</span></a
+    >
+    
+    
+    <a class="ltr:ml-auto rtl:mr-auto justify-end pl-3" href="https://suchismita-deb.github.io/post/java/fundamental/CollectionFramework/"
+      ><span>Java Collection Framework</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+<footer
+  class="mx-auto flex h-[4.5rem] max-w-[--w] items-center px-8 text-xs uppercase tracking-wider opacity-60"
+>
+  <div class="mr-auto">
+  
+    &copy; 2025
+    <a class="link" href="https://suchismita-deb.github.io/">Technical Blog</a>
+  
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+  <script src="/search.js"></script>
+
+</footer>
+
+</body>
+
+
+</html>

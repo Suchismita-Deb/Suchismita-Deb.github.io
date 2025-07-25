@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mongodb on Technical Blog</title>
+    <link>https://suchismita-deb.github.io/tags/mongodb/</link>
+    <description>Recent content in mongodb on Technical Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Jun 2025 00:29:31 +0530</lastBuildDate>
+    <atom:link href="https://suchismita-deb.github.io/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Content</title>
+      <link>https://suchismita-deb.github.io/post/content/</link>
+      <pubDate>Sun, 08 Jun 2025 00:29:31 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/content/</guid>
+      <description>Java Topic Link Interview https://suchismita-deb.github.io/tags/interviewquestion/ Java https://suchismita-deb.github.io/tags/java/ Git https://suchismita-deb.github.io/tags/git/ Spring Topic Link Spring https://suchismita-deb.github.io/tags/spring/ Redis https://suchismita-deb.github.io/tags/redis/ Crud https://suchismita-deb.github.io/tags/crud/ Rest https://suchismita-deb.github.io/tags/rest/ JDBC https://suchismita-deb.github.io/tags/jdbc/ Spring Boot Course https://suchismita-deb.github.io/tags/springbootcourse/ Spring Security https://suchismita-deb.github.io/tags/spring-security/ System Design Topic Link Computer Network https://suchismita-deb.github.io/tags/computer-networks/ Design Pattern Topic Link DSA Topic Link Bit Manipulation https://suchismita-deb.github.io/tags/dsa/ Behavioral Interview Topic Link Behavioral Interview https://suchismita-deb.github.io/tags/behavoiral-interview/ Collection of Books. Book Name Link. System Design Handbook. Link OS Notes Link. Grokking the advanced System Design Interview.</description>
+    </item>
+    <item>
+      <title>DTO Learning</title>
+      <link>https://suchismita-deb.github.io/post/spring/dto_learning/</link>
+      <pubDate>Fri, 02 Feb 2024 13:06:19 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/spring/dto_learning/</guid>
+      <description>DTO Data Transfer Object. Most widely used design pattern to transfer the data between client and the server.
+Client sends the DTO object and it will send the DTO object in the HTTP request and the server will extract the object from the request and use the DTO object. Server will create the DTO object and the server will send the DTO object in the response of the REST API. The main use of using DTO is to reduce the remote calls.</description>
+    </item>
+    <item>
+      <title>Spring with MongoDb database CRUD operation.</title>
+      <link>https://suchismita-deb.github.io/post/spring/springmongodbcrud/</link>
+      <pubDate>Mon, 20 Nov 2023 21:02:34 +0530</pubDate>
+      <guid>https://suchismita-deb.github.io/post/spring/springmongodbcrud/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,809 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+        class="not-ready lg:text-base"
+        style="--bg: #faf8f1"
+        lang="en-us"
+        dir="ltr"
+>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Kafka Internal Architecture. - Technical Blog</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Inside the Broker - How the data plane works, control plane works, Compaction works, Key based topic retention works through the compaction.
+Durability, Availability and Ordering Guarantees.
+Consumer Group Protocol.
+Transactions.
+Tiered Storage.
+Elasticity.
+Geo-Replication.
+Overview of Kafka Architecture.Kafka is designed as an event streaming application so that the application can run on those new events immediately as they occur.
+The core is the storage system showing in the bottom." />
+  <meta name="author" content="SUCHISMITA DEB" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://suchismita-deb.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/theme.svg" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/6fd8df4abe41f17fd8e2dd7d97b5cc8c?s=160&amp;d=identicon" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link
+    rel="icon"
+    href="https://suchismita-deb.github.io/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://suchismita-deb.github.io/apple-touch-icon.png"
+  />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+
+
+
+  
+  <meta name="generator" content="Hugo 0.120.4">
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Kafka Internal Architecture.">
+<meta itemprop="description" content="Inside the Broker - How the data plane works, control plane works, Compaction works, Key based topic retention works through the compaction.
+Durability, Availability and Ordering Guarantees.
+Consumer Group Protocol.
+Transactions.
+Tiered Storage.
+Elasticity.
+Geo-Replication.
+Overview of Kafka Architecture.Kafka is designed as an event streaming application so that the application can run on those new events immediately as they occur.
+The core is the storage system showing in the bottom."><meta itemprop="datePublished" content="2025-06-16T23:46:23+05:30" />
+<meta itemprop="dateModified" content="2025-06-16T23:46:23+05:30" />
+<meta itemprop="wordCount" content="3713">
+<meta itemprop="keywords" content="spring,kafka," />
+  
+  <meta property="og:title" content="Kafka Internal Architecture." />
+<meta property="og:description" content="Inside the Broker - How the data plane works, control plane works, Compaction works, Key based topic retention works through the compaction.
+Durability, Availability and Ordering Guarantees.
+Consumer Group Protocol.
+Transactions.
+Tiered Storage.
+Elasticity.
+Geo-Replication.
+Overview of Kafka Architecture.Kafka is designed as an event streaming application so that the application can run on those new events immediately as they occur.
+The core is the storage system showing in the bottom." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suchismita-deb.github.io/post/spring/kafka/KafkaInternalArchitecture/KafkaArchitecture/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2025-06-16T23:46:23+05:30" />
+<meta property="article:modified_time" content="2025-06-16T23:46:23+05:30" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Kafka Internal Architecture."/>
+<meta name="twitter:description" content="Inside the Broker - How the data plane works, control plane works, Compaction works, Key based topic retention works through the compaction.
+Durability, Availability and Ordering Guarantees.
+Consumer Group Protocol.
+Transactions.
+Tiered Storage.
+Elasticity.
+Geo-Replication.
+Overview of Kafka Architecture.Kafka is designed as an event streaming application so that the application can run on those new events immediately as they occur.
+The core is the storage system showing in the bottom."/>
+
+  
+  
+
+  
+  <link rel="canonical" href="https://suchismita-deb.github.io/post/spring/kafka/KafkaInternalArchitecture/KafkaArchitecture/" />
+  
+  
+</head>
+
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-[--w] px-8 lg:justify-center">
+  <div class="relative z-50 ltr:mr-auto rtl:ml-auto flex items-center">
+    <a class="-translate-y-[1px] text-2xl font-medium" href="https://suchismita-deb.github.io/"
+      >Technical Blog</a
+    >
+    <div
+      class="btn-dark text-[0] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 ltr:-mr-8 rtl:-ml-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Search..." />
+  </div>
+  <div id="search-results"></div>
+
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse">
+      
+      <a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/post/about/"
+        >About</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 rtl:space-x-reverse dark:invert ltr:lg:ml-14 rtl:lg:mr-14 lg:mt-0 lg:items-center"
+    >
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Suchismita-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/debsuchismita"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100vh-9rem)] max-w-[--w] px-8 pb-16 pt-14 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">Kafka Internal Architecture.</h1>
+
+    
+    <div class="text-xs antialiased opacity-60">
+      
+      <time>Jun 16, 2025</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>Inside the Broker - How the data plane works, control plane works, Compaction works, Key based topic retention works through the compaction.</p>
+<p>Durability, Availability and Ordering Guarantees.</p>
+<p>Consumer Group Protocol.</p>
+<p>Transactions.</p>
+<p>Tiered Storage.</p>
+<p>Elasticity.</p>
+<p>Geo-Replication.</p>
+<p><figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/KafkaArchitecture.png" alt="Kafka Architecture">
+    <figcaption>Overview of Kafka Architecture.</figcaption>
+</figure>
+
+Kafka is designed as an event streaming application so that the application can run on those new events immediately as they occur.</p>
+<p>The core is the storage system showing in the bottom. It stores the data efficiently as an event. It is also designed as a distributed system so if there is a need to increase the storage it will accommodate its storage.</p>
+<p>There are 2 primitive APIs for accessing the data in the storage - Producer API and Consumer API.</p>
+<p>There is Connect API that is to integrate Kafka with the ecosystem. There is the source and sink.</p>
+<p>There is another high level API is the Processing one is the Kafka Stream and another one is more declarative called KSQL.</p>
+<p>The storage and the processing needs are different and it can be scaled out independently.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/Events.png" alt="Events">
+    <figcaption>Events.</figcaption>
+</figure>
+
+<p>Event is like anything that happens into the world like purchasing clicking on a link or any orders.</p>
+<p>Each event in the Kafka is modelled as a Record. Each record has a timestamp, key, value and optional headers.</p>
+<p>The payload is included into the values.</p>
+<p>The key typically has three main uses - It used for enforcing ordering, collocating the data that have the same property and it can be used for key retention.</p>
+<p>Both the key and the values are actually the byte array and that gives users the advantage to encode the data using their favorite serializer.</p>
+<p>Integrated Kafka with confluent Schema Registery, using the Avro serializer then the value of the key and the value will look like the one shared in image.</p>
+<p>It will start by the magic byte then the schema id and the data using the Avro encoding.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/EventStream.png" alt="Events">
+    <figcaption>Events Stream.</figcaption>
+</figure>
+
+<p>Kafka Topic - Topic is like the db table. It is the concept of organizing the event of the same type together.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/KafkaTopic.png" alt="Events">
+    <figcaption>Kafka Topic.</figcaption>
+</figure>
+
+<p>When published the event we have to specify that which topic we want to add the data and also while reading we have to specify the list of the topic we want to read the data.</p>
+<p>All the events published to the topic is immutable.</p>
+<p>Kafka is design on the distributor system so we need a way to distribute the data within the topic Into different node within that Kafka cluster this is achieved by the help of partitions.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/TopicPartition.png" alt="Events">
+    <figcaption>Topic Partition.</figcaption>
+</figure>
+
+<p>When creating the topic you have to mention the partitions and partition is the unique data distribution and for a given partition the data is typically stored within a single broker in the Kafka cluster.</p>
+<p>Partition is also the unit of parallelism&rsquo;s data from the partitions can be accessed in parallel and also in one partition data can be consumed and produced at the same time.</p>
+<h3 id="introduction-to-the-data-plane"><strong>Introduction to the data plane.</strong></h3>
+<p>Within the Kafka cluster there is a separate control plane and data plane.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/KafkaCluster.png" alt="Events">
+    <figcaption>Kafka manages the data and meta data separately.</figcaption>
+</figure>
+
+<p>The control plane handle meta data and the data plane handle the actual data.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/KafkaBroker.png" alt="Events">
+    <figcaption>Inside the Kafka Broker.</figcaption>
+</figure>
+
+<p>There are two main type of request each broker type is handling - The producer request from the producer and the fetch request from the consumer.</p>
+<p><strong>Producer Request.</strong><br>
+The Producer client starts by sending a record and the producer library will use a pluggable partitioner to decide the partition in the topic to put the data.</p>
+<p>Key present then the default partitioner assigner will hash the key and store into the particular topic and Key not present then the record will be selected in a round robin way.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/KafkaProducerClient.png" alt="Events">
+    <figcaption>Kafka Producer Client Record.</figcaption>
+</figure>
+
+<p>Sending record as itself is not efficient and it has many overhead the producer library buffer all those data in the in memory called record batches. Accumulating data into the record batches will allow the compression field compressions of a bunch of records is much more efficient.</p>
+<p>Producer has the control of men that record my batches to send to the broker.<br>
+It is contributing to properties the time or the size.<br>
+Once enough time or enough data has been accumulated to the record batches it will be drain and form a produce request. The produce requests sent to the corresponding broker.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/KafkaProducerClientWorkFlow.png" alt="Events">
+    <figcaption>Kafka Producer Client WorkFlow.</figcaption>
+</figure>
+
+<p>The produce request will first land in the socket receive buffer on the broker. The network thread will pick up a particular client request it will stick to the particular client.</p>
+<p>Each of the network thread is used to multiplex across multiple clients, the network thread is designed to only do work that is lightweight. In most of the cases the network thread takes bytes from the socket buffer and forms a produce request object and put in the shared request queue.</p>
+<p>The request to be picked up by the second main pool in Kafka called IO thread. Unlike the network thread each IO thread can be used to handle request from any client.</p>
+<p>All of the IO thread will be diving into the shared request queue and they will be grabbing the next request.</p>
+<p>The IO thread will handle the produce request by first valuating the CRC of the data associated with the partition and then it will append the data associated with the partition to the data structure called commit log.</p>
+<p>The commit log is organised on disk in a bunch of segments each of the segment has two main parts one is the actual data and the second one is the index structure.</p>
+<p>The index structure provides the mapping from the offset to the position of this record within the .log file.</p>
+<p>By default the broker will only acknowledge the producer request once the data is fully replicated across other brokers as it rely on replication to serve the purpose of durability.</p>
+<p>While waiting for the data to be fully replicated we do not want to tie up this io thread as it is limited so it&rsquo;s those pending produce requests into a data structure called Purgatory like a map.</p>
+<p>After that IO thread can be freed up Can be used to process the next request.</p>
+<p>Once the data for the pending request is fully replicated the pending produce request will be taken out of purgatory then the response will be generated and will be put into the corresponding request response queue for the network thread.</p>
+<p>From there the network thread will pick up the generated response and will send the response data into the sent socket buffer.</p>
+<p>The network thread is also enforcing an ordering of the request coming from with the single client. It only takes one request from the client at a time And only after completing of this request when all the bytes for the response have been sent the network thread will be able to take up the next request from that client.
+<strong>Consumer Request.</strong><br>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/FetchRequest.png" alt="Fetch Request">
+    <figcaption>Fetch Request Consumer Client.</figcaption>
+</figure>
+</p>
+<p>The consumer client when it sends the fetch request it will specify the topic on the partition it wants to fetch the data and also the starting offset where the data needs to be retrieved.</p>
+<p>The fetch request will similarly go through the brokers received buffer then it will be picked up by the network thread then fetch request will be put into a shared request queue.</p>
+<p>The IO thread will do use the index structure to find the corresponding file byte range using the offset index.</p>
+<p>In some cases there might be a topic which has no new data in that case keeping returning and result with empty response to the consumer is waste and it is not efficient so in this case the consumer can specify a minimum number of bytes it needs to wait for the response and the maximum amount of time it can afford to wait.</p>
+<p>If there is not enough data similar to the producer request the fetch request will be put into the purgatory structure and wait for enough bytes to be accumulated.</p>
+<p>When enough amount of data will be accumulated then it will be given to the response cube from there the network thread will pick it up and send the actual data response back to the client.</p>
+<p>In Kafka we use <strong>zero copy transfer</strong> in the network thread to transfer the range of bytes from the underlying file directly to the remote socket. It is efficient for the memory management.</p>
+<p>The process is fast as the data will be still in the page cache and then copying data from memory to the socket buffer is very fast.</p>
+<h3 id="producer-client-hands-on">Producer Client Hands On.</h3>
+<p><a href="https://developer.confluent.io/courses/architecture/producer-hands-on/?utm_source=youtube&amp;utm_medium=video&amp;utm_campaign=tm.devx_ch.cd-apache-kafka-internals-101_content.apache-kafka">https://developer.confluent.io/courses/architecture/producer-hands-on/?utm_source=youtube&amp;utm_medium=video&amp;utm_campaign=tm.devx_ch.cd-apache-kafka-internals-101_content.apache-kafka</a></p>
+<p>Producing event to a kafka topic.</p>
+<p>Cluster name <strong>perf-test-cluster.</strong></p>
+<p>Create a topic <strong>perf-test-topic.</strong></p>
+<p>We also need to create a client configuration file for the cluster that will be needed by the kafka-producer-perf-test command during the exercise.</p>
+<p>In cluster Overview click on configure a client.</p>
+<p>Creation of a configuration file using the Confluent Cloud Console Java client configuration section. The configuration file include the cluster endpoint that will be used by a performance test script to establish a connection with the cluster.</p>
+<p>The config file also has the authentication settings.</p>
+<p><code>cat java.config</code> The cluster end point and the authentication settings.</p>
+<p>Producer client performance using the default producer configuration values.</p>
+<p>Two most important settings related to event throughput and latency are <strong>linger milliseconds</strong> and <strong>batch size.</strong></p>
+<p>The linger setting is the maximum amount of time the producer will wait while adding events to a record batch before it is drained.</p>
+<p>The batch size setting is the maximum size of the batch it can be before it flushed. The defaults for the settings are zero about 16kb.</p>
+<p>Altering this value will change the average throughput and latency</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>kafka<span style="color:#f92672">-</span>producer<span style="color:#f92672">-</span>perf<span style="color:#f92672">-</span>test <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>producer.<span style="color:#a6e22e">config</span> <span style="color:#f92672">/</span>home<span style="color:#f92672">/</span>training<span style="color:#f92672">/</span>java.<span style="color:#a6e22e">config</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>throughput 200 <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>record<span style="color:#f92672">-</span>size 1000 <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>num<span style="color:#f92672">-</span>records 3000 <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>topic perf<span style="color:#f92672">-</span>test<span style="color:#f92672">-</span>topic <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>producer<span style="color:#f92672">-</span>props linger.<span style="color:#a6e22e">ms</span><span style="color:#f92672">=</span>0 batch.<span style="color:#a6e22e">size</span><span style="color:#f92672">=</span>16384 <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>print<span style="color:#f92672">-</span>metrics <span style="color:#f92672">|</span> grep <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;3000 records sent\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:outgoing-byte-rate\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:bufferpool-wait-ratio\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:record-queue-time-avg\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:request-latency-avg\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:batch-size-avg&#34;</span>
+</span></span></code></pre></div><p>The record size to 1000 bytes and specify that the test run through 3000 records with a throughput of 200.</p>
+<p>The most important property is the producer props where we set the lingers and batch size. The print metrics file to output the metrics limiting the output using grep.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/1.png" alt="Events">
+    <figcaption>Events.</figcaption>
+</figure>
+
+<p>Beverage batch size was one to 1215 Which is much lower than the default batch size. Next slide</p>
+<p>It is explained by the linger valley which was set to zero as the lingerie so low the batch is being flushed almost whenever the first report is added.</p>
+<p>The record size is 1000 and one record is being added to each batch before linger triggers the Flash.</p>
+<p>The <code>buffer-pool-wait-ratio</code> set to 0 value indicates that batches are never waiting on previously sent request meaning the Confluent cloud broker is processing each and every request as fast as they were sending them.</p>
+<p>Outgoing-byte-rate and request latency average shows the throughput and the latency result .</p>
+<p>The records queue time shows how long the recorder remaining in the batch priority beam flushed.</p>
+<p>Lets increase the linger from 0 to 100 milliseconds Giving records more time to be added to a batch before it is flushed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>kafka<span style="color:#f92672">-</span>producer<span style="color:#f92672">-</span>perf<span style="color:#f92672">-</span>test <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>producer.<span style="color:#a6e22e">config</span> <span style="color:#f92672">/</span>home<span style="color:#f92672">/</span>training<span style="color:#f92672">/</span>java.<span style="color:#a6e22e">config</span> <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>throughput 200 <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>record<span style="color:#f92672">-</span>size 1000 <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>num<span style="color:#f92672">-</span>records 3000 <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>topic perf<span style="color:#f92672">-</span>test<span style="color:#f92672">-</span>topic <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>producer<span style="color:#f92672">-</span>props linger.<span style="color:#a6e22e">ms</span><span style="color:#f92672">=</span>100 batch.<span style="color:#a6e22e">size</span><span style="color:#f92672">=</span>16384 <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">--</span>print<span style="color:#f92672">-</span>metrics <span style="color:#f92672">|</span> grep <span style="color:#960050;background-color:#1e0010">\</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;3000 records sent\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:outgoing-byte-rate\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:bufferpool-wait-ratio\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:record-queue-time-avg\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:request-latency-avg\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:batch-size-avg&#34;</span>
+</span></span></code></pre></div><p>Lingers set to 100 mini average batch size is much higher. It indicates that the batch size is triggering the batch to be flushed. It is just lowered than the batch size mentioned.</p>
+<p>Its throughput is also decreased and latency increased. We don’t want it.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/2.png" alt="Events">
+    <figcaption>Events.</figcaption>
+</figure>
+
+<p>Now increasing the batch size to 300,000.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kafka-producer-perf-test <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --producer.config /home/training/java.config <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --throughput <span style="color:#ae81ff">200</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --record-size <span style="color:#ae81ff">1000</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --num-records <span style="color:#ae81ff">3000</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --topic perf-test-topic <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --producer-props linger.ms<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span> batch.size<span style="color:#f92672">=</span><span style="color:#ae81ff">300000</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --print-metrics | grep <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">&#34;3000 records sent\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:outgoing-byte-rate\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:bufferpool-wait-ratio\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:record-queue-time-avg\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:request-latency-avg\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:batch-size-avg&#34;</span>
+</span></span></code></pre></div><p>The average batch size has increased but not that much that indicates that the linker settings isn&rsquo;t allowing enough time for batches to reach the limits set by the batch size parameter.</p>
+<p>Throughput and latency also in the wrong place</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/3.png" alt="Events">
+    <figcaption>Events.</figcaption>
+</figure>
+
+<p>Increasing the linger time to 1500 milliseconds.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kafka-producer-perf-test <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --producer.config /home/training/java.config <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --throughput <span style="color:#ae81ff">200</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --record-size <span style="color:#ae81ff">1000</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --num-records <span style="color:#ae81ff">3000</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --topic perf-test-topic <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --producer-props linger.ms<span style="color:#f92672">=</span><span style="color:#ae81ff">1500</span> batch.size<span style="color:#f92672">=</span><span style="color:#ae81ff">300000</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    --print-metrics | grep <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">&#34;3000 records sent\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:outgoing-byte-rate\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:bufferpool-wait-ratio\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:record-queue-time-avg\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:request-latency-avg\|\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">producer-metrics:batch-size-avg&#34;</span>
+</span></span></code></pre></div><p>The batch size is close to the batch size limit. Still losing the throughput and latency.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/4.png" alt="Events">
+    <figcaption>Kafka Internal Architecture.</figcaption>
+</figure>
+
+<p>The producer default for the lingering batch size are actually the best choice for an application where it produces 200 records for per second of 1000 bytes each.</p>
+<h3 id="data-plane---replication-protocol">Data Plane - Replication Protocol.</h3>
+<p>How Kafka replicates the data in the data plane?</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/KafkaDataReplication.png" alt="Events">
+    <figcaption>Kafka Data Replication.</figcaption>
+</figure>
+
+<p>When create a topic we specify how many replication we need. Then all the partitions within the topic will be created with the number of replicas.</p>
+<p>The replication as N then we can tolerate N-1 failures.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/LeaderFollowerISRList.png" alt="Events">
+    <figcaption>Leader Follower ISR List.</figcaption>
+</figure>
+
+<p>The producer will send the data to the leader. The followers will retrieve the data from the leader. The consumer reads the data from the leader. It can be configured to read the data from the followers.</p>
+<p><strong>In-sync Replicas ISR -</strong> ISR is a set of data that captures all of the replicas that have fully caught up with the leader. Where all the replicas are healthy then all the replicas will be a part of the ISR.</p>
+<p>Each of the leader is also associated with the leader epoch. It is a unique number that is monotonically increasing and is used to capture the generation of the lifetime of a particular leader.</p>
+<p>Every time when a leader takes the data From the producer request To write to the local blog it needs to cheque all the records of dispatch with its leader epoch.</p>
+<p>Leader epoch is very important for doing log reconciliation among all the replicas.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/LeaderEpoch.png" alt="Events">
+    <figcaption>Leader Follower ISR List.</figcaption>
+</figure>
+
+<p>When the leader has appointed the produced attendant to the local locks all the followers will be trying to retrieve the new data from the leader the follower does that by issuing a fetch request to the leader including the offset from which it needs to fetch data.</p>
+<p>After the leader receives the rental request the leader will be returning the new records from the particular offset to the follow.</p>
+<p>When the following receives the response it will be appending those new records into its own local log.</p>
+<figure class="centered-figure">
+    <img src="static/images/Spring/Kafka/KafkaInternalArchitecture/FollowerFetchResponse.png" alt="Events">
+    <figcaption>Leader Follower ISR List.</figcaption>
+</figure>
+
+<p>The follower is appending the data to its local log it keeps the same leader epoch included in those record batches.</p>
+<p>We need a way to commit the offsets, those records have been considered safe.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/CommittingPartitionsOffset.png" alt="Events">
+    <figcaption>Committing Partitions Offset.</figcaption>
+</figure>
+
+<p>In Kafka, The way we commit those records is defined by once a particular record is included in all the in sync replicas then the record is considered committed and it can be safely written to the consumer.</p>
+<p><strong>How does the leader know weather a particular follower has received a particular order ?</strong></p>
+<p>It is actually piggybacked on the fetch request from the follower.</p>
+<p>By sending a fetch request from a particular offset say here offset three the leader knows that the follower has received all the records up to of set 3.</p>
+<p>The way we model committed records is through this concept called high watermark it was the opposite before which all the records are considered as committed in this case we will mark the high Watermark on the leader to offset three after the fetch request have gone through all the offset up to 3.</p>
+<p>Once the leader has advanced the high Watermark it will also need to propagate this information to the followers this is done by piggybacking in the fetch response.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/AdvancingFollowerHighWatermark.png" alt="Events">
+    <figcaption>Advancing Follower High Watermark.</figcaption>
+</figure>
+
+<p>In the future response leader will also include the latest high Watermark to the follower. It is done asynchronously the lowers high watermark typically is a little behind the true high water mug of the leader.</p>
+<figure class="centered-figure">
+    <img src="static/images/Spring/Kafka/KafkaInternalArchitecture/HandlingLeaderFailure.png" alt="Events">
+    <figcaption>HandlingLeaderFailure</figcaption>
+</figure>
+
+<p>Let&rsquo;s say the leader broker one on one is failed we need a way to elect the new leader.</p>
+<p>The leader election in Kafka in the data plane is very simple because through the protocol we know all the replicas that are in the isr.</p>
+<p>All those instinct replicas have all the previously committed records.</p>
+<p>In this case both controller 102 and 103 can be a leader so we can pick 103 as a leader.</p>
+<p>This information will be propagated to the control plane once replica 103 notices that it&rsquo;s a new leader and it will start take the new request from the producer.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/TemporaryDecreasedHighWaterMark.png" alt="Events">
+    <figcaption>Temporary Decreased High WaterMark.</figcaption>
+</figure>
+
+<p>Once the new leader is elected the high watermark the new leader is actually less than the true high watermark in the previous leader.</p>
+<p>What will happen if a consumer is issuing a fetch request in this time window asking for offset in the middle offset 1?</p>
+<p>In this case we dont want to give the consumer the wrong indication that its request is invalid because this is transient and temporary.. We will be issuing a retrial error back to the consumer client so that it can keep retrying until its high watermark catches up to the true high water mark.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/PartitionReplicaReconciliation.png" alt="Events">
+    <figcaption>Partition Replica Reconciliation.</figcaption>
+</figure>
+
+<p>Once the new leader is elected some of the followers may need to reconcile their data with a new leader.</p>
+<p>The follower on the broker 102 actually has some data in offset 3 and 4. Those are the records that are never committed and They are actually quite different from the corresponding record in the new leader.</p>
+<p>We need a way to clean those records. This is done through the replica reconciliation logic. It is done through the detail in the fetch request. When the follower is issuing effect request in addition to the offset firm which it wants to fetch data it also includes the latest epoch it has seen in its local logs.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/FetchResponseInformFollowerDivergence.png" alt="Events">
+    <figcaption>Fetch Response Inform Follower Divergence.</figcaption>
+</figure>
+
+<p>In this case it is epoch 1, Once the leader receives the fetch request it will use the epoch information to cheque the consistency with its local log In this case it realizes that within its local log epoch 1 really ends at offset 2 instead of offset 4 indicated by the follower.</p>
+<p>So the leader will send a response indicating to the followers to make the log consistent with respect to epoch 1. in this case epoch I really ends before offset 3. When the following receives this fetch response from the leader it will know that it needs to truncate the data at the after 3 and four at this point and at this point the data is consistent with the leader up to offset 2.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/SubsequentFetch.png" alt="Events">
+    <figcaption>Subsequent Fetch updated offset and epoch.</figcaption>
+</figure>
+
+<p>Now the follower issue the next fetch request starting offset 3 and the last epoch 1.</p>
+<p>Once the leader receives it it notices that it is actually consistent with the local log s and this will causeway its local high watermark to be advanced to offset 3.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/Follower102Reconciled.png" alt="Events">
+    <figcaption>Follower 102 Reconciled.</figcaption>
+</figure>
+
+<p>Now the leader will be returning new data back to the follower and the follower will take this data and append to its local log.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/Follower102AcknowledgedNewRecord.png" alt="Events">
+    <figcaption>Follower102AcknowledgedNewRecord.</figcaption>
+</figure>
+
+<p>Follow will fetch again with the latest offset or offset 7 and this will cause the high watermark in the leader to be advanced to offset 7.</p>
+<p>There is complete reconciliation between the followers log and the leaders log.</p>
+<p>At this point we&rsquo;re still under the replicated mode Because not all the replicas are in ISR.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/Follower102RejoinedCluster.png" alt="Events">
+    <figcaption>Follower 102 Rejoined Cluster.</figcaption>
+</figure>
+
+<p>At some point the failed replica or broken 101 Will come back and it will catch up from the leader and will go through the same reconciliation logic as replica 102 and eventually it will catch up all the way to the end of the logs and then it will be added back to the isr.</p>
+<p>Now we&rsquo;re into the fully replicated mode.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/HandlingFailuresOrSlowFollower.png" alt="Events">
+    <figcaption>Leader Follower ISR List.</figcaption>
+</figure>
+
+<p><strong>How follower failures is handled?</strong></p>
+<p>Sometimes the father can fail or may be slow to catch up with the leader in that case we keep on waiting for the follower then we will never be able to advance the high watermark.</p>
+<p>The leader will keep monitoring the progress of the follower and it will measure what&rsquo;s the last time this particular follower has caught up all the way with the leader and if it is lagging by more than a configured amount of the time based on the property then this follower is considered as out of sync. It will be dropped out of ISR. At that point the leader can now advance the high Watermark based on the reduced in sync replica set.</p>
+<figure class="centered-figure">
+    <img src="/images/Spring/Kafka/KafkaInternalArchitecture/PartitionLeaderBalancing.png" alt="Events">
+    <figcaption>Leader Follower ISR List.</figcaption>
+</figure>
+
+<p><strong>Balancing the load of the leader.</strong></p>
+<p>The leader replica typically has a little bit more than the following because all of the followers are fetching data directly from the later so in a healthy cluster we want the load of the litter to be balanced this is a concept called preferred replica when you create a topic we designate the first replica of each partition as a preferred replica.</p>
+<p>When we assign the preferred replica we try to assign it such a way that the preferred replica will be distributed evenly among all of those brokers.</p>
+<p>When we do the leader in election we try to . Added to see if the preferred replica is healthy and if the current leader is on the preferred one if not we try to move the leader back to the preferred replica. So in the end all the leader to be moved into the preferred replica.</p>
+<p>Next slide this is a revenue distributed among all the brokers so we can achieve a balanced load among the leaders in the cluster.</p>
+<h3 id="control-plane---zookeeper-vs-kraft">Control Plane - Zookeeper vs Kraft.</h3>
+<h3 id="consumer-and-consumer-group-protocol">Consumer and Consumer Group Protocol.</h3>
+<h3 id="hands-on----consumer-and-consumer-group-protocol">Hands on -  Consumer and Consumer Group Protocol.</h3>
+<h3 id="configuring-apache-kafka--durability-availability-and-ordering">Configuring Apache Kafka  Durability, Availability and Ordering.</h3>
+<h3 id="transaction-message-delivery-exactly-one">Transaction message delivery Exactly-One.</h3>
+<h3 id="transaction-message-delivery-and-processing">Transaction message delivery and Processing.</h3>
+<h3 id="apache-kafka-topic-compaction">Apache Kafka Topic Compaction.</h3>
+<h3 id="tiered-storage-in-kafka">Tiered Storage in Kafka.</h3>
+<h3 id="apache-kafka-cluster-scaling-and-automation">Apache Kafka Cluster Scaling and Automation.</h3>
+<h3 id="geo-replication-with-apache-kafka-and-confluent">Geo-Replication with Apache Kafka And Confluent.</h3>
+<h3 id="cluster-linking">Cluster Linking.</h3>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/spring"
+      >spring</a
+    >
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/kafka"
+      >kafka</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  >
+    
+    
+    <a class="ltr:ml-auto rtl:mr-auto justify-end pl-3" href="https://suchismita-deb.github.io/post/devops/kubernetes/kubernetesbasics/"
+      ><span>KubernetesBasics</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+<footer
+  class="mx-auto flex h-[4.5rem] max-w-[--w] items-center px-8 text-xs uppercase tracking-wider opacity-60"
+>
+  <div class="mr-auto">
+  
+    &copy; 2025
+    <a class="link" href="https://suchismita-deb.github.io/">Technical Blog</a>
+  
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+  <script src="/search.js"></script>
+
+</footer>
+
+</body>
+
+
+</html>

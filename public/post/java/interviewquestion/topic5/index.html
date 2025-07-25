@@ -1,0 +1,957 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+        class="not-ready lg:text-base"
+        style="--bg: #faf8f1"
+        lang="en-us"
+        dir="ltr"
+>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Topic 5 Java - Technical Blog</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Question. Difference between HashSet and TreeSet. The HashSet and TreeSet classes in java are the implementation of Set interface.
+Feature HashSet TreeSet Performance Faster (O(1)) Faster (O(logn)) Order Unordered. No guarantee of order depends on hash function. Sorted Natural or custom order. The order depends on: The natural ordering of elements (via the Comparable interface). A custom comparator provided at the time of TreeSet creation. Iteration Iterates in no specific order." />
+  <meta name="author" content="SUCHISMITA DEB" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://suchismita-deb.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/theme.svg" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/6fd8df4abe41f17fd8e2dd7d97b5cc8c?s=160&amp;d=identicon" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://suchismita-deb.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+
+  
+  
+  
+  
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link
+    rel="icon"
+    href="https://suchismita-deb.github.io/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://suchismita-deb.github.io/apple-touch-icon.png"
+  />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+
+
+
+  
+  <meta name="generator" content="Hugo 0.120.4">
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Topic 5 Java">
+<meta itemprop="description" content="Question. Difference between HashSet and TreeSet. The HashSet and TreeSet classes in java are the implementation of Set interface.
+Feature HashSet TreeSet Performance Faster (O(1)) Faster (O(logn)) Order Unordered. No guarantee of order depends on hash function. Sorted Natural or custom order. The order depends on: The natural ordering of elements (via the Comparable interface). A custom comparator provided at the time of TreeSet creation. Iteration Iterates in no specific order."><meta itemprop="datePublished" content="2024-12-24T09:17:01+05:30" />
+<meta itemprop="dateModified" content="2024-12-24T09:17:01+05:30" />
+<meta itemprop="wordCount" content="2496">
+<meta itemprop="keywords" content="interviewQuestion,java," />
+  
+  <meta property="og:title" content="Topic 5 Java" />
+<meta property="og:description" content="Question. Difference between HashSet and TreeSet. The HashSet and TreeSet classes in java are the implementation of Set interface.
+Feature HashSet TreeSet Performance Faster (O(1)) Faster (O(logn)) Order Unordered. No guarantee of order depends on hash function. Sorted Natural or custom order. The order depends on: The natural ordering of elements (via the Comparable interface). A custom comparator provided at the time of TreeSet creation. Iteration Iterates in no specific order." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://suchismita-deb.github.io/post/java/interviewquestion/topic5/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-12-24T09:17:01+05:30" />
+<meta property="article:modified_time" content="2024-12-24T09:17:01+05:30" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Topic 5 Java"/>
+<meta name="twitter:description" content="Question. Difference between HashSet and TreeSet. The HashSet and TreeSet classes in java are the implementation of Set interface.
+Feature HashSet TreeSet Performance Faster (O(1)) Faster (O(logn)) Order Unordered. No guarantee of order depends on hash function. Sorted Natural or custom order. The order depends on: The natural ordering of elements (via the Comparable interface). A custom comparator provided at the time of TreeSet creation. Iteration Iterates in no specific order."/>
+
+  
+  
+
+  
+  <link rel="canonical" href="https://suchismita-deb.github.io/post/java/interviewquestion/topic5/" />
+  
+  
+</head>
+
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-[--w] px-8 lg:justify-center">
+  <div class="relative z-50 ltr:mr-auto rtl:ml-auto flex items-center">
+    <a class="-translate-y-[1px] text-2xl font-medium" href="https://suchismita-deb.github.io/"
+      >Technical Blog</a
+    >
+    <div
+      class="btn-dark text-[0] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 ltr:-mr-8 rtl:-ml-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Search..." />
+  </div>
+  <div id="search-results"></div>
+
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse">
+      
+      <a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/post/about/"
+        >About</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 rtl:space-x-reverse dark:invert ltr:lg:ml-14 rtl:lg:mr-14 lg:mt-0 lg:items-center"
+    >
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/Suchismita-Deb"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-7 w-7 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/debsuchismita"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100vh-9rem)] max-w-[--w] px-8 pb-16 pt-14 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">Topic 5 Java</h1>
+
+    
+    <div class="text-xs antialiased opacity-60">
+      
+      <time>Dec 24, 2024</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h3 id="question-difference-between-hashset-and-treeset">Question. Difference between HashSet and TreeSet.</h3>
+<p>The HashSet and TreeSet classes in java are the implementation of Set interface.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>HashSet</th>
+<th>TreeSet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Faster (O(1))</td>
+<td>Faster (O(logn))</td>
+</tr>
+<tr>
+<td><strong>Order</strong></td>
+<td>Unordered. No guarantee of order depends on hash function.</td>
+<td>Sorted Natural or custom order. <!-- raw HTML omitted --> The order depends on: The natural ordering of elements (via the Comparable interface). <!-- raw HTML omitted --> A custom comparator provided at the time of TreeSet creation.</td>
+</tr>
+<tr>
+<td><strong>Iteration</strong></td>
+<td>Iterates in no specific order.</td>
+<td>Iterates in ascending sorted order of elements (or the order defined by a custom comparator).</td>
+</tr>
+<tr>
+<td><strong>Null Values</strong></td>
+<td>Allows one null value.</td>
+<td>Does not allow null.</td>
+</tr>
+<tr>
+<td><strong>Internal Data structure</strong></td>
+<td>It uses hashmap internally for storage.</td>
+<td>It uses a Red-Black Tree (a self-balancing binary search tree) internally.</td>
+</tr>
+<tr>
+<td><strong>Sorting</strong></td>
+<td>Custom sorting not supported</td>
+<td>Custom sorting supported via comparator.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>TreeSet<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> treeSet <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeSet<span style="color:#f92672">&lt;&gt;</span>((a, b) <span style="color:#f92672">-&gt;</span> b <span style="color:#f92672">-</span> a); <span style="color:#75715e">// Descending order</span>
+</span></span><span style="display:flex;"><span>        treeSet.<span style="color:#a6e22e">add</span>(10);
+</span></span><span style="display:flex;"><span>        treeSet.<span style="color:#a6e22e">add</span>(5);
+</span></span><span style="display:flex;"><span>        treeSet.<span style="color:#a6e22e">add</span>(20);
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(treeSet); <span style="color:#75715e">// Output: [20, 10, 5]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>TreeSet<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> treeSet <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeSet<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>        treeSet.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Apple&#34;</span>);
+</span></span><span style="display:flex;"><span>        treeSet.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Banana&#34;</span>);
+</span></span><span style="display:flex;"><span>        treeSet.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Orange&#34;</span>);
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;TreeSet: &#34;</span><span style="color:#f92672">+</span>treeSet); <span style="color:#75715e">// Sorted order</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>HashSet<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> hashSet <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>        hashSet.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Apple&#34;</span>);
+</span></span><span style="display:flex;"><span>        hashSet.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Banana&#34;</span>);
+</span></span><span style="display:flex;"><span>        hashSet.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Orange&#34;</span>);
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;HashSet: &#34;</span><span style="color:#f92672">+</span>hashSet); <span style="color:#75715e">// Order not guaranteed</span>
+</span></span></code></pre></div><h3 id="question-difference-between-hashmap-and-treemap">Question. Difference between HashMap and TreeMap.</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>HashMap</th>
+<th>TreeMap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Performance</strong></td>
+<td>O(1)</td>
+<td>O(logn)</td>
+</tr>
+<tr>
+<td><strong>Order</strong></td>
+<td>No fixed order.</td>
+<td>Maintain key in sorted order natural or comparator.</td>
+</tr>
+<tr>
+<td><strong>Null Key</strong></td>
+<td>Allows one null key and multiple null values.</td>
+<td>Does not allow null keys allows multiple null values.</td>
+</tr>
+<tr>
+<td><strong>Internal Data structure</strong></td>
+<td>Hash Table</td>
+<td>Red Black Tree self balancing binary tree.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="question-difference-between-hashmap-and-hashtable">Question. Difference between HashMap and HashTable.</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>HashMap</th>
+<th>HashTable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Thread safety</strong></td>
+<td>Not thread-safe (needs external synchronization). <!-- raw HTML omitted -->Must use external synchronization (e.g., Collections.synchronizedMap()) if used in multithreaded environments</td>
+<td>Thread-safe (synchronization is built-in for all methods)</td>
+</tr>
+<tr>
+<td><strong>Null value</strong></td>
+<td>Allow one null key andmultiple null values.</td>
+<td>Does not allow null key or null values throws NullPointerException.</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Faster due to no synchronization.</td>
+<td>Slower due to synchronization overhead.</td>
+</tr>
+<tr>
+<td><strong>Package</strong></td>
+<td>Introduced in Java 1.2 part of Java Collection Framework and part of java.util package. Use in modern code.</td>
+<td>Legacy class exists since Java 1.0 and part of java.util package. Not recommended in new code.</td>
+</tr>
+<tr>
+<td><strong>Usage</strong></td>
+<td>Preferred in single threaded or externally synchronized multithreaded environment.</td>
+<td>Rarely used in modern application replaced by <code>ConcurrentHashMap</code> for thread safety.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="question-difference-between-map-and-flatmap-in-streamapi">Question. Difference between Map and FlatMap in streamAPI.</h3>
+<p>MAP.</p>
+<p><strong>Purpose</strong>: Transforms each element in the stream into another element.<br>
+<strong>Output</strong>: Produces a new stream of the same size but with transformed elements.<br>
+<strong>Behavior</strong>: Applies the given function to each element, and the result is a stream of transformed values.<br>
+<strong>Use Case</strong>: When you need to transform each element into a single element.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;apple&#34;</span>, <span style="color:#e6db74">&#34;banana&#34;</span>, <span style="color:#e6db74">&#34;cherry&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>list.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">map</span>(String::toUpperCase)  <span style="color:#75715e">// Transforms each string to uppercase</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">forEach</span>(System.<span style="color:#a6e22e">out</span>::println);  <span style="color:#75715e">// Outputs: APPLE, BANANA, CHERRY</span>
+</span></span></code></pre></div><p>FLATMAP.</p>
+<p><strong>Purpose</strong>: Transforms each element into a stream of elements and then flattens these multiple streams into a single stream.<br>
+<strong>Output</strong>: Produces a new stream where each element may expand into multiple elements (or none).<br>
+<strong>Behavior</strong>: Each element is mapped to a stream, and the resulting streams are merged into a single stream.<br>
+<strong>Use Case</strong>: When you need to handle nested structures or when each element can be expanded into multiple elements (like splitting strings or unwrapping lists).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;apple&#34;</span>, <span style="color:#e6db74">&#34;banana&#34;</span>, <span style="color:#e6db74">&#34;cherry&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>list.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">flatMap</span>(s <span style="color:#f92672">-&gt;</span> Arrays.<span style="color:#a6e22e">stream</span>(s.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;&#34;</span>)))  <span style="color:#75715e">// Splits each string into a stream of characters</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">forEach</span>(System.<span style="color:#a6e22e">out</span>::println);  <span style="color:#75715e">// Outputs: a, p, p, l, e, b, a, n, a, n, a, c, h, e, r, r, y</span>
+</span></span></code></pre></div><p>Using map and flatmap.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;apple&#34;</span>, <span style="color:#e6db74">&#34;banana&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Using map to convert each word to uppercase</span>
+</span></span><span style="display:flex;"><span>list.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">map</span>(word <span style="color:#f92672">-&gt;</span> word.<span style="color:#a6e22e">toUpperCase</span>())
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">forEach</span>(System.<span style="color:#a6e22e">out</span>::println);  <span style="color:#75715e">// APPLE BANANA</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Using flatMap to split each word into its individual characters</span>
+</span></span><span style="display:flex;"><span>list.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">flatMap</span>(word <span style="color:#f92672">-&gt;</span> Arrays.<span style="color:#a6e22e">stream</span>(word.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;&#34;</span>)))
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">forEach</span>(System.<span style="color:#a6e22e">out</span>::println);  <span style="color:#75715e">// a p p l e b a n a n a</span>
+</span></span></code></pre></div><p>Map transform each item in a collection into something else and produces a collection of the same size.
+Transforms each element of the stream into another form (1-to-1 mapping). The result is a Stream of Streams if the transformation returns a Stream.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> words <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#34;world&#34;</span>);
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Stream<span style="color:#f92672">&lt;</span>Character<span style="color:#f92672">&gt;&gt;</span> result <span style="color:#f92672">=</span> words.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>                                       .<span style="color:#a6e22e">map</span>(word <span style="color:#f92672">-&gt;</span> word.<span style="color:#a6e22e">chars</span>().<span style="color:#a6e22e">mapToObj</span>(c <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">char</span>) c))
+</span></span><span style="display:flex;"><span>                                       .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toList</span>());
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Result: [Stream[h, e, l, l, o], Stream[w, o, r, l, d]]</span>
+</span></span></code></pre></div><p>Use when you want to transform each element independently, and the transformation results in a single output per input. Example: Converting a list of strings to their lengths.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> words <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#34;world&#34;</span>);
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> lengths <span style="color:#f92672">=</span> words.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>                             .<span style="color:#a6e22e">map</span>(String::length)
+</span></span><span style="display:flex;"><span>                             .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toList</span>());
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Result: [5, 5]</span>
+</span></span></code></pre></div><p>Flatmap transforms each item but can combine items from nested collections into a single flat collections.
+Transforms each element into a Stream and flattens all these Streams into a single Stream (1-to-many mapping).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> words <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#34;world&#34;</span>);
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Character<span style="color:#f92672">&gt;</span> result <span style="color:#f92672">=</span> words.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>                              .<span style="color:#a6e22e">flatMap</span>(word <span style="color:#f92672">-&gt;</span> word.<span style="color:#a6e22e">chars</span>().<span style="color:#a6e22e">mapToObj</span>(c <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">char</span>) c))
+</span></span><span style="display:flex;"><span>                              .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toList</span>());
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Result: [h, e, l, l, o, w, o, r, l, d]</span>
+</span></span></code></pre></div><p>Use when each element needs to be transformed into multiple elements (or a stream of elements) and you want a flat result. Example: Splitting a list of sentences into words.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> sentences <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;hello world&#34;</span>, <span style="color:#e6db74">&#34;java streams&#34;</span>);
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> words <span style="color:#f92672">=</span> sentences.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>                              .<span style="color:#a6e22e">flatMap</span>(sentence <span style="color:#f92672">-&gt;</span> Arrays.<span style="color:#a6e22e">stream</span>(sentence.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34; &#34;</span>)))
+</span></span><span style="display:flex;"><span>                              .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toList</span>());
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Result: [hello, world, java, streams]</span>
+</span></span></code></pre></div><h3 id="question-difference-between-normal-stream-and-parallel-stream">Question. Difference between normal stream and parallel stream.</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Normal Stream</th>
+<th>Parallel Stream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Execution</strong></td>
+<td>Operations on a normal stream are processed sequentially, one element at a time, in the order they appear in the source.</td>
+<td>Operations on a parallel stream are processed concurrently by splitting the source into multiple chunks, which are processed in parallel by multiple threads.</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Suitable for smaller datasets or operations where parallelization overhead outweighs the performance gain.</td>
+<td>Can provide performance benefits for large datasets or computationally expensive operations by utilizing multiple CPU cores. However, the overhead of managing parallelism may lead to slower performance for smaller datasets.</td>
+</tr>
+<tr>
+<td><strong>Thread Management</strong></td>
+<td>Runs in a single thread, typically the main thread.</td>
+<td>Uses a common ForkJoinPool to manage threads for parallel execution, where the default pool uses as many threads as there are available CPU cores.</td>
+</tr>
+<tr>
+<td><strong>Order</strong></td>
+<td>Maintains the order of elements as they appear in the source.</td>
+<td>May not guarantee the order of elements, unless explicitly handled (e.g., using forEachOrdered).</td>
+</tr>
+<tr>
+<td><strong>Usage</strong></td>
+<td>Best for simple, small operations where parallelism isn&rsquo;t needed.</td>
+<td>Best for large collections or time-consuming operations that can benefit from parallel execution.</td>
+</tr>
+<tr>
+<td><strong>Processing</strong></td>
+<td>Processes all elements in the order they appear.<!-- raw HTML omitted -->Always uses the main thread (Thread.currentThread().getName() is main).</td>
+<td>Processes elements concurrently using multiple threads from the ForkJoinPool.<!-- raw HTML omitted -->The thread names (ForkJoinPool.commonPool-worker-*) indicate parallel execution.</td>
+</tr>
+</tbody>
+</table>
+<p>The example of a normal stream.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> items <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;A&#34;</span>, <span style="color:#e6db74">&#34;B&#34;</span>, <span style="color:#e6db74">&#34;C&#34;</span>, <span style="color:#e6db74">&#34;D&#34;</span>, <span style="color:#e6db74">&#34;E&#34;</span>);
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Normal Stream:&#34;</span>);
+</span></span><span style="display:flex;"><span>items.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>     .<span style="color:#a6e22e">forEach</span>(item <span style="color:#f92672">-&gt;</span> {System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; processes &#34;</span> <span style="color:#f92672">+</span> item);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>The output is given.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>Normal Stream:main processes A main processes B main processes C main processes D main processes E
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;\nParallel Stream:&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Parallel Stream (Multi-Threaded)</span>
+</span></span><span style="display:flex;"><span>items.<span style="color:#a6e22e">parallelStream</span>()
+</span></span><span style="display:flex;"><span>     .<span style="color:#a6e22e">forEach</span>(item <span style="color:#f92672">-&gt;</span> {System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(Thread.<span style="color:#a6e22e">currentThread</span>().<span style="color:#a6e22e">getName</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; processes &#34;</span> <span style="color:#f92672">+</span> item);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>The output.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Parallel Stream: ForkJoinPool.<span style="color:#a6e22e">commonPool</span><span style="color:#f92672">-</span>worker<span style="color:#f92672">-</span>1 processes A main processes B ForkJoinPool.<span style="color:#a6e22e">commonPool</span><span style="color:#f92672">-</span>worker<span style="color:#f92672">-</span>3 processes C ForkJoinPool.<span style="color:#a6e22e">commonPool</span><span style="color:#f92672">-</span>worker<span style="color:#f92672">-</span>2 processes D main processes E.
+</span></span></code></pre></div><h3 id="question-difference-between-stream-and-collection">Question. Difference between stream and collection.</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Stream</th>
+<th>Collection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nature</strong></td>
+<td>A stream is a sequence of elements supporting sequential and parallel operations.</td>
+<td>A collection is a data structure that holds objects in memory (e.g., List, Set, Map).</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>Streams do not store data; they operate on the source (e.g., collections, arrays).</td>
+<td>Streams do not store data; they operate on the source (e.g., collections, arrays).</td>
+</tr>
+<tr>
+<td><strong>Operation</strong></td>
+<td>Streams do not store data; they operate on the source (e.g., collections, arrays).</td>
+<td>Collections are manipulated through traditional methods (e.g., add, remove, get).</td>
+</tr>
+<tr>
+<td><strong>Lazy Evaluation</strong></td>
+<td>Stream operations are lazy; computation happens only when terminal operations are invoked.</td>
+<td>Collections are eagerly evaluated; data is stored and accessible immediately.</td>
+</tr>
+<tr>
+<td><strong>Consumption</strong></td>
+<td>Streams can be consumed only once; a new stream must be created for re-use.</td>
+<td>Collections can be accessed multiple times without re-creation.</td>
+</tr>
+<tr>
+<td><strong>Parallelism</strong></td>
+<td>Streams can be easily processed in parallel using parallelStream().</td>
+<td>Collections do not have built-in parallel processing capabilities.</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Streams are designed for data processing and transformations (e.g., filtering, mapping).</td>
+<td>Collections are designed for storing and managing data.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="question-difference-between-concurrenthashmap-and-synchronizedhashmap">Question. Difference between ConcurrentHashMap and SynchronizedHashMap.</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>ConcurrentHashMap</th>
+<th>SynchronizedHashMap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Synchronization Mechanism</strong></td>
+<td>Uses a segment-based locking (in Java 7) or bucket-level locking (in Java 8 and later).</td>
+<td>Entire map is locked for each operation using synchronized blocks.</td>
+</tr>
+<tr>
+<td><strong>Concurrency</strong></td>
+<td>Allows concurrent read and write operations by multiple threads. Only writes to the same bucket are blocked.</td>
+<td>Allows only one thread to access the map at a time.</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Higher performance in multi-threaded environments due to finer-grained locking.</td>
+<td>Lower performance due to coarse-grained locking (locks the entire map).</td>
+</tr>
+<tr>
+<td><strong>Null Values</strong></td>
+<td>Does not allow null keys or values.</td>
+<td>Allows a single null key and multiple null values.</td>
+</tr>
+<tr>
+<td><strong>Thread-Safety</strong></td>
+<td>Thread-safe for concurrent access with better scalability.</td>
+<td>Thread-safe, but less efficient in high-concurrency scenarios.</td>
+</tr>
+<tr>
+<td><strong>Locking Granularity</strong></td>
+<td>Fine-grained locks improve throughput by reducing contention.</td>
+<td>Coarse-grained lock blocks all threads attempting access, even for independent operations.</td>
+</tr>
+<tr>
+<td><strong>Iteration Behavior</strong></td>
+<td>Does not throw ConcurrentModificationException during iteration but reflects changes made by other threads.</td>
+<td>Throws ConcurrentModificationException if the map is modified during iteration.</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Best suited for high-concurrency applications where reads and updates are frequent.</td>
+<td>Suitable for low-concurrency scenarios where simplicity is preferred over performance.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ConcurrentHashMap</strong>.</p>
+<p>The ConcurrentHashMap class is part of the Java Collections Framework and extends the AbstractMap class. It implements the ConcurrentMap and Serializable interfaces. Below is the hierarchy:</p>
+<pre tabindex="0"><code>java.lang.Object
+   └── java.util.AbstractMap&lt;K, V&gt;
+     └── java.util.concurrent.ConcurrentHashMap&lt;K, V&gt;
+        ├── ConcurrentMap&lt;K, V&gt; (Interface)
+        └── Serializable (Interface)
+</code></pre><p><strong>How ConcurrentHashMap Works Internally?</strong></p>
+<p>It works on mainly 3 parts.</p>
+<p><strong>Segmented Locking</strong> - The map is divided into segments (buckets) internally.
+<!-- raw HTML omitted -->Locking occurs at the segment level rather than the whole map, ensuring high concurrency.</p>
+<p><strong>CAS (Compare-And-Swap)</strong> - Used for atomic updates without locks. Improves performance in high-concurrency scenarios.</p>
+<p><strong>Read-Write Operations</strong> - Reads are generally lock-free, allowing for high throughput. Writes use fine-grained locking or CAS to minimize blocking.</p>
+<p><strong>Explain CAS</strong></p>
+<p>Compare-And-Swap (CAS) is an atomic operation used in concurrent programming to achieve synchronization without locks. It enables threads to update shared variables safely without the overhead and contention caused by traditional locking mechanisms.</p>
+<p><strong>Memory Location</strong> - CAS reads the value at the memory location.</p>
+<p><strong>Expected Value</strong> - It compares the read value with the expected value.
+If the current value matches the expected value, CAS updates the variable with the new value.
+If the current value does not match the expected value, CAS fails, and no update occurs.</p>
+<p><strong>New Value</strong> - The operation returns a status indicating whether the swap was successful.</p>
+<p>Example - Thread A. Memory location 5. Value = 5. Expected value = 5. New Value = 10. The value is updated to 10.</p>
+<p><!-- raw HTML omitted -->Example - Thread B. Memory location 6. Value = 5. Expected value = 10. New Value = 15. The value is not updated as current value is 10.</p>
+<p><strong>Advantages of CAS</strong>.</p>
+<p>Non-blocking - CAS ensures only the thread that successfully updates the variable proceeds. Other threads retry until they succeed, avoiding the need for locks.</p>
+<p>High Performance - Eliminates contention and overhead associated with locking. Particularly useful in high-concurrency scenarios.</p>
+<p>Atomicity - The comparison and update occur as a single, indivisible operation. Ensures thread safety.</p>
+<p><strong>Disadvantages of CAS</strong>.</p>
+<p>ABA Problem - If a variable changes from value A to B and back to A, CAS may incorrectly assume nothing changed.
+Solution: Use a version number or timestamp alongside the variable.</p>
+<p>Busy-Waiting - If many threads are competing, repeated retries can cause performance degradation.</p>
+<p>Limited Use - Works well for single variable updates but becomes complex for larger data structures or multiple variables.</p>
+<p>Iteration in ConcurrentHashMap does not throw a <code>ConcurrentModificationException</code> even if the map is modified during the iteration.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>    ConcurrentHashMap<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> map <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ConcurrentHashMap<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>    map.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;A&#34;</span>, 1);
+</span></span><span style="display:flex;"><span>    map.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;B&#34;</span>, 2);
+</span></span><span style="display:flex;"><span>    map.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;C&#34;</span>, 3);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Thread to modify the map</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> map.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;D&#34;</span>, 4)).<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Iterating over the map.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// It can modify the map while iterating.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (String key : map.<span style="color:#a6e22e">keySet</span>()) {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Key: &#34;</span> <span style="color:#f92672">+</span> key <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, Value: &#34;</span> <span style="color:#f92672">+</span> map.<span style="color:#a6e22e">get</span>(key));
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Simulate adding a new key during iteration</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (key.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;B&#34;</span>)) {
+</span></span><span style="display:flex;"><span>            map.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;E&#34;</span>, 5); <span style="color:#75715e">// Adding during iteration</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Final Map: &#34;</span> <span style="color:#f92672">+</span> map);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Synchronized HashMap.</p>
+<p>Iteration in SynchronizedHashMap requires explicit synchronization when accessed by multiple threads. Modifying the map during iteration will throw a ConcurrentModificationException unless you use explicit synchronization.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>    Map<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> map <span style="color:#f92672">=</span> Collections.<span style="color:#a6e22e">synchronizedMap</span>(<span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;</span>());
+</span></span><span style="display:flex;"><span>    map.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;A&#34;</span>, 1);
+</span></span><span style="display:flex;"><span>    map.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;B&#34;</span>, 2);
+</span></span><span style="display:flex;"><span>    map.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;C&#34;</span>, 3);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Thread to modify the map</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">synchronized</span> (map) {
+</span></span><span style="display:flex;"><span>            map.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;D&#34;</span>, 4);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }).<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Iterating over the map</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">synchronized</span> (map) { <span style="color:#75715e">// Explicit synchronization required</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (String key : map.<span style="color:#a6e22e">keySet</span>()) {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Key: &#34;</span> <span style="color:#f92672">+</span> key <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, Value: &#34;</span> <span style="color:#f92672">+</span> map.<span style="color:#a6e22e">get</span>(key));
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Attempting to modify during iteration</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (key.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;B&#34;</span>)) {
+</span></span><span style="display:flex;"><span>                map.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;E&#34;</span>, 5); <span style="color:#75715e">// This may throw ConcurrentModificationException</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Final Map: &#34;</span> <span style="color:#f92672">+</span> map);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="question-difference-between-stringbuilder-and-stringbuffer-and-string">Question. Difference between StringBuilder and StringBuffer and String.</h3>
+<p><strong>String</strong>.</p>
+<p>Immutable. Any change will create a new String.
+<!-- raw HTML omitted -->Not Thread safe and not synchronized.
+<!-- raw HTML omitted -->Slower as it will create new string.</p>
+<p><strong>StringBuilder</strong>.</p>
+<p>Mutable. Allows in place modification in string.
+<!-- raw HTML omitted -->Not thread safe and not synchronized.
+<!-- raw HTML omitted -->Faster than StringBuffer as no synchronization.
+<!-- raw HTML omitted -->Used in single threaded environment with frequent string modification.</p>
+<p><strong>StringBuffer</strong>.
+<!-- raw HTML omitted -->Mutable and Thread safe. Synchronization ensures thread safety.
+<!-- raw HTML omitted --></p>
+<h3 id="question-difference-between-default-and-static-method">Question. Difference between default and static method.</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Default Method</th>
+<th>Static Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Definition</strong></td>
+<td>A method with a body in an interface, invoked on an instance.</td>
+<td>A method declared with the static keyword, invoked on the class.</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>To provide a default implementation for methods in interfaces, ensuring backward compatibility. Default methods work with instance variables and methods.</td>
+<td>To define utility or helper methods unrelated to instance-specific behavior. Static methods work only with static data and do not access instance variables or methods.</td>
+</tr>
+<tr>
+<td><strong>Inheritance</strong></td>
+<td>Can be inherited and overridden by implementing classes.</td>
+<td>Cannot be overridden but can be hidden (if declared in a class).</td>
+</tr>
+</tbody>
+</table>
+<p>Default Method.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Vehicle</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">start</span>() {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Vehicle is starting...&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Car</span> <span style="color:#66d9ef">implements</span> Vehicle {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        Car car <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Car();
+</span></span><span style="display:flex;"><span>        car.<span style="color:#a6e22e">start</span>(); <span style="color:#75715e">// Output: Vehicle is starting...</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Static Method.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Utility</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">log</span>(String message) {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Log: &#34;</span> <span style="color:#f92672">+</span> message);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        Utility.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;This is a static method.&#34;</span>); <span style="color:#75715e">// Output: Log: This is a static method.</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="question-difference-between-rest-and-soap-and-which-scenario-to-use-it">Question. Difference between REST and SOAP and which scenario to use it.</h3>
+<h3 id="question-difference-between-synchronized-and-volatile">Question. Difference between synchronized and volatile.</h3>
+<h3 id="question-difference-between-process-and-thread">Question. Difference between process and thread.</h3>
+<table>
+<thead>
+<tr>
+<th>Future</th>
+<th>CompletableFuture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Future represents the result of an asynchronous computation.</td>
+<td>Completable Future is Future result + methods like compose, combine, exceute async task.</td>
+</tr>
+<tr>
+<td>Future replies on blocking methods like get() for result retrieval. No support for multiple async operations.</td>
+<td>Completable Future provides non blocking methods like thenAccept() for completion handling.</td>
+</tr>
+<tr>
+<td>Does not provide any build in mechanism for handling exceptions. Exception handlingneeds to e implemented externally. Exceptions are caught during the get() method call.</td>
+<td>CompetableFuture supports fluent API and allows chaining of multiple asynchronous operations.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Runnable</th>
+<th>Callable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nothing is returned as a result <code>java.lang.Runnable</code> It is abstrcat and no exception is handled.</td>
+<td>Throws a checked exception and returns some result. It either compute result or throws exception <code>java.util.concurrent</code></td>
+</tr>
+<tr>
+<td>public abstract void run();</td>
+<td>V call() throws exception;</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/interviewquestion"
+      >interviewQuestion</a
+    >
+     
+    <a
+      class="mb-1.5 ltr:mr-1.5 rtl:ml-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://suchismita-deb.github.io/tags/java"
+      >java</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  >
+    
+    <a class="ltr:pr-3 rtl:pl-3" href="https://suchismita-deb.github.io/post/java/interviewquestion/topic6/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>Topic 6 Java</span></a
+    >
+    
+    
+    <a class="ltr:ml-auto rtl:mr-auto justify-end pl-3" href="https://suchismita-deb.github.io/post/java/interviewquestion/topic_4/"
+      ><span>Topic 4 Java</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+<footer
+  class="mx-auto flex h-[4.5rem] max-w-[--w] items-center px-8 text-xs uppercase tracking-wider opacity-60"
+>
+  <div class="mr-auto">
+  
+    &copy; 2025
+    <a class="link" href="https://suchismita-deb.github.io/">Technical Blog</a>
+  
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+  <script src="/search.js"></script>
+
+</footer>
+
+</body>
+
+
+</html>
