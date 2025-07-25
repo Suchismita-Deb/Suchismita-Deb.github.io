@@ -33,6 +33,7 @@ SLI drive SLO which informs SLA.
 
 {{<figure src="/images/Devops/SLISLOSLA.png" alt="SLI SLO SLA.">}}
 
+
 |SLI| SLO                                                                 |SLA|
 |---|---------------------------------------------------------------------|---|
 SLI are service level indicator or metrics over time which inform about the health of a service.| Objectives agreed upon bounds for how often those SLI must be met.  | SLA are business level agreements which defines the service availability for the customer and the penalties for failing to deliver the availability.|
