@@ -122,7 +122,6 @@ Step 3. in Key Binding right side window Past following Code.
 Step 4. Now press ctrl+alt+shift+l in your keyboard.
 
 
-
 ### **Useful Gradle Command.**
 
 ```yaml
