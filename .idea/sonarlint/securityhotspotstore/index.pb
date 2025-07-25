@@ -12755,3 +12755,11 @@ o
 ?public/post/java/fundamental/ExceptionHandlingInJava/index.html,d\a\da5f8bb6b54f465feff62e0bd93155237d97c919
 d
 4content/post/Java/Fundamental/10ExceptionHandling.md,d\b\db2c5169a02f2d748f8bbc9c9a038b944864833e
+Z
+*content/post/Devops/CloudDevopsEngineer.md,0\4\04d4dddce0e03d585dbeaa7504fecbfc979b86fb
+X
+(content/post/Devops/KubernetesHandsOn.md,c\b\cb3f5bab0330fe4b4cb694465aea14ad1d0883d9
+d
+4content/post/Devops/MasteringDevopsSpecialization.md,b\f\bf86f0634f2905c41a03cd9e2f93e6f660328a14
+p
+@content/post/Devops/Project/CICDPipelineGithubActionTerraform.md,7\f\7fc291d370ef035cb373bd4cae9a86301710d641
