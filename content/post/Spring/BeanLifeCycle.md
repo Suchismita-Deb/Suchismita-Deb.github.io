@@ -166,7 +166,7 @@ Example - Beans with Prototype Scope or bean with @Lazy annotation.
 
 ### LifeCycle of Bean.
 
-{{<figure src="/images/SystemDesign/LifeCycleBean.png" alt="LifeCycleBean." caption="LifeCycle Bean.">}}
+{{<figure src="/images/LifeCycleBean.png" alt="LifeCycleBean." caption="LifeCycle Bean.">}}
 When the application starts it will start the IOC. IOC scans for the beans with `@Component` and `@Lazy` annotation.
 
 {{<figure src="/images/SystemDesign/InvokingIOCContainer.png" alt="Invoking IOC Container." caption="Invoking IOC Container.">}}
