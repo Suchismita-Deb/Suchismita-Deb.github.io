@@ -7,6 +7,7 @@ tags = ['Interview Experience','Amazon']
 categories = ['Interview Experience','Amazon']
 +++
 
+# Interview Experience (1/20).
 ### SDE 2. April 2025.
 Candidate Info - https://www.linkedin.com/in/scortier/  
 Link - https://youtu.be/mfuHYMYNqns?si=zuvrQfDeh5jQR8HG  
@@ -39,6 +40,8 @@ Salary = 60-65LPA.
 Base = 40-45LPA.  
 Joining = 20LPA.
 
+
+# Interview Experience (2/20).
 
 ### **📅 Interview Format & Timeline.**
 
