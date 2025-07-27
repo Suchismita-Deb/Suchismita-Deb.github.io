@@ -42,13 +42,25 @@ Joining = 20LPA.
 
 
 # Interview Experience (2/20).
-
-### **📅 Interview Format & Timeline.**
-
+### July 2025.
+https://leetcode.com/discuss/post/7003971/amazon-sde-2-accepted-india-by-anonymous-fpu2/
 ### **🧠 Interview Questions Breakdown. Level - M+.** 
 
+https://leetcode.com/problems/insert-delete-getrandom-o1/description/  
+https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/description/
+### **🌏 Round 2.**  
+https://leetcode.com/problems/design-twitter/description/   
+Follow Ups - Generate the news feed when one user follows millions of other users and handle millions of such users.
 ### **💎 Design System. Level - H.**  
+Movie Ticket Booking System.  
 
+> First 20 mins LP then 30 mins Design. 
+>
+> Practice in such a way that you can build a struture solution in 30 mins and lld code as well in 10 mins.
+
+### **🟩 Bar Raiser Round.**
+A design based DSA question. Design a movie system, and return the top k movies, movies by genre and some other functionalities as well.  
+Min-heap based approach to get the top k rated movies and a max-heap approach by heapifying and removing k elements.  
+More question on the min heap and removal of the root node.
 ### **🙋‍♂️ Candidate Experience.**
-
-### **✅ Outcome - Accepted.**
+Passed the interview offer letter yet to come.
