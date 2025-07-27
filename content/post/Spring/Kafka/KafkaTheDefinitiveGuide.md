@@ -36,8 +36,58 @@ The requests are batched and contain the information of the leader and the follo
 Every broker in the cluster has a `MetadataCache` that includes a map of all the brokers and all the replicas in the cluster, the controller sends all brokers information about the leadership change in an `UpdateMetadata` request to update the cache.
 A same way it happens when a broker starts back up - only difference - all replica in the broker starts as followers and need to catch up to the leader before they eligible to be electd as leader by themself.
 
-> Kafka uses Zookeepers ephemeral node to elect the controller and notify when node join or leave the cluster.
+> Kafka uses Zookeepers **ephemeral node** to elect the controller and notify when node join or leave the cluster.
 >
 > The controller is responsible for electing the leader among the partitions and replicas.
 >
 > The controller uses the epoch number to prevent a 'split brain' where multiple node believe each other the current controller.
+
+### KRaft New Raft Based Controller.
+
+In 2019 Kafka moved away from the Zookeeper based controller to the Raft Based Controller quoram. Kafka cluster will be able to run both in Zookeeper based controller or KRaft.  
+
+**WHY??** - The way Kafka uses Zookeeper to store the topic, partitiion, replica information it became clear that it will not scale to the number of partition we want Kafka to support.  
+Metadata update are written to Zookeeper synchronously and send to broker asynchronously. Receiving update from Zookeeper is asynchronous. It leads to the metadata inconsistent to the broker, controller, zookeeper.  
+Controller restart it needs to tead all the metadata for all brokers and partitions from the Zookeeper and send metadata to all brokers. It is a bottleneck as number of partition increased restarting the controller beacame slow.  
+The internal metadata operation was not good some operation done by controller, some by broker and some by zookeeper.
+
+Zookeeper as main 2 function - elect the controller and store the cluster metadata - registered broker, configurations, topics, partitions and replicas.  
+Controller itself manages the metadata - it elect the leader, create and delete topics and reassign replicas.
+
+The core idea in new design - Kafka has a log-based architecture where user represents state as a stream of events. Multiple cnsumer can catch up to the same latest state by replaying the events. The log establish a clear ordering ofteh event and ensures consumer always move to a single timeline. The new controller bring teh smae benefit in the management of Kafka metadata.  
+
+The controller node are a Raft quorum that manages log of metadata event. This log contains change to the cluster metadata. Everything that is stored in Zookeeper - topics, partitions, ISR, configuration are stored in logs.
+
+
+
+
+
+
+
+**The new architecture.**
+
+Using the Raft algorithm the controller node will elect the leader called the active controller. It handles all RPCs made from the broker. The followers controller replicates the data written on the active one and act like hot standby and track the latest state and now it fails then it will not take long time to reload a new controller to transfer all the state.  
+
+
+Controller will not push update to other broker andbokers will fetch the update form the active controller via the `MetadataFetch` API. Its alike a fetch request broker will track the offset of the latest metadata change they fetch and only request to the newer updates from the controller. Broker will persist the data in disk which will allow them to start up quickly even with millions of partitions.
+
+Broker will be registered with the controller quorom until unregistered by admin and once shut down it is offline and still regstered. Broker online and not uptodate with the latest metadata are fenced and will not serve the client. It will prevent the case where client produce event to broker which is not a leader and out of data to aware that it is not a leader.
+
+All operations that was previously involved with the client or broker communicating with Zookeeper will be routed via controller.
+
+
+Detail design on how the raft protocol adapted for Kafka, new controller quorom, cli interacting with cluster meatdata - Further study.
+
+### **Replication.**
+
+> Kafka is termed as **a distributed, partitioned, replicated commit log service**.
+>
+> Data in Kafka is organized by topic. Each topic is partitioned and each partition can have multiple replicas.
+>
+> The replicas are stored in broker. Each broker can have hundred of replicas belonging to different topics and partitions.
+
+Replication is imp as it guarantee the availability and durability when one node fail.  
+
+There are 2 types of Replicas - **Leader and Followers Replicas.**  
+Leader Replicas - Each partition has a single replica as leader. All produce request go through the eader to guarantee consistency. Clinet canconsume from lead replica or its follwoers.  
+Followers Replicas - All other than leader. Unless configured they dont server client they just replicate messages and stay up-to-date with the leader. If one leader replica for a partition crash it will become the new leader.
