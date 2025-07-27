@@ -38,3 +38,14 @@ System Design Practice as much questions as possible.
 Salary = 60-65LPA.  
 Base = 40-45LPA.  
 Joining = 20LPA.
+
+
+### **📅 Interview Format & Timeline.**
+
+### **🧠 Interview Questions Breakdown. Level - M+.** 
+
+### **💎 Design System. Level - H.**  
+
+### **🙋‍♂️ Candidate Experience.**
+
+### **✅ Outcome - Accepted.**
