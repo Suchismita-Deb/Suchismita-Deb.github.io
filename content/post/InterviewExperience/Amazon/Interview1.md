@@ -8,6 +8,7 @@ categories = ['Interview Experience','Amazon']
 +++
 
 # Interview Experience (1/20).
+---
 ### SDE 2. April 2025.
 Candidate Info - https://www.linkedin.com/in/scortier/  
 Link - https://youtu.be/mfuHYMYNqns?si=zuvrQfDeh5jQR8HG  
