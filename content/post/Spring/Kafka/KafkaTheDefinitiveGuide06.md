@@ -91,3 +91,20 @@ Replication is imp as it guarantee the availability and durability when one node
 There are 2 types of Replicas - **Leader and Followers Replicas.**  
 Leader Replicas - Each partition has a single replica as leader. All produce request go through the eader to guarantee consistency. Clinet canconsume from lead replica or its follwoers.  
 Followers Replicas - All other than leader. Unless configured they dont server client they just replicate messages and stay up-to-date with the leader. If one leader replica for a partition crash it will become the new leader.
+
+### **Read Follower.**
+
+The main goal - to reduce the network traffic cost by allowing the client to consume the nearest in-sync replica rather than leader replica.
+
+consumer configuration should include `client.rack` identifying the location of the client. Broker configuration should include `replica.selector.class` and the defaukt `LeaderSelector` (always get from leader) can be set to `RackAwareReplicaSelector` it will select the replica on the broker with rack.id match with the `client.rack`. We can implement own replica selecting logic by implementing `ReplicaSelector` interface.
+
+Replication protocol guarantees only committed messages will be available when consuming from the replica. All replica need to know which messages are committed to the leader. The leader has the current **high water mark** latest committed offset.
+
+Leader should know which replica is up-to-dated and which is not due to network congestion, broker crashes and replica in the broker start failing until it is restart.
+
+Replica send `Fetch` request the same request consumer send to consume messages. It contain the offset of the request that the replica want to receive.
+Leader can understand which replica is in sync by looking at the offset number and replica not requeting in 10 sec and replica not having the latest message more than 10 sec are out of sync and they cannot be leader in any failure.  
+Only insync replica can be a partition leader.
+Amount of time a follower can be out-of-sync is configured by the `replica.lag.time.max.ms` 
+
+In addition to leader there is one preferred leader - replica that was the leader when the topic was first created.
