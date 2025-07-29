@@ -3,9 +3,9 @@ title = 'Design Digital Wallet.'
 date = 2025-06-03T10:05:46+05:30
 url= "/post/systemdesign/designexample/DesignDigitalWallet"
 tags = ['interview question','system design']
-categories = ['low level design','system design']
 +++
-Used can store money in the wallet and spend it later. User can use a platform like Amazon Pay, PayPal and directly transfer money to someone else's wallet on the same platform. Direct transfer between the wallet is much more faster and it does not charge any extra fees.
+
+User can store money in the wallet and spend it later. User can use a platform like Amazon Pay, PayPal and directly transfer money to someone else's wallet on the same platform. Direct transfer between the wallet is much more faster and it does not charge any extra fees.
 
 Design the back end of a digital wallet application that supports cross wallet balance transfer operation.
 
@@ -373,7 +373,7 @@ The state the account balance was stored in a relational database. Mission exami
 The image shows how state machine works in five step.
 
 Read commands from the command queue. Balance date from the database. The command if it is valid generate two event for each of the accounts. Next event. Apply the event by updating the balance in the database.
-
+{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/DesignWalletStateMachine.png" alt="Subset" caption="How State Machine Works.">}}
 Reproducibility.
 
 The most important advantage that event sourcing has over other architecture is reproducibility.
