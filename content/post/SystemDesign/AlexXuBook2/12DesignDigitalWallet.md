@@ -1,7 +1,7 @@
 +++
 title = 'Design Digital Wallet.'
 date = 2025-06-03T10:05:46+05:30
-url= "/post/systemdesign/designexample/DesignDigitalWallet"
+url= "/post/systemdesign/AlexXuBook2/DesignDigitalWallet"
 tags = ['interview question','system design', "systemDesignAlexXuBook2"]
 +++
 
