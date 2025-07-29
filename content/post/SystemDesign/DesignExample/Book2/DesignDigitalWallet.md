@@ -2,7 +2,7 @@
 title = 'Design Digital Wallet.'
 date = 2025-06-03T10:05:46+05:30
 url= "/post/systemdesign/designexample/DesignDigitalWallet"
-tags = ['interview question','system design']
+tags = ['interview question','system design', "systemDesignAlexXuBook2"]
 +++
 
 User can store money in the wallet and spend it later. User can use a platform like Amazon Pay, PayPal and directly transfer money to someone else's wallet on the same platform. Direct transfer between the wallet is much more faster and it does not charge any extra fees.
