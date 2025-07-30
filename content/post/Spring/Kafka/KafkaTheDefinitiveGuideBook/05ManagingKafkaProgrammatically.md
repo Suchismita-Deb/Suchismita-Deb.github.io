@@ -1,9 +1,9 @@
 +++
-title = 'Kafka The Definitive Guide'
-date = 2025-07-27T19:59:08+05:30
+title = 'Kafka The Definitive Guide - 05 Kafka Program.'
+date = 2025-07-27T20:05:08+05:30
 
 url= "/post/spring/kafka/KafkaTheDefinitiveGuide05"
-tags = ['spring', 'kafka']
+tags = ['spring', 'kafka', 'KafkaTheDefinitiveGuide']
 +++
 ### **Chapter 5 - Managing Apache Kafka Programmatically.**
 
