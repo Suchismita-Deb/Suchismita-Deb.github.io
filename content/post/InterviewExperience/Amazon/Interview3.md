@@ -5,15 +5,4 @@ draft = true
 +++
 
 
-### SDE 2. April 2025.
-Candidate Info -
-Link - 
-Application Type - 
-### **📅 Interview Format & Timeline.**
-### **🧠 Interview Questions Breakdown. Level - M+.**
-Round 1 - 
-### **💎 Design System. Level - H.**  
-### **📶 Bar Raiser Round.**
-### **🙋‍♂️ Candidate Experience.**
-Highlight - 
-### **✅ Outcome - Accepted.**
+

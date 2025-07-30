@@ -59,7 +59,7 @@ Movie Ticket Booking System.
 >
 > Practice in such a way that you can build a struture solution in 30 mins and lld code as well in 10 mins.
 
-### **🟩 Bar Raiser Round.**
+### **💹 Bar Raiser Round.**
 A design based DSA question. Design a movie system, and return the top k movies, movies by genre and some other functionalities as well.  
 Min-heap based approach to get the top k rated movies and a max-heap approach by heapifying and removing k elements.  
 More question on the min heap and removal of the root node.

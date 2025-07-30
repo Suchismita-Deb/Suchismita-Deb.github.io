@@ -13075,3 +13075,5 @@ z
 Jcontent/post/Spring/Kafka/KafkaTheDefinitiveGuideBook/12KafkaMonitoring.md,8\2\826d3fad6c149a9e4fcd230b648b94f144977fdb
 z
 Jcontent/post/Spring/Kafka/KafkaTheDefinitiveGuideBook/13KafkaMonitoring.md,3\5\35222c1ab67a60a58be8a8bc3043c62c58be1c58
+]
+-content/post/InterviewExperience/Structure.md,0\3\03b37b1b0934d15bfc59622f7719b09828e16869
