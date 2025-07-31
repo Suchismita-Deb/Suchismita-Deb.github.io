@@ -72,6 +72,13 @@ Convert stream to table need to apply all the changes that stream contains - cal
 
 ### **Kafka Stream Architecture.**
 
+
+_Topology_
+
+
+{{<figure src="/images/Spring/Kafka/KafkaTheDefinitiveGuide/Chapter14StreamProcessing/WordCountStream.png" alt="UserRequest." caption="">}}
+
+
 ### **Summary.**
 
 Explain Stream Processing, definition and attribute.  
