@@ -68,7 +68,15 @@ _External State_ - Maintained in external data store like Cassandra.Adv - Unlimi
 
 Convert stream to table need to apply all the changes that stream contains - called Materializing the stream. In store the stream will contain all the data and to get the final data we need to materialize the view.
 
+{{<figure src="/images/Spring/Kafka/KafkaTheDefinitiveGuide/Chapter14StreamProcessing/MaterializingInventoryChange.png" alt="UserRequest." caption="">}}
 
+**_Time Windows_** - Operating on slice of time - moving averahe, top product sold this week. Join operation on two stream are also windowed - join events at the same time.  
+Calculating moving average we need to know - 
+_Size of the window_ - Larger window are smoother but it lag and price increases then it will take longer to show the data. Kafka Stream also include session window the size defined by period of inactivity. Event that arrive with gaps smaller than the defined session gap belong to same session. A gap in arrivals will define a new session and all events arriving after the gap but before the next gap belong to the new session.
+
+_How often the window move?(advance interval)_ - Window where the size is a fixed time interval **hopping window** When the advance interval is equal to the window size it is called tumbling window.
+
+_How long the window remains updatable (grace period)_ - The average for 5 mins say one dta at 2 mins come after an hour what should be done update the result? leave the new data? There is a period of time 
 
 ### **Kafka Stream Architecture.**
 
