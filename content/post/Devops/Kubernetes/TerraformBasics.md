@@ -92,11 +92,10 @@ Terraform resources are idempotent and it maintain a state file to maintain the 
 `terraform state list` - list of the resource. `local_file.terraform-file`
 
 `terraform state show local_file.terraform-file`
-{{<figure src="/images/Devops/Kubernetes/{{<figure src="/images/Devops/Kubernetes/IACTools.png" alt="Kubernetes Architecture" caption="Types of IAC Tools.">}}" alt="Kubernetes Architecture" caption="Types of IAC Tools.">}}
 
 {{<figure src="/images/Devops/Kubernetes/VariableDataType.png" alt="Kubernetes Architecture" caption="Variable Data Type.">}}
 
-### **PAssing values to a variable.**
+### **Passing values to a variable.**
 
 Pass the values via interactive CLI.  
 Pass the values via CLI arguments.  
