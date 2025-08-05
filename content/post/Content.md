@@ -84,6 +84,7 @@ Lamport Clock, Vector Clock.
 | System Design Insider Guide Alex Xu Book 200 - 500. |[Link](/files/System-design-interview-an-insiders-guide-volume2_compressed-201-427.pdf).|
 | CP Book.|[Link](/files/CP.pdf).|
 | Math Book. |[Link](/files/paul-zeitz-author-the-art-and-craft-of-problem-solving-2.pdf).|
+| Kafka Administration Book. | [Link](/files/Student_Handbook_Apache_Kafka_Administration_By_Confluent.pdf). |
 
 
 | Self Improvement Books.                                     | Link                                                                    |
