@@ -79,12 +79,11 @@ Lamport Clock, Vector Clock.
 | OS Notes                                            |[Link](/files/OS_Full_Notes.pdf).|
 | Grokking the advanced System Design Interview.      |[Link](/files/Grokking-the-advanced-system-design-interview.pdf).|
 | Grokking the system design interview.               |[Link](/files/Grokking-the-system-design-interview.pdf).|
-| System Design Insider Guide Alex Xu Book 1 - 100.   |[Link](/files/System-design-interview-an-insiders-guide-volume2_compressed-1-200-1-100.pdf).|
-| System Design Insider Guide Alex Xu Book 100 - 200. |[Link](/files/System-design-interview-an-insiders-guide-volume2_compressed-1-200-100-200.pdf).|
-| System Design Insider Guide Alex Xu Book 200 - 500. |[Link](/files/System-design-interview-an-insiders-guide-volume2_compressed-201-427.pdf).|
-| CP Book.|[Link](/files/CP.pdf).|
-| Math Book. |[Link](/files/paul-zeitz-author-the-art-and-craft-of-problem-solving-2.pdf).|
-| Kafka Administration Book. | [Link](/files/Student_Handbook_Apache_Kafka_Administration_By_Confluent.pdf). |
+| System Design Insider Guide Alex Xu Part 2          |[Link](/files/AlexXuSystemDesignPart2.pdf).|
+| CP Book.                                            |[Link](/files/CP.pdf).|
+| Math Book.                                          |[Link](/files/paul-zeitz-author-the-art-and-craft-of-problem-solving-2.pdf).|
+| Kafka Administration Book.                          | [Link](/files/Student_Handbook_Apache_Kafka_Administration_By_Confluent.pdf). |
+| Head First Java.                                    | [Link](/files/Head_First_Java_Second_Edition.pdf)
 
 
 | Self Improvement Books.                                     | Link                                                                    |
