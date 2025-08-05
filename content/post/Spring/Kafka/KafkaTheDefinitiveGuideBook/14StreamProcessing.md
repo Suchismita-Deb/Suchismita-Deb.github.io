@@ -80,7 +80,6 @@ _How long the window remains updatable (grace period)_ - The average for 5 mins 
 
 ### **Kafka Stream Architecture.**
 
-
 _Topology_
 
 
