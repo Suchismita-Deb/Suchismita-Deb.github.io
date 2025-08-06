@@ -29,3 +29,6 @@ Pod inside the cluster need to talk to the database or another api endpoint that
 There is specific rules to configure the egress traffic. **Egress Network Policies** define which external endpoints pods can access. These policies function similarly to a firewall controlling outbound traffic. 
 
 The other way using **Egress Gateway** network component that route all outbound connection through a pecific service proxy before they reach the destination. Tools like **Istio** provide an egress Gateway for managing egress traffic.
+
+### **Kubernetes for Absolute Beginners.**
+
