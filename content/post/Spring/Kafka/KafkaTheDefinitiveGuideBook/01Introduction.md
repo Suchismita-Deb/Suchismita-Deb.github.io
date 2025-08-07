@@ -11,6 +11,7 @@ Fast data movemenet makes the application more responsive.
 Pub/Sub system have a broker a central point it publishes the message.
 Direct communication will make it more difficult to maintain. 
 
+{{<figure src="/images/Spring/Kafka/KafkaTheDefinitiveGuide/01KafkaIntroduction/CentralSystem.png" alt="CentralSystem." caption="">}}
 
 There should be a single application that act as a broker.
 Multiple user is working in multiple part like logs, tracking user activity and individual pub sub for the message is still good but there will be more bugs. 

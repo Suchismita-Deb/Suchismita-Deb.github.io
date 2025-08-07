@@ -7,3 +7,6 @@ tags = ['spring', 'kafka', 'KafkaTheDefinitiveGuide']
 +++
 
 ### **Kafka Installation.**
+
+
+{{<figure src="/images/Spring/Kafka/KafkaTheDefinitiveGuide/02InstallingKafka/KafkaCluster.png" alt="KafkaCluster." caption="">}}
