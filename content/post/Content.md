@@ -83,6 +83,7 @@ Lamport Clock, Vector Clock.
 | CP Book.                                            |[Link](/files/CP.pdf).|
 | Math Book.                                          |[Link](/files/paul-zeitz-author-the-art-and-craft-of-problem-solving-2.pdf).|
 | Kafka Administration Book.                          | [Link](/files/Student_Handbook_Apache_Kafka_Administration_By_Confluent.pdf). |
+|Kafka Developer Handbook.|[Link](/files/Student_Handbook.pdf).|
 | Head First Java.                                    | [Link](/files/Head_First_Java_Second_Edition.pdf)
 
 
