@@ -484,27 +484,27 @@ HTTP1.
 
 Every request to the same server requires a separate tcp connection.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/Http1.png" alt="Http1." caption="Http1.">}}
+{{<figure src="/images/SystemDesign/Http1.png" alt="Http1." caption="Http1.">}}
 
 HTTP 1.1
 
 Followed the same TCP connection. It follows the “keep-alive”  mechanism and reuse the same tcp connection so that the connection can be used for more than a single request.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/Http1.1.png" alt="Http1.1." caption="Http1.1.">}}
+{{<figure src="/images/SystemDesign/Http1.1.png" alt="Http1.1." caption="Http1.1.">}}
 
 HTTP 1 .1 allowed the HTTP pipelining. It allows client to send multiple request before waiting for each response.
 
 The response must be received in same order as it is send. It was tricky to maintain and the support removed from many servers.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/NoPipeliningPipelining.png" alt="NoPipeliningPipelining." caption="NoPipeliningPipelining.">}}
+{{<figure src="/images/SystemDesign/NoPipeliningPipelining.png" alt="NoPipeliningPipelining." caption="NoPipeliningPipelining.">}}
 
 When one packet lost all subsequent request are impacted.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/Pipelining.png" alt="Pipelining." caption="Pipelining.">}}
+{{<figure src="/images/SystemDesign/Pipelining.png" alt="Pipelining." caption="Pipelining.">}}
 
 HTTP 2 each comes in stream. It solves the Head of line issue in the application layer but the issue still exists in the Transport layer.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/Http2.png" alt="Http2." caption="Http2.">}}
+{{<figure src="/images/SystemDesign/Http2.png" alt="Http2." caption="Http2.">}}
 
 HTTP 2 introduces the PUSH capability to the server when the client new data is available without the client to poll.
 
@@ -512,11 +512,11 @@ HTTP 3 uses QUIC protocol in the transport and not the TCP. It is based on UDP a
 
 QUIC stream shares the same quic connection so no handshake required. It delivers independently and packet loss will not effect others.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/Http.png" alt="Http." caption="Http.">}}
+{{<figure src="/images/SystemDesign/Http.png" alt="Http." caption="Http.">}}
 
 The QUIC uses the Connection Id and the connection to move from the IP address and network quickly.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/ClientServer.png" alt="ClientServer." caption="ClientServer.">}}
+{{<figure src="/images/SystemDesign/ClientServer.png" alt="ClientServer." caption="ClientServer.">}}
 
 ### **What is REST API.**
 
@@ -564,7 +564,7 @@ An SSTable store the key value pair in a sorted sequence. The write are all sequ
 
 The new SSTable becomes the most recent segment of the LSM tree as more data comes in more and more of this immutable SSTable are created and added to the LSM tree. Each one representing a small chronological subset of the incoming changes.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/SSTable.png" alt="SSTable." caption="SSTable.">}}
+{{<figure src="/images/SystemDesign/SSTable.png" alt="SSTable." caption="SSTable.">}}
 
 Since SSTable is immutable and update to an existing object key does not overwrite an existing SSTable.
 
@@ -572,7 +572,7 @@ Instead a new entry is added to the most recent SSTable which supersede any entr
 
 Deleting an object in SSTable we cannot mark anything in the sustainable as deleted. To perform a delete it adds a marker called a tombstone to the most recent SSTable for the object key.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/DeletingSSTable.png" alt="DeletingSSTable." caption="DeletingSSTable.">}}
+{{<figure src="/images/SystemDesign/DeletingSSTable.png" alt="DeletingSSTable." caption="DeletingSSTable.">}}
 
 When we get the tombstone on read we known that the object has been deleted. It is a bit unintuitive that a delete takes up extra space.
 
@@ -584,7 +584,7 @@ The number of SSTable grows it would take an increasingly long time to look up a
 
 To fix the issues there is a periodic merging and compaction process running in the background to merge SSTable and discard outdated or deleted values.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/LSMTree.png" alt="LSMTree." caption="LSMTree.">}}
+{{<figure src="/images/SystemDesign/LSMTree.png" alt="LSMTree." caption="LSMTree.">}}
 
 SSTable is sorted so the merging and compaction process is simple and uses mergesort algorithm.
 
@@ -650,11 +650,11 @@ Ask bloom filter about ribeye since the same input always hashes to the same out
 
 Asking about chop the value of the hash say 1, 5, 8 and the value 5 is not 1 in the array so the answer is no and it is correct.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/Becket.png" alt="Becket." caption="Bucket.">}}
+{{<figure src="/images/SystemDesign/Becket.png" alt="Becket." caption="Bucket.">}}
 
 Asking lemon and the hash return 1, 4, 8 and the value are 1 in array and then search happen and lemon not present. It say yes but the value not present. It is a false positive case. 
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/Bucket.png" alt="Bucket." caption="Bucket.">}}
+{{<figure src="/images/SystemDesign/Bucket.png" alt="Bucket." caption="Bucket.">}}
 
 The hash function should be good and the size of the array should be proper to avoid less false positive.
 
@@ -752,7 +752,7 @@ Transparent proxy works with layer 4 switches to redirect certain types of traff
 
 It is difficult to bypass a transparent proxy when the client is on the institution's network.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/ForwardProxy.png" alt="ForwardProxy." caption="ForwardProxy.">}}
+{{<figure src="/images/SystemDesign/ForwardProxy.png" alt="ForwardProxy." caption="ForwardProxy.">}}
 
 Reverse proxy sits between the Internet and the Web servers. It intercepts the reuqets from clients and talk to the server on behalf of the client. 
 
@@ -770,7 +770,7 @@ A reverse proxy caches static content a piece of content could be cached on the 
 
 The reverse proxy can handle ssl encryption ssl handshake is computationally expensive the reverse proxy can free up the origin servers from those expensive operations instead of handling ssl for all clients a website only needs to handle ssl handshake from a small number of reverse proxies.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/ReverseProxy.png" alt="ReverseProxy." caption="ReverseProxy.">}}
+{{<figure src="/images/SystemDesign/ReverseProxy.png" alt="ReverseProxy." caption="ReverseProxy.">}}
 
 Layers of Reverse Proc.
 
@@ -784,11 +784,11 @@ The user will enter the cloud network at the edge closer to the user and from th
 
 https://youtu.be/6ULyxuHKxg8?si=H9Y7IPTtUgg3oKy9
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/APIGateway.png" alt="APIGateway." caption="APIGateway.">}}
+{{<figure src="/images/SystemDesign/APIGateway.png" alt="APIGateway." caption="APIGateway.">}}
 
 API Gateway uses - Authentication and security policy enforcement, load balancing and circuit breaking, protocol translation and service discovery, monitoring, logging, analytics and billing, caching.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/APIGateWayParts.png" alt="APIGateWayParts." caption="APIGateWayParts.">}}
+{{<figure src="/images/SystemDesign/APIGateWayParts.png" alt="APIGateWayParts." caption="APIGateWayParts.">}}
 
 What does an API gateway do? Why do we need it? Let’s take a look. An API gateway is a single point of entry to the clients of an application. It sits between the clients and a collection of backend services for the application. An API gateway typically provides several important functions. Some common ones are: authentication and security policy enforcements, load balancing and circuit breaking, protocol translation and service discovery, monitoring, logging, analytics, and billing. And finally, caching. Let’s examine a typical flow of a client request through the API gateway and onto the backend service. Step 1 - the client sends a request to the API gateway. The request is typically HTTP-based. It could be REST, GraphQL, or some other higher-level abstractions. Step 2 - the API gateway validates the HTTP request. Step 3 - the API gateway checks the caller’s IP address and other HTTP headers against its allow-list and deny-list. It could also perform basic rate limit checks against attributes such as IP address and HTTP headers. For example, it could reject requests from an IP address exceeding a certain rate. Step 4 - the API gateway passes the request to an identity provider for authentication and authorization. This in itself is a complicated topic. The API gateway receives an authenticated session back from the provider with the scope of what the request is allowed to do. Step 5 - a higher level rate-limit check is applied against the authenticated session. If it is over the limit, the request is rejected at this point. Step 6 and 7 - With the help of a service discovery component, the API gateway locates the appropriate backend service to handle the request by path matching. Step 8 - the API gateway transforms the request into the appropriate protocol and sends the transformed request to the backend service. An example would be gRPC. When the response comes back from the backend service, the API gateway transforms the response back to the public-facing protocol and returns the response to the client. A proper API gateway also provides other critical services. For example, an API gateway should track errors and provide circuit-breaking functionality to protect the services from overloading. An API gateway should also provide logging, monitoring, and analytics services for operational observability. An API gateway is a critical piece of the infrastructure. It should be deployed to multiple regions to improve availability. For many cloud provider offerings, the API gateway is deployed across the world close to the clients.
 
@@ -802,7 +802,7 @@ GraphQL sits between the clients and the backend services. It could aggregate mu
 
 Mutations are GraphQL way of applying data modifications to resources.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/GraphQl.png" alt="GraphQl." caption="GraphQl.">}}
+{{<figure src="/images/SystemDesign/GraphQl.png" alt="GraphQl." caption="GraphQl.">}}
 
 Subscriptions are GraphQL way for clients to receive notification on data modifications.
 
@@ -810,13 +810,13 @@ GraphQL and REST both send HTTP request and receive HTTP response.
 
 REST centers around resources each resource is identified by a url. It uses `v3/books/123` to fetch a book from the bookstore api.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/GraphQlGetCall.png" alt="GraphQlGetCall." caption="GraphQlGetCall.">}}
+{{<figure src="/images/SystemDesign/GraphQlGetCall.png" alt="GraphQlGetCall." caption="GraphQlGetCall.">}}
 
 The authors field is implementation specific some rest api implementations by break them into separate REST call like `/authors/3` or `authors/5`
 
 In GraphQL it looks different we first define the types in this example we have the book and author types.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/GraphQlClient.png" alt="GraphQlClient." caption="GraphQlClient.">}}
+{{<figure src="/images/SystemDesign/GraphQlClient.png" alt="GraphQlClient." caption="GraphQlClient.">}}
 
 The types describe the kinds of data available. They don't specify how the data is retrieved via GraphQL.
 
