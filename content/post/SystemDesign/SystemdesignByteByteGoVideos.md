@@ -676,19 +676,19 @@ How do these popular live streaming platforms deliver video content from the str
 
 ### **Latency Numbers.**
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/MemoryPyramid.png" alt="MemoryPyramid." caption="MemoryPyramid.">}}
+{{<figure src="/images/SystemDesign/MemoryPyramid.png" alt="MemoryPyramid." caption="MemoryPyramid.">}}
 
 Disk access latency has improved HHD to SSD. 
 
 The network latency between countries has not improved as it covers the country and obeys the law of physics.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/TimeUnits.png" alt="TimeUnits." caption="TimeUnits.">}}
+{{<figure src="/images/SystemDesign/TimeUnits.png" alt="TimeUnits." caption="TimeUnits.">}}
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/CPURegister.png" alt="CPURegister." caption="CPURegister.">}}
+{{<figure src="/images/SystemDesign/CPURegister.png" alt="CPURegister." caption="CPURegister.">}}
 
 1 ns - Accessing CPU Register is sub-nanosecond range.
 
-{{<figure src="/images/SystemDesign/DesignExample/DigitalWallet/CPUClockCycle.png" alt="CPUClockCycle." caption="CPUClockCycle.">}}
+{{<figure src="/images/SystemDesign/CPUClockCycle.png" alt="CPUClockCycle." caption="CPUClockCycle.">}}
 
 A clock cycle of a modern CPU is in sub-nanosecond range.
 
