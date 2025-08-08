@@ -49,7 +49,7 @@ Lamport Clock, Vector Clock.
 |------------------|---|
 | Computer Network |https://suchismita-deb.github.io/tags/computer-networks/|
 | Kafka The Definitive Guide | https://suchismita-deb.github.io/tags/kafkathedefinitiveguide/ |
-| Alex Xu Book2 ||
+| Alex Xu Book2 | https://suchismita-deb.github.io/tags/systemdesignalexxubook2/ |
 
 
 ## Design Pattern
