@@ -48,6 +48,8 @@ Slow compared to other storage type.
 
 Example - AWS S3, Google Object Storage, Azure Blob Stirage.
 
+{{<figure src="/images/SystemDesign/DesignExample/ObjectStorageS3/DifferentStorageStructure.png" alt="KafkaCluster." caption="Different Storage Structure">}}
+
 ### _Comparison_
 |Topic|Block Storage|File Storage|Object Storage|
 |---|---|---|---|
