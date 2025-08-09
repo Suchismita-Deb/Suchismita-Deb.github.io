@@ -25,4 +25,17 @@ Messages are written into Kafka in batches. A batch is a collection of message a
 
 Responsive target is low latency and high throughput.
 
+Messages are byte array and additional structure are added like the schema like JSON or XML. They lack type handling and  compatibilit between schema version. Best - Apache Avro.  
+A serialization framework by Hadoop provides a compact serialization format schemas that are separate from message payload and that do not require code to be generated when they change and strong dta typing and schema evolution with forward and backward compatibility.  
 
+When the data format is coupled then application subscribed need to change to handle new data format. Making well defined schema and storing in common repositories it will make Kafka understood the message without coordinations.
+
+Message are categorized into topics. Topic - db table. Topics are broken down to partitions. Kafka - commit log and Partition - single log.
+Messages are written in append-only way and read from beginning to end.  
+Partition is the way Kafka provides redundancies and scalability.
+
+Each partition can be hosted on a different server meaning a single topic can scale horizontally acorss multiple server.  
+
+Partition can be replicated and different server will store a copy of the same partition.
+
+{{<figure src="/images/Spring/Kafka/KafkaTheDefinitiveGuide/01KafkaIntroduction/TopicWithPartition.png" alt="CentralSystem." caption="Topic with Multiple Partitions.">}}
