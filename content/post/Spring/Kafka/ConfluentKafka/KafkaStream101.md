@@ -190,11 +190,17 @@ Possible to compute a new value type.
 Keys are available in read-only mode can be used in computing the new value.  
 
 **Stream-Table joins.**   
+Any time new event come in the stream side will make the update based on the value in the KTable side. 
 KStream-KTable.  
 KStream-GlobalKTable.  
 
 **Table-Table joins.**  
+The output will be reflected in the table.
 
+GlobalKTable are useful as we dont have to see if the data are matched ahead of time. See the key and join with the streamside key. 
+
+GlobalKTable are bootstrap. Read the topic as soon as the data came into the GlobalKTable. KTable and join are timestamp driven. Event in KTable high timestamp are not going tojoin with KStream of lower timestamp.It only applicable when the timestamp is ahead of the time.
+__Stream-Stream__ Join.
 
 
 
