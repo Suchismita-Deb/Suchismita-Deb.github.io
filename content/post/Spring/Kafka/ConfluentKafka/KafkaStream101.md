@@ -1,6 +1,6 @@
 +++
 title = 'Kafka Stream 101'
-date = 2025-08-11T18:03:07+05:30
+date = 2025-08-11T15:03:07+05:30
 
 url= "/post/spring/kafka/confluentKafka/KafkaStream101"
 tags = ['spring', 'kafka']
@@ -175,8 +175,25 @@ Pre-existing serdes - String, Integer, Double, Long, Float, Byte, ByteArray, Byt
 Additional Sedes available for working with Avro, Protobuf, JsonSchema.  
 _Avro_ - SpecificAvroSerde, GenericAvroSerde.  
 _Protobuf_ - KafkaProtobufSerde.  
-_JSONSchea_ - KafkaJsonSchemaSerde.
+_JSONSchema_ - KafkaJsonSchemaSerde.
+Schema Registry provide all the Serde in Kafka Stream.
 
+### __JOINS__
+
+Kafka Stream join requires the record in the join should have same key.  
+
+**Stream-Stream joins.**    
+Combine two event streams into a new event stream.  
+Join of events based on a common key.  
+Records arrive within a defined window of time.  
+Possible to compute a new value type.  
+Keys are available in read-only mode can be used in computing the new value.  
+
+**Stream-Table joins.**   
+KStream-KTable.  
+KStream-GlobalKTable.  
+
+**Table-Table joins.**  
 
 
 
