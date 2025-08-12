@@ -5,3 +5,63 @@ date = 2025-08-11T15:03:07+05:30
 url= "/post/spring/kafka/KafkaProjectFundamental"
 tags = ['spring', 'kafka']
 +++
+Confluent Cloud is enterpise software.  
+Making personal Project then use Open source Apache kafka.
+
+Zookeeper port - 2181. Then Kafka Server port 9092.
+Apache Kafka latest bin zip download and put in C drive then open cmd from the bin path. In different folder then the cmd throw the error like the input line is long error.  
+
+
+First start the zookeeper and then the kafka server.
+```bash
+C:\kafka_2.12-3.9.1>bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+
+C:\kafka_2.12-3.9.1>bin\windows\kafka-server-start.bat config\server.properties
+```
+Producer say on port 9191.
+Consumer say port on 9292.
+### __Create a topic__
+```bash
+ C:\kafka_2.12-3.9.1> bin\windows\kafka-topics.bat --create --topic demo_topic_1 --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+```
+Topic name - demo_topic_1  
+Bootstrap-server port - localhost:9092
+### __List of all the topic in a bootstrap server.
+```bash
+C:\kafka_2.12-3.9.1> bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+```
+### __Describe one topic__
+```bash
+C:\kafka_2.12-3.9.1>bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --describe --topic demo_topic_1
+```
+The output.
+```bash
+Topic: demo_topic_1     TopicId: 0pv0RmQqSiClY81hFOWdGQ PartitionCount: 1       ReplicationFactor: 1    Configs:
+Topic: demo_topic_1     Partition: 0    Leader: 0       Replicas: 0     Isr: 0  Elr: N/A        LastKnownElr: N/A
+```
+
+Kafka Consumer offset is one software where we need to add the port and then can see the topic details.  
+{{< figure src="/images/Spring/Kafka/KafkaConsumerOffset.png" alt="KafkaConsumerOffset" caption="Kafka Consumer Offset Cluster." >}}  
+In Offset Explorer connect the cluster.
+
+### __Produce message and Consume Message__
+
+```bash
+C:\kafka_2.12-3.9.1>bin\windows\kafka-console-producer.bat --topic demo_topic_1 --bootstrap-server localhost:9092
+> Hello
+> World
+
+## When there are multiple broker list.
+C:\kafka_2.12-3.9.1>bin\windows\kafka-console-producer.bat --topic demo_topic_1 --bootstrap-server broker1:9092,broker2:9092,broker3:9092
+```
+
+Consumer command in a terminal.
+```bash
+C:\kafka_2.12-3.9.1>bin\windows\kafka-console-consumer.bat --topic demo_topic_1 --bootstrap-server localhost:9092 --from-beginning
+```
+
+When produce multiple message say one file of data to produce in the topic.
+```bash
+Produce a large file in the message - C:\kafka_2.12-3.9.1>bin\windows\kafka-console-producer.bat --topic demo_topic_1 --bootstrap-server localhost:9092 <filePathInSystem>
+```
+filePathInSystem can be like Users/Download/File.csv
