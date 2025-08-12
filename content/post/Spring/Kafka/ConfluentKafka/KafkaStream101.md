@@ -193,6 +193,12 @@ Keys are available in read-only mode can be used in computing the new value.
 Any time new event come in the stream side will make the update based on the value in the KTable side. 
 KStream-KTable.  
 KStream-GlobalKTable.  
+Non-windowed joins.  
+Inner - Only if both sides are available is a record emitted.  
+Left-outer - The left side (KStream) always produces an output record Left-value + Right-value. Left-value+Null.  
+Only the stream side drives the join - new records arriving to the table (right-side) dont result in outputting a join result. When stream get the value it will add the new value.  
+GlobalKTable joins provide mechanism for determining the join-key from the Stream side key or value.  
+KTables are timestamp driven but GlobalKTables ae bootstrapped - results in different join semantics.
 
 **Table-Table joins.**  
 The output will be reflected in the table.
@@ -200,7 +206,24 @@ The output will be reflected in the table.
 GlobalKTable are useful as we dont have to see if the data are matched ahead of time. See the key and join with the streamside key. 
 
 GlobalKTable are bootstrap. Read the topic as soon as the data came into the GlobalKTable. KTable and join are timestamp driven. Event in KTable high timestamp are not going tojoin with KStream of lower timestamp.It only applicable when the timestamp is ahead of the time.
+
 __Stream-Stream__ Join.
 
+Inner - Only if both sodes are available within the defined window is a joined result emitted.  
+Outer - Both sides always produce an output record.  
+Leftvalue+Right-value.  
+Left-value + Null.  
+Null + Right-value.
+
+Left-Outer - The left side always produces an output recrd. 
+Left-value+Right-value.  
+Left-value+Null.
 
 
+Example of Stream-Stream Joins.
+```java
+KStream<String, String> leftStream = builder.stream("topic-A");
+Kstream<String, String> rightStream = builder.stream("topic-B");
+
+ValueJoiner<String, String>
+```
