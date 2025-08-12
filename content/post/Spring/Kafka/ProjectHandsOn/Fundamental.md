@@ -65,3 +65,29 @@ When produce multiple message say one file of data to produce in the topic.
 Produce a large file in the message - C:\kafka_2.12-3.9.1>bin\windows\kafka-console-producer.bat --topic demo_topic_1 --bootstrap-server localhost:9092 <filePathInSystem>
 ```
 filePathInSystem can be like Users/Download/File.csv
+
+### __Bootstrap server Cluster Endpoints.__
+The bootstrap server of confluent looks like `lkc-3r55qm-6k5r02.us-central1.gcp.glb.confluent.cloud:9092` 
+In the confluent cloud set the env like dev, prd, stg then there will be cluste and in the cluster settings we can see the bootstrap server.
+{{<figure src="/images/Spring/Kafka/Cluster.png" alt="Cluster" caption="Cluster." >}}  
+
+### __Dependency Needed__
+Kafka Streams, Kafka Avro Serializer, Apache Kafka.
+One thing the confluent io dependency not present in the springinitilizer platform. Then search for the dependency in Maven.
+```yaml
+<!-- https://mvnrepository.com/artifact/io.confluent/kafka-avro-serializer -->
+<dependency>
+    <groupId>io.confluent</groupId>
+    <artifactId>kafka-avro-serializer</artifactId>
+    <version>7.8.0</version>
+</dependency>
+```
+
+In gradle project we need to modify the dependency like `groupId:artifactId:version` like `io.confluent:kafka-avro-serializer:7.8.0` 
+
+In the build.gradle we need to add the dependency.
+```yaml
+dependencies {
+  implement io.confluent:kafka-avro-serializer:7.8.0
+}
+```
