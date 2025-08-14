@@ -6465,8 +6465,6 @@ Z
 *content/post/Spring/Kafka/KafkaLearning.md,1\5\15bbf993b5ea92cf9b7787a7e0a4be45969ffcca
 o
 ?content/post/Spring/DependencyInjectionAndInversionOfControl.md,4\d\4d80c60430f3318a4dde7b34df3a1a7d514ffdc5
-W
-'content/post/Spring/JBossFundamental.md,6\b\6be5baa33bbc591e1ebcf9fd16f44957adbade4e
 d
 4content/post/Spring/Kafka/ConfluentKafka/Kafka101.md,8\2\827055bef208e81a08fad45c2e52dc390d668a2b
 Z
@@ -13065,3 +13063,11 @@ j
 ^content/post/Spring/Kafka/ProjectHandsOn/KafkaProducerConsumer/KafkaProducerConsumerProject.md,b\9\b9a44bb789785d544bad2c5ab3eb0d04c802f02c
 g
 7content/post/Spring/Kafka/ProjectHandsOn/Fundamental.md,2\c\2ca7074bce3e319d2f45958e81325050c6554180
+S
+#content/post/Java/ImportantTopic.md,5\e\5ea52d9e02c089e73216f3ebfa10b0d5e86756c5
+]
+-content/post/Java/PartitioningByGroupingBy.md,6\1\61adc5aae3a871c74bd4278a541cd2e0e7c92bbe
+I
+content/post/Java/Todo.md,8\c\8cc0adaf3e91b1b530df5c71ab0faa31f686fa45
+K
+themes/paper/assets/app.css,6\2\62294216488b0281b4860698302eee350f8a6015
