@@ -13071,3 +13071,9 @@ I
 content/post/Java/Todo.md,8\c\8cc0adaf3e91b1b530df5c71ab0faa31f686fa45
 K
 themes/paper/assets/app.css,6\2\62294216488b0281b4860698302eee350f8a6015
+}
+Mcontent/post/Spring/Kafka/ProjectHandsOn/Kafka-Avro-Schema/KafkaAvroSchema.md,6\2\621ee2525cbc4797a91c438947a425eb6d6f97b2
+{
+Kcontent/post/Spring/Kafka/ProjectHandsOn/KafkaStream/KafkaStreamTemplate.md,a\4\a4837e80e9f537451f8ec8699a99aa00d9e31565
+{
+Kcontent/post/Spring/Kafka/ProjectHandsOn/KafkaStream/KafkaStreamProject1.md,e\a\ea32f209dd3c644cad23d18b8bc4e64ba353721d
