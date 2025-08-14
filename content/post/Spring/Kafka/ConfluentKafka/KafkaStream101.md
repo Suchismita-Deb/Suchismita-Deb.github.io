@@ -442,7 +442,14 @@ _Event-time_ - A producer including Kafka Streams library automatically set this
 
 _Ingestion-time_ - The time that is configured by the Kafka broker to set the time step failed where an event is appended or stored in to the topic. Timestamp is the current wall clock time of the broker environment.
 
-Defining custom TimeStampExtractor then implement the TimeStampExtractor interface.
+{{<figure src="/images/Spring/Kafka/ConfluentKafka/streamTime.png" alt="streamTime." caption="streamTime">}}
+
+{{<figure src="/images/Spring/Kafka/ConfluentKafka/outOfOrder.png" alt="UserRequest." caption="">}}
+
+{{<figure src="/images/Spring/Kafka/ConfluentKafka/EventNotConsidered.png" alt="UserRequest." caption="">}}
+
+Defining custom TimeStampExtractor then implement the TimeStampExtractor interface. 
+
 ### __Processor API.__
 
 ### __Testing.__
