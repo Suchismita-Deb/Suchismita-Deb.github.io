@@ -353,16 +353,14 @@ public class StreamsAggregate{
     final KStream<String, ElectronicOrder> electronicStream = builder.stream(inputTopic, Consumed.with(Serdes.String(), electronicSerde));
 
     electronicStream.groupByKey().aggregate(()->0.0,
-          (key, order, total) -> total + order.getPrice(), Materialized.with(Serdes.String(), Serdes.Double()))
-.toStream().peek((key, value) -> System.out.println("Key " + key + " Value = " + value))
-.to(outputTopic, Produced.with(Serdes.String(), Serdes.Double()));
+          (key, order, total) -> total + order.getPrice(), Materialized.with(Serdes.String(), Serdes.Double())).toStream().peek((key, value) -> System.out.println("Key " + key + " Value = " + value)).to(outputTopic, Produced.with(Serdes.String(), Serdes.Double()));
 
-KafkaStreams kafkaStreams = new KafkaStreams(builder.build(), streamsProps);
-TopicLoader.runProducer();
-kafkaStreams.start();
+    KafkaStreams kafkaStreams = new KafkaStreams(builder.build(), streamsProps);
+    TopicLoader.runProducer();
+    kafkaStreams.start();
 
-// StreamJoined.with(Serdes.String(), applianceSerde, electronicSerde))
-// (key, left side, right side)
+    // StreamJoined.with(Serdes.String(), applianceSerde, electronicSerde))
+    // (key, left side, right side)
   }
 }
 ```
@@ -398,8 +396,53 @@ TimeWindows tumblingWindow = TimeWindows.of(windowSize);
 myStream.groupByKey().windowedBy(tumblingWindow).count();
 ```
 
-### __Time Concept.__
+Session Window - Window start and window end. The window boundary is determined by the event.
+```java
+KStream<String, Strin> myStream = builder.stream("topic-A");
+Duration inactivityGap = Duration.ofMinutes(5);
+myStream.groupByKey().windowedBy(SessionWindows.with(inactivityGap)).count();
+```
+Sliding Window - 
+```java
+KStream<String, Strin> myStream = builder.stream("topic-A");
+Duration timeDifference = Duration.ofSeconds(2);
+Duration gracePeriod = Duration.ofMillis(500);
+myStream.groupByKey().windowedBy(SlidingWindows.withTimeDifferenceAndGrace(timeDifference, gracePeriod)).count();
+```
+Grace period - Event coming within the window size will be added to the window and records outside the window will be discarded. There is grace window defined in any of the window means the time you will accept the record after the window time has ended.
 
+```java
+public class StreamsAggregate{
+  public static void main(String[] args) throws IOException {
+    final Properties streamsProps = StreamsUtils.loadProperties():
+    streamsProps.put(StreamsConfig.APPLICATION_ID_CONFIG, "windowed-streams");
+    StreamsBuilder builder = new StreamsBuilder();
+    final String inputTopic = streamsProps.getProperty("windowed.input.topic");
+    final String streamTwoInput = streamsProps.getProperty("windowed.output.topic");
+
+    final Map<String, Object> configMap = StreamsUtils.propertiesToMap (streamsProps);
+
+    SpecificAvroSerde<ElectronicOrder> electronicSerde = StreamsUtils.getSpecificAvroSerde(configMap);
+    final KStream<String, ElectronicOrder> electronicStream = builder.stream(inputTopic, Consumed.with(Serdes.String(), electronicSerde)).peek((key, value) -> System.out.println("Key " + key + " Value = " + value));
+
+        electronicStream.groupByKey().windowedBy(Timewindows.of(Duration.ofHours(1)).grace(Duration.ofMinutes(5))).agregate(()->0.0,(key, order, total) -> total + order.getPrice(), Materialized.with(Serdes.String(), Serdes.Double())).suppress(untilWindowCLoses(unbounded())).toStream().map((wk,value)->KeyValue.pair(wk.key(),value)).peek((key,value)->System.out.println("Key "+key+" value = "+value)).to(outputTopic, Produced.with(Serdes.String(), Serdes.Double()));
+    // Tumbling window of 1 hour and grace period of 5 mins. Materialized to store in state store. Suppress all the message into the window till it open. The toStream() convert the KTable to KStream. The map to the window key to the underlying record key. 
+
+    KafkaStreams kafkaStreams = new KafkaStreams(builder.build(), streamsProps);
+    TopicLoader.runProducer();
+    kafkaStreams.start();
+  }
+}
+```
+ 
+### __Time Concept.__
+The kafka message forma has a dedicated timestamp field. 
+
+_Event-time_ - A producer including Kafka Streams library automatically set this timestamp field if user does not add it. Timestamp is the current world clock time of the producer event environment when the event is created.
+
+_Ingestion-time_ - The time that is configured by the Kafka broker to set the time step failed where an event is appended or stored in to the topic. Timestamp is the current wall clock time of the broker environment.
+
+Defining custom TimeStampExtractor then implement the TimeStampExtractor interface.
 ### __Processor API.__
 
 ### __Testing.__
