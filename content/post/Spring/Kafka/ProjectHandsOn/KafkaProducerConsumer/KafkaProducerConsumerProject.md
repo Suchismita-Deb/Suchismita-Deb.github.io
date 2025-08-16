@@ -40,7 +40,8 @@ Starting a producer.
 
 When there will be a Kafka  Producer then there should be a configuration map properties to inform how and where to send the data.
 
-It will contain the connection of the connection settings like the bootstrap server and serialization and acks, batch.size, linger.ms, compression.type
+It will contain the connection of the connection settings like the bootstrap server and serialization and acks, batch.size, linger.ms, compression.type  
+It can be in a configuration file and another way to define in the application.yml file. Not much of configuration then the yaml file of the producer and consumer config is good.
 
 ```java
 public class SimpleKafkaProducer {
@@ -65,5 +66,18 @@ public class SimpleKafkaProducer {
     }
 }
 ```
-
+In the application configuration file the producer and consumer details should be added as an alternate.
+```yml
+spring:
+  kafka:
+    bootstrap-servers: "127.0.0.1:9092" 
+    producer:
+      keySerializer: "org.apache.kafka.common.serialization.StringSerializer"
+      valueSerializer: "io.confluent.kafka.serializers.KafkaAvroSerializer" # Value serializer is the avro kafka serializer.
+    consumer:
+      group-id: "groupid-new"
+      keyDeserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+      valueDeserializer: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
+      autoOffsetReset: "earliest"
+```
 Kafka provides KafkaTemplate to send messages.

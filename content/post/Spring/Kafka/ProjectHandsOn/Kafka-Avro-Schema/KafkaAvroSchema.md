@@ -5,6 +5,9 @@ date = 2025-08-11T15:03:07+05:30
 url= "/post/spring/kafka/KafkaAvroSchemaProject"
 tags = ['spring', 'kafka']
 +++
+https://github.com/Suchismita-Deb/Kafka-Avro-Project/tree/main
+
+
 In the project springKafkaAvroMain project first create the Schema and using the Maven plugin create the avro class. Then the producer and consumer and serializer and deserializer and the schema registery.  
 The avro object need schema registery.
 
@@ -74,12 +77,11 @@ public class KafkaAvroProducer{
 
 }
 ```
-
 In a Kafkaconfig file create the bean of the topic.
 
 ```java
 @Configuration
-public class Kafkaconfi{
+public class Kafkaconfig{
   // Create the bean of topic.
   @Bean
   public NewTopic createTopic(){
@@ -108,4 +110,30 @@ public class KafkaAvroConsumer {
         log.info("Avro message received for key = " + key + " value = " + employee.toString());
     }
 }
+```
+The controller code will be running on server:port:8181.
+The serializer value and the deserializer value and the bootstrap server details should be all in a configuration. One way to do a configuration file and another way to define in the application.yml file.
+```yml
+spring:
+  kafka:
+    bootstrap-servers: "127.0.0.1:9092" # Producer and consumer has the same bootstrap server and it is placed in kafka.
+    producer:
+      keySerializer: "org.apache.kafka.common.serialization.StringSerializer"
+      valueSerializer: "io.confluent.kafka.serializers.KafkaAvroSerializer" # Value serializer is the avro kafka serializer.
+      properties:
+        schema:
+          registry:
+            url: "http://127.0.0.1:8081"
+    consumer:
+      group-id: "groupid-new"
+      keyDeserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+      valueDeserializer: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
+      autoOffsetReset: "earliest"
+      properties:
+        schema:
+          registry:
+            url: "http://127.0.0.1:8081"
+        specific:
+          avro:
+            reader: "true" # To read the avro messages in the consumer.
 ```

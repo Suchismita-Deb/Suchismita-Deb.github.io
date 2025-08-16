@@ -5,3 +5,4 @@ url= "/post/systemdesign/AlexXuBook2/DesignPaymentSystem"
 tags = ['interview question','system design', "systemDesignAlexXuBook2"]
 +++
 
+{{<figure src="/images/SystemDesign/DesignExample/DesignNearByFriend/Summary.png" alt="UserRequest." caption="">}}

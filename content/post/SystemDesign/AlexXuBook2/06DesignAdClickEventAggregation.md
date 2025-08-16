@@ -5,3 +5,4 @@ url= "/post/systemdesign/AlexXuBook2/DesignAdClickEventAggregation"
 tags = ['interview question','system design', "systemDesignAlexXuBook2"]
 +++
 
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/EndToEndExactlyOnce.png" alt="UserRequest." caption="">}}

@@ -66,7 +66,7 @@ Example - AWS S3, Google Object Storage, Azure Blob Stirage.
 
 
 
-
+{{<figure src="/images/SystemDesign/DesignExample/DesignNearByFriend/Summary.png" alt="UserRequest." caption="">}}
 
 
 

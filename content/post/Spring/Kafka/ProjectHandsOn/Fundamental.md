@@ -44,6 +44,11 @@ Kafka Consumer offset is one software where we need to add the port and then can
 {{< figure src="/images/Spring/Kafka/KafkaConsumerOffset.png" alt="KafkaConsumerOffset" caption="Kafka Consumer Offset Cluster." >}}  
 In Offset Explorer connect the cluster.
 
+### __Delete one topic__
+```bash
+bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --delete --topic topic-Name
+```
+
 ### __Produce message and Consume Message__
 
 ```bash

@@ -129,7 +129,7 @@ public class CustomerAccountStreamProcessor {
     // Start the stream we need to create the topology of the stream.
     Topology topology=streamBuilder.build();
 
-    KafkaStreams streams = new KafkaStreams(topology,new StreamConfig(kafkaProperties.buildStreamsProperties())); // parameter topology and streamsconfig.
+    KafkaStreams streams = new KafkaStreams(topology,new StreamsConfig(kafkaProperties.buildStreamsProperties())); // parameter topology and streamsconfig.
     streams.start();
     // In application spring.kafka.streams.auto-startup=false when true then stream will start when the application will start.
     // When want to start manually then there should be start().
