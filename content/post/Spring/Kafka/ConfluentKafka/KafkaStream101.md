@@ -442,37 +442,27 @@ _Event-time_ - A producer including Kafka Streams library automatically set this
 
 _Ingestion-time_ - The time that is configured by the Kafka broker to set the time step failed where an event is appended or stored in to the topic. Timestamp is the current wall clock time of the broker environment.
 
-Timestamps of events drive the action in Kafka Streams.  
-Earliest timestamp across all input partitions chosen first for processing.  
-Kafka Streams uses the TimestampExtractor interface to get timestamp.  
-Default behavior is to use the event timestamp (set by either the event producer or the Kafka broker, see previous slide)
-Default extractor is the FailOnInvalidTimestamp
-Timestamp set by producer (event-time) or broker (ingestion-time)
-If it's desired to use a timestamp embedded in the event "payload" (i.e., the event key or the event value), provide a custom TimestampExtractor interface implementation.
-
-Time moves forward in Kafka Streams by these timestamps.  
-For windowing operations this means the timestamps govern the opening and closing of windows.  
-How long a window remains open depends on timestamps only; it's completely detached from wall-clock time
-Kafka Streams has a concept of Stream Time
-Stream Time definition(based on "slack time").  
-Largest timestamp seen so far.  
-Only moves forward never backward.  
-If an out-of-order event arrives, stream-time stays where it is present.
-
 {{<figure src="/images/Spring/Kafka/ConfluentKafka/streamTime.png" alt="streamTime." caption="streamTime">}}
 
-Any input events with an event-time < stream-time are considered out-of-order. For windowed operations this means the event-timestamp is less than the current stream-time but is within the window time(window size plus grace period)  
-Out-of-order records are accepted and processed.
+{{<figure src="/images/Spring/Kafka/ConfluentKafka/outOfOrder.png" alt="UserRequest." caption="">}}
 
-{{<figure src="/images/Spring/Kafka/ConfluentKafka/outOfOrder.png" alt="UserRequest." caption="Out Of Order.">}}
-
-The grace period, a per-window setting defines a cut-off for out-of-order events.  
-Any out-of-order events that arrive after the grace period are considered too late and thus are ignored and not processed.  
-The delay of an event is determined by stream-time-event-timestamp
-{{<figure src="/images/Spring/Kafka/ConfluentKafka/EventNotConsidered.png" alt="UserRequest." caption="Event Not considered after Grace Period.">}}
+{{<figure src="/images/Spring/Kafka/ConfluentKafka/EventNotConsidered.png" alt="UserRequest." caption="">}}
 
 Defining custom TimeStampExtractor then implement the TimeStampExtractor interface. 
+```java
+public class StreamsTimeStampExtractor{
+  public static void main(String[] args) throws IOException {
+    final Properties streamsProps = StreamsUtils.loadProperties():
+    streamsProps.put(StreamsConfig.APPLICATION_ID_CONFIG, "extractor-windowed-streams");
+    StreamsBuilder builder = new StreamsBuilder();
+    final String inputTopic = streamsProps.getProperty("extractor.input.topic");
+    final String streamTwoInput = streamsProps.getProperty("extractor.output.topic");
 
+    final Map<String, Object> configMap = StreamsUtils.propertiesToMap (streamsProps);
+
+    SpecificAvroSerde<ElectronicOrder> electronicSerde = StreamsUtils.getSpecificAvroSerde(configMap);
+    final KStream<String, ElectronicOrder> electronicStream = builder.stream(inputTopic, Consumed.with(Serdes.String(), electronicSerde)).peek((key, value) -> System.out.println("Key " + key + " Value = " + value));
+```
 ### __Processor API.__
 
 ### __Testing.__
