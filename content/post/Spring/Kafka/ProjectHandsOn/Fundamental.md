@@ -26,7 +26,7 @@ Consumer say port on 9292.
 ```
 Topic name - demo_topic_1  
 Bootstrap-server port - localhost:9092
-### __List of all the topic in a bootstrap server.
+### __List of all the topic in a bootstrap server.__
 ```bash
 C:\kafka_2.12-3.9.1> bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
 ```
