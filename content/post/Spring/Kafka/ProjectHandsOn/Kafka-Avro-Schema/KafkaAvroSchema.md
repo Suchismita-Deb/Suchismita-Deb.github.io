@@ -10,6 +10,7 @@ The avro object need schema registery.
 
 In the resource package create the avro folder and create one file employee.avsc  
 One sample avro file.
+
 ```yml
 {
   "namespace": "com.kafkaProject.dto", # Package to put the generated class.
