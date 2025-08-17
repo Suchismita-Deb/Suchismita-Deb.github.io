@@ -47,7 +47,7 @@ In Offset Explorer connect the cluster.
 
 ### __Delete one topic__
 ```bash
-bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --delete --topic topic-Name
+C:\kafka_2.12-3.9.1>bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --delete --topic topic-Name
 ```
 
 ### __Produce message and Consume Message__
