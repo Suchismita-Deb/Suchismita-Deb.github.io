@@ -5,4 +5,4 @@ url= "/post/systemdesign/AlexXuBook2/DesignRealTimeGamingLeaderboard"
 tags = ['interview question','system design', "systemDesignAlexXuBook2"]
 +++
 
-{{<figure src="/images/SystemDesign/DesignExample/DesignNearByFriend/Summary.png" alt="UserRequest." caption="">}}
+{{<figure src="/images/SystemDesign/DesignExample/RealTimeGamingLeaderBoard/GamingLeaderBoardSummary.png" alt="UserRequest." caption="GamingLeaderBoardSummary">}}

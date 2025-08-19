@@ -64,6 +64,7 @@ C:\kafka_2.12-3.9.1>bin\windows\kafka-console-producer.bat --topic demo_topic_1 
 Consumer command in a terminal.
 ```bash
 C:\kafka_2.12-3.9.1>bin\windows\kafka-console-consumer.bat --topic demo_topic_1 --bootstrap-server localhost:9092 --from-beginning
+C:\kafka_2.12-3.9.1>bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic TOPIC_A --partition 0 --from-beginning
 ```
 
 When produce multiple message say one file of data to produce in the topic.

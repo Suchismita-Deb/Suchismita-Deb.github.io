@@ -6,3 +6,5 @@ tags = ['interview question','system design', "systemDesignAlexXuBook2"]
 +++
 
 {{<figure src="/images/SystemDesign/DesignExample/DistrubutedMessageQueue/ProducerBufferRouting.PNG" alt="UserRequest." caption="">}}
+
+{{<figure src="/images/SystemDesign/DesignExample/DistrubutedMessageQueue/MessageQueueSummary.PNG" alt="UserRequest." caption="">}}
