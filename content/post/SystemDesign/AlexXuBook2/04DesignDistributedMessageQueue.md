@@ -5,6 +5,6 @@ url= "/post/systemdesign/AlexXuBook2/DesignDistributedMessageQueue"
 tags = ['interview question','system design', "systemDesignAlexXuBook2"]
 +++
 
-{{<figure src="/images/SystemDesign/DesignExample/DistrubutedMessageQueue/ProducerBufferRouting.PNG" alt="UserRequest." caption="">}}
+{{<figure src="/images/SystemDesign/DesignExample/DistrubutedMessageQueue/ProducerBufferRouting.PNG" alt="UserRequest." caption="ProducerBufferRouting">}}
 
-{{<figure src="/images/SystemDesign/DesignExample/DistrubutedMessageQueue/MessageQueueSummary.png" alt="UserRequest." caption="">}}
+{{<figure src="/images/SystemDesign/DesignExample/DistrubutedMessageQueue/MessageQueueSummary.png" alt="UserRequest." caption="MessageQueueSummary">}}
