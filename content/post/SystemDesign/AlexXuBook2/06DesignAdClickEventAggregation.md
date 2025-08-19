@@ -5,7 +5,7 @@ url= "/post/systemdesign/AlexXuBook2/DesignAdClickEventAggregation"
 tags = ['interview question','system design', "systemDesignAlexXuBook2"]
 +++
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/RTBProcess.png" alt="UserRequest." caption="RTBProcess">}}
-{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AggregationWorkFlow" alt="UserRequest." caption="AggregationWorkFlow">}}
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AggregationWorkFlow.png" alt="UserRequest." caption="AggregationWorkFlow">}}
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/EndToEndExactlyOnce.png" alt="UserRequest." caption="EndToEndExactlyOnce">}}
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/Top100AggregationService.png" alt="UserRequest." caption="Top100AggregationService">}}
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/MapOperation.png" alt="UserRequest." caption="MapOperation">}}
@@ -24,4 +24,7 @@ tags = ['interview question','system design', "systemDesignAlexXuBook2"]
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AggregationService.png" alt="UserRequest." caption="AggregationService">}}
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/Multithreading.png" alt="UserRequest." caption="Multithreading">}}
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AllocateMoreAggregationNode.png" alt="UserRequest." caption="AllocateMoreAggregationNode">}}
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/DataInSnapShort.png" alt="UserRequest." caption="DataInSnapShort">}}
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AggregationNodeFailover.png" alt="UserRequest." caption="AggregationNodeFailover">}}
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/Design.png" alt="UserRequest." caption="Final Design">}}
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AdsAggregationSummary.png" alt="UserRequest." caption="AdsAggregationSummary">}}
