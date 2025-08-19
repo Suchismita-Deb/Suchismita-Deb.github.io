@@ -5,7 +5,12 @@ url= "/post/systemdesign/AlexXuBook2/DesignAdClickEventAggregation"
 tags = ['interview question','system design', "systemDesignAlexXuBook2"]
 +++
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/RTBProcess.png" alt="UserRequest." caption="RTBProcess">}}
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AggregationWorkFlow" alt="UserRequest." caption="AggregationWorkFlow">}}
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/EndToEndExactlyOnce.png" alt="UserRequest." caption="EndToEndExactlyOnce">}}
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/Top100AggregationService.png" alt="UserRequest." caption="Top100AggregationService">}}
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/MapOperation.png" alt="UserRequest." caption="MapOperation">}}
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/ReduceNode.png" alt="UserRequest." caption="ReduceNode">}}
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/LambdaKappaArchitecture.png" alt="UserRequest." caption="LambdaKappaArchitecture">}}
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/RecalculationService.png" alt="UserRequest." caption="RecalculationService">}}
 
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/MissEventsInAnAggregationWindow.png" alt="UserRequest." caption="MissEventsInAnAggregationWindow">}}
