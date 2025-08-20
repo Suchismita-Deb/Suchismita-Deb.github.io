@@ -69,8 +69,11 @@ __Data Model__
 There are 2 types of data - raw data and aggregated data.  
 **Raw Data** - [AdClickEvent] - ad001, 2021-01-01 00:00:01, user 1, 207.149.22.22, USA
 List of data fields in a structured way in different application servers.
+
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/RawData.png" alt="UserRequest." caption="RawData.">}}
+
 **Aggregated Data** - Ad click events are aggregated in every minute. Filtering there is filter_id. Record with same ad_id and click_minute are grouped by filter_id.
+
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AggregatedData.png" alt="UserRequest." caption="Aggregated Data, Aggregated data with filter, Filter Table.">}}
 
 ### TODO
