@@ -10,4 +10,5 @@ tags = ['interview question','system design', "systemDesignAlexXuBook2"]
 {{<figure src="/images/SystemDesign/DesignExample/RealTimeGamingLeaderBoard/RetrieveLeaderboard.png" alt="UserRequest." caption="Retrieve Leaderboard">}}
 {{<figure src="/images/SystemDesign/DesignExample/RealTimeGamingLeaderBoard/HashPartition.png" alt="UserRequest." caption="Hash Partition">}}
 {{<figure src="/images/SystemDesign/DesignExample/RealTimeGamingLeaderBoard/Scatter-gather.png" alt="UserRequest." caption="Scatter-gather.">}}
+{{<figure src="/images/SystemDesign/DesignExample/RealTimeGamingLeaderBoard/Scatter-GatherTop10Leaderboard.png" alt="UserRequest." caption="Scatter-Gather Top 10 Leaderboard.">}}
 {{<figure src="/images/SystemDesign/DesignExample/RealTimeGamingLeaderBoard/GamingLeaderBoardSummary.png" alt="UserRequest." caption="GamingLeaderBoardSummary">}}
