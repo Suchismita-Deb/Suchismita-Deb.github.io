@@ -2,7 +2,7 @@
 title = 'Kafka Project Kafka Stream'
 date = 2025-08-11T15:03:07+05:30
 
-url= "/post/spring/kafka/KafkaProjectKafkaStream"
+url= "/post/spring/kafka/KafkaProject/KafkaStream"
 tags = ['spring', 'kafka']
 +++
 Dependency - Kafka, Kafka Streams.

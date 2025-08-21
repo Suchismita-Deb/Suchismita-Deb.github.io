@@ -2,7 +2,7 @@
 title = 'Kafka Project Fundamentals'
 date = 2025-08-11T15:03:07+05:30
 
-url= "/post/spring/kafka/KafkaProjectFundamental"
+url= "/post/spring/kafka/KafkaProject/Fundamental"
 tags = ['spring', 'kafka']
 +++
 Confluent Cloud is enterpise software.  

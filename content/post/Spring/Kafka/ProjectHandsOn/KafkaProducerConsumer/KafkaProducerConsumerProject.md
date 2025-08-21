@@ -2,7 +2,7 @@
 title = 'Kafka Producer Consumer Project.'
 date = 2025-08-11T15:03:07+05:30
 
-url= "/post/spring/kafka/KafkaProducerConsumerProject"
+url= "/post/spring/kafka/KafkaProject/KafkaProducerConsumerProject"
 tags = ['spring', 'kafka']
 +++
 Starting a producer.

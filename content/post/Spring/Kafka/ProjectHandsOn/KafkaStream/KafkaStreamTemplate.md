@@ -2,7 +2,7 @@
 title = 'Kafka Stream Template Project.'
 date = 2025-08-11T15:03:07+05:30
 
-url= "/post/spring/kafka/KafkaStreamTemplateProject"
+url= "/post/spring/kafka/KafkaProject/KafkaStreamTemplateProject"
 tags = ['spring', 'kafka']
 +++
 Template for using Kafka Streams to consume from an input topic, perform transformations, and then produce to an output topic.

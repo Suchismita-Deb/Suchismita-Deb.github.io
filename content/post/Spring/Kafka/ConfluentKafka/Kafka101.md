@@ -5,7 +5,9 @@ date = 2025-05-11T18:03:07+05:30
 url= "/post/spring/kafka/confluentKafka/Kafka101"
 tags = ['spring', 'kafka']
 +++
+https://www.youtube.com/watch?v=qu96DFXtbG4&list=PLa7VYi0yPIH0xeDp2Iu1q_esSYeNsIxkZ
 
+https://www.youtube.com/watch?v=RYC-7wECMds&list=PLa7VYi0yPIH14oEOfwbcE9_gM5lOZ4ICN
 Apache Kafka is an event streaming platform used to collect, process, store, and integrate data at scale. It has numerous use cases including distributed logging, stream processing, data integration, and pub/sub messaging.
 
 **Event Driven Architecture (EDA)** A flexible software architecture for publishing, storing, and processing events data in real-time using events to trigger and communicate between decoupled (independently functioning) software services and applications. When something happens, everybody who needs to know about it is notified.

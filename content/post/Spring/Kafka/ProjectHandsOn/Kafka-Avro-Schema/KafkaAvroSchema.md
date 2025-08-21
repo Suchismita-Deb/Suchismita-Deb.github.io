@@ -2,7 +2,7 @@
 title = 'Kafka Avro Schema Project'
 date = 2025-08-11T15:03:07+05:30
 
-url= "/post/spring/kafka/KafkaAvroSchemaProject"
+url= "/post/spring/kafka/KafkaProject/KafkaAvroSchemaProject"
 tags = ['spring', 'kafka']
 +++
 https://github.com/Suchismita-Deb/Kafka-Avro-Project/tree/main

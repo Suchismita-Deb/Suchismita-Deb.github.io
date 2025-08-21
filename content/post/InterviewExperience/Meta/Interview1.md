@@ -33,3 +33,16 @@ Go deeper in one part of the solution and optimise.
 Highlight - The behavioral round and 6 days later got the review and cleared the round.
 
 ### **✅ Outcome - Accepted.**
+
+### Meta L4. Aug 21, 2025.
+
+Link - https://leetcode.com/discuss/post/7104578/meta-phone-screen-menlo-park-l4-by-anony-9ls0/
+
+https://leetcode.com/problems/merge-intervals/description/
+
+https://leetcode.com/problems/k-closest-points-to-origin/description/
+
+Use a implemeneted heap, they expect that, don't try to memorize alternative way
+
+
+

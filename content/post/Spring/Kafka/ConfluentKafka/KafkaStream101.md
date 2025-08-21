@@ -5,6 +5,10 @@ date = 2025-08-11T15:03:07+05:30
 url= "/post/spring/kafka/confluentKafka/KafkaStream101"
 tags = ['spring', 'kafka']
 +++
+https://www.youtube.com/watch?v=gJUTErFyuY4&list=PLa7VYi0yPIH35IrbJ7Y0U2YLrR9u4QO-s
+
+
+
 Kafka Streams plays a role.
 Filter message in the topic. Read one topic and enrich with data in another. Merge topics together into a third topic. 
 
