@@ -102,13 +102,96 @@ Transaction support needed?
 Do the queries rely on many online analytical processing like SUM, COUNT?
 
 
+Raw data - no need to query but useful for data engineer to study user response nad behaviour and feedback.  
+The average QPS is 10,000 the system is write heavy. The read side raw data is used as backup and source for recalculation the read volume is low. RDBMS can do the work. Scaling the write can be challenging. NoSQL like Cassandra and InfluxDB are more suitable as they are optimized for write and time-range queries.  
+
+Another option store in S3 using columnar data formats like ORC, Parquet, AVRO. Put a cap on the size of each file (10GB) and the stream processor responsible for writing the raw data could handle the file rotation when the size cap is reached. Not familier system.
+
+
+Lets stick to Cassandra.
+Aggregated Data - Time-series in nature and the workflow is read and write heavy. In each ad we need to query the db every minute to display the latest aggregation count for customers. This feature is useful for auto-refreshing the dashboard or triggering alerts in a timely manner. There are 2 million ads in total the workflow is read heavy. Data aggregated and written every minute by the affrefation service so it is write heavy. We can use the same type if database to store both raw data and aggregated data.
+
+General design structure - Query design and data model and then the high level design.
+
+__High Level Design.__
+
+
+In big data processing, the data flows in and out as unbounded data streams. The aggregation service works in the same wat - input is raw data (unbounded data stream) and the output is the aggregated result. 
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AggregationWorkFlow.png" alt="UserRequest." caption="AggregationWorkFlow">}}
-{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/EndToEndExactlyOnce.png" alt="UserRequest." caption="EndToEndExactlyOnce">}}
-{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/Top100AggregationService.png" alt="UserRequest." caption="Top100AggregationService">}}
-{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/MapOperation.png" alt="UserRequest." caption="MapOperation">}}
-{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/ReduceNode.png" alt="UserRequest." caption="ReduceNode">}}
+
+__Asynchronous Processing.__
+
+The design is synchronous - The capacity of the producer and consumer is not same when the increase in event then the consumer will give out-of-memory error or stop. One component in synchronous is down then the whole system stops working.  
+The most common solution to use the Kafka to decouple the producer and consumers. The process is asynchronous and the producer and consumer can be scaled independently.  
+
+In the design the log watcher, aggregation service and database are decoupled by 2 message queue. The database writer polls data from the message queue, transform the data into teh database format and write to the database.  
+First message queue - contains ad click event data - *ad_id*, *click_timestamp*, *user_id*, *ip*, *country*.  
+Second message queue - contains 2 types of data.  
+Ad click aggregated at per-minute - *ad_id*, *click_minute*, *count*.  
+Top N most clicked ads aggregated at per-minute - *update_time_minute*, *most_clicked_ads*.
+
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/EndToEndExactlyOnce.png" alt="UserRequest." caption="End-To-End Exactly Once">}}
+We dont write the aggregated data to the database directly. We need the Kafka to achieve end-to-end exactly once semantics(atomic commit).
+
+__Aggregation Service.__
+
+The MapReduce framework is a good option to aggregate ad click events. The DAG is a good model. The key to the DAG is to break down the system into small computing units like Map/Aggregate/Reduce nodes.
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/Top100AggregationService.png" alt="UserRequest." caption="Aggregation Service">}}
+Each node is responsible for ne task and send th processing result to the downstream nodes.
+
+
+__Map Node.__
+
+A Map node reads data from the data source and then filters and transforms the data. A mapndoe sends ads with ad_id%2=0 to node 1 and the other ads go to node 2.
+
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/MapOperation.png" alt="UserRequest." caption="Map Operation">}}
+
+Counter - Why to use Map node. We can set up Kafka partitions or tags and let the aggregate nodes subscribe to Kafka directly. It work but the input data may need to be cleaned or normalized and these operations can be done by the Map node. Another reason the control over how data is producer is not possible and the events with the same ad_id might land in different Kafka partitions.
+
+__Aggregate Node.__
+
+An aggreagate node counts ad click events by ad_id in memory every minute. In the MapReduce paradign, the Aggreagte node is part of the reduce. So the map-aggregate-reduce means map-reduce-reduce.
+
+__Reduce Node.__
+
+A reduce node reduces aggregated result from all "Aggregate" nodes to the final result. There are 3 aggregation nodes and each contain top 3 most clicked ads within the node. The reduce node reduces the total number of most clicked ads to 3.
+
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/ReduceNode.png" alt="UserRequest." caption="Reduce Node">}}
+
+The DAG model represents the MapReduce pradigm. It is designed to take big data and use parallel distributed computing to turn big data to small size data.
+In the DAG model intermediate data can be stored in memory and different nodes communicate with each other through TCP(node running in different processes) or shared memory(node runing in different threads).   
+Map Reduce use case - Aggregate the number of clicks.
+Input events are prtitioned by ad_id (ad_id%3) in Map node and are then aggregated by the Aggregation node.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AggregateTheNumberOfClicks.png" alt="UserRequest." caption="Aggregate The Number Of Clicks">}}
-{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/LambdaKappaArchitecture.png" alt="UserRequest." caption="LambdaKappaArchitecture">}}
+Map Reduce use case - Return top N most clicked ads.  
+Input events are mapped using ad_id and each aggregate node maintains a heap data structure to get the top 3 ads within the node. In the last the Reduce node give the top 3 most clicked ads every minute.
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/ReturnTopNMostClickedAds.png" alt="UserRequest." caption="Return Top N Most clicked ads.">}}
+Map Reduce use case - Data filtering.  
+Data Filtering like - "Show me the aggregated click count for ad001 within USA only" - pre-define filtering criteria and aggregate based on them. 
+ {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AggregationResultFilterByCountry.png" alt="UserRequest." caption="Aggregation Result Filter By Country.">}}
+This technique is called Star Schema, widely used in data warehouse. The filtering field are called dimensions. This approach has he following benefits -  
+The current aggregation service can be reused to create more dimensions in the star schema. No additional component is needed.  
+Accessing data based on filtering criteria is fast as the result is pre-calculated.
+
+The limitation it will cerate more buskets and records when we have lot of filtering criteria.
+
+### __Design Deep Dive.__
+Deep dive in the following - Streaming vs Batching, Time and aggregation window, Delivery guarantees, Scale the system, Data monitoring and correctness, Final design, Fault Tolerant.
+
+__Streaming vs Batching.__
+The high level design is based on the stream processing.
+_Comparison between the system._
+|Services(Online System)|Batch System(Offline System)|Streaming System(Near Real-Time System)|
+|---|---|---|
+|Response to client quickly.|No response to the client needed.|No response to the client needed.|
+|Input is user request.|Bounded input with large amount of data.|Input has no boundary infinite stream.|
+|In output gives response to the client.|In output gives materialized views, aggregated metrics.|In output gives materialized views, aggregated metrics.|
+|Performance - availability, latency.|Performance - Throughput.|Performance - Throughput, latency.|
+|Example - Online Shopping.|Example - MapReduce.|Example - Flink.|
+
+In the design both stream and batch processing are used. 
+
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/LambdaKappaArchitecture.png" alt="UserRequest." caption="Lambda and Kappa Architecture">}}
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/RecalculationService.png" alt="UserRequest." caption="RecalculationService">}}
 
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/MissEventsInAnAggregationWindow.png" alt="UserRequest." caption="MissEventsInAnAggregationWindow">}}
@@ -126,3 +209,15 @@ Do the queries rely on many online analytical processing like SUM, COUNT?
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AggregationNodeFailover.png" alt="UserRequest." caption="AggregationNodeFailover">}}
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/Design.png" alt="UserRequest." caption="Final Design">}}
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AdsAggregationSummary.png" alt="UserRequest." caption="AdsAggregationSummary">}}
+
+
+
+Videos.
+
+Hello Interview - https://youtu.be/Zcv_899yqhI?si=DUqLj4VSeW6wqJQs
+
+Jordan - https://youtu.be/6TroztUV3f8?si=Aw8BYXdA2UIOfxLl
+
+ByteMonk - https://youtu.be/6W8FCW2rWNQ?si=nBYAhqdLuElFBIvj
+
+Fight Club - https://youtu.be/_vK53SnrUjk?si=pRBzw6Fnlh6ir8XT
