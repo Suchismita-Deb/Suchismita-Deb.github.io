@@ -189,10 +189,27 @@ _Comparison between the system._
 |Performance - availability, latency.|Performance - Throughput.|Performance - Throughput, latency.|
 |Example - Online Shopping.|Example - MapReduce.|Example - Flink.|
 
-In the design both stream and batch processing are used. 
+In the design both stream and batch processing are used.   
+Stream processing to process the data as it arrives and generates the aggregated results in near real time. Batch processing for processing the data backup.  
+System containing batch and stream simultaenously - the architecture called lambda. Cons - 2 processing path meaning two codebase to maintain.
+
+Kappa architecture combines the batch and streaming in one processing path solves the problem. The key is to handle both real-time data processing and continuous data reprocessing with a single stream processing engine.
 
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/LambdaKappaArchitecture.png" alt="UserRequest." caption="Lambda and Kappa Architecture">}}
+Comparison between the Lambda and Kappa architecture - using the Kappa architecture - the reprocessing of historical data also goes through the real-time aggregation service.
+
+__Data Recalculation.__
+
+There are times when we have to recalculate the aggregated data - historical data replay - any errr in the aggregation service we need to recalculate the aggregated data from the raw data to solve the error.
+
+The flow of the data recalculation -   
+The recalculation service retrieves data from the raw data storage - batched job.  
+Retrieved data sent to a dedicated aggregated service so no real time data impacted by historical data.   
+Aggregated results are sent to the second message queue - then updated in the aggregation database.
+
+The recalculation process reuses the data aggregation service but different data source.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/RecalculationService.png" alt="UserRequest." caption="RecalculationService">}}
+__Time.__
 
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/MissEventsInAnAggregationWindow.png" alt="UserRequest." caption="MissEventsInAnAggregationWindow">}}
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/WaterMark.png" alt="UserRequest." caption="WaterMark">}}
