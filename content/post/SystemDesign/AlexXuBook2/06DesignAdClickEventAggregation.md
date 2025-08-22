@@ -4,6 +4,7 @@ date = 2025-07-28T10:09:46+05:30
 url= "/post/systemdesign/AlexXuBook2/DesignAdClickEventAggregation"
 tags = ['interview question','system design', "systemDesignAlexXuBook2"]
 +++
+
 Ad Click Event aggregation - meaning tracking ad click in online advertising.  
 Digital advertising has a core process called **Real-Time Bidding RTB** in which the digital advertising inventory is brought and sold.      
 Based on the data the company can understand which ad is expensive and mostly viewed.
@@ -209,7 +210,9 @@ Aggregated results are sent to the second message queue - then updated in the ag
 
 The recalculation process reuses the data aggregation service but different data source.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/RecalculationService.png" alt="UserRequest." caption="RecalculationService">}}
+
 __Time.__
+
 
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/MissEventsInAnAggregationWindow.png" alt="UserRequest." caption="MissEventsInAnAggregationWindow">}}
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/WaterMark.png" alt="UserRequest." caption="WaterMark">}}
