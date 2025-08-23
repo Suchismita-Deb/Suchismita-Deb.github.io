@@ -213,21 +213,177 @@ The recalculation process reuses the data aggregation service but different data
 
 __Time.__
 
+Timestamp to perform aggregation - It can be generated in 2 different places - Event Time - When an ad click happens and Processing Time - the system time of the aggregation server that processes the click event.  
 
+
+The gap between the event time and processing time can be large - event arrive in the aggregation service after 5 hour.  
+Using the event time in the aggregation then need to deal with delay and processing time used then the result is not accurate. Need to decide the tradeoff.
+
+
+Event Time in Aggregation Service - Pros - Aggregation results are more accurate because the client knows exactly when an ad is clicked.  
+Cons - Depends on the timestamp on the client side.
+
+Processing Time in Aggregation Service - Pros - Server timestamp is more reliable.  
+Cons - The timestamp is not accurate if an event reaches the system at a much later time.
+
+Data accuracy go with Event time - Next up How do we properly process deplayed events in the case? - Watermark is commonly utilized to handle delayed events.
+
+Ad event are aggregated in one-minute tumbling window - window 1 misses event 2, window 3 misses event 5 - event arrive later the end of the aggregation window.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/MissEventsInAnAggregationWindow.png" alt="UserRequest." caption="MissEventsInAnAggregationWindow">}}
+
+One way to solve it using Watermark - a extension as an aggregation window. Example - extending an extra 15 sec window 1 will be able to include event 2, window 3 can include event 5.  
+A long watermark could catch events that arrive very late but it will add latency. A short - means data is less accurate - add less latency to the system.
+
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/WaterMark.png" alt="UserRequest." caption="WaterMark">}}
+
+It does not handle event with long delay - not imp to make system more complicated - We can correct the tiny bit of inaccuracy with end-of-day reconciliation. One trade-off watermark improve data accuracy but increases latency.
+
+__Aggregation Window.__
+Mainly 4 types of window function - tumbling window(fixed window), hopping window, sliding window, session window.
+
+_**Tumbling Window.**_
+Time is divided into same - length, non overlapping part. Good fit for aggregating ad click every minute.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/TumblingWindow.png" alt="UserRequest." caption="TumblingWindow">}}
+_**Sliding Window.**_
+
+Event are grouped within a window that slides accross data stream - Can be over lapping - Good to get the top N most clicked ads during the last M minutes.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/SlidingWindow.png" alt="UserRequest." caption="SlidingWindow">}}
+
+__Delivery Guarantees.__
+
+Aggregation result is used in billing - Data accuracy and completeness are imp.  
+
+System needs to answer - How to avoid processing duplicate events?  
+How to ensure all events are processed?
+
+Kafka provides 3 delivery semantics - at-most once, at-least once, exactly once. 
+
+At-least once is good (in place little duplicate are acceptable).  
+
+Here duplicate are not acceptable - Exactly-once in this design. 
+
+__*Data Deduplication*__
+One data quality issue - duplicate data. It can come from wide range of source - Client side and Server Outage.
+
+Client side - Client send same event multiple time. Malicious intent can be handled by fraud and risk control.  
+Server outage - When aggregation service node goes down in the middle of aggregation and the upstream service has not received an ack the same event might be sent and aggregate again.
+
+The diagram show the aggregation service node outage introduces duplicate data. The Aggregator manages the status of data consumption by storing the offset in upstream Kafka.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/DuplicateData.png" alt="UserRequest." caption="DuplicateData">}}
+
+Step 6 failsdue to outage - event from 100 to 110 are sent to downstream but the new offset 110 is not persisted in upstream Kafka.  
+Now the new aggregator would consume again from offset 100 - even if those are already processed - duplicate data.
+
+Solution - Use an external file storage - HDFS or S3 to record the offset.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/RecordTheOffset.png" alt="UserRequest." caption="RecordTheOffset">}}
+The solution has an issue - Step 3 the aggregator will proces the events from offset 100 to 110 only when the last offset stored in external storage is 100. The offset in the storage is 110 - the events will be ignored before offset 110.
+
+Issue - the offset is saved in S3 (step 3.2) before the result sent downstream. Step 4 fails due to outage then events from 100 to 110 will never be processed by newly brought up aggregator node as the offset stored in the storage is 110.
+
+To mitigate this we need to save the offset after we get the ack from the downstream.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/SaveOffsetAfterReceivingAcks.png" alt="UserRequest." caption="SaveOffsetAfterReceivingAcks">}}
+Aggregator down before step 5.1 is executed - events from 100 to 110 will be sent downstream again. To get one processing - put the step 4 to 6 in one distributed transaction.  
+
+Distributed transaction works cross several nodes - any oeration fails the whole transaction is rolled back.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/DistributedTransaction.png" alt="UserRequest." caption="DistributedTransaction">}}
+
+How to achieve exactly-once proessing is an advanced topic.
+
+__Scale the system.__
+The estimation - business grow 30% per year - which double traffic every 3 years.
+
+The system contains 3 independent component - message queue, aggregation service, database.
+
+__*Scaling message queue*__
+(Scaling Distributed message queue part).
+
+Producer - no limit - can increase in huge scale.  
+Consumer - Inside consumer group the rebalancing mechanish helps to scle the consumers by adding or removing nodes. Adding 2 or more consumers each consumer only processes events from one partition.
+
+### Adding image add consumers.
+
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AddConsumer.png" alt="UserRequest." caption="Add Consumers.">}}
+
+When there are many consumer then rebalance can take time - more consumer needs to add then add during off-peak hours to minimize impact.  
+Broker - Hashing Key - ad_id as hashing key for Kafka partition to store events from the same ad_id in the same partition. The aggregation service can subcribe to all events of the same ad_id from one single partition.
+
+
+The number of partition - In case there is change in number of partition the same ad_id wil be mapped to different partition - Good to pre-allocate enough partition in advance to avoid dynamically increasing the number of partition.  
+Topic physical sharing - One topic not enough - split by location(topic_north_america, topic_europe) or business type (topic_web, topic_mobile). Pros - Slicing data in topic increase the system throughput. Less consumers for a single topic the time to rebalance consumer groups is reduced. Cons - Complex and maintenance costs.
+
+
+__*Scaling Aggregation Service.*__
+Aggregation service has a map/reduce operation. It is horizontally scalable by adding or removing nodes.  
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AggregationService.png" alt="UserRequest." caption="AggregationService">}}
+
+_How do we increase the throughput of the aggregation service?_  
+Option 1 - Allocate events with different ad_ids to different threads.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/Multithreading.png" alt="UserRequest." caption="Multithreading">}}
+Option 2 - Deploy aggregation service node on resource liek Apache Hadoop YARN. It is mostly used as we can scale the system by adding more computing resources.
+
+__*Scale the database*__
+Cassandra supports horizontal scaling - like consistent hashing. Data is evenly distributed to every node with proper replication factor.  
+Each node save own part based on hashed value and ls saves copies from other virtual node.  
+Adding new node to the cluster it automatically rebalances the virtual nodes among all nodes. No manual resharding is required. 
+
+__Hotspot Issue__
+A shard or service that receives much more data than the others called hotspot. 
+
+Many companies with more budget give more ad and are clicked more often. Events are partitioned by ad_id - some aggregation service nore might receive more ad clicks than others causing overload. Solution - more node to process popular ad.
+
+Example - Each node can handle 100 events. There are 300 events in the aggregation node - it applies for more resources through resource manager.  
+Resource manager give more resourec adding 2 node to avoid overload. The original node splits the evenst in 3 groups and each node handles 100 events. The result is written back to the original node.
+
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AllocateMoreAggregationNode.png" alt="UserRequest." caption="AllocateMoreAggregationNode">}}
-{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/DataInSnapShort.png" alt="UserRequest." caption="DataInSnapShort">}}
+
+The other way to handle hthe problem - Global Local Aggregation or Split Distinct Aggregation.
+
+__Fault Tolerance.__
+
+Aggregation happens in memory - when an aggregation node goes down the result are lost. We can rebuild the count by replaying events from upstream Kafka brokers.
+
+Replaying data from the beginning in Kafka is slow. A good practice is to dave the "system status" like upstream offset to a snapshot and recover from the last saved status. It is doing more like store the data like top N most clicked ad in the past M minutes.
+
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/DataInSnapShort.png" alt="UserRequest." caption="Data In a SnapShot">}}
+
+With the snapshot the failover process of the aggregation service is quite simple. One fail - bring new node and recover data from the latest snapshot. New events that arrive after the last snapshot was taken - the new aggregation node will pull those data from the Kafka broker for replay.
+
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AggregationNodeFailover.png" alt="UserRequest." caption="AggregationNodeFailover">}}
+
+__Data Monitoring and Correctness.__
+Metrics we need to monitor - Latency, Message queue size, System resources on aggregation nodes like CPU, disk, JVM.
+
+Latency - Track timestamp as events flow through different parts of the system. The differences between those timestamps can be exposed as a latency metrics.
+
+Message queue - Increase in queue size we need to add more aggregation node. Kafka is a distributed commit log so we need to monitor the records-lag metrics.
+
+__Reconciliation.__
+Reconciliation - comparing different sets of data in order to ensure data integrity.  
+Unlike in bank industry we compare your record with the banks record - the result of ad click aggregation has no third party result to reconcile with.
+
+We can sort the ad click events by the event time in every partition at the end of the day using batch job and reconciling with the real time aggregation result.  
+More accuracy - smaller aggregation window - 1 hour.  
+
+There will be always some difference in the data in the batch job and real streaming job as some event will come later.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/Design.png" alt="UserRequest." caption="Final Design">}}
+__Alternate Design.__
+
+Not expected to know internal of many software - get the design correct.  
+Another solution - store ad click data in **Hive** with an **ElasticSearch** layer built for faster queries.  
+Aggregation is useually done in db like **ClickHouse** or **Druid**.
+
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AlternateDesign.png" alt="UserRequest." caption="Alternate Design">}}
+__Summary.__
+Ad click event aggregation at a scale of Facebook or Google.  
+Data model and API.  
+MapReduce to aggregate ad click event.  
+Scale message queue, aggregation service and database.  
+Mitigate hotspot issue.  
+Monitor the system.  
+Use reconciliation to ensure correctness.  
+Fault tolerance.
+
+The system is typically a big data processing system - good to have experience with Apache Kafka, Apache Flink or Apache Spark.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AdsAggregationSummary.png" alt="UserRequest." caption="AdsAggregationSummary">}}
 
 
