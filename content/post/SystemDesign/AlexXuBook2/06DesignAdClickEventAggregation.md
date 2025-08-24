@@ -300,7 +300,7 @@ __*Scaling message queue*__
 Producer - no limit - can increase in huge scale.  
 Consumer - Inside consumer group the rebalancing mechanish helps to scle the consumers by adding or removing nodes. Adding 2 or more consumers each consumer only processes events from one partition.
 
-### Adding image add consumers.
+
 
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AddConsumer.png" alt="UserRequest." caption="Add Consumers.">}}
 
@@ -386,14 +386,58 @@ Fault tolerance.
 The system is typically a big data processing system - good to have experience with Apache Kafka, Apache Flink or Apache Spark.
 {{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/AdsAggregationSummary.png" alt="UserRequest." caption="AdsAggregationSummary">}}
 
+### Observation.
+
+It is an extension of the Tiny URL - clicking ad or url - give the entire analytics to give the context.
+
+It is also an extention of Stream Processing.
+
+In this problem will give advertiser as much information as possible - ad_id, campaign_id, advertiser_id, time of entering originating page, time of click, originating_page_url, brower_information, Ip_address.
+
+1kb per click and 10K QPS then total 10Mb data per second.
+
+Counter - Using typical transactional Db like Dynamo Db for the problem to write the click and query - Single partition can handle upto 1Mb/sec of write and partition with ad_id the issue is not all add will be clicked with equal rate - It is like the celebrity problem.
+
+The solution to repartition the data for the popular ad in order to spread across many shard. Adding some suffix to the ad_id and aggregate it later.
+
+Another option to round robin the click on th epartition in db using load balancing - the issue is fetching the click for a given ad will be slow as need to go through all partition.
+
+Handling lot of write from a single server - Apache Kafka - log based and each event is append at the end of the log file in disk - Disk write sequentially and not randomly and write are quick.
+
+Topic partition in Kafka can handle 50MB/sec. 
+Another advantage Kafka Replication.
+
+Now kafka should send data to a sytem to handle query - data warehouse or data lake.
+In contrast to transactional db like SQL(store data in row based storage), data warehouse store data in a columnar format and store data within a table column to gather on disk.
+Analytical data contains many column but query only need few and can access only imp column and less size.
+
+Storing data in disk in sequential help in compression and similar data stay together. Operating in column batches and not one row at a time enable better CPU cache hit rate.
+
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/RowFormatColumarFormat.png" alt="UserRequest." caption="Row Format and Columar Format Data.">}}
+
+Kafka adding data to the data warehouse - Issue of deplicate - consumer after sending offset data 110 and did not get the confirmation and stops then next consumer will again send 110 to the data warehourse and the data will be duplicate - One way only send the max(offset) from the consumer and data warehouse to work with.  
+
+To see if a data is duplicate for malicious case - get the page url, ip address, ad_id, time when it was clicked and hash to get the key and then we can get the duplicate click.  
+Verify the click already exists before we put in the kafka. Use of transactional database is good in this case.
+Row not present in database then add, row present then it is duplicate click.
+Hashing is used to get the idempotent key and can scale across a cluster of database. The hash should be evenly distributed and no need to work on shard. More cick from same device can be removed by IP based rate limiter. 
+
+Okay lets not go deep - then how about removing user with VPN. The discussion will then go to a security point.
+
+Db - partitioning - analytical db like BigQuery range based partitioning - clickHouse take hash of the partition key modulo the partition to get teh row data. 
+Data warehouse work good when the data is loaded in batches. 
+{{<figure src="/images/SystemDesign/DesignExample/AdClickSystem/Summary.png" alt="UserRequest." caption="Sample Summary">}}
+
+Scaling Kafka - Group of consumer with a same groupId then kafka distribute all partition to the consumer. Every time consumer pull the data and write to the data warehouse it commit the last offset back to the Kafka. When consumer stop before updating the offset and after writing to the database then the new consumer will take the work and set the latest commit offset in the db.  
+_Computing Flush Interval_
+The industry standard the size of parquet file 256MB - 1GB.  
+Here we persist 10MB/sec of row data. After 10 mins we have = 10\*60 for one minute = 10*\60*10 for 10 mins = 6GB of data.  
+Average compression size from avro to parquet = 2 to 10x depending on compression library so we will hit out target size.
+We can flush out data every 15 mins to hit target file size.
+
 
 
 Videos.
 
-Hello Interview - https://youtu.be/Zcv_899yqhI?si=DUqLj4VSeW6wqJQs
-
-Jordan - https://youtu.be/6TroztUV3f8?si=Aw8BYXdA2UIOfxLl
-
-ByteMonk - https://youtu.be/6W8FCW2rWNQ?si=nBYAhqdLuElFBIvj
-
+Hello Interview - https://youtu.be/Zcv_899yqhI?si=DUqLj4VSeW6wqJQs  
 Fight Club - https://youtu.be/_vK53SnrUjk?si=pRBzw6Fnlh6ir8XT
