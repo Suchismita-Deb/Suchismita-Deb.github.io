@@ -59,13 +59,13 @@ API design is not the crutial it is an entire system. There are feature like sea
 
 __Hotel Related API.__
 
-> GET /v1/hotels/ID  Get the information about the hotel.
+> GET - /v1/hotels/ID - Get the information about the hotel.
 >
-> POST /v1/hotels Add new hotel. Only to the admin.
+> POST - /v1/hotels - Add new hotel. Only to the admin.
 >
-> PUT /v1/hotels/ID Update hotel information. Only to the admin.
+> PUT - /v1/hotels/ID - Update hotel information. Only to the admin.
 >
-> DELETE /v1/hotels/ID Delete a hotel.
+> DELETE - /v1/hotels/ID - Delete a hotel.
 
 __Room Related API.__
 
