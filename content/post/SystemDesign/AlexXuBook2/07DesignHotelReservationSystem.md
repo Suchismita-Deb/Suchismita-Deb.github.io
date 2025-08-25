@@ -61,9 +61,32 @@ __Hotel Related API.__
 
 > GET /v1/hotels/ID  Get the information about the hotel.
 >
-> POST /v1/hotels 
-### Data Model.
+> POST /v1/hotels Add new hotel. Only to the admin.
+>
+> PUT /v1/hotels/ID Update hotel information. Only to the admin.
+>
+> DELETE /v1/hotels/ID Delete a hotel.
 
+__Room Related API.__
+
+> GET /v1/hotels/ID/rooms/ID Get the detailed information about the room.
+>
+> POST /v1/hotels/ID/rooms Add a room. Only to the admin.
+>
+> PUT /v1/hotels/ID/rooms/ID Update room information. Only to admin.
+>
+> DELETE /v1/hotels/ID/rooms/ID Delete a room. Only to admin.
+
+__Reservation Related API.__
+{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/ReservationRelatedAPI.png" alt="UserRequest." caption="Reservation Related API">}}
+
+### Data Model.
+{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/DatabaseSchema.png" alt="UserRequest." caption="Database Schema.">}}
+
+{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/HighLevelDesignHotelReservationSystem.png" alt="UserRequest." caption="HighLevelDesignHotelReservationSystem.">}}
+{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/ConnectionBetweenServices.png" alt="UserRequest." caption="Connection Between Services.">}}
+
+{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/UpdatedSchema.png" alt="UserRequest." caption="Database Schema.">}}
 ### High Level Design.
 {{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/UniqueConstraints.png" alt="UserRequest." caption="UniqueConstraints">}}
 {{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/RaceCondition.png" alt="UserRequest." caption="RaceCondition">}}
