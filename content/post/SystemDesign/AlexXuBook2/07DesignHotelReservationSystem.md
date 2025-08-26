@@ -144,10 +144,37 @@ POST /v1/reservations  The parameter.
 }
 ```
 {{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/UpdatedSchema.png" alt="UserRequest." caption="Database Schema.">}}
+room - contains informaion regarding room.
+room_type_rate - price for a room typr on specific dates.  
+reservation - records guest reservation data.  
+room_type_inventory - store inventory data about hotel rooms. It is importantfor reservation system. The column inside the table - total_inventory - the total room minus those that are temporarily 
 ### High Level Design.
 {{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/UniqueConstraints.png" alt="UserRequest." caption="UniqueConstraints">}}
 {{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/RaceCondition.png" alt="UserRequest." caption="RaceCondition">}}
 {{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/PessimisticLocking.png" alt="UserRequest." caption="PessimisticLocking">}}
-{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/OptimisticLocking.png" alt="UserRequest." caption="OptimisticLocking">}}
+
+__Optimistic Locking.__ 
+
+Optimistic concurrency control allows multiple concurrent users to attempt to update the same resource - 2 ways to implement optimistic locking  - version number and timestamp. Version locking better as server clock can be inaccurate over time.
+
+{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/OptimisticLocking.png" alt="UserRequest." caption="Optimistic Locking Success case and Failure case.">}}
+
+A new column  called version added. Prior to any modification in db row the bersion number is read.  
+When user update the row the application increases the version number by 1and write back to db.  
+A database validation check is put in place the next version should exceed the current version by 1. The transaction aborts if the validation fails and again retry.
+
+It is faster than pessimistic lock no lock in database, the performance drop dramatically when concurrency is high.  
+Example - When many client try to reserve a hotel room at the same time - no limit on how many client can read the room count all read back the same room count and the current version number.  
+When different clients make reservation and write back the results to the database only one succeed and rest will rceive a version failure. They will retry. IN retries there is only one successful client and the rest will retry. The end result is correct but repeated retries cause unpleasant experience.
+
+Pros - It prevents application from editing stale data. No locking of database resource. It is on the application to handle the logic with the version number.  
+It is used when the data contention is low. When conflicts are rare and transaction can complete without any expense of managing locks.
+
+Cons - Performance is poor when data contention is heavy.
+
+It is good for hotel reservation since the QPS is not high.
+
+__Database Constraints.__
+
 {{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/HotelReservationSystemSummary.png" alt="UserRequest." caption="HotelReservationSystemSummary">}}
 221 page.
