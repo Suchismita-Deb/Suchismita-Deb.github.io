@@ -5,6 +5,9 @@ date = 2025-03-16T12:38:14+05:30
 url= "/post/systemdesign/content"
 tags = ['interview','system design']
 +++
+
+System Design - Book 1 and 2 completely. All video - ByteByteGo, Jordan, Hello interview. Get practice leetcode discuss in lld and hld. Concept and coding LLD and github repo.
+
 Design System.
 
 Volume 1.  

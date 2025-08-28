@@ -31,7 +31,7 @@ Kafka move data from network to disk and it removes copy. It follows the zero co
 
 Kafka send data to the consumer - Data is loaded from disk to the OS cache. Data copied from OS cache into Kafka application. Data copied from Kafka to the socket buffer and from socket buffer to the Network Interface Card NIC buffer. The data is send over the network to the consumer.
 
-{{<figure src="/images/SystemDesign/ReadWithZeroCopy.png" alt="EventStreaming without zero copy." caption="EventStreaming without zero copy.">}}
+{{<figure src="/images/SystemDesign/Video/ReadWithZeroCopy.png" alt="EventStreaming without zero copy." caption="EventStreaming without zero copy.">}}
 
 There are total of 4 copy of data and 2 system calls. Not efficient.
 
@@ -40,7 +40,7 @@ Kafka with zero copy.
 The data page id loaded from the disk to the OS cache. With zero copy Kafka uses the system call called `sendfile()` to tell the OS to copy the data from the OS cache to the NIC buffer.
 
 
-{{<figure src="/images/SystemDesign/ReadWithZeroCopy.png" alt="EventStreaming without zero copy." caption="Kafka with zero copy.">}}
+{{<figure src="/images/SystemDesign/Video/ReadWithZeroCopy.png" alt="EventStreaming without zero copy." caption="Kafka with zero copy.">}}
 
 In the process the only copy is from the OS cache to the NIC buffer. 
 
@@ -64,7 +64,7 @@ Password provided by the user and then added a randomly generated salt and then 
 
 ### **Bare Metal, Virtual Machines and Container.**
 
-{{<figure src="/images/SystemDesign/BareMetalVirtualizedContainerized.png" alt="EventStreaming without zero copy." caption="Bare Metal Virtualized Containerized.">}}
+{{<figure src="/images/SystemDesign/Video/BareMetalVirtualizedContainerized.png" alt="EventStreaming without zero copy." caption="Bare Metal Virtualized Containerized.">}}
 
 Bare metal server is a computer that is a single tenant only. Bare metal gives all the hardware resources and the software to run. Bare metal server are physically isolated and the isolation helps in not getting impacted by one network bandwidth with the other high CPU use.
 
@@ -78,7 +78,7 @@ Bare Metal Hypervisor is different that Bare Metal Hardware.
 
 Bare metal hypervisor controls the hardware directly with relying on the host operating system. It gives the hypervisor full control over the hardware and provide high performance.
 
-{{<figure src="/images/SystemDesign/Virtualized.png" alt="Virtualized" caption="Virtualized.">}}
+{{<figure src="/images/SystemDesign/Video/Virtualized.png" alt="Virtualized" caption="Virtualized.">}}
 
 Hardware that supports Bare metal hypervisor are expensive.
 
@@ -94,7 +94,7 @@ Containers is scalable and portable and there are lightweight to run on the virt
 
 They share the same underlying operating system and the isolation are the operating system level. Containers are exposed to wider class of security vulnerability.
 
-{{<figure src="/images/SystemDesign/ContainerOnVirtualMachines.png" alt="ContainerOnVirtualMachines" caption="Container On Virtual Machines.">}}
+{{<figure src="/images/SystemDesign/Video/ContainerOnVirtualMachines.png" alt="ContainerOnVirtualMachines" caption="Container On Virtual Machines.">}}
 
 We can run containers inside the Virtual machine and it will increase the security.
 
@@ -167,7 +167,7 @@ PUT /v1/businesses/:id Update details of a business.
 
 DELETE /v1/businesses/:id Delete a business.
 
-{{<figure src="/images/SystemDesign/YelpDbDesign.png" alt="YelpDbDesign" caption="YelpDbDesign.">}}
+{{<figure src="/images/SystemDesign/Video/YelpDbDesign.png" alt="YelpDbDesign" caption="YelpDbDesign.">}}
 
 The store required for the business table - 
 
@@ -179,7 +179,7 @@ This database is very small so when the database is small then we can have wide 
 
 High Level Design.
 
-{{<figure src="/images/SystemDesign/YelpHighLevelDesign.png" alt="YelpHighLevelDesign" caption="Yelp High Level Design.">}}
+{{<figure src="/images/SystemDesign/Video/YelpHighLevelDesign.png" alt="YelpHighLevelDesign" caption="Yelp High Level Design.">}}
 
 The load balance distributes incoming traffic across two services based on the api routes.
 
@@ -236,7 +236,7 @@ One way to index the latitude and longitude. Data returned for each dimension is
 
 To fetch businesses within a search radius we need to find the intersection of those ranges. It is inefficient and each dataset contains a lot of data.
 
-{{<figure src="/images/SystemDesign/YelpGraphDesign.png" alt="YelpGraphDesign." caption="Yelp Graph Design.">}}
+{{<figure src="/images/SystemDesign/Video/YelpGraphDesign.png" alt="YelpGraphDesign." caption="Yelp Graph Design.">}}
 
 The problem with this approach is the index can increase the search in one of the two dimensions.
 
@@ -244,15 +244,15 @@ The follow up is can we map two dimension data into one dimension so we can buil
 
 There are 2 approaches in Geospatial indexing - Hash.
 
-{{<figure src="/images/SystemDesign/Index.png" alt="Index." caption="Index.">}}
+{{<figure src="/images/SystemDesign/Video/Index.png" alt="Index." caption="Index.">}}
 
 One way - evenly divide the grid and get the business within the grid. The problem is in few area the return of the businesses will be high and in few areas the business are low.
 
-{{<figure src="/images/SystemDesign/GeoHash.png" alt="GeoHash." caption="GeoHash.">}}
+{{<figure src="/images/SystemDesign/Video/GeoHash.png" alt="GeoHash." caption="GeoHash.">}}
 
 Geohash helps as it stores the two dimensional data into an one-dimensional string of letters and digits. It divides in four quadrant along the prime meridian and equator. Four quadrants are represented by two bits.
 
-{{<figure src="/images/SystemDesign/GeoHashQuadrant.png" alt="GeoHashQuadrant." caption="GeoHashQuadrant.">}}
+{{<figure src="/images/SystemDesign/Video/GeoHashQuadrant.png" alt="GeoHashQuadrant." caption="GeoHashQuadrant.">}}
 
 Each part is again divided into grids. The bits in the sub-grids are appended to the existing bits.
 
@@ -260,11 +260,11 @@ Each part is again divided into grids. The bits in the sub-grids are appended to
 
 It repeats the subdivision and keeps adding more bits to the Geohash. It stopped the subdividing when the sub grid reaches the specific size.
 
-{{<figure src="/images/SystemDesign/GeoHashBinary.png" alt="GeoHashBinary." caption="Geo Hash Binary.">}}
+{{<figure src="/images/SystemDesign/Video/GeoHashBinary.png" alt="GeoHashBinary." caption="Geo Hash Binary.">}}
 
 The example of a grid that contains the Google headquarter Institute of a long one and zero to represent the Jio hash design coded in a base 32 string.
 
-{{<figure src="/images/SystemDesign/GeoHashChart.png" alt="GeoHashChart." caption="Geo Hash Chart.">}}
+{{<figure src="/images/SystemDesign/Video/GeoHashChart.png" alt="GeoHashChart." caption="Geo Hash Chart.">}}
 
 The base32 string shows the size of the grid the idle size should be 4 5 or 6. If the value is higher than 6 then the grid size is too small and if it is less than 4 then the grid size is too big.
 
@@ -274,7 +274,7 @@ We find the minimal geohash length that covers the whole circle. For example if 
 
 Another property Geohash is a string and searching all business within a geohash is very simple.
 
-{{<figure src="/images/SystemDesign/GeoHashPrefix.png" alt="GeoHashPrefix." caption="GeoHashPrefix.">}}
+{{<figure src="/images/SystemDesign/Video/GeoHashPrefix.png" alt="GeoHashPrefix." caption="GeoHashPrefix.">}}
 
 There are some cases when did you hash might not work properly. These edge cases have to do with how the boundaries are handled. 
 
@@ -286,7 +286,7 @@ Another boundary issue can be the two locations can have long shared prefix but 
 
 The common solution to bowl of these issues to fetch businesses is not only within the current date but also 8 grids surrounding it.
 
-{{<figure src="/images/SystemDesign/CalculateGeoHash.png" alt="Calculate Geo Hash." caption="Calculate Geo Hash.">}}
+{{<figure src="/images/SystemDesign/Video/CalculateGeoHash.png" alt="Calculate Geo Hash." caption="Calculate Geo Hash.">}}
 
 Calculating the neighboring geohash is easy and done in constant time using the library.
 
@@ -298,11 +298,11 @@ The common tree index is quadtree and googles2.
 
 A Quadtree data structure that partition a two dimensional space by recursively subdividing it into 4 quadrants.
 
-{{<figure src="/images/SystemDesign/QuadTree.png" alt="QuadTree." caption="QuadTree.">}}
+{{<figure src="/images/SystemDesign/Video/QuadTree.png" alt="QuadTree." caption="QuadTree.">}}
 
 The subdivision stops when the greet meets certain criteria.
 
-{{<figure src="/images/SystemDesign/QuadTreeLevel.png" alt="QuadTreeLevel" caption="QuadTreeLevel.">}}
+{{<figure src="/images/SystemDesign/Video/QuadTreeLevel.png" alt="QuadTreeLevel" caption="QuadTreeLevel.">}}
 
 In out case the criteria can be keep dividing unto the number of businesses in a great his no more than similar say 100.
 
@@ -318,7 +318,7 @@ It should contains two columns - geohash and business Id. Any relational db can 
 
 Converting the latitude and longitude to the geohash is easy and libraries can do it.
 
-{{<figure src="/images/SystemDesign/GeoHashBusinessId.png" alt="GeoHashBusinessId" caption="GeoHashBusinessId.">}}
+{{<figure src="/images/SystemDesign/Video/GeoHashBusinessId.png" alt="GeoHashBusinessId" caption="GeoHashBusinessId.">}}
 
 Two things we should discuss with the table schema - Many business would share the same geohash. It means different business Ids within the same Geohash are stored in different database rows. The geohash and business id columns together form a compound key. 
 
@@ -328,7 +328,7 @@ In our application we are only interested in the geohash with precisions 4 to 6.
 
 The geohash column will all have the precision of 6. We use the LIKE operator in SQL to search for shorter prefix length.
 
-{{<figure src="/images/SystemDesign/Query.png" alt="Query." caption="Query.">}}
+{{<figure src="/images/SystemDesign/Video/Query.png" alt="Query." caption="Query.">}}
 
 Using the query we find everything that is within the geohash of ‘9q8zn’.
 
@@ -338,7 +338,7 @@ We do not need to scale more than one db table. The column geohash is 6 bit long
 
 200 million business the data is 6GB.
 
-{{<figure src="/images/SystemDesign/Storage.png" alt="Storage." caption="Storage.">}}
+{{<figure src="/images/SystemDesign/Video/Storage.png" alt="Storage." caption="Storage.">}}
 
 The database can be fit inside one server the read QPS is 5000 which is quite high.
 
@@ -366,7 +366,7 @@ The cache will take most of the read load of the frequently accessed businesses 
 
 There are a lot of options for the business table and first one is to use single table and get the product grows and with the help monitoring we can react to the growth and usage pattern and decide later to either shard or add more read replicas or add cache in front of it.
 
-{{<figure src="/images/SystemDesign/YelpHighLevelDesign.png" alt="YelpHighLevelDesign." caption="Yelp High Level Design.">}}
+{{<figure src="/images/SystemDesign/Video/YelpHighLevelDesign.png" alt="YelpHighLevelDesign." caption="Yelp High Level Design.">}}
 
 Search workflow.
 
@@ -406,7 +406,7 @@ Consistent Hashing main purpose is all object to stay assigned to the same serve
 
 There is an array of x0 to xN and it is a hash range and the end of the array are connected making a circle.
 
-{{<figure src="/images/SystemDesign/ConsistentHashing.png" alt="ConsistentHashing." caption="ConsistentHashing.">}}
+{{<figure src="/images/SystemDesign/Video/ConsistentHashing.png" alt="ConsistentHashing." caption="ConsistentHashing.">}}
 
 The hash is used to map the data into the ring. The modulo is not used.
 
@@ -416,7 +416,7 @@ k0 to s0, k1 to s1.
 
 Another server added then only k0 will be mapped to s4. The other key are in their place.
 
-{{<figure src="/images/SystemDesign/AddingServer.png" alt="AddingServer." caption="Adding Server.">}}
+{{<figure src="/images/SystemDesign/Video/AddingServer.png" alt="AddingServer." caption="Adding Server.">}}
 
 With simple hashing when a new server is added almost all keys need to be remapped. With consistent hashing adding a new server only requires redistribution of a fraction of the key.
 
@@ -426,7 +426,7 @@ When one server removed then the entire load come to the next server.
 
 Virtual node helps in it and one server present multiple location in the ring. Each location represents the server in the ring. 
 
-{{<figure src="/images/SystemDesign/VirtualNode.png" alt="VirtualNode." caption="Virtual Node.">}}
+{{<figure src="/images/SystemDesign/Video/VirtualNode.png" alt="VirtualNode." caption="Virtual Node.">}}
 
 The virtual node will be managed by the s0 and s1.
 
@@ -444,11 +444,11 @@ Load Balancer like Google Load Balancer use Consistent hashing to distribute per
 
 Reddit is a very popular in memory database.
 
-{{<figure src="/images/SystemDesign/RedisUsesRAM.png" alt="RedisUsesRAM." caption="Redis Uses RAM.">}}
+{{<figure src="/images/SystemDesign/Video/RedisUsesRAM.png" alt="RedisUsesRAM." caption="Redis Uses RAM.">}}
 
 Redis uses RAM and not disk.
 
-{{<figure src="/images/SystemDesign/MemoryAccessFasterThanIO.png" alt="Query." caption="Memory access is faster than Random disk IO.">}}
+{{<figure src="/images/SystemDesign/Video/MemoryAccessFasterThanIO.png" alt="Query." caption="Memory access is faster than Random disk IO.">}}
 
 Memory access is faster than Random disk IO.
 
@@ -456,17 +456,17 @@ Pure memory gives the axis of high read and write throughput and low latency and
 
 Code wise in memory data structure is far more easy to implement than on disk.
 
-{{<figure src="/images/SystemDesign/InMemoryOnDisk.png" alt="InMemoryOnDisk." caption="InMemory On Disk.">}}
+{{<figure src="/images/SystemDesign/Video/InMemoryOnDisk.png" alt="InMemoryOnDisk." caption="InMemory On Disk.">}}
 
 Another reason Redis is fast because it is single threaded.
 
-{{<figure src="/images/SystemDesign/SingleThreadedMultithreaded.png" alt="SingleThreadedMultithreaded." caption="Single Threaded Multithreaded.">}}
+{{<figure src="/images/SystemDesign/Video/SingleThreadedMultithreaded.png" alt="SingleThreadedMultithreaded." caption="Single Threaded Multithreaded.">}}
 
 Multi threaded application requires locks and other synchronisation mechanism.
 
 **How does single threaded code base handle thousands of requests incoming and outgoing ? Won’t the thread gets block waiting for each request to get complete individually?**
 
-{{<figure src="/images/SystemDesign/IoMultiplexingSingleThreadedReadWrite.png" alt="Query." caption="IoMultiplexingSingleThreadedReadWrite.">}}
+{{<figure src="/images/SystemDesign/Video/IoMultiplexingSingleThreadedReadWrite.png" alt="Query." caption="IoMultiplexingSingleThreadedReadWrite.">}}
 
 It's the male function of the IO multiplexing. In multiplexing operating system allows a single thread to wait on many sockets.
 
@@ -476,7 +476,7 @@ One drawback of the single threaded design is that it does not leverage all the 
 
 Another reason of red is being fast is that it can use the low level data structure like linked list, HashTable and Skiplist without being thinking about how to persist them to the disk efficiently. 
 
-{{<figure src="/images/SystemDesign/EffectiveDataStructure.png" alt="EffectiveDataStructure." caption="Effective Data Structure.">}}
+{{<figure src="/images/SystemDesign/Video/EffectiveDataStructure.png" alt="EffectiveDataStructure." caption="Effective Data Structure.">}}
 
 ### **HTTP1 HTTP2 HTTP3.**
 
@@ -484,27 +484,27 @@ HTTP1.
 
 Every request to the same server requires a separate tcp connection.
 
-{{<figure src="/images/SystemDesign/Http1.png" alt="Http1." caption="Http1.">}}
+{{<figure src="/images/SystemDesign/Video/Http1.png" alt="Http1." caption="Http1.">}}
 
 HTTP 1.1
 
 Followed the same TCP connection. It follows the “keep-alive”  mechanism and reuse the same tcp connection so that the connection can be used for more than a single request.
 
-{{<figure src="/images/SystemDesign/Http1.1.png" alt="Http1.1." caption="Http1.1.">}}
+{{<figure src="/images/SystemDesign/Video/Http1.1.png" alt="Http1.1." caption="Http1.1.">}}
 
 HTTP 1 .1 allowed the HTTP pipelining. It allows client to send multiple request before waiting for each response.
 
 The response must be received in same order as it is send. It was tricky to maintain and the support removed from many servers.
 
-{{<figure src="/images/SystemDesign/NoPipeliningPipelining.png" alt="NoPipeliningPipelining." caption="NoPipeliningPipelining.">}}
+{{<figure src="/images/SystemDesign/Video/NoPipeliningPipelining.png" alt="NoPipeliningPipelining." caption="NoPipeliningPipelining.">}}
 
 When one packet lost all subsequent request are impacted.
 
-{{<figure src="/images/SystemDesign/Pipelining.png" alt="Pipelining." caption="Pipelining.">}}
+{{<figure src="/images/SystemDesign/Video/Pipelining.png" alt="Pipelining." caption="Pipelining.">}}
 
 HTTP 2 each comes in stream. It solves the Head of line issue in the application layer but the issue still exists in the Transport layer.
 
-{{<figure src="/images/SystemDesign/Http2.png" alt="Http2." caption="Http2.">}}
+{{<figure src="/images/SystemDesign/Video/Http2.png" alt="Http2." caption="Http2.">}}
 
 HTTP 2 introduces the PUSH capability to the server when the client new data is available without the client to poll.
 
@@ -512,11 +512,11 @@ HTTP 3 uses QUIC protocol in the transport and not the TCP. It is based on UDP a
 
 QUIC stream shares the same quic connection so no handshake required. It delivers independently and packet loss will not effect others.
 
-{{<figure src="/images/SystemDesign/Http.png" alt="Http." caption="Http.">}}
+{{<figure src="/images/SystemDesign/Video/Http.png" alt="Http." caption="Http.">}}
 
 The QUIC uses the Connection Id and the connection to move from the IP address and network quickly.
 
-{{<figure src="/images/SystemDesign/ClientServer.png" alt="ClientServer." caption="ClientServer.">}}
+{{<figure src="/images/SystemDesign/Video/ClientServer.png" alt="ClientServer." caption="ClientServer.">}}
 
 ### **What is REST API.**
 
@@ -564,7 +564,7 @@ An SSTable store the key value pair in a sorted sequence. The write are all sequ
 
 The new SSTable becomes the most recent segment of the LSM tree as more data comes in more and more of this immutable SSTable are created and added to the LSM tree. Each one representing a small chronological subset of the incoming changes.
 
-{{<figure src="/images/SystemDesign/SSTable.png" alt="SSTable." caption="SSTable.">}}
+{{<figure src="/images/SystemDesign/Video/SSTable.png" alt="SSTable." caption="SSTable.">}}
 
 Since SSTable is immutable and update to an existing object key does not overwrite an existing SSTable.
 
@@ -572,7 +572,7 @@ Instead a new entry is added to the most recent SSTable which supersede any entr
 
 Deleting an object in SSTable we cannot mark anything in the sustainable as deleted. To perform a delete it adds a marker called a tombstone to the most recent SSTable for the object key.
 
-{{<figure src="/images/SystemDesign/DeletingSSTable.png" alt="DeletingSSTable." caption="DeletingSSTable.">}}
+{{<figure src="/images/SystemDesign/Video/DeletingSSTable.png" alt="DeletingSSTable." caption="DeletingSSTable.">}}
 
 When we get the tombstone on read we known that the object has been deleted. It is a bit unintuitive that a delete takes up extra space.
 
@@ -584,7 +584,7 @@ The number of SSTable grows it would take an increasingly long time to look up a
 
 To fix the issues there is a periodic merging and compaction process running in the background to merge SSTable and discard outdated or deleted values.
 
-{{<figure src="/images/SystemDesign/LSMTree.png" alt="LSMTree." caption="LSMTree.">}}
+{{<figure src="/images/SystemDesign/Video/LSMTree.png" alt="LSMTree." caption="LSMTree.">}}
 
 SSTable is sorted so the merging and compaction process is simple and uses mergesort algorithm.
 
@@ -650,11 +650,11 @@ Ask bloom filter about ribeye since the same input always hashes to the same out
 
 Asking about chop the value of the hash say 1, 5, 8 and the value 5 is not 1 in the array so the answer is no and it is correct.
 
-{{<figure src="/images/SystemDesign/Becket.png" alt="Becket." caption="Bucket.">}}
+{{<figure src="/images/SystemDesign/Video/Becket.png" alt="Becket." caption="Bucket.">}}
 
 Asking lemon and the hash return 1, 4, 8 and the value are 1 in array and then search happen and lemon not present. It say yes but the value not present. It is a false positive case. 
 
-{{<figure src="/images/SystemDesign/Bucket.png" alt="Bucket." caption="Bucket.">}}
+{{<figure src="/images/SystemDesign/Video/Bucket.png" alt="Bucket." caption="Bucket.">}}
 
 The hash function should be good and the size of the array should be proper to avoid less false positive.
 
@@ -666,7 +666,7 @@ Back-of-the-envelope math is a very useful tool in our system design toolbox. In
 
 ### **Choose right DB.**
 
-{{<figure src="/images/SystemDesign/DBName.png" alt="DBName." caption="DBName.">}}
+{{<figure src="/images/SystemDesign/Video/DBName.png" alt="DBName." caption="DBName.">}}
 
 ### How does live streaming platform work.
 
@@ -676,19 +676,19 @@ How do these popular live streaming platforms deliver video content from the str
 
 ### **Latency Numbers.**
 
-{{<figure src="/images/SystemDesign/MemoryPyramid.png" alt="MemoryPyramid." caption="MemoryPyramid.">}}
+{{<figure src="/images/SystemDesign/Video/MemoryPyramid.png" alt="MemoryPyramid." caption="MemoryPyramid.">}}
 
 Disk access latency has improved HHD to SSD. 
 
 The network latency between countries has not improved as it covers the country and obeys the law of physics.
 
-{{<figure src="/images/SystemDesign/TimeUnits.png" alt="TimeUnits." caption="TimeUnits.">}}
+{{<figure src="/images/SystemDesign/Video/TimeUnits.png" alt="TimeUnits." caption="TimeUnits.">}}
 
-{{<figure src="/images/SystemDesign/CPURegister.png" alt="CPURegister." caption="CPURegister.">}}
+{{<figure src="/images/SystemDesign/Video/CPURegister.png" alt="CPURegister." caption="CPURegister.">}}
 
 1 ns - Accessing CPU Register is sub-nanosecond range.
 
-{{<figure src="/images/SystemDesign/CPUClockCycle.png" alt="CPUClockCycle." caption="CPUClockCycle.">}}
+{{<figure src="/images/SystemDesign/Video/CPUClockCycle.png" alt="CPUClockCycle." caption="CPUClockCycle.">}}
 
 A clock cycle of a modern CPU is in sub-nanosecond range.
 
@@ -752,7 +752,7 @@ Transparent proxy works with layer 4 switches to redirect certain types of traff
 
 It is difficult to bypass a transparent proxy when the client is on the institution's network.
 
-{{<figure src="/images/SystemDesign/ForwardProxy.png" alt="ForwardProxy." caption="ForwardProxy.">}}
+{{<figure src="/images/SystemDesign/Video/ForwardProxy.png" alt="ForwardProxy." caption="ForwardProxy.">}}
 
 Reverse proxy sits between the Internet and the Web servers. It intercepts the reuqets from clients and talk to the server on behalf of the client. 
 
@@ -770,7 +770,7 @@ A reverse proxy caches static content a piece of content could be cached on the 
 
 The reverse proxy can handle ssl encryption ssl handshake is computationally expensive the reverse proxy can free up the origin servers from those expensive operations instead of handling ssl for all clients a website only needs to handle ssl handshake from a small number of reverse proxies.
 
-{{<figure src="/images/SystemDesign/ReverseProxy.png" alt="ReverseProxy." caption="ReverseProxy.">}}
+{{<figure src="/images/SystemDesign/Video/ReverseProxy.png" alt="ReverseProxy." caption="ReverseProxy.">}}
 
 Layers of Reverse Proc.
 
@@ -784,11 +784,11 @@ The user will enter the cloud network at the edge closer to the user and from th
 
 https://youtu.be/6ULyxuHKxg8?si=H9Y7IPTtUgg3oKy9
 
-{{<figure src="/images/SystemDesign/APIGateway.png" alt="APIGateway." caption="APIGateway.">}}
+{{<figure src="/images/SystemDesign/Video/APIGateway.png" alt="APIGateway." caption="APIGateway.">}}
 
 API Gateway uses - Authentication and security policy enforcement, load balancing and circuit breaking, protocol translation and service discovery, monitoring, logging, analytics and billing, caching.
 
-{{<figure src="/images/SystemDesign/APIGateWayParts.png" alt="APIGateWayParts." caption="APIGateWayParts.">}}
+{{<figure src="/images/SystemDesign/Video/APIGateWayParts.png" alt="APIGateWayParts." caption="APIGateWayParts.">}}
 
 What does an API gateway do? Why do we need it? Let’s take a look. An API gateway is a single point of entry to the clients of an application. It sits between the clients and a collection of backend services for the application. An API gateway typically provides several important functions. Some common ones are: authentication and security policy enforcements, load balancing and circuit breaking, protocol translation and service discovery, monitoring, logging, analytics, and billing. And finally, caching. Let’s examine a typical flow of a client request through the API gateway and onto the backend service. Step 1 - the client sends a request to the API gateway. The request is typically HTTP-based. It could be REST, GraphQL, or some other higher-level abstractions. Step 2 - the API gateway validates the HTTP request. Step 3 - the API gateway checks the caller’s IP address and other HTTP headers against its allow-list and deny-list. It could also perform basic rate limit checks against attributes such as IP address and HTTP headers. For example, it could reject requests from an IP address exceeding a certain rate. Step 4 - the API gateway passes the request to an identity provider for authentication and authorization. This in itself is a complicated topic. The API gateway receives an authenticated session back from the provider with the scope of what the request is allowed to do. Step 5 - a higher level rate-limit check is applied against the authenticated session. If it is over the limit, the request is rejected at this point. Step 6 and 7 - With the help of a service discovery component, the API gateway locates the appropriate backend service to handle the request by path matching. Step 8 - the API gateway transforms the request into the appropriate protocol and sends the transformed request to the backend service. An example would be gRPC. When the response comes back from the backend service, the API gateway transforms the response back to the public-facing protocol and returns the response to the client. A proper API gateway also provides other critical services. For example, an API gateway should track errors and provide circuit-breaking functionality to protect the services from overloading. An API gateway should also provide logging, monitoring, and analytics services for operational observability. An API gateway is a critical piece of the infrastructure. It should be deployed to multiple regions to improve availability. For many cloud provider offerings, the API gateway is deployed across the world close to the clients.
 
@@ -802,7 +802,7 @@ GraphQL sits between the clients and the backend services. It could aggregate mu
 
 Mutations are GraphQL way of applying data modifications to resources.
 
-{{<figure src="/images/SystemDesign/GraphQl.png" alt="GraphQl." caption="GraphQl.">}}
+{{<figure src="/images/SystemDesign/Video/GraphQl.png" alt="GraphQl." caption="GraphQl.">}}
 
 Subscriptions are GraphQL way for clients to receive notification on data modifications.
 
@@ -810,13 +810,13 @@ GraphQL and REST both send HTTP request and receive HTTP response.
 
 REST centers around resources each resource is identified by a url. It uses `v3/books/123` to fetch a book from the bookstore api.
 
-{{<figure src="/images/SystemDesign/GraphQlGetCall.png" alt="GraphQlGetCall." caption="GraphQlGetCall.">}}
+{{<figure src="/images/SystemDesign/Video/GraphQlGetCall.png" alt="GraphQlGetCall." caption="GraphQlGetCall.">}}
 
 The authors field is implementation specific some rest api implementations by break them into separate REST call like `/authors/3` or `authors/5`
 
 In GraphQL it looks different we first define the types in this example we have the book and author types.
 
-{{<figure src="/images/SystemDesign/GraphQlClient.png" alt="GraphQlClient." caption="GraphQlClient.">}}
+{{<figure src="/images/SystemDesign/Video/GraphQlClient.png" alt="GraphQlClient." caption="GraphQlClient.">}}
 
 The types describe the kinds of data available. They don't specify how the data is retrieved via GraphQL.
 
@@ -909,7 +909,7 @@ A thread is a unit of execution within a process. A process has at least one thr
 
 One misbehaving thread can bring down the entire process.
 
-{{<figure src="/images/SystemDesign/Process.png" alt="Process." caption="Process.">}}
+{{<figure src="/images/SystemDesign/Video/Process.png" alt="Process." caption="Process.">}}
 
 **How does the OS run a thread or process on a CPU?**
 
@@ -921,13 +921,13 @@ The operating system stores the state of the current running process so the proc
 
 Context switching is expansive it involves saving and loading of registers switching out memory pages and updating various kernel data structure.
 
-{{<figure src="/images/SystemDesign/ContextSwitching.png" alt="ContextSwitching." caption="ContextSwitching.">}}
+{{<figure src="/images/SystemDesign/Video/ContextSwitching.png" alt="ContextSwitching." caption="ContextSwitching.">}}
 
 Switching execution between threads requires context switching but it is faster than switching between processes as it shares the same memory so there is no need to switch between virtual memory.
 
 Contact switching is costly and there are other mechanism to minimise it such as fibers and coroutines.
 
-{{<figure src="/images/SystemDesign/ContextSwitchingStack.png" alt="ContextSwitchingStack." caption="ContextSwitchingStack.">}}
+{{<figure src="/images/SystemDesign/Video/ContextSwitchingStack.png" alt="ContextSwitchingStack." caption="ContextSwitchingStack.">}}
 
 In general they are cooperatively scheduled that is they must yield control for others to run.
 
@@ -971,7 +971,7 @@ It is encapsulated into tcp segments at the transport layer.
 
 The header contains the source port destination port and sequence number.
 
-{{<figure src="/images/SystemDesign/Header.png" alt="ConsistentHashing." caption="Header.">}}
+{{<figure src="/images/SystemDesign/Video/Header.png" alt="ConsistentHashing." caption="Header.">}}
 
 The segments are then encapsulated with an ip header and the network layer.
 
@@ -987,7 +987,7 @@ L7 load balancer is a shorthand to mean that the load balancer operates at the a
 
 L4 load balancer on the other hand operates at the tcp level.
 
-{{<figure src="/images/SystemDesign/OSIModel.png" alt="OSIModel." caption="OSIModel.">}}
+{{<figure src="/images/SystemDesign/Video/OSIModel.png" alt="OSIModel." caption="OSIModel.">}}
 
 ### CAP Theorem.
 
@@ -1001,12 +1001,12 @@ Kubernetes is an open-source container orchestration platform. It automates the 
 
 Kubernetes can be traced back to Google's internal container orchestration system Borg, which managed the deployment of thousands of applications within Google. 
 
-{{<figure src="/images/SystemDesign/Borg.png" alt="ConsistentHashing." caption="Borg.">}}
+{{<figure src="/images/SystemDesign/Video/Borg.png" alt="ConsistentHashing." caption="Borg.">}}
 In 2014, Google open-sourced a version of Borg. That is Kubernetes. 
 
 A **Kubernetes cluster** is a set of machines, called nodes, that are used to run containerized applications. 
 
-{{<figure src="/images/SystemDesign/KubernetesCluster.png" alt="GeoHash." caption="Kubernetes Cluster.">}}
+{{<figure src="/images/SystemDesign/Video/KubernetesCluster.png" alt="GeoHash." caption="Kubernetes Cluster.">}}
 
 There are two core pieces in a Kubernetes cluster - Control Plane and set of Worker Nodes. 
 
@@ -1021,7 +1021,7 @@ Control plane. It consists of a number of core components. They are the **API se
 
 The **API server** is the primary interface between the control plane and the rest of the cluster. It exposes a RESTful API that allows clients to interact with the control plane and submit requests to manage the cluster. 
 
-{{<figure src="/images/SystemDesign/APIServer.png" alt="ConsistentHashing." caption="API Server.">}}
+{{<figure src="/images/SystemDesign/Video/APIServer.png" alt="ConsistentHashing." caption="API Server.">}}
 **etcd** is a distributed key-value store. It stores the cluster's persistent state. It stores the details like what states of the cluster are changed, What resources are available, is the cluster healthy? 
 
 It is used by the API server and other components of the control plane to store and retrieve information about the cluster. 
@@ -1044,7 +1044,7 @@ spec:
 The _deployment controller_, which manages the rolling update and rollback of deployments. 
 The **worker nodes** - Core components of Kubernetes that run on the worker nodes include kubelet, container runtime, and kube proxy. 
 
-{{<figure src="/images/SystemDesign/WorkerNode.png" alt="Worker Node." caption="Worker Node.">}}
+{{<figure src="/images/SystemDesign/Video/WorkerNode.png" alt="Worker Node." caption="Worker Node.">}}
 
 The kubelet is a daemon that runs on each worker node. It is responsible for communicating with the control plane. It receives instructions from the control plane about which pods to run on the node, and ensures that the desired state of the pods is maintained. 
 
@@ -1070,13 +1070,13 @@ For a small organization, YAGNI - You ain’t gonna need it - is our recommendat
 
 ### **CI CD.**
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/Video/CICD.png" alt="CICD." caption="CICD.">}}
 
 The CICD takes care of the building, testing and deploying the code.
 
 CI - It is a practice to enable automation to enable team to merge code changes into the shared repository. Each commit triggers an automated workflow in a CI server and runs a series of task to make sure the commit is safe to merge.
 
-{{<figure src="/images/SystemDesign/Devops.png" alt="Devops." caption="Devops.">}}
+{{<figure src="/images/SystemDesign/Video/Devops.png" alt="Devops." caption="Devops.">}}
 
 CD - Github Action, BuildKite and Jenkins are commonly used to handle the CD tasks.
 
@@ -1104,7 +1104,7 @@ Have you ever wondered why debugging is not taught in school? Most developers ac
 
 ### **What is Cloud Native.**
 
-{{<figure src="/images/SystemDesign/CloudNative.png" alt="CloudNative." caption="CloudNative.">}}
+{{<figure src="/images/SystemDesign/Video/CloudNative.png" alt="CloudNative." caption="CloudNative.">}}
 
 Cloud Native was first introduced by Netflix in 2013 in an AWS event when Netflix discussed the web-scale architecture.
 
@@ -1116,7 +1116,7 @@ Confusion between cloud native and cloud computing?
 
 Cloud computing is running application on computing resources  managed by cloud providers without having to purchase and manage hardware separately.
 
-{{<figure src="/images/SystemDesign/CloudComputing.png" alt="CloudComputing." caption="CloudComputing.">}}
+{{<figure src="/images/SystemDesign/Video/CloudComputing.png" alt="CloudComputing." caption="CloudComputing.">}}
 
 Migrate an application from monolith to on-prem is one way.
 
@@ -1133,7 +1133,7 @@ Cloud Native Open Standard - Following the components and standards.
 
 Example of some well known standards and application.
 
-{{<figure src="/images/SystemDesign/DevopsApplication.png" alt="DevopsApplication." caption="Devops Application.">}}
+{{<figure src="/images/SystemDesign/Video/DevopsApplication.png" alt="DevopsApplication." caption="Devops Application.">}}
 
 Jaeger, Zipkin, OpenTelemetry.
 
@@ -1141,17 +1141,17 @@ Service Mesh is a core infrastructure layer for managing service to service comm
 
 Istio and Linkerd are some of the example.
 
-{{<figure src="/images/SystemDesign/ControlPlane.png" alt="ControlPlane." caption="ControlPlane.">}}
+{{<figure src="/images/SystemDesign/Video/ControlPlane.png" alt="ControlPlane." caption="ControlPlane.">}}
 
 The principle and the standard architecture refers as a cloud native architecture.
 
-{{<figure src="/images/SystemDesign/CloudNativeArchitecture.png" alt="CloudNativeArchitecture." caption="CloudNativeArchitecture.">}}
+{{<figure src="/images/SystemDesign/Video/CloudNativeArchitecture.png" alt="CloudNativeArchitecture." caption="CloudNativeArchitecture.">}}
 
 ### **DNS.**
 
 DNS, or Domain Name System, is the backbone of the internet. DNS is the internet’s directory. It translates human-readable domain names, such as google.com to machine-readable IP addresses. 
 
-{{<figure src="/images/SystemDesign/DNSRootNameServers.png" alt="Git Versioning." caption="DNS Root Name Servers.">}}
+{{<figure src="/images/SystemDesign/Video/DNSRootNameServers.png" alt="Git Versioning." caption="DNS Root Name Servers.">}}
 
 When a browser makes a DNS query, it’s asking a DNS resolver. This DNS resolver could be from our ISP, or from popular DNS providers like Cloudflare’s 1.1.1.1, or Google’s 8.8.8.8. 
 
@@ -1163,18 +1163,18 @@ When we update a domain’s DNS records, we are updating its authoritative names
 
 There are three main levels of authoritative DNS servers. They are the **Root Name Servers**, the **Top Level Domain** (or TLD) name servers, and the **Authoritative Nameservers** for the domains. 
 
-{{<figure src="/images/SystemDesign/HowDNSWorks.png" alt="Git Versioning." caption="How DNS Works.">}}
+{{<figure src="/images/SystemDesign/Video/HowDNSWorks.png" alt="Git Versioning." caption="How DNS Works.">}}
 
 The **root name servers** store the IP addresses of the TLD name servers.  
 There are 13 logical root name servers. Each root name server has a single IP address assigned to it. There are actually many physical servers behind each IP address. Through the magic of anycast, we get routed to the one closest to us. 
 
-{{<figure src="/images/SystemDesign/LogicalRootNameServers.png" alt="Git Versioning." caption="Logical Root Name Servers.">}}
+{{<figure src="/images/SystemDesign/Video/LogicalRootNameServers.png" alt="Git Versioning." caption="Logical Root Name Servers.">}}
 
 The TLD name servers store the IP addresses of the authoritative name servers for all the domains under them. There are many types of TLD names. We are all familiar with .com, .org and .edu. There are also country code TLDs like .de and .uk. 
 
 The authoritative name servers for a domain provide, well, authoritative, answers to DNS queries. 
 
-{{<figure src="/images/SystemDesign/NameserverSettings.png" alt="Git Versioning." caption="Nameserver Settings.">}}
+{{<figure src="/images/SystemDesign/Video/NameserverSettings.png" alt="Git Versioning." caption="Nameserver Settings.">}}
 
 When we register a domain, the registrar runs the authoritative nameservers by default, but we can change them to others. Cloud providers like AWS and Cloudflare run robust authoritative nameservers. 
 
@@ -1192,7 +1192,7 @@ And finally, the DNS resolver reaches out to google.com’s authoritative namese
 
 The DNS resolver then returns the IP address to the operating system, the operating system returns it to the browser. 
 
-{{<figure src="/images/SystemDesign/DNSQuery.png" alt="Git Versioning." caption="DNS Query.">}}
+{{<figure src="/images/SystemDesign/Video/DNSQuery.png" alt="Git Versioning." caption="DNS Query.">}}
 
 Finally, let’s go over some gotchas when updating DNS records for a live, high-traffic production system. 
 
@@ -1204,13 +1204,13 @@ Second, leave the server running on the old IP address for a while. Only decommi
 
 ### **Backend Architecture.**
 
-{{<figure src="/images/SystemDesign/BackendTools.png" alt="Git Versioning." caption="Backend Tools.">}}
+{{<figure src="/images/SystemDesign/Video/BackendTools.png" alt="Git Versioning." caption="Backend Tools.">}}
 
 For this particular exercise, we will focus on an early-stage startup, where there are limited resources, and product/market fit is not yet certain. In this scenario, maximum flexibility is preferred. 
 
 To maintain maximum flexibility, we will probably go serverless functions. 
 
-{{<figure src="/images/SystemDesign/ServerlessFunction.png" alt="Git Versioning." caption="Serverless Function.">}}
+{{<figure src="/images/SystemDesign/Video/ServerlessFunction.png" alt="Git Versioning." caption="Serverless Function.">}}
 
 Serverless functions have a very strict request/response programming model, but under the hood, most serverless functions are packaged as a container. 
 
@@ -1248,7 +1248,7 @@ Solid State Drives, or SSDs, use NAND-based flash memory, providing faster data 
 
 NVMe, or Non-Volatile Memory Express, is a high-performance interface for SSDs that connects directly to the CPU via PCIe lanes. This allows for lower latency and significantly faster data transfer rates compared to SATA-based SSDs. 
 
-{{<figure src="/images/SystemDesign/NVMe.png" alt="Git Versioning." caption="NVMe.">}}
+{{<figure src="/images/SystemDesign/Video/NVMe.png" alt="Git Versioning." caption="NVMe.">}}
 
 Need to take your data on the go - Flash Drives and SD Cards.
 
@@ -1256,7 +1256,7 @@ Flash Drives, also known as USB drives or thumb drives, are small, plug-and-play
 
 SD Cards are commonly found in cameras and smartphones. They're smaller than a postage stamp but can store thousands of files. SD cards come in three main physical sizes: SD, microSD, and miniSD. 
 
-{{<figure src="/images/SystemDesign/TypesOfMemoryStorage.png" alt="TypesOfMemoryStorage." caption="Types Of Memory Storage.">}}
+{{<figure src="/images/SystemDesign/Video/TypesOfMemoryStorage.png" alt="TypesOfMemoryStorage." caption="Types Of Memory Storage.">}}
 
 ### **Cache system.**
 
@@ -1264,7 +1264,7 @@ Caching is a technique to enhance system performance and reduce response time.
  
 A typical system architecture involves several layers of caching, depending on the requirements and constraints of the specific application. 
 
-{{<figure src="/images/SystemDesign/SystemArchitectureUsingCache.png" alt="Git Versioning." caption="System Architecture Using Cache.">}}
+{{<figure src="/images/SystemDesign/Video/SystemArchitectureUsingCache.png" alt="Git Versioning." caption="System Architecture Using Cache.">}}
 
 The most common hardware cache are L1, L2, and L3 caches.  
 
@@ -1316,13 +1316,13 @@ and if you haven't jumped on board yet, you're missing out on a competitive edge
 
 ### **Most used System Pattern.**
 
-{{<figure src="/images/SystemDesign/MostUsedDistributedSystemPatterns.png" alt="MostUsedDistributedSystemPatterns." caption="Most Used Distributed System Patterns.">}}
+{{<figure src="/images/SystemDesign/Video/MostUsedDistributedSystemPatterns.png" alt="MostUsedDistributedSystemPatterns." caption="Most Used Distributed System Patterns.">}}
 
 Ambassador pattern acts as a "go-between" for your app and the services it communicates with, offloading tasks like logging, monitoring, or handling retries. 
 
 For instance, Kubernetes uses Envoy as an Ambassador to simplify communication between services. The Ambassador pattern can help reduce latency, enhance security, and improve the overall architecture of your distributed systems. 
 
-{{<figure src="/images/SystemDesign/AmbassadorPattern.png" alt="AmbassadorPattern." caption="AmbassadorPattern.">}}
+{{<figure src="/images/SystemDesign/Video/AmbassadorPattern.png" alt="AmbassadorPattern." caption="AmbassadorPattern.">}}
 
 Circuit Breaker - Imagine a water pipe bursting in your house. The first thing you'd do is shut off the main valve to prevent further damage. The Circuit Breaker pattern works similarly, preventing cascading failures in distributed systems. 
 
@@ -1334,17 +1334,17 @@ An e-commerce platform might have high read requests for product listings but fe
 
 Event Sourcing - Think of Event Sourcing as keeping a journal of the life events. Instead of updating a record directly, we store events representing changes. 
 
-{{<figure src="/images/SystemDesign/EventSourcing.png" alt="EventSourcing." caption="Event Sourcing.">}}
+{{<figure src="/images/SystemDesign/Video/EventSourcing.png" alt="EventSourcing." caption="Event Sourcing.">}}
 
 This approach provides a complete history of the system and enables better auditing and debugging. 
 
 Git version control is a great example of Event Sourcing, where each commit represents a change. 
 
-{{<figure src="/images/SystemDesign/GitVersioning.png" alt="Git Versioning." caption="Git Versioning.">}}
+{{<figure src="/images/SystemDesign/Video/GitVersioning.png" alt="Git Versioning." caption="Git Versioning.">}}
 
 Event Sourcing, we can also implement advanced features like time-travel debugging or replaying events for analytics purposes. 
 
-{{<figure src="/images/SystemDesign/Tracing.png" alt="PopularAPIArchitecturalStyle." caption="Event SOurcing for Tracing.">}}
+{{<figure src="/images/SystemDesign/Video/Tracing.png" alt="PopularAPIArchitecturalStyle." caption="Event SOurcing for Tracing.">}}
 
 Leader Election - Imagine a classroom of students electing a class representative. In a distributed system, the Leader Election pattern ensures only one node is responsible for a specific task or resource. When a leader node fails, the remaining nodes elect a new leader. 
 
@@ -1373,9 +1373,9 @@ Instead of performing a risky "big bang" migration, we can incrementally replace
 ### **Optimize SQL queries.**
 
 Query to find top 10 customer with the least of 1000 spend on order since Jan 2023 by joining the customer and order table and grouping by customer id. Display total order and amount spend sorted by desc order of total spend. 
-{{<figure src="/images/SystemDesign/SQLOrder.png" alt="Git Versioning." caption="SQL Order.">}}
+{{<figure src="/images/SystemDesign/Video/SQLOrder.png" alt="Git Versioning." caption="SQL Order.">}}
 **Query Execution Plan.**
-{{<figure src="/images/SystemDesign/Query.png" alt="Git Versioning." caption="Query Execution Plans.">}}
+{{<figure src="/images/SystemDesign/Video/Query.png" alt="Git Versioning." caption="Query Execution Plans.">}}
 
 Database system creates those plans to optimize queries and minimize resource usage.
 
@@ -1386,7 +1386,7 @@ Using index in join increase speed. Good index is the key. Index type like BitMa
 `WHERE` - Conditions. Make the SARGABLE (Search Argument Able) query it indicate the faster execution.  
 When the query is SARGABLE then the query can be used to increase the speed of the index. 
 
-{{<figure src="/images/SystemDesign/SARGABLEQuery.png" alt="SARGABLE Query." caption="SARGABLE Query.">}}
+{{<figure src="/images/SystemDesign/Video/SARGABLEQuery.png" alt="SARGABLE Query." caption="SARGABLE Query.">}}
 
 Sargable Query - `WHERE order_date >= '2023-01-01'`  
 Non-Sargable Query - `WHERE YEAR(order_date) >= 2023`
@@ -1410,7 +1410,7 @@ To optimize `SELECT` clause consider using the index like SELECT, WHERE, JOIN. I
 
 ### **Popular API Architecture Styles.**
 
-{{<figure src="/images/SystemDesign/PopularAPIArchitecturalStyle.png" alt="PopularAPIArchitecturalStyle." caption="PopularAPIArchitecturalStyle.">}}
+{{<figure src="/images/SystemDesign/Video/PopularAPIArchitecturalStyle.png" alt="PopularAPIArchitecturalStyle." caption="PopularAPIArchitecturalStyle.">}}
 
 **SOAP** is used in financial services and payment gateway where the security and reliability are key.
 
@@ -1426,7 +1426,7 @@ To optimize `SELECT` clause consider using the index like SELECT, WHERE, JOIN. I
 
 ### **Most used Deployment Strategies.**
 
-{{<figure src="/images/SystemDesign/BigBangDeployment.png" alt="BigBangDeployment." caption="BigBangDeployment.">}}
+{{<figure src="/images/SystemDesign/Video/BigBangDeployment.png" alt="BigBangDeployment." caption="BigBangDeployment.">}}
 
 One of the earliest way to deploy into the production.
 
@@ -1434,7 +1434,7 @@ Push all the changes at once and it causes a bit of down time as we have to shut
 
 It is sometimes the only choice in case of a database upgrade
 
-{{<figure src="/images/SystemDesign/RollingDeployment.png" alt="RollingDeployment." caption="RollingDeployment.">}}
+{{<figure src="/images/SystemDesign/Video/RollingDeployment.png" alt="RollingDeployment." caption="RollingDeployment.">}}
 
 Rolling diplomat is more like a marathon than a sprint and this let us incrementally update different parts of the system over time. 
 
@@ -1480,7 +1480,7 @@ A cloud engineer bootstrapping a virtual instance with Ansible and running Kuber
 
 Site Reliability Engineering. A brainchild of Google, SRE is about building resilience into large, complex systems. They developed practices and tools, like Borg cluster management system and Monarch monitoring system, to ensure that software can handle the stress of real-world demands. 
 
-{{<figure src="/images/SystemDesign/SRE.png" alt="UserRequest." caption="SRE.">}}
+{{<figure src="/images/SystemDesign/Video/SRE.png" alt="UserRequest." caption="SRE.">}}
 
 They sometimes build tools to simplify processes for developers, stepping into the territory of a Platform Engineer. 
 
@@ -1496,7 +1496,7 @@ DevOps, SRE, and Platform Engineering share a common vision: to enhance collabor
 
 API first need to see the bottleneck by load testing and profiling request. Optimization should only be done when the API has some performance issue.
 
-{{<figure src="/images/SystemDesign/ImproveAPIPerformance.png" alt="ImproveAPIPerformance." caption="Improve API Performance.">}}
+{{<figure src="/images/SystemDesign/Video/ImproveAPIPerformance.png" alt="ImproveAPIPerformance." caption="Improve API Performance.">}}
 
 **Connection Pooling** - This technique involves using a pool of open connections to manage database interaction, which reduces the overhead associated with opening and closing connections each time data needs to be loaded. The pool manages the lifecycle of connections for efficient resource use. Creating a connection uses a handshake protocol and slow down the API. The reuse of connection can greatly improve throughput.
 
@@ -1582,7 +1582,7 @@ In microservices architecture, Kafka serves as the real-time data bus that allow
 
 Kafka is also great for monitoring and observability when integrated with the ELK stack. It collects metrics, application logs and network data in real-time, which can then be aggregated and analyzed to monitor overall system health and performance. 
 
-{{<figure src="/images/SystemDesign/KafkaMonitoringObservability.png" alt="Kafka Monitoring Observability." caption="Kafka Monitoring Observability.">}}
+{{<figure src="/images/SystemDesign/Video/KafkaMonitoringObservability.png" alt="Kafka Monitoring Observability." caption="Kafka Monitoring Observability.">}}
 
 Kafka enables scalable stream processing of big data through its distributed architecture. It can handle massive volume of real-time data streams. 
 
@@ -1640,7 +1640,7 @@ The next step is to use `git commit`, which takes a snapshot of the staging area
 This locks in those staged changes by creating a permanent record that you can refer back to, like a snapshot in time.  
 When you're ready to share your progress with the team or back up your work, you use `git push` to send your commits to the Remote Repository like GitHub or Bitbucket. 
 
-{{<figure src="/images/SystemDesign/Git.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/Git.png" alt="UserRequest." caption="StressTesting.">}}
 
 Collaboration in Git is a two-way exchange. To integrate your teammates' work, you use git pull, which fetches changes from the remote repository and merges them into your local repository. It combines two commands: git fetch, which grabs the latest updates, and git merge, which integrates these updates with your work.  
 
@@ -1648,7 +1648,7 @@ Collaboration in Git is a two-way exchange. To integrate your teammates' work, y
 
 Branching enables isolated development and collaboration workflows. There are more nuance when merging or rebasing changes from others or managing branches. 
 
-{{<figure src="/images/SystemDesign/MergeRebase.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/MergeRebase.png" alt="UserRequest." caption="StressTesting.">}}
 
 Many developers use graphical git tools like GitHub Desktop and SourceTree. These tools provide visual interfaces and shortcuts for common commands. 
 
@@ -1683,9 +1683,9 @@ Security TEsting.
 UI testing.  
 Fuzz Testing.
 
-{{<figure src="/images/SystemDesign/TypesOfTesting.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/TypesOfTesting.png" alt="UserRequest." caption="StressTesting.">}}
 
-{{<figure src="/images/SystemDesign/Testing.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/Testing.png" alt="UserRequest." caption="StressTesting.">}}
 
 Smoke Testing is like a quick test drive for APIs. We run basic tests to confirm the API is working and responding to simple requests. 
 
@@ -1695,15 +1695,15 @@ Integration testing ensures these diverse APIs and cloud services communicate an
 
 Regression testing replays existing test cases against updated versions of the API to check for defects or regressions. This allows developers to iterate without worrying about collateral damage - no taking one step forward and two steps back.
 
-{{<figure src="/images/SystemDesign/RegressionTesting.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/RegressionTesting.png" alt="UserRequest." caption="StressTesting.">}}
 
-{{<figure src="/images/SystemDesign/Regression.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/Regression.png" alt="UserRequest." caption="StressTesting.">}}
 
 Load testing evaluates real-world performance by bombarding the API with high user volumes. 
 
 Stress testing takes this to the extreme, simulating drastic traffic spikes and edge conditions way beyond normal usage. Both prepare APIs to maintain responsiveness and stability during crunch times, whether it's the holiday e-commerce rush or a viral social media hit. 
 
-{{<figure src="/images/SystemDesign/StressTesting.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/StressTesting.png" alt="UserRequest." caption="StressTesting.">}}
 
 Security is very important, as APIs access sensitive systems and data. Security testing probes APIs for any weaknesses or loopholes that could allow unauthorized access or cyber threats.  
 
@@ -1715,43 +1715,43 @@ Fuzz testing takes it one step further by deliberately throwing malformed, unexp
 
 ### **Client Architecture Pattern.**
 
-{{<figure src="/images/SystemDesign/ArchitecturalPattern.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/ArchitecturalPattern.png" alt="UserRequest." caption="StressTesting.">}}
 
-{{<figure src="/images/SystemDesign/ClientArchitecturalPattern.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/ClientArchitecturalPattern.png" alt="UserRequest." caption="StressTesting.">}}
 
 The MVC, or Model-View-Controller pattern, is almost half a century old! It was a groundbreaking approach that separated UI, data, and control logic to allow developers to focus on these pieces individually. 
 
 It is a simple flow but can lead to a bloated controller when the app grows.
 
-{{<figure src="/images/SystemDesign/MVC.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/MVC.png" alt="UserRequest." caption="StressTesting.">}}
 
 MVP introduces a more prominent Presenter that handles UI logic - transforming model data for display, handling user inputs, and coordinating model and view updates.  
 By isolating UI logic, MVP enables the View to focus strictly on drawing visuals for cleaner code and testing.
 
-{{<figure src="/images/SystemDesign/MVP.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/MVP.png" alt="UserRequest." caption="StressTesting.">}}
 
 MVVM introduces data binding between the View and ViewModel. It enables automatic propagation of data changes in both directions. It reduces the need for explicit update logic. 
 
 The ViewModel handles syncing raw Model data to reflect UI changes automatically. The ViewModel persists this change to the Model. Any Model data updates automatically reflect back on the bound View properties without needing explicit refresh calls.  
 By handling bi-directional syncing between View and Model, data binding streamlines updates that would otherwise require boilerplate code. 
-{{<figure src="/images/SystemDesign/MVVM.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/MVVM.png" alt="UserRequest." caption="StressTesting.">}}
 
 
 MVVM-C goes further by adding a Coordinator layer to oversee navigation logic. Building on top of MVVM data binding, the Coordinator centralizes flow control needed for transitions between screens and use cases. 
 In our example, this means moving from the profile screen to image selection, then back again, while managing saving logic. This responsibility is handled by the Controller rather than the ViewModel. It allows the ViewModel to focus solely on data handling. 
 
-{{<figure src="/images/SystemDesign/MVVMC.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/MVVMC.png" alt="UserRequest." caption="StressTesting.">}}
 VIPER, the most modular pattern of them all. It breaks things down even further with a View, Interactor for business logic, Presenter for preparing data for the view, Entity for raw data, and Router for navigation. 
 
 The View only displays the user's action, the Interactor handles the business logic of the image update, the Presenter updates both the View and the Entity which is the Model equivalent, and the Router manages the navigation. This modular approach is especially powerful for large, complex applications. 
-{{<figure src="/images/SystemDesign/VIPER.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/VIPER.png" alt="UserRequest." caption="StressTesting.">}}
 
 So, which pattern should you choose? 
-{{<figure src="/images/SystemDesign/ClientArchitectureUseApplication.png" alt="UserRequest." caption="StressTesting.">}}
+{{<figure src="/images/SystemDesign/Video/ClientArchitectureUseApplication.png" alt="UserRequest." caption="StressTesting.">}}
 It depends on the size and complexity of your app. MVC might be perfect for smaller projects, where simplicity is key. MVP steps up when you need more testability. MVVM or MVVM-C shines in reactive programming and data-binding scenarios, especially with modern frameworks. VIPER is the go-to for larger applications where clean separation and scalability are critical. 
 
 
-{{<figure src="/images/SystemDesign/ClientArchitectureImage.png" alt="UserRequest." caption="Client Architecture Image.">}}
+{{<figure src="/images/SystemDesign/Video/ClientArchitectureImage.png" alt="UserRequest." caption="Client Architecture Image.">}}
 
 ### **Linux File System Explained.**
 
@@ -1863,7 +1863,7 @@ today we're going to explore some of the best engineering blocks out there these
 
 ### **Coding Principle.**
 
-{{<figure src="/images/SystemDesign/CodingPrinciple.png" alt="CodingPrinciple." caption="Coding Principle.">}}
+{{<figure src="/images/SystemDesign/Video/CodingPrinciple.png" alt="CodingPrinciple." caption="Coding Principle.">}}
 
 Comment - Code tells you how and comments tell you why.
 
@@ -1871,17 +1871,17 @@ Robustness - Code should handle unexpected situations without breaking. The exce
 
 Testing - Good code is not about how it work it is about how easy to test. Design components by thinking testing in mind.
 
-{{<figure src="/images/SystemDesign/CodingPrincipleTesting.png" alt="CodingPrincipleTesting." caption="CodingPrincipleTesting.">}}
+{{<figure src="/images/SystemDesign/Video/CodingPrincipleTesting.png" alt="CodingPrincipleTesting." caption="CodingPrincipleTesting.">}}
 
 Refactor - It is the preventive maintenance for the code base. Solve the issue like duplicate code, improper naming.
 
 Security - It should be taken care of the SQL injection and cross site scripting. To prevent it validate and sanitize user input. Use parameterized queries and output encoding.
 
-{{<figure src="/images/SystemDesign/CodingPrincipleSecurity.png" alt="CodingPrincipleSecurity." caption="CodingPrincipleSecurity.">}}
+{{<figure src="/images/SystemDesign/Video/CodingPrincipleSecurity.png" alt="CodingPrincipleSecurity." caption="CodingPrincipleSecurity.">}}
 
 ### **Popular API Protocol.**
 
-{{<figure src="/images/SystemDesign/APILandscape.png" alt="APILandscape." caption="APILandscape.">}}
+{{<figure src="/images/SystemDesign/Video/APILandscape.png" alt="APILandscape." caption="APILandscape.">}}
 
 REST simple, scalable and works well with web services. It uses standard HTTP method and is a resource based approach and it is easy to use. It is stateless and scaling up is straight forward.
 
@@ -1903,7 +1903,7 @@ Websocket is another protocol it establishes low latency bidirectional communica
 
 gRPC build on the foundation of HTTP2. It uses protocol buffer to define service methods and message formats which allows services to expose custom methods much like functions in a programming language.
 
-{{<figure src="/images/SystemDesign/PopularAPIProtocol.png" alt="PopularAPIProtocol." caption="PopularAPIProtocol.">}}
+{{<figure src="/images/SystemDesign/Video/PopularAPIProtocol.png" alt="PopularAPIProtocol." caption="PopularAPIProtocol.">}}
 
 ### How Mobile apps are released.
 
@@ -1927,9 +1927,9 @@ Today, we're diving into the world of data pipelines. So, what exactly is a data
 
 Message Queue are software components enable different parts of the system to communicate asynchronously and they receiving messages they act in the middle allowing sender and receivers to work independently.
 
-{{<figure src="/images/SystemDesign/MessageQueue.png" alt="MessageQueue." caption="Message Queue.">}}
+{{<figure src="/images/SystemDesign/Video/MessageQueue.png" alt="MessageQueue." caption="Message Queue.">}}
 
-{{<figure src="/images/SystemDesign/MessageQueueCommunication.png" alt="MessageQueue." caption="Message Queue Communication.">}}
+{{<figure src="/images/SystemDesign/Video/MessageQueueCommunication.png" alt="MessageQueue." caption="Message Queue Communication.">}}
 
 They are crutial for building scalable, loosely coupled and fault tolerance systems. They assure reliable communication handle async tasks in process high throughput data streams decoupling senders and receivers allow systems to scale independently and handle failures recently.
 
@@ -1939,7 +1939,7 @@ Example Uber - When a rider requests a ride the request enters the queue drivers
 
 **IBM MQ** launched in 1993 pioneer enterprise messaging it provided reliable secure and transactional messaging for critical applications in finance and Healthcare large banks use ibm mq to process financial transactions reliably even during hardware failure.
 
-{{<figure src="/images/SystemDesign/IBMMQ.png" alt="MessageQueue." caption="IBM MQ.">}}
+{{<figure src="/images/SystemDesign/Video/IBMMQ.png" alt="MessageQueue." caption="IBM MQ.">}}
 
 IBMF supports persistent and non persistent messaging it ensures. It offers robust transactions support to allow multiple messages to be grouped into a single unit of work which can be committed and rolled back as a whole.
 
@@ -1947,7 +1947,7 @@ It runs on a various platforms making it versatile for different enterprise envi
 
 **Rabbit MQ** releasing 2007 introduced a flexible and dynamic messaging model it supports multiple protocols including amp qp, mqtt and stomp.
 
-{{<figure src="/images/SystemDesign/RabbitMQ.png" alt="RabbitMQ." caption="Rabbit MQ.">}}
+{{<figure src="/images/SystemDesign/Video/RabbitMQ.png" alt="RabbitMQ." caption="Rabbit MQ.">}}
 
 It offers features like message routing, queuing and pub/sub messaging.
 
@@ -1958,22 +1958,22 @@ Rabbit mq provides fine grain control over message acknowledgement ensuring reli
 
 **Apache Kafka** introduced in 2011 revolutionised message cues example high throughput real time data streaming Kafka offers a scalable and fault tolerant platform for handling massive data volumes. This unique architecture based on a distributed commit log enable event sourcing, stream processing in real time.
 
-{{<figure src="/images/SystemDesign/Kafka.png" alt="MessageQueue." caption="Kafka.">}}
+{{<figure src="/images/SystemDesign/Video/Kafka.png" alt="MessageQueue." caption="Kafka.">}}
 Kafka partitions log architecture allows horizontal scaling across multiple brokers it ensure data durability and higher availability through configurable replication.  
 Kafka supports consumer groups for coordinated reading from the same topic by multiple consumers. It offers optional, exactly once semantics to prevent message loss or duplication.
 
-{{<figure src="/images/SystemDesign/ApacheKafka.png" alt="MessageQueue." caption="Apache Kafka.">}}
+{{<figure src="/images/SystemDesign/Video/ApacheKafka.png" alt="MessageQueue." caption="Apache Kafka.">}}
 
 Apache Pulsar developer Yahoo combine character scalability and performance with the flexibility with rich features of traditional message queues. Its cloud native architecture, multi tenancy support and tiered storage works well in modern distributed computing environment.
 
-{{<figure src="/images/SystemDesign/Pulsar.png" alt="MessageQueue." caption="Pulsar.">}}
+{{<figure src="/images/SystemDesign/Video/Pulsar.png" alt="MessageQueue." caption="Pulsar.">}}
 
 Pulsar is designed for multi tenancy allowing multiple tenants to share the same cluster while maintaining isolation and security.
 
 It supports geo-replication, enabling data replication across multiple data centres for disaster recovery and data locality.
 
 Pulsar's tier storage allow older data to be offloaded to cheaper storage solitions like Amazon S3 reducing costs while maintaining access to historical data.
-{{<figure src="/images/SystemDesign/PulsarSourceSinkStream.png" alt="PulsarSourceSinkStream." caption="Pulsar Source Sink Stream.">}}
+{{<figure src="/images/SystemDesign/Video/PulsarSourceSinkStream.png" alt="PulsarSourceSinkStream." caption="Pulsar Source Sink Stream.">}}
 Pulsar functions provide lightweight computer capabilities for stream processing and Pulsar IO connectors facilitate easy integration with external systems.
 
 ### Strategies to scale the application.
@@ -1983,11 +1983,11 @@ Pulsar functions provide lightweight computer capabilities for stream processing
 Indexing.  
 Indexes are like the index at the back of a book. They help you locate specific information quickly without having to scan every page. For example, in a customer database for an online retailer, indexing can quickly find customer orders based on order ID or customer ID. This allows customer service reps to pull up order histories quickly because these fields are indexed. The most common type of index is the B-tree index. B-tree indexes keep data sorted, making them ideal for a wide range of queries. They allow for fast insertion, deletion, and lookup operations. B-tree indexes are particularly effective for range queries, like finding all orders within a specific date range or retrieving customer records alphabetically by last name. 
 
-{{<figure src="/images/SystemDesign/BTreeIndex.png" alt="UserRequest." caption="Client Architecture Image.">}}
+{{<figure src="/images/SystemDesign/Video/BTreeIndex.png" alt="UserRequest." caption="Client Architecture Image.">}}
 
 Indexes can significantly reduce query execution time. Without proper indexing, even a simple search query could turn into a full table scan, which is extremely time-consuming. However, it's important to note that while indexes improve read performance, they can slow down write operations since the index needs to be updated whenever data is modified. 
 
-{{<figure src="/images/SystemDesign/Index.png" alt="UserRequest." caption="Client Architecture Image.">}}
+{{<figure src="/images/SystemDesign/Video/Index.png" alt="UserRequest." caption="Client Architecture Image.">}}
 
 Finding the right balance and knowing which fields to index is key to maintaining optimal database performance.
 
@@ -2044,15 +2044,15 @@ Execute - allows the file to run as a program.
 
 Permissions are represented in three ways **binary**, **octal** and **string** representation.
 
-{{<figure src="/images/SystemDesign/Permission.png" alt="Permission." caption="Permission.">}}
+{{<figure src="/images/SystemDesign/Video/Permission.png" alt="Permission." caption="Permission.">}}
 
-{{<figure src="/images/SystemDesign/ReadWriteExecute.png" alt="ReadWriteExecute." caption="ReadWriteExecute.">}}
+{{<figure src="/images/SystemDesign/Video/ReadWriteExecute.png" alt="ReadWriteExecute." caption="ReadWriteExecute.">}}
 
 Considering the permission rwx - 111 in binary. In octal 7(read 4, write 2 and execute 1).
 
 Using the `chmod 764 sample.txt` command we can set the permission of the file.
 
-{{<figure src="/images/SystemDesign/SpecialPermissionBit.png" alt="SpecialPermissionBit." caption="SpecialPermissionBit.">}}
+{{<figure src="/images/SystemDesign/Video/SpecialPermissionBit.png" alt="SpecialPermissionBit." caption="SpecialPermissionBit.">}}
 
 Special Permission Bit.
 
@@ -2098,7 +2098,7 @@ For sticky bit use +t or 1
 
 Example we want to set the setuid bit on an executable file named important_script 
 
-{{<figure src="/images/SystemDesign/Script.png" alt="Script." caption="Script.">}}
+{{<figure src="/images/SystemDesign/Video/Script.png" alt="Script." caption="Script.">}}
 
 In the command 4 set the setuid bit, 7 gives the owner read, write and execute, 5 gives group and others read and execute permissions.
 
@@ -2132,7 +2132,7 @@ Today most of the servers providing search results email web pages and videos re
 
 **Access networks** these physically connect end systems to the first router on a path to other distance and systems.
 
-{{<figure src="/images/SystemDesign/AccessNetwork.png" alt="Http1Connection." caption="Access Network.">}}
+{{<figure src="/images/SystemDesign/Video/AccessNetwork.png" alt="Http1Connection." caption="Access Network.">}}
 
 There are three main types of access networks - **home access networks** these enable connectivities within a residential environment they typically use technology like **DSL cable internet or Fiber Optic connections** to link homes to the broader internet. 
 
@@ -2158,16 +2158,16 @@ One of the most important routing protocols on the Internet is BGP Border Gatewa
 
 The routing process is dynamic and adaptive if a link fails or become congested routing algorithms can quickly recalculate paths to ensure data continues to flow efficiently across the network.
 
-{{<figure src="/images/SystemDesign/BorderGatewayProtocol.png" alt="Border Gateway Protocol." caption="Border Gateway Protocol.">}}
+{{<figure src="/images/SystemDesign/Video/BorderGatewayProtocol.png" alt="Border Gateway Protocol." caption="Border Gateway Protocol.">}}
 
 All activity on the internet involving Communications between network devices is governed by protocols.  
 Protocols are standard rules that Define message formats ordering of message exchanges and expected responses they are like the language and grammar of the internet to ensure that different devices and systems can understand each other some common protocols include TCP UDP IP and HTTP.
 
-{{<figure src="/images/SystemDesign/NetworkProtocol.png" alt="Network Protocol." caption="Network Protocol.">}}
+{{<figure src="/images/SystemDesign/Video/NetworkProtocol.png" alt="Network Protocol." caption="Network Protocol.">}}
 
 TCP ensures reliable order delivery of data between applications it handles things like breaking data into packets, acknowledging received packets and retransmitting lost packets.
 
-{{<figure src="/images/SystemDesign/TCP.png" alt="Http1Connection." caption="TCP Protocol.">}}
+{{<figure src="/images/SystemDesign/Video/TCP.png" alt="Http1Connection." caption="TCP Protocol.">}}
 
 IP on the other hand is responsible for addressing and routing packets across the internet. Every device connected to the internet has an IP address which acts like a postal address for data packets.
 
@@ -2186,13 +2186,13 @@ The **IP layer** this handle the addressing and routing of data packets across d
 
 The **link layer** it manages the physical connection between devices on the same network segment. This layer deals with the hardware aspects of network communication including network interface cards and device drivers.
 
-{{<figure src="/images/SystemDesign/TCPIPStack.png" alt="Network Protocol Stack." caption="Network Protocol Stack or TCP/IP Stack.">}}
+{{<figure src="/images/SystemDesign/Video/TCPIPStack.png" alt="Network Protocol Stack." caption="Network Protocol Stack or TCP/IP Stack.">}}
 
 Send data it starts at the application layer and moves down through each layer each layer adds its own information to the data a process called encapsulation when the data reaches its destination it moves up through the layers with each layer stripping off its information a process called decapsulation.
 
 ### HTTP1 HTTP2 HTTP3.
 
-{{<figure src="/images/SystemDesign/Http1Connection.png" alt="Http1Connection." caption="Http1 Connection.">}}
+{{<figure src="/images/SystemDesign/Video/Http1Connection.png" alt="Http1Connection." caption="Http1 Connection.">}}
 
 There is a TCP handshake security and all happens for every resource, image, file.
 
@@ -2214,11 +2214,11 @@ The design leverages immutable append only logs with configurable retention poli
 
 The **log analysis** isn't just about processing logs it's about centralising and analysing logs with complex distributed system in real time kafka excels here because you can ingest logs from multiple sources simultaneously microservices cloud platforms and various applications it handles this high volume while keeping latency low.
 
-{{<figure src="/images/SystemDesign/KafkaLogAnalysis.png" alt="KafkaLogAnalysis." caption="KafkaLogAnalysis.">}}
+{{<figure src="/images/SystemDesign/Video/KafkaLogAnalysis.png" alt="KafkaLogAnalysis." caption="KafkaLogAnalysis.">}}
 
 **Real time machine learning** techniques modern ml systems need to process vast data quickly and continuously, kafka makes it easy.
 
-{{<figure src="/images/SystemDesign/KafkaUseInMLPipelines.png" alt="KafkaUseInMLPipelines." caption="Kafka Use In ML Pipelines.">}}
+{{<figure src="/images/SystemDesign/Video/KafkaUseInMLPipelines.png" alt="KafkaUseInMLPipelines." caption="Kafka Use In ML Pipelines.">}}
 
 Example in a fraud detection system kafka streams transaction data to models. These models flags suspicious activities instantly. It might funnel sensitive data from amchine to model that forecast failures. Kafka integration with stream processing framework Flink or Spark streaming is key here.
 
@@ -2226,7 +2226,7 @@ These tools can read from Kafka write complex computation or ML inference and wr
 
 **Kafka Stream** is Kafka's native stream processing library it allows us to build scalable, fault tolerance stream processing applications directly on top of Kafka.
 
-{{<figure src="/images/SystemDesign/KafkaStreams.png" alt="KafkaStreams." caption="Kafka Streams.">}}
+{{<figure src="/images/SystemDesign/Video/KafkaStreams.png" alt="KafkaStreams." caption="Kafka Streams.">}}
 
 The 3rd use case is **real time system monitoring and alerting** - Log analysis helps investigate past events, it's about immediate protective system health tracking and adverting.
 
@@ -2238,7 +2238,7 @@ Data flows through Kafka and stream processing applications continuously analyse
 
 **Kafka persistence model** allows for time travel debugging we can replay the metric stream to understand the system state leading up to an incident. This feature can speed up with root cause analysis.
 
-{{<figure src="/images/SystemDesign/KafkaPersistenceModel.png" alt="Kafka Persistence Model." caption="Kafka Persistence Model.">}}
+{{<figure src="/images/SystemDesign/Video/KafkaPersistenceModel.png" alt="Kafka Persistence Model." caption="Kafka Persistence Model.">}}
 
 The Kafka use case involves **change data capture** cdc is a method used to track the capture changes in source databases it allows these changes to be replicated to other systems in real time.
 
@@ -2250,11 +2250,11 @@ The transaction log feeds into Kafka, it stores the change events in topics it's
 
 To move data between Kafka and other systems we use Kafka connect.
 
-{{<figure src="/images/SystemDesign/KafkaConnect.png" alt="KafkaConnect." caption="Kafka Connect.">}}
+{{<figure src="/images/SystemDesign/Video/KafkaConnect.png" alt="KafkaConnect." caption="Kafka Connect.">}}
 
 This framework allows us to build and run various connectors for instance we might have an elastic search connector to stream data to elastic search for powerful search capabilities and a db connector to replicate data to other databases for backup or sailing purposes.
 
-{{<figure src="/images/SystemDesign/Connectors.png" alt="KafkaStreams." caption="Connectors.">}}
+{{<figure src="/images/SystemDesign/Video/Connectors.png" alt="KafkaStreams." caption="Connectors.">}}
 
 The 5th use case is **system migration** kaka does more than just transfer data in migration it acts as a buffer between old and new systems, can also translate between them this allows a gradual low risk migrations.
 
@@ -2286,7 +2286,7 @@ Each worker node runs a process called Kubelet, which acts as a local agent that
 The control plane, on the other hand, serves as the command center. It orchestrates and manages the entire cluster. 
 
 
-{{<figure src="/images/SystemDesign/KubernetesArchitecture.png" alt="Kubernetes Architecture." caption="Kubernetes Architecture.">}}
+{{<figure src="/images/SystemDesign/Video/KubernetesArchitecture.png" alt="Kubernetes Architecture." caption="Kubernetes Architecture.">}}
 
 It runs several critical Kubernetes processes: First, there's the API Server. Think of this as the central communication hub of the cluster. It's the entry point for various Kubernetes clients, including user interfaces, APIs for automation, and command-line tools. 
 
@@ -2295,7 +2295,7 @@ Next, we have the Controller Manager. This component maintains the desired state
 Underpinning all of this is etcd. It’s a robust key-value store that serves as the persistent memory of the cluster. It securely stores all configuration data and the real-time status of each node and container. 
 
 
-{{<figure src="/images/SystemDesign/ClusterNetwork.png" alt="Cluster Network." caption="Cluster Network.">}}
+{{<figure src="/images/SystemDesign/Video/ClusterNetwork.png" alt="Cluster Network." caption="Cluster Network.">}}
 
 To enable seamless communication between nodes, Kubernetes uses a virtual network that interconnects all nodes within the cluster. This virtual network abstracts away the underlying physical infrastructure and presents the cluster as a unified computing resource. 
 
@@ -2309,7 +2309,7 @@ In our web application scenario, we'd have an "application pod" hosting the web 
 
 If a pod fails or needs to be rescheduled, Kubernetes will automatically create a new one to replace it. 
 
-{{<figure src="/images/SystemDesign/ApplicationPodDatabasePod.png" alt="Application Pod Database Pod." caption="Application Pod Database Pod.">}}
+{{<figure src="/images/SystemDesign/Video/ApplicationPodDatabasePod.png" alt="Application Pod Database Pod." caption="Application Pod Database Pod.">}}
 
 However, this new pod might have a different IP address, which can pose a challenge for inter-application communication. 
 
@@ -2320,46 +2320,46 @@ For our web application to be accessible to users outside the cluster, we need t
 
 Kubernetes offers External Services for this purpose. It opens up a specific port on the cluster's network and routes incoming traffic to the appropriate backend pods. 
 
-{{<figure src="/images/SystemDesign/ExternalName.png" alt="ExternalName." caption="Cluster Network.">}}
+{{<figure src="/images/SystemDesign/Video/ExternalName.png" alt="ExternalName." caption="Cluster Network.">}}
 
 While External Services technically expose our application, the default URLs they provide can be complex and not very user-friendly. 
 
-{{<figure src="/images/SystemDesign/ExternalServiceUrl.png" alt="ExternalServiceUrl." caption="ExternalServiceUrl.">}}
+{{<figure src="/images/SystemDesign/Video/ExternalServiceUrl.png" alt="ExternalServiceUrl." caption="ExternalServiceUrl.">}}
 
 This is where Kubernetes Ingress comes into play. **Ingress** acts as a smart reverse proxy, allowing you to define rules for routing external traffic to specific services within the cluster based on the request's URL. 
-{{<figure src="/images/SystemDesign/Ingress.png" alt="UserRequest." caption="Ingress.">}}
+{{<figure src="/images/SystemDesign/Video/Ingress.png" alt="UserRequest." caption="Ingress.">}}
 
 Kubernetes also provides mechanisms for managing application configuration data. ConfigMaps stores configuration data like database connection URLs or API endpoints, while Secrets stores confidential data like passwords and API keys. 
 
 Kubernetes offers two primary mechanisms for managing pod replicas: Deployments and StatefulSets. 
 
-{{<figure src="/images/SystemDesign/KubernetesReplica.png" alt="UserRequest." caption="Kubernetes Replica.">}}
+{{<figure src="/images/SystemDesign/Video/KubernetesReplica.png" alt="UserRequest." caption="Kubernetes Replica.">}}
 
 Deployments are ideal for stateless applications, like our web server, where each replica is interchangeable. We can define a Deployment that specifies the desired number of replicas for our application pod, and Kubernetes will ensure that number is always running. 
 
-{{<figure src="/images/SystemDesign/Deployments.png" alt="UserRequest." caption="Deployments.">}}
+{{<figure src="/images/SystemDesign/Video/Deployments.png" alt="UserRequest." caption="Deployments.">}}
 
 Data are safe and sound in Kubernetes. Kubernetes Volumes provides a mechanism for abstracting storage from the lifecycle of pods. It allows us to mount external storage directly into the pods. This is useful for scenarios where data needs to be persisted even if a pod is deleted and recreated. 
 
-{{<figure src="/images/SystemDesign/KubernetesVolumes.png" alt="UserRequest." caption="Kubernetes Volumes.">}}
+{{<figure src="/images/SystemDesign/Video/KubernetesVolumes.png" alt="UserRequest." caption="Kubernetes Volumes.">}}
 
 For stateful applications like databases, Kubernetes provides StatefulSets.  
 These build upon the functionality of Deployments but offer additional features tailored for applications that require persistent storage and careful management of data consistency across replicas. 
 
-{{<figure src="/images/SystemDesign/Statefulset.png" alt="UserRequest." caption="Statefulset.">}}
+{{<figure src="/images/SystemDesign/Video/Statefulset.png" alt="UserRequest." caption="Statefulset.">}}
 
 While StatefulSets offers a way to manage stateful applications like databases within Kubernetes, setting up and operating databases in Kubernetes can be complex and require specialized knowledge. 
 
-{{<figure src="/images/SystemDesign/RunningDbInKubernetes.png" alt="Running Db In Kubernetes." caption="Running Db In Kubernetes.">}}
+{{<figure src="/images/SystemDesign/Video/RunningDbInKubernetes.png" alt="Running Db In Kubernetes." caption="Running Db In Kubernetes.">}}
 
 
 Many organizations opt for a hybrid approach. Instead of running databases directly in Kubernetes, they might host their databases externally, perhaps on dedicated database-as-a-service platforms. They then connect their applications running within Kubernetes to these external databases. This hybrid approach offers a balance. 
 
-{{<figure src="/images/SystemDesign/Db.png" alt="UserRequest." caption="Db.">}}
+{{<figure src="/images/SystemDesign/Video/Db.png" alt="UserRequest." caption="Db.">}}
 
 It allows organizations to leverage the benefits of container orchestration for their applications while avoiding the complexities of managing stateful applications like databases within the Kubernetes environment. 
 
-{{<figure src="/images/SystemDesign/SystemUsingKubernetes.png" alt="UserRequest." caption="SystemUsingKubernetes.">}}
+{{<figure src="/images/SystemDesign/Video/SystemUsingKubernetes.png" alt="UserRequest." caption="SystemUsingKubernetes.">}}
 
 On the downside, complexity is the number one drawback. Kubernetes is complex to set up and operate. It comes with a high upfront cost, especially for organizations new to container orchestration. It requires a high level of expertise and resources to set up and manage a production environment. Cost is also a drawback, as Kubernetes requires a certain minimum level of resources to run in order to support all its features, likely making it overkill for many smaller organizations. 
 
@@ -2374,7 +2374,7 @@ This shifts our focus from merely surviving increased demand to optimizing how w
 
 One effective way to understand system scalability is by analyzing response vs. demand curves. 
 
-{{<figure src="/images/SystemDesign/RealWorldResponseDemandGraph.png" alt="UserRequest." caption="RealWorldResponseDemandGraph.">}}
+{{<figure src="/images/SystemDesign/Video/RealWorldResponseDemandGraph.png" alt="UserRequest." caption="RealWorldResponseDemandGraph.">}}
 
 
 This tipping point when it start to increase often appears as a "knee" in the response vs. demand curve where performance starts to degrade rapidly. Our goal in system design is to push this knee as far to the right as possible, delaying that performance drop-off for as long as we can. 
@@ -2401,7 +2401,7 @@ Vertical scaling, or scaling up, involves increasing the capacity of a single ma
 
 Horizontal scaling, or scaling out, involves adding more machines to share the workload. Instead of one super powerful server, we have multiple servers working in parallel. This approach is particularly effective for cloud-native applications and offers better fault tolerance. 
 
-{{<figure src="/images/SystemDesign/BuildingScalableSystem.png" alt="UserRequest." caption="BuildingScalableSystem.">}}
+{{<figure src="/images/SystemDesign/Video/BuildingScalableSystem.png" alt="UserRequest." caption="BuildingScalableSystem.">}}
 
 Sharding involves splitting large datasets into smaller, more manageable pieces, each stored on different servers. This allows for parallel data processing and distributing workload across multiple machines. The key is choosing the right sharding strategy and keys based on the data access patterns to ensure even distribution and minimal cross-shard queries.
 
@@ -2417,16 +2417,16 @@ Keep a close eye on key metrics like CPU usage, memory consumption, network band
 
 ### **Components of Web Applications.**
 
-{{<figure src="/images/SystemDesign/ComponentsWebApplication.png" alt="Components Web Application." caption="Components Web Application.">}}
+{{<figure src="/images/SystemDesign/Video/ComponentsWebApplication.png" alt="Components Web Application." caption="Components Web Application.">}}
 
 CICD pipelines the backbone of modern development tools like GitHub actions automate testing, building and deployment.
 
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="Application Pod Database Pod." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/Video/CICD.png" alt="Application Pod Database Pod." caption="CICD.">}}
 
 The path of a user request is starts in the browser after DNS resolution the request heads to our application servers but before it gets there it hits two critical components **load balancers** and **reverse proxies**.
 
-{{<figure src="/images/SystemDesign/UserRequest.png" alt="UserRequest." caption="User Request.">}}
+{{<figure src="/images/SystemDesign/Video/UserRequest.png" alt="UserRequest." caption="User Request.">}}
 
 Content delivery networks or cdns these are distributed global serving static content like images and JavaScript closer to users the result faster load times.
 
@@ -2462,7 +2462,7 @@ TCP connection is in place the client and server start version negotiation this 
 
 Next algorithm negotiation here the client is server decide which cryptographic algorithms there is used for key exchange encryption and integrity checking.
 
-{{<figure src="/images/SystemDesign/SSH.png" alt="SSH." caption="SSH.">}}
+{{<figure src="/images/SystemDesign/Video/SSH.png" alt="SSH." caption="SSH.">}}
 
 This negotiation allows ssh to adapt to different security requirements and computational capabilities
 
@@ -2470,11 +2470,11 @@ We reach a critical step in the SSH handshake Key Exchange.
 
 The client and server using elliptic curve Diffie Hellman method to generate a shared certificate in this process both sides generate ephemeral key pairs and exchange their public key to dynamically create shared secret for encryption. 
 
-{{<figure src="/images/SystemDesign/SSHHandshake.png" alt="SSHHandshake." caption="SSHHandshake.">}}
+{{<figure src="/images/SystemDesign/Video/SSHHandshake.png" alt="SSHHandshake." caption="SSHHandshake.">}}
 
 The use of ephemeral keys provides perfect for secrecy meaning that even if the keys are compromised in the future pass session data were being secured.
 
-{{<figure src="/images/SystemDesign/KeyExchangeAlgorithm.png" alt="KeyExchangeAlgorithm." caption="KeyExchangeAlgorithm.">}}
+{{<figure src="/images/SystemDesign/Video/KeyExchangeAlgorithm.png" alt="KeyExchangeAlgorithm." caption="KeyExchangeAlgorithm.">}}
 
 The shares secret key is then used for symmetric encryption which encrypts all the data transmitted during the ssh session.
 
@@ -2482,7 +2482,7 @@ Now their client initiates a login request to the server the server then perform
 
 This method known as public key authentication is the most common way to verify their clients is allowed to connect to the server. SSH also support password based authentication although it's less secure compared to public key authentication. 
 
-{{<figure src="/images/SystemDesign/SSHClientServer.png" alt="SSHClientServer." caption="SSHClientServer.">}}
+{{<figure src="/images/SystemDesign/Video/SSHClientServer.png" alt="SSHClientServer." caption="SSHClientServer.">}}
 
 If the server finds a matching key it encrypts a random number using the client's public key and sends it back to the client.
 
@@ -2498,15 +2498,15 @@ The server executes these commands and cribs the result using the same session k
 
 The client then decrypts this result using the session key this encrypted back and forth continues for the duration of the SST session.
 
-{{<figure src="/images/SystemDesign/SSHClientServerCommunication.png" alt="SSHClientServerCommunication." caption="SSHClientServerCommunication.">}}
+{{<figure src="/images/SystemDesign/Video/SSHClientServerCommunication.png" alt="SSHClientServerCommunication." caption="SSHClientServerCommunication.">}}
 
 SSH local forwarding which allows you to turn no other network services through the ssh connection this can be especially useful for accessing services that might otherwise be blocked by Firewalls or for adding a layer of security to an encrypted protocols.
 
 ### **Big O Notation.**
 
-{{<figure src="/images/SystemDesign/BigO.png" alt="BigO." caption="BigO.">}}
+{{<figure src="/images/SystemDesign/Video/BigO.png" alt="BigO." caption="BigO.">}}
 
-{{<figure src="/images/SystemDesign/BigO101.png" alt="BigO101." caption="BigO101.">}}
+{{<figure src="/images/SystemDesign/Video/BigO101.png" alt="BigO101." caption="BigO101.">}}
 
 The real world performance can differ due to caching, memory usage and hardware specifics.
 
@@ -2514,7 +2514,7 @@ With modern CPU maximizing the cash hit can sometimes be much more beneficial th
 
 In a traversal the row by row is often faster than column by column. Row access maximize the sequential access and is cache friendly.
 
-{{<figure src="/images/SystemDesign/Row-by-RowAndCol-by-Col.png" alt="Row-by-RowAndCol-by-Col." caption="Row-by-RowAndCol-by-Col.">}}
+{{<figure src="/images/SystemDesign/Video/Row-by-RowAndCol-by-Col.png" alt="Row-by-RowAndCol-by-Col." caption="Row-by-RowAndCol-by-Col.">}}
 
 ### **API Paginations.**
 
@@ -2522,7 +2522,7 @@ Pagination is a way to split the result into pieces and let client request them 
 
 Instead of sending thousands of records at a time we sent them in batches of 10 or 100. It helps in the server load and reduces traffic and keeps our application more responsive.
 
-{{<figure src="/images/SystemDesign/APIPagination.png" alt="APIPagination." caption="APIPagination.">}}
+{{<figure src="/images/SystemDesign/Video/APIPagination.png" alt="APIPagination." caption="APIPagination.">}}
 
 There are two main ways to handle pagination **offset based** and **cursor based**. 
 
@@ -2534,7 +2534,7 @@ Offset based pagination has 2 forms - **Page based and direct offset based**.
 
 Offset based pagination is easy to build but it has problem with large datasets. 
 
-{{<figure src="/images/SystemDesign/OffsetBasedPagination.png" alt="OffsetBasedPagination." caption="OffsetBasedPagination.">}}
+{{<figure src="/images/SystemDesign/Video/OffsetBasedPagination.png" alt="OffsetBasedPagination." caption="OffsetBasedPagination.">}}
 
 The database has to process every row to the offset before it can return results.
 
@@ -2546,7 +2546,7 @@ First pick an index column like an id as cursor then hash the cursor value for s
 
 Client sends their last scene cursor value. We use this cursor to filter and fetch the next batch. Send the result and new cursor for the last item. Client uses the new cursor for the next request.
 
-{{<figure src="/images/SystemDesign/CursorBasedPagination.png" alt="CursorBasedPagination." caption="CursorBasedPagination.">}}
+{{<figure src="/images/SystemDesign/Video/CursorBasedPagination.png" alt="CursorBasedPagination." caption="CursorBasedPagination.">}}
 
 Cursor based pagination works really well with large data set as it stays consistent even when new records are added or deleted in between request. It is perfect for some real time feeds or any data that changes often.
 
@@ -2562,7 +2562,7 @@ Cursor based methods for large and fast changing data set.
 
 Kafka is a distributed event store in real time streaming platform it was initially developed at LinkedIn and has become the foundation for data heavy applications.
 
-{{<figure src="/images/SystemDesign/ApacheKafkaArchitecture.png" alt="ApacheKafkaArchitecture." caption="ApacheKafkaArchitecture.">}}
+{{<figure src="/images/SystemDesign/Video/ApacheKafkaArchitecture.png" alt="ApacheKafkaArchitecture." caption="ApacheKafkaArchitecture.">}}
 
 Every piece of data Kafka handles is a **message**. 
 
@@ -2570,7 +2570,7 @@ Kafka messages three parts - headers which carry metadata, the key which helps t
 
 **Topic and Partition** - Kafka organizes the messages using the topic and partitions. The structure the data streams within each topic goes a step further by dividing it into partitions. These partitions are key to Kafka scalability because they allow messages to be processed in parallel across multiple consumers to achieve high throughput.
 
-{{<figure src="/images/SystemDesign/ApacheKafka.png" alt="ApacheKafka." caption="ApacheKafka.">}}
+{{<figure src="/images/SystemDesign/Video/ApacheKafka.png" alt="ApacheKafka." caption="ApacheKafka.">}}
 
 Multiple consumers to achieve high pumping capital cross
 
@@ -2590,7 +2590,7 @@ On the receiving end we have consumers and consumer groups. Consumers within a g
 
 Consumers in a group divide up partitions among themselves through coordination by Kafka's group coordinator.
 
-{{<figure src="/images/SystemDesign/ConsumerGroup.png" alt="ConsumerGroup." caption="Consumer Group.">}}
+{{<figure src="/images/SystemDesign/Video/ConsumerGroup.png" alt="ConsumerGroup." caption="Consumer Group.">}}
 
 When a consumer joins or leaves the group calculus triggers a rebalance to redistribute partitions among the remaining consumers.
 
@@ -2598,25 +2598,25 @@ The Kafka cluster itself is made up of multiple brokers. This server store and m
 
 If one broker fails another one steps in as new leader without losing any data.
 
-{{<figure src="/images/SystemDesign/FaultTolerantMechanism.png" alt="FaultTolerantMechanism." caption="Broker Resilience at its Finest.">}}
+{{<figure src="/images/SystemDesign/Video/FaultTolerantMechanism.png" alt="FaultTolerantMechanism." caption="Broker Resilience at its Finest.">}}
 
 In earlier versions Kafka relies on zookeeper to manage broker metadata and leader election.
 
-{{<figure src="/images/SystemDesign/Zookeeper.png" alt="Zookeeper." caption="Zookeeper.">}}
+{{<figure src="/images/SystemDesign/Video/Zookeeper.png" alt="Zookeeper." caption="Zookeeper.">}}
 
 Newer versions are transitioning to craft a building consensus mechanism that simplifies operations by eliminating zookeeper as an external dependency while improving scalability.
 
-{{<figure src="/images/SystemDesign/Kraft.png" alt="Kraft." caption="Kraft.">}}
+{{<figure src="/images/SystemDesign/Video/Kraft.png" alt="Kraft." caption="Kraft.">}}
 
 **Kafka in real application.**
 
 It's widely used for log aggregation for thousands of servers.
 
-{{<figure src="/images/SystemDesign/LogAnalysis.png" alt="LogAnalysis." caption="LogAnalysis.">}}
+{{<figure src="/images/SystemDesign/Video/LogAnalysis.png" alt="LogAnalysis." caption="LogAnalysis.">}}
 
 The most chosen for real time events streaming for various sources.
 
-{{<figure src="/images/SystemDesign/RealTimeEventStreaming.png" alt="RealTimeEventStreaming." caption="RealTimeEventStreaming.">}}
+{{<figure src="/images/SystemDesign/Video/RealTimeEventStreaming.png" alt="RealTimeEventStreaming." caption="RealTimeEventStreaming.">}}
 
 Change data capture it keeps database synchronize across systems.
 
@@ -2624,7 +2624,7 @@ It is invaluable for system monitoring by collecting metrics for dashboards and 
 
 ### **Most important system design concepts.**
 
-{{<figure src="/images/SystemDesign/MostImpSysDesignConcept.png" alt="MostImpSysDesignConcept." caption="Most Important System Design Concept.">}}
+{{<figure src="/images/SystemDesign/Video/MostImpSysDesignConcept.png" alt="MostImpSysDesignConcept." caption="Most Important System Design Concept.">}}
 
 Read Heavy System - Use cache. 
 
@@ -2662,21 +2662,21 @@ Most platform combines these user data goes into block storage and media files a
 
 Modern monitoring system like Prometheus collects the log and metrics and Grafana provides a visualization. 
 
-{{<figure src="/images/SystemDesign/MonitoringTool.png" alt="MonitoringTool." caption="MonitoringTool.">}}
+{{<figure src="/images/SystemDesign/Video/MonitoringTool.png" alt="MonitoringTool." caption="MonitoringTool.">}}
 
 Distributed tracing tools like OpenTelemetry helps debug performance bottle neck across components.
 
-{{<figure src="/images/SystemDesign/TracingTool.png" alt="TracingTool." caption="Tracing Tool.">}}
+{{<figure src="/images/SystemDesign/Video/TracingTool.png" alt="TracingTool." caption="Tracing Tool.">}}
 
 At scale managing this flood update is challenging. 
 
 The key is to sample routine events keep detailed logs for critical operations and setup alerts that trigger only for real problems.
 
-{{<figure src="/images/SystemDesign/Event-Log-Alert-Trigger.png" alt="Event-Log-Alert-Trigger." caption="Event-Log-Alert-Trigger.">}}
+{{<figure src="/images/SystemDesign/Video/Event-Log-Alert-Trigger.png" alt="Event-Log-Alert-Trigger." caption="Event-Log-Alert-Trigger.">}}
 
 The most common issue is monitoring reveals his slow database queries. 
 
-{{<figure src="/images/SystemDesign/MonitoringExecutionTime.png" alt="MonitoringExecutionTime." caption="Monitoring Execution Time.">}}
+{{<figure src="/images/SystemDesign/Video/MonitoringExecutionTime.png" alt="MonitoringExecutionTime." caption="Monitoring Execution Time.">}}
 
 Indexing is the first line of defense.
 
@@ -2684,17 +2684,17 @@ Without indexes the database scans every record to find what it needs with index
 
 **Composite index** for multi column queries can further optimise performance. 
 
-{{<figure src="/images/SystemDesign/CompositeIndex.png" alt="Composite Index." caption="Composite Index.">}}
+{{<figure src="/images/SystemDesign/Video/CompositeIndex.png" alt="Composite Index." caption="Composite Index.">}}
 
 Every index slow down the write slightly since they need to update as data changes.
 
 **Sharding** splitting the data in to multiple machines using strategies like range based or hash based distribution.
 
-{{<figure src="/images/SystemDesign/Sharding.png" alt="Sharding." caption="Sharding.">}}
+{{<figure src="/images/SystemDesign/Video/Sharding.png" alt="Sharding." caption="Sharding.">}}
 
 ### **API vs SDK.**
 
-{{<figure src="/images/SystemDesign/APIVsSDK.png" alt="APIVsSDK." caption="APIVsSDK.">}}
+{{<figure src="/images/SystemDesign/Video/APIVsSDK.png" alt="APIVsSDK." caption="APIVsSDK.">}}
 
 API - Application programming interfaces are universal translators they let different software applications talk to each other instead of building everything from scratch
 
@@ -2702,7 +2702,7 @@ API use REST architecture in a way of communicating through http requests.
 
 SDK - Software Development Kits APIs are the raw connection points between services SDK are like prebuilt toolboxes that make those connection easier to use they handle the complex technical details so we can focus on building features.
 
-{{<figure src="/images/SystemDesign/SDK.png" alt="SDK." caption="SDK.">}}
+{{<figure src="/images/SystemDesign/Video/SDK.png" alt="SDK." caption="SDK.">}}
 
 SDK is a complete package it comes with tools, libraries and documentation everything we need to build apps with specific platforms Android or IOS.
 
@@ -2734,15 +2734,15 @@ It reduce latency and improves response time.
 
 Distributing the request across multiple server enhances availability by providing redundancy and failover option.
 
-{{<figure src="/images/SystemDesign/TypesOfLoadBalancer.png" alt="TypesOfLoadBalancer." caption="Types of Load Balancer.">}}
+{{<figure src="/images/SystemDesign/Video/TypesOfLoadBalancer.png" alt="TypesOfLoadBalancer." caption="Types of Load Balancer.">}}
 
-{{<figure src="/images/SystemDesign/APICommunicationToAppsSDKToolboxToBuildApp.png" alt="APICommunicationToAppsSDKToolboxToBuildApp." caption="API Communication To Apps SDK Tool Box to Build App.">}}
+{{<figure src="/images/SystemDesign/Video/APIVsSDK.png" alt="APICommunicationToAppsSDKToolboxToBuildApp." caption="API Communication To Apps SDK Tool Box to Build App.">}}
 
 Hardware Load Balancer - High demand enterprise environments in dedicated data centers.
 
 Load Balancer can also be classified by the network layer in which they operate.
 
-{{<figure src="/images/SystemDesign/LoadBalancerClassifiedByNetworkLayer.png" alt="LoadBalancerClassifiedByNetworkLayer." caption="Load Balancer Classified By Network Layer.">}}
+{{<figure src="/images/SystemDesign/Video/LoadBalancerClassifiedByNetworkLayer.png" alt="LoadBalancerClassifiedByNetworkLayer." caption="Load Balancer Classified By Network Layer.">}}
 
 Layer 4 load balancer operate at the transport layer. It take the routing decision based on the IP addresses ports and TCP or UDP. They don’t consider the content of the request so it is faster. It is used for simplicity and efficiency.
 
@@ -2752,7 +2752,7 @@ Global Server Load Balancing operate at higher level enabling traffic distributi
 
 Load balance to distribute the traffic using any of this selected algorithms.
 
-{{<figure src="/images/SystemDesign/LoadBalancerAlgorithm.png" alt="LoadBalancerAlgorithm." caption="Load Balancer Algorithm.">}}
+{{<figure src="/images/SystemDesign/Video/LoadBalancerAlgorithm.png" alt="LoadBalancerAlgorithm." caption="Load Balancer Algorithm.">}}
 
 Load balance distribution algorithm.
 
@@ -2764,13 +2764,13 @@ IP URL Hash where it is a bit different from the session round Robin where it wi
 
 ### **Why is Docker important.**
 
-{{<figure src="/images/SystemDesign/DockerParts.png" alt="DockerParts." caption="Docker Parts.">}}
+{{<figure src="/images/SystemDesign/Video/DockerParts.png" alt="DockerParts." caption="Docker Parts.">}}
 
 **DockerFile** - Defines the environment the application needs. It specify the base image and selecting only what is needed.
 
 Get the light version and combine commands to reduce layers and remove build tools after compilations.
 
-{{<figure src="/images/SystemDesign/DockerWorkflow.png" alt="DockerWorkflow." caption="Docker Workflow.">}}
+{{<figure src="/images/SystemDesign/Video/DockerWorkflow.png" alt="DockerWorkflow." caption="Docker Workflow.">}}
 
 Inside the docker file each instruction creates a new layer and capture specific change in the file and configuration. 
 Specify te base image.  
@@ -2781,7 +2781,7 @@ Docker images are immutable once build cannot be modified. It is only replaced b
 
 **Containers**- The runtime instances of the image are light weight and shares the whole system kernel. Each container maintains a straight isolation through Linux kernel.
 
-{{<figure src="/images/SystemDesign/Container.png" alt="Container." caption="Container.">}}
+{{<figure src="/images/SystemDesign/Video/Container.png" alt="Container." caption="Container.">}}
 
 **Namespace** partition system resources that process network interfaces.  
 **Cgroups** provides fine grained resource control.  
@@ -2792,7 +2792,7 @@ Distribution managed by Docker Registry. These repositories becomes the single s
 
 Data persistency in the container - Docker Volumes.  
 Unlike containers writable layers volumes exists independently and persist data across container life cycle.
-{{<figure src="/images/SystemDesign/image.png" alt="AIAgentSystem." caption="AI Agent System.">}}
+{{<figure src="/images/SystemDesign/Video/image.png" alt="AIAgentSystem." caption="AI Agent System.">}}
 
 ContainerD and PodMan offer runtime focus on container execution and image management.
 
@@ -2800,17 +2800,17 @@ ContainerD and PodMan offer runtime focus on container execution and image manag
 
 The garbage collection mainly use the simple question like which object in the memory the program still use. It is answered through the concept of Reachability.
 
-{{<figure src="/images/SystemDesign/GarbageCollectorReachability.png" alt="GarbageCollectorReachability." caption="Garbage Collector Reachability.">}}
+{{<figure src="/images/SystemDesign/Video/GarbageCollectorReachability.png" alt="GarbageCollectorReachability." caption="Garbage Collector Reachability.">}}
 
 Every program has GC roots and these are the starting points like Global variables `public int var` and stack references `int sum(int a, int b)`.
 
 Any object that can be reached by following references from these roots is considered alive. Anything other than these are garbage.
 
-{{<figure src="/images/SystemDesign/JVMMemoryGeneration.png" alt="JVMMemoryGeneration." caption="JVM Memory Generation.">}}
+{{<figure src="/images/SystemDesign/Video/JVMMemoryGeneration.png" alt="JVMMemoryGeneration." caption="JVM Memory Generation.">}}
 
 To efficiently manage the memory garbage collector Typically implement a generational hierarchy.
 
-{{<figure src="/images/SystemDesign/ESO.png" alt="ESO." caption="ESO.">}}
+{{<figure src="/images/SystemDesign/Video/ESO.png" alt="ESO." caption="ESO.">}}
 
 This design is based on empirical observation. 
 
@@ -2820,11 +2820,11 @@ New objects start the life of the young generation Eden space If they survive mu
 
 The rare objects that persist even longer on the promotion to the old generation where collection happens less frequently but more thoroughly. The metaspace Java specific use class metadata to help reduce memory footprint in large application.
 
-{{<figure src="/images/SystemDesign/YoungGenerationSurvivorSpace.png" alt="YoungGenerationSurvivorSpace." caption="Young Generation Survivor Space.">}}
+{{<figure src="/images/SystemDesign/Video/YoungGenerationSurvivorSpace.png" alt="YoungGenerationSurvivorSpace." caption="Young Generation Survivor Space.">}}
 
 Other languages uses each generational collection differently. V8 users for two generation system and .NET Garbage collector typically uses three generation system.
 
-{{<figure src="/images/SystemDesign/YoungGenerationOldGeneration.png" alt="YoungGenerationOldGeneration." caption="Young Generation Old Generation.">}}
+{{<figure src="/images/SystemDesign/Video/YoungGenerationOldGeneration.png" alt="YoungGenerationOldGeneration." caption="Young Generation Old Generation.">}}
 
 The most fundamental garbage collector strategy is the Mark and Sweep algorithm.
 
@@ -2834,7 +2834,7 @@ While effective this basic approach requires the application to completely pause
 
 The boss became more problematic when the heap size grows and application demands better responsiveness.
 
-{{<figure src="/images/SystemDesign/MarkSweepAlgorithm.png" alt="MarkSweepAlgorithm." caption="MarkSweepAlgorithm.">}}
+{{<figure src="/images/SystemDesign/Video/MarkSweepAlgorithm.png" alt="MarkSweepAlgorithm." caption="MarkSweepAlgorithm.">}}
 
 An advanced version is the Tri Color Mark and Sweep algorithm reduces the process by categorizing objects into three sets.
 
@@ -2844,31 +2844,31 @@ Grey object are known to be reachable but have not been fully explored.
 
 Black object are both reachable and fully processed.
 
-{{<figure src="/images/SystemDesign/TriColorMarkSweepAlgoritm.png" alt="TriColorMarkSweepAlgoritm." caption="TriColorMarkSweepAlgoritm.">}}
+{{<figure src="/images/SystemDesign/Video/TriColorMarkSweepAlgoritm.png" alt="TriColorMarkSweepAlgoritm." caption="TriColorMarkSweepAlgoritm.">}}
 
 By maintaining these 3 distinct state the garbage collector can pause briefly to do initial marking then continuing examining grey object and their references while the application runs.
 
-{{<figure src="/images/SystemDesign/ShortPause.png" alt="ShortPause." caption="ShortPause.">}}
+{{<figure src="/images/SystemDesign/Video/ShortPause.png" alt="ShortPause." caption="ShortPause.">}}
 
 This incremental approach avoids the long pause required by traditional mark and sweep where the entire object graph must be traced at once.
 
 Java offers several GC algorithms - Serial, Parallel, CMS, G1 Heap Allocation.
 
-{{<figure src="/images/SystemDesign/GCAlgorithm.png" alt="GCAlgorithm." caption="GCAlgorithm.">}}
+{{<figure src="/images/SystemDesign/Video/GCAlgorithm.png" alt="GCAlgorithm." caption="GCAlgorithm.">}}
 
 Python uses a combination of reference counting and a cyclic garbage collector. 
 
 The reference counting handles most cases By automatically de allocating objects when their reference drops to 0.
 
-{{<figure src="/images/SystemDesign/CircularReference.png" alt="CircularReference." caption="Circular Reference.">}}
+{{<figure src="/images/SystemDesign/Video/CircularReference.png" alt="CircularReference." caption="Circular Reference.">}}
 
 The cyclic collector cleans up circular references which the reference counting can manage.
 
-{{<figure src="/images/SystemDesign/Deallocate.png" alt="Deallocate." caption="Deallocate.">}}
+{{<figure src="/images/SystemDesign/Video/Deallocate.png" alt="Deallocate." caption="Deallocate.">}}
 
 Go uses a concurrent mark and sweep collector which Operates alongside the application to minimise pause times.
 
-{{<figure src="/images/SystemDesign/Go.png" alt="Go." caption="Go.">}}
+{{<figure src="/images/SystemDesign/Video/Go.png" alt="Go." caption="Go.">}}
 
 It uses the tricolor algorithm to handle the reachability.
 
@@ -2880,7 +2880,7 @@ Some collectors leave gap in memory making allocation slower over time.
 
 Memory management also involves balancing used pool and free pools to ensure efficient allocation and deallocation without fragmentation.
 
-{{<figure src="/images/SystemDesign/UsedPoolFreePool.png" alt="UsedPoolFreePool." caption="UsedPoolFreePool.">}}
+{{<figure src="/images/SystemDesign/Video/UsedPoolFreePool.png" alt="UsedPoolFreePool." caption="UsedPoolFreePool.">}}
 
 With garbage collection we usually lose fine grain controller over when clean up happens and it can lead to long pause.
 
@@ -2900,31 +2900,31 @@ Load Balancer to distribute the request to multiple server to avoid the crash of
 
 Even with the strategies there will some failure or the recover takes longer than expected this is where the graceful degradation comes in. Instead of making the entire system stop graceful degradation ensures the most critical feature keeps still functioning.
 
-{{<figure src="/images/SystemDesign/PagerDuty.png" alt="PagerDuty." caption="Pager Duty.">}}
+{{<figure src="/images/SystemDesign/Video/PagerDuty.png" alt="PagerDuty." caption="Pager Duty.">}}
 
 PagerDuty send the alerts any monitoring change.
 
 ### Most popular open source AI stack.
 
-{{<figure src="/images/SystemDesign/AIStack.png" alt="AIStack." caption="AIStack.">}}
+{{<figure src="/images/SystemDesign/Video/AIStack.png" alt="AIStack." caption="AIStack.">}}
 
 RAG - Retrieval-Augmented Generation.
 
 ### What are AI Agents.
 
-{{<figure src="/images/SystemDesign/MCPIntegratedSystem.png" alt="MCPIntegratedSystem." caption="MCP Integrated System.">}}
+{{<figure src="/images/SystemDesign/Video/MCPIntegratedSystem.png" alt="MCPIntegratedSystem." caption="MCP Integrated System.">}}
 
 AI Agent is a helpful software assistance that can monitor what is happening around it and take smart action and acheive goals.
 
-{{<figure src="/images/SystemDesign/AIAgent.png" alt="AIAgent." caption="AI Agent.">}}
+{{<figure src="/images/SystemDesign/Video/AIAgent.png" alt="AIAgent." caption="AI Agent.">}}
 
-{{<figure src="/images/SystemDesign/AiAgentUse.png" alt="AIAgentUse." caption="AI Agent Use.">}}
+{{<figure src="/images/SystemDesign/Video/AiAgentUse.png" alt="AIAgentUse." caption="AI Agent Use.">}}
 
 **Different from traditional software.** - Traditional system follows predetermined execution tasks.  
 Agents actively monitor their environment through inputs and sensors.  
 Process information through reasoning engines make decisions based on goals and available actions.  
 Take actions that modify their envirment and learn from feedback to improve performance.
-{{<figure src="/images/SystemDesign/AiAgentSystem.png" alt="AIAgentSystem." caption="AI Agent System.">}}
+{{<figure src="/images/SystemDesign/Video/AiAgentSystem.png" alt="AIAgentSystem." caption="AI Agent System.">}}
 This represents a paradigm shift from imperative programming where we tell software exactly what to do to declarative goal setting where we Define objectives and let the agent determine how to achieve them. 
 
 ### MCP - Model Context Protocol.
@@ -2933,7 +2933,7 @@ MCP is one of the most significant investments in LLM integration released by An
 
 MCP is an open standard that enables Seamless integration between AI models and cloud and external data sources of tools.
 
-{{<figure src="/images/SystemDesign/MCP.png" alt="MCP." caption="MCP.">}}
+{{<figure src="/images/SystemDesign/Video/MCP.png" alt="MCP." caption="MCP.">}}
 
 Before mcp connecting models to each new data source require custom implementations which can get expensive.  
 MCP solve this by providing a universal open centre for connecting ai systems with data sources replacing fragmented integrations with a single protocol.  
@@ -2945,7 +2945,7 @@ Host are LLM applications like Clause desktop that provide their environment for
 Clients are components within the host that establish and maintain 1 to 1 connections with external servers.  
 Servers are separate processes that provide context, tools and prompts to these kinds exposing specific capabilities to the standardised protocol.
 
-{{<figure src="/images/SystemDesign/ComponentsMCP.png" alt="Components MCP." caption="Components MCP.">}}
+{{<figure src="/images/SystemDesign/Video/ComponentsMCP.png" alt="Components MCP." caption="Components MCP.">}}
 
 **5 core primitive that powers MCP.**  
 {{<figure src="/images/SystemDesign/CorePrimitiveMCP.png" alt="CorePrimitiveMCP" caption="Core Primitive MCP.">}}
@@ -2956,17 +2956,17 @@ Server supports 3 primitives - **Prompts** these are instructions or templates t
 In the client side they are two primitive they are equally important - **Root** primitive creating a secure channel for file access it allows the ai application to safely work with files on your local system by _opening_ documents _reading_ code or _analysing_ data files without giving any restricted access to your entire file system.  
 **Sampling** primitive this enables a server to request a LLM when needed. Example when MCP is analysing the db schema it needs to generate query it can ask LLM to help formulating query through the sampling primitive.
 
-{{<figure src="/images/SystemDesign/MCPIntegration.png" alt="MCPIntegration." caption="MCP Integration.">}}
+{{<figure src="/images/SystemDesign/Video/MCPIntegration.png" alt="MCPIntegration." caption="MCP Integration.">}}
 
 MCP one protocol and LLM vendors implement same protocol simplifies the integration.  
 
-{{<figure src="/images/SystemDesign/MCPIntegratedSystem.png" alt="MCPIntegratedSystem." caption="MCP Integrated System.">}}
+{{<figure src="/images/SystemDesign/Video/MCPIntegratedSystem.png" alt="MCPIntegratedSystem." caption="MCP Integrated System.">}}
 
 Example - Using Claude to analyze data in the postgress db no need to build custom integration, use MCP server for Postgress that exposes db connection through the protocols primitive. Clause with the MCP client can query the db where the MCP server process the result and incorporate insights into the responses.
 
 ### System Design Tradeoffs - Part 1, 2.
 
-{{<figure src="/images/SystemDesign/SystemDesignTopic.png" alt="SystemDesignTopic." caption="System Design Topic.">}}
+{{<figure src="/images/SystemDesign/Video/SystemDesignTopic.png" alt="SystemDesignTopic." caption="System Design Topic.">}}
 
 The application needs to prioritize and pick the correct trade offs.
 
@@ -2986,7 +2986,7 @@ Stream processing handles the data in real time as it arrives providing immediat
 
 The tradeoff here is the efficiency and simplicity vs the immediate and responsiveness.
 
-{{<figure src="/images/SystemDesign/SystemDesignTradeOff.png" alt="SystemDesignTradeOff." caption="System Design Trade Off.">}}
+{{<figure src="/images/SystemDesign/Video/SystemDesignTradeOff.png" alt="SystemDesignTradeOff." caption="System Design Trade Off.">}}
 
 Vertical scaling increasing the power of the server. Horizontal scaling meaning increasing the number of server.
 
@@ -2996,13 +2996,13 @@ Modern architecture make stateless service for general application and stateful 
 
 **Cache -** Read-through and write-through.
 
-{{<figure src="/images/SystemDesign/ReadThroughCache.png" alt="ReadThroughCache." caption="Read Through Cache.">}}
+{{<figure src="/images/SystemDesign/Video/ReadThroughCache.png" alt="ReadThroughCache." caption="Read Through Cache.">}}
 
 Read-through cache.
 
 Read-through cache when the read is good. When there is new data then the write through cache needed.
 
-{{<figure src="/images/SystemDesign/WriteThroughCache.png" alt="WriteThroughCache." caption="Write-Through Cache.">}}
+{{<figure src="/images/SystemDesign/Video/WriteThroughCache.png" alt="WriteThroughCache." caption="Write-Through Cache.">}}
 
 Write-through cache.
 
@@ -3012,7 +3012,7 @@ Write through cache update it by using both the db and cache.
 
 ### API explained - 19th May 2025 completed.
 
-{{<figure src="/images/SystemDesign/APILearningRoadmap.png" alt="APILearningRoadmap." caption="API Learning Roadmap.">}}
+{{<figure src="/images/SystemDesign/Video/APILearningRoadmap.png" alt="APILearningRoadmap." caption="API Learning Roadmap.">}}
 
 Application Programming Interface is a set of rules that allows system to communicate with each other.
 
@@ -3024,11 +3024,11 @@ Private APIs are connected internally within organization to connect with their 
 
 Partner APIs are shared only with specific person who have the credentials.
 
-{{<figure src="/images/SystemDesign/APIProtocol.png" alt="APIProtocol." caption="API Protocol.">}}
+{{<figure src="/images/SystemDesign/Video/APIProtocol.png" alt="APIProtocol." caption="API Protocol.">}}
 
 Video - API Protocol.
 
-{{<figure src="/images/SystemDesign/HTTPStatus.png" alt="HTTPStatus." caption="HTTP Status.">}}
+{{<figure src="/images/SystemDesign/Video/HTTPStatus.png" alt="HTTPStatus." caption="HTTP Status.">}}
 
 Http Status.
 
@@ -3054,7 +3054,7 @@ Session Based Authentication - It is used in traditional web application by main
 
 API Documentation Tools.
 
-{{<figure src="/images/SystemDesign/APIDocumentationTool.png" alt="APIDocumentationTool." caption="API Documentation Tool.">}}
+{{<figure src="/images/SystemDesign/Video/APIDocumentationTool.png" alt="APIDocumentationTool." caption="API Documentation Tool.">}}
 
 Swagger and OpenAPI Specs are the online tool to make the documentation.
 
@@ -3062,7 +3062,7 @@ API Features involves - Pagination, Idempotency, URL Query Path Parameters, API 
 
 API Performance.
 
-{{<figure src="/images/SystemDesign/APIPerformance.png" alt="APIPerformance." caption="API Performance.">}}
+{{<figure src="/images/SystemDesign/Video/APIPerformance.png" alt="APIPerformance." caption="API Performance.">}}
 
 Caching to reduce server load and improves response time. 
 
@@ -3072,11 +3072,11 @@ Database index improves query performance for accessed data.
 
 API Gateway services is the centralized entry point for managing all API traffic.
 
-{{<figure src="/images/SystemDesign/APIGatewayService.png" alt="APIGatewayService." caption="API Gateway Service.">}}
+{{<figure src="/images/SystemDesign/Video/APIGatewayService.png" alt="APIGatewayService." caption="API Gateway Service.">}}
 
 They handle request routing, authentication, rate limiting and monitoring. 
 
-{{<figure src="/images/SystemDesign/PopularOptionOfAPIGateway.png" alt="PopularOptionOfAPIGateway." caption="Popular Options Of API Gateways.">}}
+{{<figure src="/images/SystemDesign/Video/PopularOptionOfAPIGateway.png" alt="PopularOptionOfAPIGateway." caption="Popular Options Of API Gateways.">}}
 
 Popular options of API Gateway.
 
@@ -3086,7 +3086,7 @@ Kong - Open source flexibility.
 
 Apigee - Enterprise grade API management.
 
-{{<figure src="/images/SystemDesign/APIIntegration.png" alt="APIIntegration." caption="API Integration.">}}
+{{<figure src="/images/SystemDesign/Video/APIIntegration.png" alt="APIIntegration." caption="API Integration.">}}
 
 API Integrations.
 
@@ -3100,19 +3100,19 @@ Message queue - Ensure delivery between system.
 
 Patterns that enable high scale systems to handle massive data volumes efficiently.
 
-{{<figure src="/images/SystemDesign/GoogleStorePage.png" alt="GoogleStorePage." caption="Google Store Page.">}}
+{{<figure src="/images/SystemDesign/Video/GoogleStorePage.png" alt="GoogleStorePage." caption="Google Store Page.">}}
 
 **Data partitioning** - Data partitioning divides data set into smaller more manageable segments. There are mainly 2 approaches for data partitioning - **Vertical partitioning and Horizontal Partitioning**.
 
 **Vertical Partitioning** splits table by column based on access pattern and data characteristics. Most access hot data to be stored separately from rarely accessed cold data. Large text fields and binary objects can be segregated from structured data to optimize storage IO pattern.
 
-{{<figure src="/images/SystemDesign/VerticalPartitioning.png" alt="VerticalPartitioning." caption="Vertical Partitioning.">}}
+{{<figure src="/images/SystemDesign/Video/VerticalPartitioning.png" alt="VerticalPartitioning." caption="Vertical Partitioning.">}}
 
 For example user table can store basic information in one partition and large biography text in another partition.
 
 **Horizontal partitioning -** Horizontal Partitioning divides table by lose typically using a partition key to determine which row belong in which partition. Works well when data can be cleanly divided based on specific attributes such as price range or geographic regions.
 
-{{<figure src="/images/SystemDesign/HorizontalPartitioning.png" alt="HorizontalPartitioning." caption="Horizontal Partitioning.">}}
+{{<figure src="/images/SystemDesign/Video/HorizontalPartitioning.png" alt="HorizontalPartitioning." caption="Horizontal Partitioning.">}}
 
 For example transaction table can be partitioned by month allowing queries for specific time period to access only relevant partitions.
 
@@ -3172,4 +3172,4 @@ Modern system implement several key caching strategies. Cache aside also called 
 
 **Coherence** penalties occurs when the overhead of keeping data consistent across multiple locations. 
 
-{{<figure src="/images/SystemDesign/CICD.png" alt="CICD." caption="CICD.">}}
+{{<figure src="/images/SystemDesign/Video/CICD.png" alt="CICD." caption="CICD.">}}

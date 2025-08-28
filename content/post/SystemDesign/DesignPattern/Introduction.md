@@ -6,9 +6,9 @@ tags = ['interview question', 'system design']
 +++
 
 
-![img33.png](/images/img33.png)
+{{<figure src="/images/SystemDesign/DesignPattern/DesignPattern.png" alt="UserRequest." caption="Design Pattern.">}}
 
-![img34.png](/images/img34.png)
+{{<figure src="/images/SystemDesign/DesignPattern/Solid.png" alt="UserRequest." caption="SOLID.">}}
 
 S - Single Responsibility Principle - Class should have a single responsibility or purpose.
 O - Open-Close Principle - Classes and module should be open for extension and closed for modification. It means that you shoulld be able to extend the behaviour of a class without modifying its exustingcde. We can apply this by using abstration , interfaves and inheritance.
@@ -21,7 +21,7 @@ D - Dependency Inversion Priciple - DIP - The high level modules or classes shou
 
 ### UML Class Diagram
 
-![img.png](/images/img3.png)
+{{<figure src="/images/SystemDesign/DesignPattern/UMLConvention.png" alt="UserRequest." caption="UMLConvention.">}}
 
 ### Solid Design Principle.
 

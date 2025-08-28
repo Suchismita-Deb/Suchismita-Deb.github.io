@@ -59,7 +59,7 @@ Class diagram - Describe structure and behavior in the use cases. It shows conne
 Use Case diagram - Describe a set of user scenarios or actors. It illustrates the functionality provided by the system.
 
 The actors on the left and right side and the use cases in circle shape.
-![img.png](/images/img27.png)
+{{<figure src="/images/Java/UseCaseDiagram.png" alt="UserRequest." caption="Sample Use Case Diagram.">}}
 **Include** - This means one function is called by others.
 
 Activity diagram - Used to model the functional flow of control between two or more class object.

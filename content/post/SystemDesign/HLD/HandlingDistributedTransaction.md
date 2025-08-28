@@ -36,7 +36,7 @@ SAGA Pattern.
 There are 2 phases in the protocol - Voting or Prepare phase. Decision or commit phase.
 
 
-{{< figure src="/images/SystemDesign/2PhaseCommit.png" caption="2 Phase Commit. Prepare Phase. Commit Phase." >}}
+{{< figure src="/images/SystemDesign/HLD/2PhaseCommit.png" caption="2 Phase Commit. Prepare Phase. Commit Phase." >}}
 
 Transaction coordinator will connect with the participants.
 
@@ -58,7 +58,7 @@ Participant cannot take any step by itself. It needs to wait.
 
 ### 3 Phase.
 
-![img.png](/images/SystemDesign/3PhaseCommit.png)
+{{<figure src="/images/SystemDesign/HLD/3PhaseCommit.png" alt="EventStreaming without zero copy." caption="3 Phase Commit.">}}
 Prepare Phase.
 Pre commit.
 Commit Phase.

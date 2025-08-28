@@ -14,10 +14,12 @@ Format only lines of code.
 **`Ctrl+Alt+L`** - Only line format.
 
 ### Creating new package or class.
-![img.png](/images/img9.png)
+
+
+{{<figure src="/images/intellije/NewPackage.png" alt="UserRequest." caption="Creating New Package or Class.">}}
 
 **`Alt + Insert`** will give this box then we can select and name the file.
-![img.png](/images/img10.png)
+{{<figure src="/images/intellije/ExtractVariable.png" alt="UserRequest." caption="Extract Variable.">}}
 **`Ctrl + Alt + V`** will make the value extract in a variable.
 
 **`Ctrl+F12`** will show all the method in that file.
@@ -28,28 +30,28 @@ Format only lines of code.
 ---
 
 ### Create the Getter Setter, Constructor, Test shortcut.
-![img_1.png](/images/img11.png)
+{{<figure src="/images/intellije/GetterSetterConstructor.png" alt="UserRequest." caption="Getter Setter Constructor.">}}
 Inside the class click **`Alt + Insert`**.
 
 If the box is not coming then right-click on the file and click on `Generate`.
-![img_1.png](/images/img23.png)
+{{<figure src="/images/intellije/GetterSetter.png" alt="UserRequest." caption="Getter Setter.">}}
 
 ---
 
 ### Intellij does not works properly.
 
 Click on File -> Invalidate Cache and restart.
-![img_1.png](/images/img13.png)
+{{<figure src="/images/intellije/InvalidateCache.png" alt="UserRequest." caption="Invalidate Cache.">}}
 
 ---
 
 ### Show all the open tabs in the top in multiline.
 
 In settings click on the multiline.
-![img_1.png](/images/img24.png)
+{{<figure src="/images/intellije/OpenTabInMultiLine.png" alt="UserRequest." caption="Open Tab In MultiLine.">}}
 
 The opened tab will be showing in one place and I do not have to scroll.
-![img_1.png](/images/img25.png)
+{{<figure src="/images/intellije/OpenTabInOnePlace.png" alt="UserRequest." caption="Open Tab In One Place.">}}
 
 ---
 
@@ -58,7 +60,7 @@ The opened tab will be showing in one place and I do not have to scroll.
 * When the file is run it will show the error in the bottom then click on the link from there.
 * Other way of doing it is in the top where the file name is showing. Click on the dropdown and click on the `Edit Configuraton` then choose file from the left side or click on the application.
 
-![img_1.png](/images/img26.png)
+{{<figure src="/images/intellije/DebugConfiguration.png" alt="UserRequest." caption="Debug Configuration.">}}
 * From the `More option` click on the `Shorten the command line` then from the bx for the `Shorten Command Line` choose the `@argfile`
 
 
@@ -77,10 +79,10 @@ The opened tab will be showing in one place and I do not have to scroll.
 
 # Method Separator.
 A line after the method to demarcated it with other method.
-![img_1.png](/images/intellije/image1.png)
+{{<figure src="/images/intellije/MethodSeparator.png" alt="UserRequest." caption="Method Separator in Appearance.">}}
 
 # Adding more projects in the same project.
-![img_1.png](/images/img30.png)
+{{<figure src="/images/intellije/AddingProject.png" alt="UserRequest." caption="Adding Project.">}}
 With the `+` icon we can add more projects and here the endUser and the location are the two projects added.
 - This will open two project in same window and we can run both and will get the terminal output for both.
 
@@ -90,7 +92,7 @@ Right-click on the src folder and then Mark directory as - Source root.
 
 ### Running the Java program in Sublime.
 
-![img.png](/images/sublimeBuild.png) 
+{{<figure src="/images/intellije/sublimeBuild.png" alt="UserRequest." caption="Sublime Build.">}}
 
 Select the Java C and the Build from the Tool. This will build the project in java. To run we need to change the build system.
 

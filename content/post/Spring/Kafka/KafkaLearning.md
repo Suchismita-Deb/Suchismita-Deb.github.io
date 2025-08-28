@@ -50,7 +50,7 @@ One project by name endUser and other by the name location.
 - For producing the message we need a topic. Create a config package for the Configuration class.
 
 - Message updated when we hit the url with post request.
-- ![img_1.png](/images/img31.png)
+  {{<figure src="/images/Spring/Kafka/Project/CmdTopicUpdated.png" alt="UserRequest." caption="Topic Updated.">}}
 - From the cmd we can get the message.
 - In the producer yml file, in location project we need to write.
 ```java

@@ -86,7 +86,7 @@ We need to write the line then two space then hit enter and the next line. It wi
 
 ### Adding image with caption.
 
-{{< figure src="/images/SystemDesign/2PhaseCommit.png" caption="2 Phase Commit. Prepare Phase. Commit Phase." >}}
+{{< figure src="/images/SystemDesign/HLD/2PhaseCommit.png" caption="2 Phase Commit. Prepare Phase. Commit Phase." >}}
 
 ### Making code in the table.
 

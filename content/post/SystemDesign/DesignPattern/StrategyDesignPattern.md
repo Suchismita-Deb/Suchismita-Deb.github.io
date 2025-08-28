@@ -7,7 +7,7 @@ categories = ['low level design','system design']
 
 The example of the Strategy Design Pattern.
 
-![img.png](/images/img4.png)
+{{<figure src="/images/SystemDesign/DesignPattern/StrategyDesignPattern.png" alt="UserRequest." caption="StressTesting.">}}
 
 When the child class inherits the parent class property then it is good. When the child class write its own property and two or more class has the same property then there is duplication of code.
 
@@ -15,7 +15,8 @@ This code is not reusable. There can be many method like *speed limit*, *fuel ca
 
 When child override the method and other child also have the same method then there is code duplicate issue. This is solved by **Strategy Design Pattern**.
 
-![img.png](/images/img5.png)
+
+{{<figure src="/images/SystemDesign/DesignPattern/StrategyDesignPatternClassDiagram.png" alt="UserRequest." caption="StressTesting.">}}
 
 Previously all the functionality we were putting in the base class. Now we will not define in the base class. We will say that the **Vehicle HAS - A drive interface**
 
