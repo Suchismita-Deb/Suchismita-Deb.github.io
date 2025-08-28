@@ -80,6 +80,34 @@ Retriable errors - try again after the connection reestablished. "Not leader for
 Non-retriable error - "Message size too large" - KafkaProducer will not attempt to retry and return an exception.
 
 __Sending message asynchronously.__
+Network round trip between application and kafka cluster is 10 ms. Sending 100 message and waiting for reply will take 1 sec and not waiting will not ake any time. 
+
+Kafka send back the topic, partition and offset of the record after it was written - not required for the sending app. 
+We need to throw exception, log an error and write in error file when message not send completely.
+
+The producer supports callback when sending a record.
+```java
+private class DemoProducerCallback implements Callback {
+@Override
+  public void onCompletion(RecordMetadata recordMetadata, Exception e) {
+    if (e != null) {
+      e.printStackTrace();
+    }
+  }
+}
+ProducerRecord<String, String> record = new ProducerRecord<>("CustomerCountry", "Biomedical Materials", "USA");
+producer.send(record, new DemoProducerCallback());
+```
+__Configuring Producer.__  
+
+Parameters in the producer are - bootstrap.servers, serializers, client.id.
+
+_client.id_
+Identifies by broker to see the message send by the client.
+
+_acks_ 
+How many prt
+
 
 133 page.
 
