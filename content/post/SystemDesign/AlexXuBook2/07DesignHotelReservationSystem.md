@@ -350,19 +350,28 @@ Cons.
 Maintaining data consistency is hard. 
 
 ### __Data Consistency among services.__
-In monolithic service - a shared database is used to ensure data consistency. 
-{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/MonolithVsMicroservice.png" alt="UserRequest." caption="HotelReservationSystemSummary">}}
+In monolithic service - a shared database is used to ensure data consistency. In the microservice design - here it is hybrid by reservation servcie handle both reservation and inventory API so that the inventory and reservation database table are stored in the same relational database. 
+
+The arrangement allows us to leverage the ACID properties of the relational database t ohandle many concurrency issues that arise during the reservation flow.
+
+Interviewer can focus on microservice and each microservice has its own database. 
+
+
+The design introduces many data inconsistency issue. Issue - In real world there will be many microservcies in the company and in monolithic architecture different operation can be wrapped in a single transaction to ensure ACID properties.
 
 ### Todo.
 
 {{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/MonolithArchitecture.png" alt="UserRequest." caption="HotelReservationSystemSummary">}}
-Microservice - each service has its own db - one logical atomic operation can span multiple servcies. We cannot use a single transaction to ensure data consistency.   
-If update ipeartion fails in the reservation database - rollback the resreved room count in the invetory database. There is only one happy path and many failure cases could cause data inconsistency.
+Microservice - each service has its own db - one logical atomic operation can span multiple services. We cannot use a single transaction to ensure data consistency.   
+If update ipeartion fails in the reservation database - rollback the resreved room count in the inventory database. There is only one happy path and many failure cases could cause data inconsistency.
 ### Todo.
 {{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/MicroserviceArchitecture.png" alt="UserRequest." caption="HotelReservationSystemSummary">}}
+To address the data inconsistency - high level of production system.  
 
-### __Summary.__
+Two-phase commit - 2PC - a database protocol used to guarantee atomic transaction commit across multiple nodes, either all node succeed or all node failed. 2PC is a blocking protocol a single node failure blocks the progress until the ndoe has recovered. It is not performant.
 
+Saga - A Saga is a sequence of local transactions. Each transaction updates and publishes a message to trigger the next step. One step fails - saga executes compensating transaction to undo the changed that were made by preceding transactions. 2PC works as a single commit to perform ACID transactions while Saga consists of multiple steps and relies on eventual consistency.
+
+The complexity is very much for teh design. In this system it is not worth it so decided to go with more pragmatic approach of storing reservation and inventory data under the same relational database.
 
 {{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/HotelReservationSystemSummary.png" alt="UserRequest." caption="HotelReservationSystemSummary">}}
-225 page.
