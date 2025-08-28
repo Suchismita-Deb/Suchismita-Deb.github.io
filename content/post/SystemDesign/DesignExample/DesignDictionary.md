@@ -108,16 +108,16 @@ In-Memory Cache — Redis or local LRU for super-hot words.
 
 No traditional DB. RocksDB is an embedded, file-backed key-value store.
 
-| Component          | Role                                                              |
-|--------------------|-------------------------------------------------------------------|
-| 🚪 API Nodes       | Stateless REST servers.                                           |
-| 🗂️ Local Index    | RocksDB or LMDB, local-only.                                      |
-| ☁️ Blob Store      | S3 (immutable).                                                   |
-| 🧊 CDN             | Cache blobs at edge.                                              |
-| ⚡ In-memory Cache  | Local LRU + optional Redis Cluster.                               |
-| 📦 Changelog Job   | Validates, builds new blobs, new index, swaps pointer.            |
-| 🧩 Version Pointer | Tiny file in S3 or etcd.                                          |
-| 🔄 Config Sync     | Each node pulls version pointer on boot & refreshes every minute. |
+| Component            | Role                                                              |
+|----------------------|-------------------------------------------------------------------|
+| 🚪 API Nodes         | Stateless REST servers.                                           |
+| 🗂️ Local Index      | RocksDB or LMDB, local-only.                                      |
+| ☁️ Blob Store        | S3 (immutable).                                                   |
+| 🧊 CDN               | Cache blobs at edge.                                              |
+| ⚡ In-memory Cache    | Local LRU + optional Redis Cluster.                               |
+| 📦 Changelog Job     | Validates, builds new blobs, new index, swaps pointer.            |
+| 🧩 Version Pointer   | Tiny file in S3 or etcd.                                          |
+| 🔄 Config Sync       | Each node pulls version pointer on boot & refreshes every minute. |
 
 Aspect - Choice  
 Index - RocksDB on local disk (EBS/SSD)

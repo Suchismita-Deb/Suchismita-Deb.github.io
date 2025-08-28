@@ -201,3 +201,9 @@ Future/Promise — Handles results of asynchronous operations.
 **Strangler Pattern** — Incrementally replaces legacy system components with new services, enabling gradual modernization.  
 **Process Manager** — Coordinates long-running business processes across multiple services, tracking each step and ensuring proper execution or rollback.  
 
+
+Book - 1 and 2.   
+General all video anddetail in main folder.  
+Design Pattern - LLD and Pattern and LLD Example.  
+Design Example - Practice Design Example.  
+HLD - Topic learning.

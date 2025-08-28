@@ -1,6 +1,7 @@
 +++
 title = 'DecoratorDesignPattern'
 date = 2024-03-07T13:12:58+05:30
+url= "/post/systemDesign/designPattern/DecoratorDesignPattern"
 tags = ['system design']
 categories = ['low level design','system design']
 +++
@@ -191,7 +192,7 @@ This is the message by mail to SDEB@mail.com.
 This is the message by Whatsapp on SDEB@Phone.
 This is the message on Facebook to SDEB@Facebook.
 ```
-![Alt Text](/images/img1.png)
+{{<figure src="/images/SystemDesign/DesignPattern/DecoratorDesignPattern.png" alt="EventStreaming without zero copy." caption="Decorator Design Pattern.">}}
 
 **iNotifier** - common behaviour for wrappers and wrapped object.
 
