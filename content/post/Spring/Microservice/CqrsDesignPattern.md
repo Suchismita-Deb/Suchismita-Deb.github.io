@@ -18,7 +18,7 @@ In big discount day people will generally purchase so the write operation will b
 
 When we name the read and write separte microservice then it is easier to scale.
 
-![img35.png](/images/img35.png)
+{{<figure src="/images/Spring/Microservice/CQRSPattern.png" alt="UserRequest." caption="CQRSDesignPattern.">}}
 The read and write in a separate microservice means separate project and both will be connected with kafka as teh db in two microservice can be different.
 
 For just revision, in the command service the update method to the db.

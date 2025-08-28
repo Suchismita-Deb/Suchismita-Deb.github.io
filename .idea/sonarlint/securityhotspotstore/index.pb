@@ -13169,3 +13169,5 @@ S
 #content/post/Project/MovieReview.md,e\f\efcb0126e013a6e8c9fe865564fe0467a923c0f2
 V
 &content/post/Java/Fundamental/1OOPS.md,e\7\e754dd972d94983f8f994b19e78946099fda0cdd
+e
+5content/post/Spring/Microservice/CqrsDesignPattern.md,6\7\67ae2fcfdba285793644c15f1cee248865752ab3

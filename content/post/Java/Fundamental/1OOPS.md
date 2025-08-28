@@ -79,7 +79,7 @@ Composition - Ending of one object will end another object.
 ### *Multiplicity*.
 - Indicates number of instance of the class is there in the relationship.
 - Example One FlightInstance will have two Pilots, while a Pilot can have many FlightInstances.
-  ![img.png](/images/img28.png)
+  {{<figure src="/images/Java/ClassDiagram.png" alt="UserRequest." caption="Sample Class Diagram.">}}
 
 ### *Aggregation*
 * Special type of Association.

@@ -31,7 +31,9 @@ tags=['java']
 
 Implementations of Maps.
 - The classes *HashMap* and *Hashtable* implements *unordered map* and *LinkedHashMap* implements *ordered map*.
-- ![img.png](/images/img32.png)
+- 
+{{<figure src="/images/Java/InterviewQuestion/HashMapInternal.png" alt="UserRequest." caption="HashMap Internal.">}}
+- 
 - HashMap implements similar to hashset the inserting and deletion is O(1). The ordering is not there and in LinkedHashMap we have the ordering. 
 - TreeMap is the implementation of the sorted map.
 - In hashMap we can have one null key and is not thread safe. The HashTable class is thread-safe and permits only non-null values and keys.

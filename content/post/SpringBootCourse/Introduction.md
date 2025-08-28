@@ -58,7 +58,7 @@ In labs team only the build takes 3 mins. Some inhouse builds system can be fast
 
 Making a gradle project in the ide and then though cmd going to the folfer location and run command. `gradle build` or `gradlew build`.
 
-![img_1.png](/images/img36.png)
+{{<figure src="/images/Spring/Introduction/GradleBuild.png" alt="UserRequest." caption="Gradle Build.">}}
 
 We can write the command `gradle jar` this will make a jar file in the `build/libs` folder. Jar is a simple zip java file and we can get all the code from the jar file.
 
@@ -75,6 +75,6 @@ jar {
     }
 }
 ```
-![img_1.png](/images/img37.png)
+{{<figure src="/images/Spring/Introduction/CreateJar.png" alt="UserRequest." caption="Create Jar.">}}
 
 When we have one jar file we can see what is the code indide we can upload the jar file online like `decompile java file` *Decompile meaning converting the class file to the java file.*
