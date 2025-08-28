@@ -13109,3 +13109,17 @@ X
 Mcontent/post/Spring/Kafka/ProjectHandsOn/KafkaStream/KafkaStreamAPIHandsOn.md,c\b\cba72f13316a0d19d20c4b8c94d2b0835931fb36
 †
 Vcontent/post/Spring/Kafka/ProjectHandsOn/ConfluentRestProxy/ConfluentRestProxyKafka.md,a\1\a120a08c73abb859533906138571741047e44c9a
+e
+5content/post/InterviewExperience/Google/Interview1.md,7\7\77e6e2347f541aff3008d3c2d5539128d952ee06
+_
+/content/post/SpringBootCourse/LLD/Lesson1SPR.md,c\7\c7073e81b793764b707656b05bd273caac3772d6
+R
+"content/post/SystemDesign/SOLID.md,1\a\1a31467350162d2cfa8a6698b41ae70da006d2f1
+_
+/content/post/SystemDesign/PatternOfInterview.md,f\9\f9207a57ea14f4560c635e7eb7366da0f4576673
+c
+3content/post/SystemDesign/MemoryAndStorageSystem.md,5\e\5efb56601120f533e8b358f8dae6fbcde4582eac
+[
++content/post/SystemDesign/ImportantTopic.md,f\e\fea0477049f28a5d4cab608ece4d3cad2ea4fca8
+o
+?content/post/SystemDesign/CapacityEstimationbackOfTheEnvelop.md,e\7\e751c1cab0b691a853fd7b65f00649bb9005de27

@@ -43,6 +43,26 @@ https://leetcode.com/problems/merge-intervals/description/
 https://leetcode.com/problems/k-closest-points-to-origin/description/
 
 Use a implemeneted heap, they expect that, don't try to memorize alternative way
+### Meta E5 India. Aug 2025.
+https://leetcode.com/discuss/post/7099611/meta-india-e5-comp-by-extraslowlyslowly-ljpv/
 
+Robot room cleaner
+rolling window average of array
+Spiral printing of matrix
+Given two list of intervals, merge them into non-overlapping list of intervals
+Design a ticket booking system for a very popular concert
+Design a servie for likes for instagram
 
+### Meta.
+https://leetcode.com/discuss/post/7100324/meta-full-loop-aug-2025-by-spradhan123-idzq/  
+Coding 1:
 
+best time to buy or sell stock
+max diameter of a binary tree
+Coding 2:
+
+remove invalid paranthesis
+binary tree left and right side view ( left side view from bottom to top and righ side view from top to bottom)
+system design :
+
+facebook status search

@@ -1296,7 +1296,11 @@ Distributed caches such as Redis can store key-value pairs in memory, providing 
 
 Full-text search engines like Elastic Search can index data for document search and log search, providing quick and efficient access to specific data. 
 
-Even within the database, there are multiple levels of caching available. Data is typically written to a write-ahead log (WAL) before being indexed in a B-tree. 
+Even within the database, there are multiple levels of caching available. 
+
+
+{{<figure src="/images/SystemDesign/Video/RelationalDatabaseCache.png" alt="Git Versioning." caption="Relational Database Cache.">}}
+Data is typically written to a write-ahead log (WAL) before being indexed in a B-tree. 
 
 The buffer pool is a memory area used to cache query results, while materialized views can precompute query results for faster performance. 
 

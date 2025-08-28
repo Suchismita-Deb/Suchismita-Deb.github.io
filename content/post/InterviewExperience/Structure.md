@@ -11,9 +11,7 @@ Candidate Info -
 Link -
 Application Type -
 
-### **📅 Interview Format & Timeline.**
-
-### **🧠 Interview Questions Breakdown. Level - M+.**
+### **🧠 Interview Questions Breakdown.**
 Round 1 -
 
 ### **💹 Interview Round 2.**

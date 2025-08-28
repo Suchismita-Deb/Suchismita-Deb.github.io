@@ -10,7 +10,7 @@ tags = ['interview question', 'system design']
 
 **Product Design** - Designing product like Design SLack, Uber, Chat app, Facebook. 
 **Infrastructure Design** - Support particular use case - Design rate limiter, message broker, key value store.  
-**Object Oriented Design** - Design oops with SOLID pattern and entity and class diagram. Amazon is famous for this type of question. Design parking lot, vending machine. Rather than focusing on the service and backend database design we will focus on the class diagram. Grokking the low level design interview.
+**Object-Oriented Design** - Design oops with SOLID pattern and entity and class diagram. Amazon is famous for this type of question. Design parking lot, vending machine. Rather than focusing on the service and backend database design we will focus on the class diagram. Grokking the low level design interview.
 
 The main point is the depth of the solution and knowledge.
 Mid level should cover the system with 80% breadth and 20% depth.
@@ -30,7 +30,7 @@ Make a delivery framework to make the design in structure.
 
 5 mins. Get clear understanding of the system. Functional - core feature. Ask the question like _Does the system need to do X?_ and _User should be able to do ?_ Come to the prioritized list of the core features.
 
-All the systems has hundreds of features we need to prioritize top 3 and make a working system. In the list if there is more requirements then it is not good and interviewer evaluate on the ability to focus what matters.
+All the systems has hundreds of features we need to prioritize top 3 and make a working system. In the list if there is more requirements than it is not good and interviewer evaluate on the ability to focus what matters.
 
 Desiging twitter - User should be able to post tweets, User should be able to follow the users, Users should be able to see tweets from users they follow.
 

@@ -31,9 +31,9 @@ It is the network of server located all around the world. CDN takes the file hos
 
 CDN is one technique for Caching.
 ### Caching.
-Creating copy of data which can be refetched faster in future.
+Creating copy of data which can be re-fetched faster in the future.
 
-Mking network request is expensive. So browser cache the data in the disk.
+Making network request is expensive. So browser cache the data in the disk.
 
 Reading from the disk is expensive so computer copy it in memory RAM.
 
@@ -41,10 +41,10 @@ Reading memory is expensive so OS copy a subset of it in L1,L2 and L3 CPU cache.
 ### IP Address.
 
 ### TCP/IP.
-Internet PRotocol Suite.
+Internet Protocol Suite.
 > It includes IP, TCP, UDP.
 
-When Sending file it is send as a packets. When arrived then the packets gets arranged as a number. If one packets is missing TCP ensures the packet is resend.
+When Sending file it is sent as a packets. When arrived then the packets gets arranged as a number. If one packets is missing TCP ensures the packet is resend.
 
 Other protocol like HTTP, WebSockets are build on top of TCP.
 ### DNS.
