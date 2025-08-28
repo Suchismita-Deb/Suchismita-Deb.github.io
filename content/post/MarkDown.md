@@ -123,9 +123,9 @@ Another way to chnage the figure.html and add a bordered-img class.
 }
 ```
 
+In hugo paper theme when delete any page there will be a public folder created with the html in the build then delete the public folder. It will again create the public folder based on the current file.
 
 PaperMod Theme to get the fuzzy search details.
-
 https://github.com/adityatelange/hugo-PaperMod?tab=readme-ov-file
 
 https://adityatelange.github.io/hugo-PaperMod/

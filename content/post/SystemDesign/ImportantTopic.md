@@ -96,5 +96,32 @@ If we donot have to enforce any foreign key then we can break up the database an
 
 Using shard key we decide which portion of the data will be present in which machine. Shard key can be the ID. Simple Approach is replication.
 ### Replication.
+The database may and will fail. When a system has only one database and the read and write througput is limited to the single node.
+
+We should have multiple copies of the data. Replication can allow us to - Witstand hardware failures.  
+Improve our database performance.
+
+Replicas will send data to one another via a "replica log", which is very similarto write ahead log.
+
+### Replication - Synchronous and Asynchronous Replication.
+
+Syynchronous Replication (Strong Consistency) - On a write all replica must process the data before the write is considered committed.
+
+Pros - Any read to a replica will return up to date data.
+Cons - A single replica is down we cannot commit any writes.
+
+Asynchronous Replication(Eventual Consistency) - On a write, only a subset replicas must process the data before the write is considered committed. Other replicas will be backfilled in the background.
+
+Pros - Writes can tolerate some node failures. Wrires are faster.  
+Cons - Reading from certain nodes can return stale(old) data.
+
+Discussing about the asynchronous replication.
+
+### Single Leader.
+
+All writes go to one leader database, which are asynchronous replicated the followers databases. Reads can come from either the leader or follower.
+
+Pros - Simple to implement.  
+Cons - Write throughput limited to the lead
 ### CAP Theorem.
 ### Message Queues.

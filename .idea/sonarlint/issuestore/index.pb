@@ -13123,3 +13123,13 @@ c
 +content/post/SystemDesign/ImportantTopic.md,f\e\fea0477049f28a5d4cab608ece4d3cad2ea4fca8
 o
 ?content/post/SystemDesign/CapacityEstimationbackOfTheEnvelop.md,e\7\e751c1cab0b691a853fd7b65f00649bb9005de27
+W
+'content/post/SystemDesign/Discussion.md,c\7\c7b74b94da8331dc3713a24041f4ce4305afb211
+_
+/content/post/SystemDesign/InterviewStructure.md,e\d\ed8fcb605a834e59066d402829665d0c5afac8e7
+b
+2content/post/SystemDesign/MapReduceSystemDesign.md,1\d\1d83d906a64858c362f7a6710558f09520aafea6
+_
+/content/post/SystemDesign/TopicDoubtClearing.md,d\2\d2d5c239b6dea0e301b3d411df165704d7236c7c
+V
+&content/post/SystemDesign/LLD/SOLID.md,9\6\96747a81451af1ccef4bc157e178de14a55e659f
