@@ -1,22 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>kubernetes on Technical Blog</title>
-    <link>https://suchismita-deb.github.io/tags/kubernetes/</link>
-    <description>Recent content in kubernetes on Technical Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 14 Jun 2025 21:52:53 +0530</lastBuildDate>
-    <atom:link href="https://suchismita-deb.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>KubernetesBasics</title>
-      <link>https://suchismita-deb.github.io/post/devops/kubernetes/kubernetesbasics/</link>
-      <pubDate>Sat, 14 Jun 2025 21:52:53 +0530</pubDate>
-      <guid>https://suchismita-deb.github.io/post/devops/kubernetes/kubernetesbasics/</guid>
-      <description>Kubernetes is an open source container orchestration platform, It automates the deployment, scaling and management of containerized application.
-Kubernetes Architecture.A kubernetes cluster is a set of machine called nodes and used to run containerized application. There are two main part in kubernetes cluster - Control plane and the set of worker nodes.
-Control plane - It is responsible for the managing the state of the cluster.
-Control Plane.In production environment the control plane runs on multiple nodes that span across several data center zones.</description>
-    </item>
-  </channel>
-</rss>
