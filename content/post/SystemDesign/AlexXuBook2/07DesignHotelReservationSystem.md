@@ -158,14 +158,24 @@ Assume 5000 hotels and each has 20 types of rooms.
 A single database is enough to store it. To increase availability the database is replicated across multiple regions or availability zones.
 
 
-
-### TODO Sample data of the table.
+{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/SampleData.png" alt="UserRequest." caption="Sample Data of the room_type_inventory table.">}}
 The table is used to verify if a customer can reserve a specific room type or not.
 
 Input - startDate(2023-07-01), endDate(2023-07-03), roomTypeId, hotelId, numberOfRoomsToReserve.  
 Output - True (user can book it).
-### Todo 
-Query image and table image.
+```sql
+SELECT date, total_inventory, total_reserved 
+FROM room_type_inventory
+WHERE room_type_id = ${roomTypeId} AND hotel_id = ${hotelId}
+AND date between ${startDate} and ${endDate}
+```
+The query data will give output.
+{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/Inventory.png" alt="UserRequest." caption="">}}
+Each entry the application condition is used.
+`if((total_reserved+${numberOfRoomsToReserve}) <= total_inventory)`
+
+10% overbooking.
+`if((total_reserved+${numberOfRoomsToReserve}) <= 110 * total_inventory)`
 
 
 Counter Question - _Reservation date is too large for a single database._
@@ -273,7 +283,7 @@ Similar to optimistic locking. In the room_type_inventory table add the constrai
 CONSTRAINT `check_room_count` CHECK((`total_inventory-total_resreved`>=0))
 ```
 When user 2 tries to reserve a room, total_reserved exceeds inventory count and the transaction is rolled back.
-### TODO the database constraint image.
+{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/DatabaseConstraint.png" alt="UserRequest." caption="Database Constraint.">}}
 Pros.
 
 Easy to implement. It is good when data contention is minimal.
@@ -312,9 +322,6 @@ Loading speed and database scalability becomes an issue - we can add a cache lay
 In the design only small request hit the inventory database as most ineligible requests are blocked by the inventory cache.
 
 One important thing - Even when there is enough inventory shown in Redis - we need to re-verify the inventory at the database side as a precaution. The database is the source of teh truth of the inventory data.
-
-### Todo.
-Caching image.
 
 __Reservation Service__ - The inventory API - query the number of room availabel for the given hotel, room type and data range. Reserve a room by execution total_reserved+1. Update inventory when a user cancels a reservation.
 
@@ -359,12 +366,10 @@ Interviewer can focus on microservice and each microservice has its own database
 
 The design introduces many data inconsistency issue. Issue - In real world there will be many microservcies in the company and in monolithic architecture different operation can be wrapped in a single transaction to ensure ACID properties.
 
-### Todo.
-
 {{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/MonolithArchitecture.png" alt="UserRequest." caption="HotelReservationSystemSummary">}}
 Microservice - each service has its own db - one logical atomic operation can span multiple services. We cannot use a single transaction to ensure data consistency.   
 If update ipeartion fails in the reservation database - rollback the resreved room count in the inventory database. There is only one happy path and many failure cases could cause data inconsistency.
-### Todo.
+
 {{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/MicroserviceArchitecture.png" alt="UserRequest." caption="HotelReservationSystemSummary">}}
 To address the data inconsistency - high level of production system.  
 
