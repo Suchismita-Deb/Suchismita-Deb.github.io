@@ -53,7 +53,7 @@ Example - AWS S3, Google Object Storage, Azure Blob Stirage.
 ### _Comparison_
 |Topic|Block Storage|File Storage|Object Storage|
 |---|---|---|---|
-|Update Content|Y|Y|N(object versioning possible no in-place update).|
+|Update Content|Y|Y|N(object versioning possible but no in-place update).|
 |Cost|High|Medium|Low|
 |Performance|Medium to high, very high|Medium to high.|Low to Medium.|
 |Data Access|SAS/iSCSI/FC|Standard file access CIFS/SMB and NFS.|RESTful API.|
@@ -62,14 +62,16 @@ Example - AWS S3, Google Object Storage, Azure Blob Stirage.
 
 ### **Object Storage Understanding.**
 
-**Bucket** - 
+**Bucket** - A logical container for objects. It is globally unique. To upload data in S3 first create a bucket.
+
+{{<figure src="/images/SystemDesign/DesignExample/DesignNearByFriend/HighLevelDesign.png" alt="UserRequest." caption="High Level Design">}}
+
+{{<figure src="/images/SystemDesign/DesignExample/DesignNearByFriend/ObjectVersioning.PNG" alt="UserRequest." caption="Object Versioning.">}}
+
+{{<figure src="/images/SystemDesign/DesignExample/DesignNearByFriend/Summary.png" alt="UserRequest." caption="Summary.">}}
 
 
 
-{{<figure src="/images/SystemDesign/DesignExample/DesignNearByFriend/Summary.png" alt="UserRequest." caption="">}}
 
-
-
-
-
+253 to 
 
