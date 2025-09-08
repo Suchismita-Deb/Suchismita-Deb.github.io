@@ -55,32 +55,20 @@ Reserve room       = QPS = 3.
 ### __High Level Design.__
 
 ### API Design.
-API design is not the crutial it is an entire system. There are feature like search for room based on many large array to include all criteria. The API for the search feature is not implemented.
+API design is not the crucial it is an entire system. There are feature like search for room based on many large array to include all criteria. The API for the search feature is not implemented.
 
 __Hotel Related API.__
 
-> GET - **/v1/hotels/ID** - Get the information about the hotel.
->
-> POST - /v1/hotels - Add new hotel. Only to the admin.
->
-> PUT - /v1/hotels/ID - Update hotel information. Only to the admin.
->
-> DELETE - /v1/hotels/ID - Delete a hotel.
+{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/HotelRelatedAPI.png" alt="UserRequest." caption="Hotel Related API">}}
 
 __Room Related API.__
 
-> GET /v1/hotels/ID/rooms/ID Get the detailed information about the room.
->
-> POST /v1/hotels/ID/rooms Add a room. Only to the admin.
->
-> PUT /v1/hotels/ID/rooms/ID Update room information. Only to admin.
->
-> DELETE /v1/hotels/ID/rooms/ID Delete a room. Only to admin.
+{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/RoomRelatedAPI.png" alt="UserRequest." caption="Room Related API">}}
 
 __Reservation Related API.__
 {{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/ReservationRelatedAPI.png" alt="UserRequest." caption="Reservation Related API">}}
 
-The requets to make a new reservation - POST - /v1/reservations - the request parameter.
+The requests to make a new reservation - POST - /v1/reservations - the request parameter.
 ```json
 {
   "startDate":"2023-04-28",
@@ -366,7 +354,7 @@ Interviewer can focus on microservice and each microservice has its own database
 
 The design introduces many data inconsistency issue. Issue - In real world there will be many microservcies in the company and in monolithic architecture different operation can be wrapped in a single transaction to ensure ACID properties.
 
-{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/MonolithArchitecture.png" alt="UserRequest." caption="HotelReservationSystemSummary">}}
+{{<figure src="/images/SystemDesign/DesignExample/HotelReservationSystem/MonolithicArchitecture.png" alt="UserRequest." caption="HotelReservationSystemSummary">}}
 Microservice - each service has its own db - one logical atomic operation can span multiple services. We cannot use a single transaction to ensure data consistency.   
 If update ipeartion fails in the reservation database - rollback the resreved room count in the inventory database. There is only one happy path and many failure cases could cause data inconsistency.
 

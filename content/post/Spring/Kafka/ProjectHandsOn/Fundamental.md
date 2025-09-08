@@ -40,6 +40,10 @@ Topic: demo_topic_1     TopicId: 0pv0RmQqSiClY81hFOWdGQ PartitionCount: 1       
 Topic: demo_topic_1     Partition: 0    Leader: 0       Replicas: 0     Isr: 0  Elr: N/A        LastKnownElr: N/A
 ```
 
+One health topic should have value 1.
+Partition: 0    Leader: 1    Replicas: 1    Isr: 1
+It is 0 means kafka br
+
 Kafka Consumer offset is one software where we need to add the port and then can see the topic details.  
 {{< figure src="/images/Spring/Kafka/KafkaConsumerOffset.png" alt="KafkaConsumerOffset" caption="Kafka Consumer Offset Cluster." >}}  
 In Offset Explorer connect the cluster.
@@ -97,4 +101,10 @@ In the build.gradle we need to add the dependency.
 dependencies {
   implement io.confluent:kafka-avro-serializer:7.8.0
 }
+```
+In the config/server.properties there will be the listeners code.
+```
+broker.id=1
+listeners=PLAINTEXT://localhost:9092
+advertised.listeners=PLAINTEXT://localhost:9092
 ```
