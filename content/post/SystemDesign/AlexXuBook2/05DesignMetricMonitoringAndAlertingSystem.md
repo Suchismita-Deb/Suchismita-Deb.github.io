@@ -375,5 +375,5 @@ There are many industrial scale alerting system that provide tight integration w
 ### Visualization System.
 
 Visualization is built on top of data layer. Metrics can be shown on metric dashboard and alert in the alert dashboard. Use an off-the-shelf system. Example - Grafana can be a good example. It integrate well with time-series database.
-{{<figure src="/images/SystemDesign/DesignExample/MetricMonitoringAndAlertingSystem/HighLevelDesignMetricMonitoring.png" alt="UserRequest." caption="HighLevelDesignMetricMonitoring">}}
+{{<figure src="/images/SystemDesign/DesignExample/MetricMonitoringAndAlertingSystem/FinalDesignMetricMonitoring.png" alt="UserRequest." caption="HighLevelDesignMetricMonitoring">}}
 {{<figure src="/images/SystemDesign/DesignExample/MetricMonitoringAndAlertingSystem/MetricMonitoringSummary.png" alt="UserRequest." caption="MetricMonitoringSummary">}}
