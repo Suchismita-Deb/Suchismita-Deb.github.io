@@ -138,4 +138,6 @@ Step 4. Now press ctrl+alt+shift+l in your keyboard.
 
 gradle build
 ```
+Lombok Builder did not get the get and set value.
 
+In the entity class `@Data` and `@AllArgsConstructor` present but not taking the set value then in plugin we can install Lombok.

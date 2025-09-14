@@ -68,3 +68,18 @@ spring.kafka.consumer.auto-offset-reset=earliest
 spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
 spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
 ```
+Bootstrap server running in confluent.
+To see if the bootstrap server is connected and active in the url.  
+In curl or command prompt curl -v telnet://lkc-1jr5dz-61m326.us-central1.gcp.glb.confluent.cloud:9092
+It is connected. In confluent we can see the bootstrap server url It need vpn to connect.
+
+In case it shows telnet not recognized.
+Enable Telnet client - Open **Run** - **optionalfeatures.exe** - **Telnet client** - **Ok**.
+
+
+### **Learning About TelNet.**
+Telnet = Telecommunication Network. It is a protocol that allow a computer to connect to another computer over the TCP/IP and send text based command.  
+Traditionally it was used to connect remotely to server now SSH used. The command is used just to test if a TCP port is reachable.  
+`telnet example.com 80` - It will try to connect to example.com on port 80.
+can my machine reach this host:port?    
+It cannot be used in kafka command. Kafka needs SASL_SSL authentication and binary protocol, which Telnet cannot handle.

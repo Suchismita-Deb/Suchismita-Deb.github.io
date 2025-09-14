@@ -1,6 +1,6 @@
 +++
 title = 'Kafka The Definitive Guide - 12 Administering Kafka'
-date = 2025-07-27T20:12:08+05:30
+date = 2025-07-27T20:04:08+05:30
 
 url= "/post/spring/kafka/KafkaTheDefinitiveGuide12"
 tags = ['spring', 'kafka', 'KafkaTheDefinitiveGuide']

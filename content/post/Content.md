@@ -73,18 +73,19 @@ Lamport Clock, Vector Clock.
 
 ## Collection of Books. 
 
-| Book Name                                           | Link.                                   
-|-----------------------------------------------------|-----------------------------------------|
-| OS Notes                                            |[Link](/files/OS_Full_Notes.pdf).|
-| Grokking the advanced System Design Interview.      |[Link](/files/Grokking-the-advanced-system-design-interview.pdf).|
-| Grokking the system design interview.               |[Link](/files/Grokking-the-system-design-interview.pdf).|
-| System Design Insider Guide Alex Xu Part 2          |[Link](/files/AlexXuSystemDesignPart2.pdf).|
-| CP Book.                                            |[Link](/files/CP.pdf).|
-| Math Book.                                          |[Link](/files/paul-zeitz-author-the-art-and-craft-of-problem-solving-2.pdf).|
-| Kafka Administration Book.                          |[Link](/files/Student_Handbook_Apache_Kafka_Administration_By_Confluent.pdf). |
-| Kafka Developer Handbook.                           |[Link](/files/Student_Handbook.pdf).|
-| Kafka The Definitive Guide.                         |[Link](/files/Kafka_The_Definitive_Guide_Real_Time_Data_Stream_Processing_At_Scale.pdf).|
-| Head First Java.                                    |[Link](/files/Head_First_Java_Second_Edition.pdf)
+| Book Name                                      | Link.                                   
+|------------------------------------------------|-----------------------------------------|
+| OS Notes                                       |[Link](/files/OS_Full_Notes.pdf).|
+| Grokking the advanced System Design Interview. |[Link](/files/Grokking-the-advanced-system-design-interview.pdf).|
+| Grokking the system design interview.          |[Link](/files/Grokking-the-system-design-interview.pdf).|
+| System Design Insider Guide Alex Xu Part 2     |[Link](/files/AlexXuSystemDesignPart2.pdf).|
+| System Design Interview Alex Xu Part 1         |[Link](/files/SystemDesignInterviewAlexXuPart1.pdf).|
+| CP Book.                                       |[Link](/files/CP.pdf).|
+| Math Book.                                     |[Link](/files/paul-zeitz-author-the-art-and-craft-of-problem-solving-2.pdf).|
+| Kafka Administration Book.                     |[Link](/files/Student_Handbook_Apache_Kafka_Administration_By_Confluent.pdf). |
+| Kafka Developer Handbook.                      |[Link](/files/Student_Handbook.pdf).|
+| Kafka The Definitive Guide.                    |[Link](/files/Kafka_The_Definitive_Guide_Real_Time_Data_Stream_Processing_At_Scale.pdf).|
+| Head First Java.                               |[Link](/files/Head_First_Java_Second_Edition.pdf)
 
 
 | Self Improvement Books.                                     | Link                                                                    |
@@ -94,6 +95,7 @@ Lamport Clock, Vector Clock.
 | Eric-Jorgenson_The-Almanack-of-Naval-Ravikant_Final.        | [Link](/files/Eric-Jorgenson_The-Almanack-of-Naval-Ravikant_Final.pdf). |
 | GM-The-Secret-LOA-Power-of-Intention-eBook                  | [Link](/files/GM-The-Secret-LOA-Power-of-Intention-eBook.pdf).          |
 | How-To-Win-Friends                                          | [Link](/files/How-To-Win-Friends.pdf).                                  |
+| Surrounded By Idiots                                        | [Link](/files/SurroundedByIdiots.pdf).          |
 | Atomic Habits                                               | [Link](/files/AtomicHabits.pdf).                                        |
 
 
