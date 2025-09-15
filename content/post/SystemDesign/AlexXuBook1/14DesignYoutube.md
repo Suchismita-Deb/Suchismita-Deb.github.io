@@ -13,7 +13,7 @@ Total monthly active user - 2billion.
 
 Number of videos watched per day - 5billion.
 
-50 million creator on Youtube.80% Us adult see youtube. Majority in mobile internet traffic.
+50 million creator on Youtube. 80% Us adult see youtube. Majority in mobile internet traffic.
 
 Youtube is available in 85 different language.
 
@@ -34,7 +34,6 @@ Encryption - Required.
 File size requirement - Small and medium size videos. Max allowed size - 1GB.
 
 Use exiting cloud infrastructure like Amazon, Google, Microsoft - Yes.
-
 **Functional Requirement.**
 
 Ability to upload video fast.
@@ -193,27 +192,27 @@ Old mobile does not support video splitting. Preprocessor split video by GOp ali
 DAG generation - The processor generated DAG based on configuration files. Example - 2 nodes and 1 edge Download → Transcode.
 ```yaml
 task {
-  name 'download-input'
-  type 'Download'
-  input {
-  url config.url
-  }
-  output { it ->
-  context.inputVideo = it.file
-  }
-  next 'transcode'
+    name 'download-input'
+    type 'Download'
+    input {
+          url config.url
+    }
+    output { it ->
+        context.inputVideo = it.file
+    }
+    next 'transcode'
 }
 
-  task {
-  name 'transcode'
-  type 'transcode'
-  input {
-  input context.inputVideo
-  config config.transConfig
-  }
-  output { it ->
-  context.file = it.outputVideo
-  }
+task {
+    name 'transcode'
+    type 'transcode'
+    input {
+        input context.inputVideo
+        config config.transConfig
+    }
+    output { it ->
+        context.file = it.outputVideo
+    }
 }
 ```
 
