@@ -52,18 +52,6 @@ Lamport Clock, Vector Clock.
 | Alex Xu Book1              | https://suchismita-deb.github.io/tags/systemdesignalexxubook1/ |
 | Alex Xu Book2              | https://suchismita-deb.github.io/tags/systemdesignalexxubook2/ |
 
-
-## Design Pattern
-
-| Topic            |Link|
-|------------------|---|
-
-## DSA
-
-| Topic            | Link                                       |
-|------------------|--------------------------------------------|
-| Bit Manipulation | https://suchismita-deb.github.io/tags/dsa/ |
-
 ## Behavioral Interview
 
 |Topic| Link                                                         |
