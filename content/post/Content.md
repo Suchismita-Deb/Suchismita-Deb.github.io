@@ -45,11 +45,12 @@ Kafka Book and Confluent Book - daily 20 pages.
 Lamport Clock, Vector Clock.
 ## System Design
 
-| Topic            |Link|
-|------------------|---|
-| Computer Network |https://suchismita-deb.github.io/tags/computer-networks/|
+| Topic                      |Link|
+|----------------------------|---|
+| Computer Network           |https://suchismita-deb.github.io/tags/computer-networks/|
 | Kafka The Definitive Guide | https://suchismita-deb.github.io/tags/kafkathedefinitiveguide/ |
-| Alex Xu Book2 | https://suchismita-deb.github.io/tags/systemdesignalexxubook2/ |
+| Alex Xu Book1              | https://suchismita-deb.github.io/tags/systemdesignalexxubook1/ |
+| Alex Xu Book2              | https://suchismita-deb.github.io/tags/systemdesignalexxubook2/ |
 
 
 ## Design Pattern
