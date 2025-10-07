@@ -194,3 +194,9 @@ The .gitmodule should look like this.
 
 
 `git config --global user.email` - It will see the username in the github.
+
+Making contribution in any other account then set the user name and email in the local. In terminal set the value and then commit.
+```bash
+git config user.name "Suchismita-Deb"
+git config user.email "su2000@gmail.com"
+```
