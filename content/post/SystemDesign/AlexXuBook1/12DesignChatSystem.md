@@ -84,4 +84,29 @@ An online presence indicator is an essential feature of many chat applications. 
 offline.
 {{<figure src="/images/SystemDesign/DesignExample/ChatApplication/UserLogout.png" alt="User Logout." caption="User Logout.">}}
 
-**_User disconnection_** - When a user disconnects from the internet, the persistent connection between the client and server is lost. A naive way to handle user disconnection is to mark the user as offline and change the status to online when the connection re-establishes. The approach has a flaw. There can be a case whn
+**_User disconnection_** - When a user disconnects from the internet, the persistent connection between the client and server is lost. A naive way to handle user disconnection is to mark the user as offline and change the status to online when the connection re-establishes. The approach has a flaw. User can be disconnect and reconnect in a very short period of time. Updating on every connect and disconnect will make the presence indicator change too often and poor user experience. 
+
+Introduce a heartbeat mechanism to solve the problem. Online client sends an heartbeat events to the presence servers, receive in time client is online.
+
+**_Online Status Format._** 
+
+How do user A's friends know about the status change?  
+Presence servers use a publish-subscribe model in which each friend pairs maintains a channel. When user A's online status change it publishes the event to 2 channels subscribed by B, C and D.  
+It is easy for friends to get the online status updates. The communication between clients and servers is through the real time websocket.
+
+{{<figure src="/images/SystemDesign/DesignExample/ChatApplication/OnlineStatusFanOut.png" alt="Polling." caption="High Level Design.">}}
+
+It is effective when the group is small say max limit 100. When the group is large then informing all members about online status is expensive and time consuming.
+
+A group of 100,000 members each status change will generate 100,000 events. To solve the performance bottleneck a solution is to fetch online status when a yser enters a group or manually refreshes the friend lists.
+
+### Summary.
+
+Time permits then can take topics like - Extending the chat app to support media files like photos, videos. Media files are larger than text files and compressing, cloud storage and thumbnails are to be highlighted.  
+
+End-to-End Encryption.  
+Caching message on the client side to reduce the data transfer between client and server.  
+Improve load time - Slack build a geographically network to cache users data channel for better load time. 
+
+Error Handling - The chat server error. There might be thousands of connections to the chat server. If the chat server goes offline service discovery will provide a new chat server for clients to establish new connections.  
+Message resent mechanism - Retry and queueing are common resending messages.
