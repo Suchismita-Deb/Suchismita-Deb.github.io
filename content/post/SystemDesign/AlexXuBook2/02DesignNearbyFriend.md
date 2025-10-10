@@ -20,3 +20,4 @@ tags = ['interview question','system design', "systemDesignAlexXuBook2"]
 {{<figure src="/images/SystemDesign/DesignExample/DesignNearByFriend/RedisPubSubChannel.png" alt="UserRequest." caption="RedisPubSubChannel">}}
 {{<figure src="/images/SystemDesign/DesignExample/DesignNearByFriend/PublishLocationUpdateToRandomNearbyPerson.png" alt="UserRequest." caption="PublishLocationUpdateToRandomNearbyPerson">}}
 {{<figure src="/images/SystemDesign/DesignExample/DesignNearByFriend/Summary.png" alt="UserRequest." caption="Summary">}}
+Hello.
