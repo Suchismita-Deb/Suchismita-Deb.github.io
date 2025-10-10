@@ -18,7 +18,7 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-  group: "pages"
+  group: "pages-v1"
   cancel-in-progress: true
 
 # Default to bash
