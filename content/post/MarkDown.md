@@ -129,3 +129,16 @@ PaperMod Theme to get the fuzzy search details.
 https://github.com/adityatelange/hugo-PaperMod?tab=readme-ov-file
 
 https://adityatelange.github.io/hugo-PaperMod/
+
+
+### Adding some changes in the paper theme.
+
+Say the changes are not picking up and update working in local but not in blog.   
+It can happen when the changes are taken from the cache and not from the project. In that case the github/workflow yaml file there are new group.
+
+```yaml
+# Allow one concurrent deployment
+concurrency:
+  group: "pages-v1" # Change it any any different name.
+  cancel-in-progress: true
+```
