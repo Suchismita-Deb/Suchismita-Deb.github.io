@@ -5,18 +5,29 @@ tags = ['work']
 categories = ['API','endPoints']
 +++
 
+When we have an API url like - 
 
-when we have an API url like - `
-https://qa2-r21.np.cwow.gcp.davita.com/zuul/cwow-encounter-lab-fulfillment/v4/lab-test-microbiology-result-details/1889097?fromDate=2024-03-05T00:00:00-05:00&toDate=2024-08-07T00:00:00-04:00`
+
+`https://qa2-r21.np.cwow.gcp.davita.com/zuul/cwow-encounter-lab-fulfillment/v4/lab-test-microbiology-result-details/1889097?fromDate=2024-03-05T00:00:00-05:00&toDate=2024-08-07T00:00:00-04:00`
 Anything after the `?` is Request Param.
 
 We set in this way.
-
+*/
 ```java
+
+
 @GetMapping(value = "v4/lab-test-result-details/{mpi}")
 public ResponseEntity<List<SpannerLabTestResultDto>> getByMpi(
     @Parameter(name = "mpi", required = true) @Valid @NotNull @PathVariable String mpi,
-    @Parameter(name = "PreCwowResult ", required = false) @RequestParam(name = "isPreCwowResult", required = false) Boolean isPreCwowResult,
+    @Parameter(name = "PreCwowResult ", required = false) 
+    @RequestParam(name = "isPreCwowResult", required = false) Boolean isPreCwowResult,
+    
+    @Parameter(name = "fromDate", required = false)
+    @RequestParam(name = "fromDate", required = false) String fromDate,
+
+    @Parameter(name = "toDate", required = false)
+    @RequestParam(name = "toDate", required = false) String toDate,
+    
     @RequestHeader(value = "facilityTimeZone", required = true) String facilityTimeZone) {
 		return ResponseEntity.ok(labTestResultDetailService.getLabResults(mpi, facilityTimeZone, isPreCwowResult));
 }
@@ -54,3 +65,5 @@ private Map<String, Object> buildParams(CalculateLabResultsInputDto labCalculati
 		return params;
 	}
 ```
+
+Sample project of one microsevice calling another microservice and setting in the application yaml.

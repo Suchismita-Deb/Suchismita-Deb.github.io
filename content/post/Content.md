@@ -209,4 +209,18 @@ How does a Distributed Message Queue (like Kafka) handle backpressure?
 |Easy| Stack Overflow.              |Todo.| 
 
 ---
-Hello.
+Alex Book 1.
+
+Done.
+Notification.  
+Newsfeed.  
+Chat.  
+Youtube.  
+Drive.
+
+Alex Book 2.
+
+Proximity.  
+RealTimeGame.  
+Payment System.  
+Stock Exchange.
